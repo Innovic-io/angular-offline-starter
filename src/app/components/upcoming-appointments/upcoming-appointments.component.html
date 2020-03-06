@@ -1,46 +1,16 @@
-<h3>Upcoming Appointments ({{numberOfUpcomingAppointments}})</h3>
+<h3>Upcoming Appointments ({{appointments?.length}})</h3>
 <div class="container" class ="upcomingAppointments">
-  <div class="row">
+  <div class="row"  *ngFor="let appointment of appointments">
     <div class="col-3">
-      <div class ="col-12 blackLetters">{{date}}</div>
+      <div class ="col-12 blackLetters">{{appointment?.date | date}}</div>
       <div class ="col-12 grayLetters">{{dateDifference1}}</div>
     </div>
     <div class="col-6">
       <div class ="col-12 blackLetters">{{appointmentTitle}}</div>
-      <div class ="col-12 grayLetters">{{provider}}</div>
-    </div>
-    <div class="col-3">
-      <button (click)="onClickedConfirmed($event)">Confirm</button>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-3">
-      <div class ="col-12 blackLetters">{{date}}</div>
-      <div class ="col-12 grayLetters">{{dateDifference1}}</div>
-    </div>
-    <div class="col-6">
-      <div class ="col-12 blackLetters">{{appointmentTitle}}</div>
-      <div class ="col-12 grayLetters">{{provider}}</div>
+      <div class ="col-12 grayLetters">{{appointment?.provider?.name}}</div>
     </div>
     <div class="col-3">
       <button (click)="onClickedConfirmed($event)">Confirm</button>
     </div>
   </div>
 </div>
-
-<!--<h3>Upcoming Appointments ({{numberOfUpcomingAppointments}})</h3>-->
-<!--<div class="container" class ="upcomingAppointments">-->
-<!--  <div class="row"  *ngFor="let appointment of appointments">-->
-<!--    <div class="col-3">-->
-<!--      <div class ="col-12 blackLetters">{{appointment?.date}}</div>-->
-<!--      <div class ="col-12 grayLetters">{{dateDifference1}}</div>-->
-<!--    </div>-->
-<!--    <div class="col-6">-->
-<!--      <div class ="col-12 blackLetters">{{appointmentTitle}}</div>-->
-<!--      <div class ="col-12 grayLetters">{{appointment?.provider}}</div>-->
-<!--    </div>-->
-<!--    <div class="col-3">-->
-<!--      <button (click)="onClickedConfirmed($event)">Confirm</button>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
