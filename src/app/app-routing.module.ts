@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 
-import { DashboardComponent } from "./pages/dashboard/dashboard.component";
+import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {AppointmentsComponent} from "./pages/appointments/appointments.component";
+import {CreateComponent} from "./pages/appointments/create/create.component";
 
 const routes: Routes = [
   {
@@ -16,7 +17,11 @@ const routes: Routes = [
   },
   {
     path: "appointments",
-    component: AppointmentsComponent
+    component: AppointmentsComponent,
+  },
+  {
+    path: "appointments/create",
+    component: CreateComponent
   },
 ];
 
@@ -24,4 +29,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
