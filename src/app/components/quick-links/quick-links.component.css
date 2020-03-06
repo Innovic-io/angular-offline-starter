@@ -7,6 +7,9 @@
   box-sizing: border-box;
   border-radius: 3px;
 }
+ul {
+  margin-left: 10px;
+}
 li a {
   text-decoration: none;
   color: #4e555b;
