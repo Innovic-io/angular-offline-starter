@@ -6,10 +6,19 @@
 
   <div class="collapse navbar-collapse container" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <div class="li active"><li class="nav-item">
-          <fa-icon [icon]="faHospitalSymbol" routerLink="" [routerLinkActiveOptions]="{ exact: true }"  routerLinkActive="active"></fa-icon>
-        <p>Dashboard</p><span class="sr-only">(current)</span>
-      </li></div>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard" [routerLinkActiveOptions]="{ exact: true }"  routerLinkActive="active">
+          <fa-icon [icon]="faHospitalSymbol" ></fa-icon>
+          <p>Dashboard</p><span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/appointments" [routerLinkActiveOptions]="{ exact: true }"  routerLinkActive="active">
+          <fa-icon [icon]="faCalendarAlt"></fa-icon>
+          <p>Appointment</p>
+        </a>
+      </li>
+      <!--
       <div class="li"><li class="nav-item">
         <fa-icon [icon]="faCalendarAlt" routerLink="" [routerLinkActiveOptions]="{ exact: true }"  routerLinkActive="active"></fa-icon>
         <p>Appointment</p>
@@ -30,6 +39,7 @@
         <fa-icon [icon]="faFile" routerLink="" [routerLinkActiveOptions]="{ exact: true }"  routerLinkActive="active"></fa-icon>
         <p>My documents</p>
       </li></div>
+      -->
     </ul>
   </div>
 </nav>

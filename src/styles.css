@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Andada&display=swap');
+
 body {
-  background: #FFFFFF;
-  font-family: Andada SC;
+  background-color: #f8f9fa;
+  font-family: 'Andada', serif;
 }
 
 * {
