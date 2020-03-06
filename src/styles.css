@@ -3,3 +3,7 @@ body {
   background-color: #f8f9fa;
   font-family: Andada SC;
 }
+
+* {
+  margin: 0;
+}
