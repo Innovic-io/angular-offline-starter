@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <form (ngSubmit)="onSubmit()" #myForm="ngForm">
+      <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
         <div class="row">
           <div class="col-6">
             <input type="text" class="form-control" placeholder="First Name" [(ngModel)]="appointment.firstName"  name="firstName">
@@ -21,7 +21,7 @@
           </div>
           <div class="col-6">
             <select class="form-control" [(ngModel)]="appointment.provider" name="provider">
-              <option *ngFor="let provider of providers"> {{provider.role | role}} {{provider.name}}</option>
+              <option *ngFor="let provider of providers" [ngValue]="provider"> {{provider.role | role}} {{provider.name}}</option>
             </select>
           </div>
         </div>
@@ -48,10 +48,10 @@
         <div class="row">
           <div class="col-8"></div>
           <div class="col-2">
-            <button class="btn btn-group float-right"> Cancel</button>
           </div>
           <div class="col-2">
             <button class="btn btn-primary float-right" type="submit" [disabled]="!myForm.form.valid"> Submit</button>
+            <button class="btn btn-default float-right"> Cancel</button>
           </div>
         </div>
       </form>

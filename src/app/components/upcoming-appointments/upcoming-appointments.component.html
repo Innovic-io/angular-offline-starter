@@ -10,7 +10,7 @@
       <div class ="col-12 grayLetters">{{appointment?.provider?.name}}</div>
     </div>
     <div class="col-2">
-      <button (click)="onClickedConfirmed($event)"  class ="btn btn-group" style = "float: right">Confirm</button>
+      <button (click)="onClickedConfirmed(appointment?.guid)"  class ="btn btn-group float-right">Confirm</button>
     </div>
   </div>
 </div>

@@ -12,8 +12,6 @@ export class AppointmentService {
 
   createAppointment(appointment: AppointmentModel) {
     this.appointments.push(appointment);
-    console.log(this.appointments);
-
   }
 
   getAllDoctorAppointments(doctorGUID: string) {
