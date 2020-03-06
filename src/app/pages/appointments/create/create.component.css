@@ -4,26 +4,8 @@
   align-items: center;
 }
 
-.create-div {
-  width: 70%;
-  border: 1px solid #d6d6d6;
-  border-radius: 3px;
-  height: 450px;
-  margin: 200px auto;
-}
-
 .make-app {
   margin-top: 10px;
-}
-
-.row {
-  margin: 15px 0;
-}
-
-p {
-  font-style: italic;
-  font-size: 20px;
-  margin: 0;
 }
 
 .form-control {
@@ -34,32 +16,13 @@ p {
 }
 
 input::placeholder {
-  font-family: Andada SC;
   font-variant: small-caps;
 }
 
 option {
-  font-family: Andada SC;
   font-variant: small-caps;
 }
 
 .notes {
   height: 85px;
-}
-
-.button {
-  border: 1px solid #41B6A6;
-  box-sizing: border-box;
-  border-radius: 3px;
-  font-family: Andada SC;
-  color: #41B6A6;
-  width: 95px;
-  height: 40px;
-}
-.button1 {
-  background: #FFFFFF;
-}
-.button2 {
-  background: #41B6A6;
-  color: #FFFFFF;
 }

@@ -9,3 +9,14 @@ body {
 * {
   margin: 0;
 }
+
+.btn.btn-primary {
+  background-color: #41B6A6;
+  border-color: #41B6A6;
+}
+
+.space .row>[class^=col-] {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+}
+
