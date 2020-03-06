@@ -13,6 +13,8 @@ import { AppointmentsComponent } from './pages/appointments/appointments.compone
 import { UpcomingAppointmentsComponent } from './components/upcoming-appointments/upcoming-appointments.component';
 import { CreateComponent } from './pages/appointments/create/create.component';
 import { RolePipe } from './pipes/role.pipe';
+import { CurrentDateComponent } from './components/current-date/current-date.component';
+import { UpcomingPastComponent } from './pages/appointments/upcoming-past/upcoming-past.component';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 
 @NgModule({
@@ -25,6 +27,9 @@ import { TimeAgoPipe } from './pipes/time-ago.pipe';
     UpcomingAppointmentsComponent,
     CreateComponent,
     HeaderComponent,
+    RolePipe,
+    CurrentDateComponent,
+    UpcomingPastComponent,
     RolePipe,
     TimeAgoPipe
   ],

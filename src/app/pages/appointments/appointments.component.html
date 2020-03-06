@@ -1,1 +1,18 @@
-<p>appointments works!</p>
+<div class="container space">
+  <div class="row">
+    <div class="col-12">
+      <app-welcome [name]="currentUser?.name" [role]="currentUser?.role"></app-welcome>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <app-current-date> </app-current-date>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <app-upcoming-past> </app-upcoming-past>
+    </div>
+  </div>
+</div>
+
