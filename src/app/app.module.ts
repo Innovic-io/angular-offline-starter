@@ -13,6 +13,7 @@ import { AppointmentsComponent } from './pages/appointments/appointments.compone
 import { UpcomingAppointmentsComponent } from './components/upcoming-appointments/upcoming-appointments.component';
 import { CreateComponent } from './pages/appointments/create/create.component';
 import { RolePipe } from './pipes/role.pipe';
+import {FormsModule} from "@angular/forms";
 import { CurrentDateComponent } from './components/current-date/current-date.component';
 import { UpcomingPastComponent } from './pages/appointments/upcoming-past/upcoming-past.component';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
@@ -36,7 +37,8 @@ import { TimeAgoPipe } from './pipes/time-ago.pipe';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

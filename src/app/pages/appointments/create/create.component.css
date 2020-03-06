@@ -15,14 +15,6 @@
   border-radius: 3px;
 }
 
-input::placeholder {
-  font-variant: small-caps;
-}
-
-option {
-  font-variant: small-caps;
-}
-
 .notes {
   height: 85px;
 }

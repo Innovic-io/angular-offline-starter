@@ -6,19 +6,22 @@ import { AppointmentModel } from '../models/appointment.model';
   providedIn: 'root'
 })
 export class AppointmentService {
-  private appointments: AppointmentModel[];
+  private appointments: AppointmentModel[] = [];
 
   constructor() {}
 
-  crateAppointment(appointment: AppointmentModel) {
-    // Is time slot already in use
+  createAppointment(appointment: AppointmentModel) {
+    this.appointments.push(appointment);
+    console.log(this.appointments);
+
   }
 
   getAllDoctorAppointments(doctorGUID: string) {
-
+   return this.appointments.filter(appointment => appointment.provider.guid === doctorGUID);
   }
 
   confirmAppointment(doctorGUID: string, appointmentGUID: string) {
 
   }
+
 }

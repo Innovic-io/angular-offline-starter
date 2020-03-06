@@ -6,56 +6,55 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <form>
+      <form (ngSubmit)="onSubmit()" #myForm="ngForm">
         <div class="row">
           <div class="col-6">
-            <input type="text" class="form-control" placeholder="Name">
+            <input type="text" class="form-control" placeholder="First Name" [(ngModel)]="appointment.firstName"  name="firstName">
           </div>
           <div class="col-6">
-            <select class="form-control">
-              <option selected>Provider...</option>
-            </select>
+            <input type="text" class="form-control" placeholder="Last Name" [(ngModel)]="appointment.lastName"  name="lastName">
           </div>
         </div>
         <div class="row">
           <div class="col-6">
-            <input type="datetime-local" class="form-control" placeholder="Time">
+            <input type="datetime-local" class="form-control" placeholder="Date" [(ngModel)]="appointment.date" name="date">
           </div>
           <div class="col-6">
-            <select class="form-control">
-              <option selected>Location...</option>
-            </select>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <select class="form-control">
-              <option selected>AppType...</option>
+            <select class="form-control" [(ngModel)]="appointment.provider" name="provider">
+              <option *ngFor="let provider of providers"> {{provider.role | role}} {{provider.name}}</option>
             </select>
           </div>
         </div>
         <div class="row">
           <div class="col-12">
-            <input type="text" class="form-control notes" placeholder="Notes">
+            <select class="form-control" [(ngModel)]="appointment.appType" name="appType">
+              <option>AppType</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <input type="text" class="form-control notes" placeholder="Notes" [(ngModel)]="appointment.notes" name="notes">
           </div>
         </div>
         <div class="row">
           <div class="col-6">
-            <input type="text" class="form-control" placeholder="Phone">
+            <input type="text" class="form-control" placeholder="Phone" [(ngModel)]="appointment.phone"  name="phone">
           </div>
           <div class="col-6">
-            <input type="text" class="form-control" placeholder="Email">
+            <input type="text" class="form-control" placeholder="Email" [(ngModel)]="appointment.email" name="email">
           </div>
         </div>
         <div class="row">
           <div class="col-8"></div>
           <div class="col-2">
-            <button class="btn btn-light"> Cancel</button>
+            <button class="btn btn-group float-right"> Cancel</button>
           </div>
           <div class="col-2">
-            <button class="btn btn-primary" type="submit"> Submit</button>
+            <button class="btn btn-primary float-right" type="submit" [disabled]="!myForm.form.valid"> Submit</button>
           </div>
         </div>
       </form>
     </div>
+  </div>
 </div>

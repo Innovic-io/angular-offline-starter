@@ -3,8 +3,9 @@ import { AppointmentType } from './system.models';
 
 export class AppointmentModel {
   guid: string;
+  firstName: string;
+  lastName: string;
   date: Date;
-  time: string;
   provider: EmployeeModel;
   location: string;
   appType: AppointmentType;
