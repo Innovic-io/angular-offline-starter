@@ -1,7 +1,3 @@
-h3 {
-  font-family: Andada SC;
-}
-
 .upcomingAppointments {
   background: #FFFFFF;
   border: 1px solid #E0E0E0;
@@ -9,22 +5,13 @@ h3 {
 
 }
 
-.row {
-  margin: 0;
-  border-bottom: 1px solid #E0E0E0;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
 .grayLetters {
-  font-family: Andada SC;
   font-size: 18px;
   line-height: 24px;
   color: #494949;
 }
 
 .blackLetters {
-  font-family: Andada SC;
   font-size: 18px;
   line-height: 24px;
 }
