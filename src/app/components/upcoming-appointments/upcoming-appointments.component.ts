@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {AppointmentModel} from "../../models/appointment.model";
 
 @Component({
   selector: 'app-upcoming-appointments',
@@ -8,11 +9,16 @@ import {Component, Input, OnInit} from '@angular/core';
 export class UpcomingAppointmentsComponent implements OnInit {
   @Input() numberOfUpcomingAppointments = 2;
   @Input() date = "Aug 30";
-  @Input() dateDifference = "2 days ago";
-  @Input() appointment = "New Patient Appointment";
+  @Input() dateDifference1 = "2 days ago";
+  @Input() appointmentTitle = "New Patient Appointment";
   @Input() provider = "Dr. Emily Jonson";
+  @Output() confirmedButton = new EventEmitter<string>();
+  @Input() appointments: AppointmentModel[];
 
-  constructor() { }
+  onClickedConfirmed(event) {
+    this.confirmedButton.emit(event.target.value);
+    console.log("confirmed");
+  }
 
   ngOnInit(): void {
   }
