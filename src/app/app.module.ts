@@ -13,6 +13,7 @@ import { AppointmentsComponent } from './pages/appointments/appointments.compone
 import { UpcomingAppointmentsComponent } from './components/upcoming-appointments/upcoming-appointments.component';
 import { CreateComponent } from './pages/appointments/create/create.component';
 import { RolePipe } from './pipes/role.pipe';
+import { TimeAgoPipe } from './pipes/time-ago.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RolePipe } from './pipes/role.pipe';
     UpcomingAppointmentsComponent,
     CreateComponent,
     HeaderComponent,
-    RolePipe
+    RolePipe,
+    TimeAgoPipe
   ],
   imports: [
     BrowserModule,

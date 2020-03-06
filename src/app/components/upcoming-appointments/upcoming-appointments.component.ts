@@ -7,11 +7,7 @@ import { AppointmentModel } from '../../models/appointment.model';
   styleUrls: ['./upcoming-appointments.component.css']
 })
 export class UpcomingAppointmentsComponent {
-  @Input() numberOfUpcomingAppointments = 2;
-  @Input() date = 'Aug 30';
-  @Input() dateDifference1 = '2 days ago';
-  @Input() appointmentTitle = 'New Patient Appointment';
-  @Input() provider = 'Dr. Emily Jonson';
+  @Input() appointmentTitle: string;
   @Output() confirmedButton = new EventEmitter<string>();
   @Input() appointments: AppointmentModel[];
 

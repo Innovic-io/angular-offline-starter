@@ -1,16 +1,18 @@
-<h3>Upcoming Appointments ({{appointments?.length}})</h3>
+<h3>Upcoming Appointments ({{ appointments?.length }})</h3>
 <div class="container" class ="upcomingAppointments">
   <div class="row"  *ngFor="let appointment of appointments">
-    <div class="col-3">
-      <div class ="col-12 blackLetters">{{appointment?.date | date}}</div>
-      <div class ="col-12 grayLetters">{{dateDifference1}}</div>
+    <div class="col-4">
+      <div class ="col-12 blackLetters">{{appointment?.date |date:'medium' }}</div>
+      <div class ="col-12 grayLetters">{{appointment?.date | date:'medium'  | timeAgo}}</div>
     </div>
-    <div class="col-6">
+    <div class="col-5">
       <div class ="col-12 blackLetters">{{appointmentTitle}}</div>
       <div class ="col-12 grayLetters">{{appointment?.provider?.name}}</div>
     </div>
     <div class="col-3">
-      <button (click)="onClickedConfirmed($event)">Confirm</button>
+      <button (click)="onClickedConfirmed($event)"  class ="btn btn-group" style = "float: right">Confirm</button>
     </div>
   </div>
 </div>
+
+
