@@ -17,11 +17,12 @@ export class DashboardComponent implements OnInit {
   appointments: AppointmentModel[];
   appointmentsTitle = 'New Patient Appointment';
 
-
   constructor(public employee: EmployeeService, private appointmentService: AppointmentService) {}
+
   confirmedButton(event) {
     this.appointmentService.confirmAppointment(doctor.guid, event);
   }
+
   ngOnInit(): void {
     this.currentUser = this.employee.getLoggedEmployee();
     this.appointments = this.appointmentService.getAllDoctorAppointments(this.currentUser.guid);

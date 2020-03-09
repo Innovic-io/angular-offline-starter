@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-message',
@@ -10,7 +10,6 @@ export class NewMessageComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-
   cancel() {
     this.backOnDashboard();
   }
@@ -18,7 +17,7 @@ export class NewMessageComponent implements OnInit {
   backOnDashboard() {
     this.router.navigate(['/dashboard']);
   }
+
   ngOnInit(): void {
   }
-
 }

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { AppointmentModel } from '../../models/appointment.model';
-import { AppointmentService } from '../../services/appointment.service';
 import { EmployeeModel } from '../../models/employee.model';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -16,11 +16,8 @@ export class UpcomingAppointmentsComponent {
   @Input() appointment: AppointmentModel;
   @Input() currentUser: EmployeeModel;
   public  faChecked = faCheck;
-  dateS = new Date();
 
   onClickedConfirmed(guid) {
     this.confirmedButton.emit(guid);
-
   }
-
 }
