@@ -1,4 +1,5 @@
-import {Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 import { AppointmentModel } from '../../../models/appointment.model';
 import { AppointmentType } from '../../../models/system.models';
 
@@ -10,8 +11,11 @@ import { AppointmentType } from '../../../models/system.models';
 export class TableComponent implements OnInit {
   @Input() appointments: AppointmentModel[];
   @Input() status: AppointmentType;
+  @Output() checked = new EventEmitter<{ checked: boolean, guid: string }>();
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  checkBox(event, appointmentGUID: string) {
+    this.checked.emit({ checked: event, guid: appointmentGUID });
   }
-
 }
