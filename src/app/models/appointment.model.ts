@@ -14,9 +14,10 @@ export class AppointmentModel {
   phone: string;
   email: string;
   confirmed: boolean;
-
   constructor() {
     this.guid = uuidv4();
     this.confirmed = false;
+
   }
+
 }
