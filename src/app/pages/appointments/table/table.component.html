@@ -1,0 +1,33 @@
+<table class="table table-bordered">
+  <thead>
+  <tr class="tableColor" scope="row">
+    <th scope="col" width="5%">
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+        <label class="custom-control-label" for="defaultUnchecked"></label>
+      </div>
+    </th>
+    <th scope="col" width="20%">Date and time</th>
+    <th scope="col" width="20%">ApptType</th>
+    <th scope="col" width="35%">Prov</th>
+    <th scope="col" width="20%">Status</th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let appointment of appointments">
+    <th scope="row">
+      <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" id="defaultUnchecked1">
+      <label class="custom-control-label" for="defaultUnchecked1"></label>
+    </div>
+    </th>
+    <td scope="col">{{appointment?.date}}</td>
+    <td scope="col">{{appointment?.appType}}</td>
+    <td scope="col">{{appointment?.provider?.name}}</td>
+    <td scope="col" *ngIf="status">
+      <span class="badge badge-success">Confirmed</span>
+    </td>
+    <td scope="col" *ngIf="!status">
+      <span class="badge badge-danger">Not confirmed</span>
+    </td>
+  </tbody>
+</table>

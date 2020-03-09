@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Roles } from "../../models/system.models";
+import { Roles } from '../../models/system.models';
 
 @Component({
   selector: 'app-welcome',

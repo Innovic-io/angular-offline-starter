@@ -15,6 +15,9 @@ body {
 .btn.btn-primary {
   background-color: #41B6A6;
   border-color: #41B6A6;
+  font-family: 'Andada', serif;
+  font-variant: small-caps;
+  letter-spacing: 1px;
 }
 
 .space .row>[class^=col-] {
@@ -22,9 +25,11 @@ body {
   padding-bottom: .75rem;
 }
 
-.btn.btn-group {
+.btn.btn-default {
   border-color: #41B6A6;
   color: #41B6A6;
-  margin-top: 4px;
+  font-family: 'Andada', serif;
+  font-variant: small-caps;
+  letter-spacing: 1px;
 }
 
