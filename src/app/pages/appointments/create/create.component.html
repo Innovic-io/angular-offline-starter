@@ -11,15 +11,14 @@
           <div class="col-6">
             <input type="text" class="form-control" placeholder="First Name" [(ngModel)]="appointment.firstName"
                    name="firstName" #firstName="ngModel"
-                   [ngClass]="{'is-valid': firstName.valid && (firstName.touched || firstName.untouched),
-                   'is-invalid': firstName.invalid && (firstName.touched || firstName.untouched)}"
-                   autocomplete="off" required>
+                   [ngClass]="{'is-valid': firstName.valid && firstName.touched, 'is-invalid': firstName.invalid && firstName.touched}"
+                   autocomplete="off" minlength="2" required>
           </div>
           <div class="col-6">
             <input type="text" class="form-control" placeholder="Last Name" [(ngModel)]="appointment.lastName"
                    name="lastName" #lastName="ngModel"
                    [ngClass]="{'is-valid': lastName.valid && lastName.touched, 'is-invalid': lastName.invalid && lastName.touched}"
-                   autocomplete="off" required>
+                   autocomplete="off" minlength="2" required>
           </div>
         </div>
         <div class="row">
@@ -27,12 +26,12 @@
             <input type="datetime-local" class="form-control" placeholder="Date" [(ngModel)]="appointment.date"
                    name="date" #date="ngModel"
                    [ngClass]="{'is-valid': date.valid && date.touched, 'is-invalid': date.invalid && date.touched}"
-                   autocomplete="off" required>
+                   autocomplete="off" minlength="2" required>
           </div>
           <div class="col-6">
             <select class="form-control" [(ngModel)]="appointment.provider" name="provider" #provider="ngModel"
                     [ngClass]="{'is-valid': provider.valid && provider.touched, 'is-invalid': provider.invalid && provider.touched}"
-                    autocomplete="off" required>
+                    required>
               <option *ngFor="let provider of providers"
                       [ngValue]="provider"> {{provider.role | role}} {{provider.name}}</option>
             </select>
@@ -42,15 +41,17 @@
           <div class="col-12">
             <select class="form-control" [(ngModel)]="appointment.appType" name="appType" #appType="ngModel"
                     [ngClass]="{'is-valid': appType.valid && appType.touched, 'is-invalid': appType.invalid && appType.touched}"
-                    autocomplete="off" required>
+                    required>
               <option *ngFor="let appType of appTypes" [value]="appType.value">{{appType.title}}</option>
             </select>
           </div>
         </div>
         <div class="row">
           <div class="col-12">
-            <input type="text" class="form-control notes" placeholder="Notes" [(ngModel)]="appointment.notes"
-                   name="notes" autocomplete="off" required>
+            <textarea type="text" class="form-control" rows="4" placeholder="Notes" [(ngModel)]="appointment.notes"
+                      name="notes" #notes="ngModel"
+                      [ngClass]="{'is-valid': notes.valid && notes.touched, 'is-invalid': notes.invalid && notes.touched}"
+                      autocomplete="off" minlength="2" required></textarea>
           </div>
         </div>
         <div class="row">
@@ -58,13 +59,14 @@
             <input type="text" class="form-control" placeholder="Phone" [(ngModel)]="appointment.phone" name="phone"
                    #phone="ngModel"
                    [ngClass]="{'is-valid': phone.valid && phone.touched, 'is-invalid': phone.invalid && phone.touched}"
-                   autocomplete="off" required>
+                   autocomplete="off" required pattern="^[\d\s]+$" minlength="3">
           </div>
           <div class="col-6">
-            <input type="text" class="form-control" placeholder="Email" [(ngModel)]="appointment.email" name="email"
+            <input type="email" class="form-control" placeholder="example@email.com" [(ngModel)]="appointment.email"
+                   name="email"
                    #email="ngModel"
                    [ngClass]="{'is-valid': email.valid && email.touched, 'is-invalid': email.invalid && email.touched}"
-                   autocomplete="off" required>
+                   autocomplete="off" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
           </div>
         </div>
         <div class="row">
