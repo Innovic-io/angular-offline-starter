@@ -1,5 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
+import { registerLocaleData } from '@angular/common';
+import localeRs from '@angular/common/locales/sr-Latn';
+
+registerLocaleData(localeRs, 'sr-RS');
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,7 +45,9 @@ import { TableComponent } from './pages/appointments/table/table.component';
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    DlDateTimeDateModule,
+    DlDateTimePickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

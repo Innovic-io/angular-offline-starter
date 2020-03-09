@@ -17,6 +17,7 @@ export class UpcomingAppointmentsComponent {
   @Input() appointment: AppointmentModel;
   @Input() currentUser: EmployeeModel;
   public  faChecked = faCheck;
+  dateS = new Date();
 
   constructor(private appointmentService: AppointmentService) { }
   onClickedConfirmed(guid) {

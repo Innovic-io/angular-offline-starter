@@ -23,10 +23,15 @@
         </div>
         <div class="row">
           <div class="col-6">
-            <input type="datetime-local" class="form-control" placeholder="Date" [(ngModel)]="appointment.date"
-                   name="date" #date="ngModel"
-                   [ngClass]="{'is-valid': date.valid && date.touched, 'is-invalid': date.invalid && date.touched}"
-                   autocomplete="off" minlength="2" required>
+            <dl-date-time-picker
+              startView="day"
+              maxView="year"
+              minView="minute"
+              minuteStep="5"
+              [ngModelOptions]="{standalone: true}"
+              [(ngModel)]="appointment.date"
+            >
+            </dl-date-time-picker>
           </div>
           <div class="col-6">
             <select class="form-control" [(ngModel)]="appointment.provider" name="provider" #provider="ngModel"

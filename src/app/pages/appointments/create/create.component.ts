@@ -17,6 +17,7 @@ export class CreateComponent implements OnInit {
   providers = [doctor];
   appointment = new AppointmentModel();
   appTypes = enumSelector(AppointmentType);
+  selectedDate;
 
   constructor(private appointmentService: AppointmentService, private router: Router) {
   }
