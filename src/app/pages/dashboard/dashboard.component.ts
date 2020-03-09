@@ -5,6 +5,7 @@ import { AppointmentModel } from '../../models/appointment.model';
 
 import { EmployeeService } from '../../services/employee.service';
 import { AppointmentService } from '../../services/appointment.service';
+import { doctor } from '../../data/dummy';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,11 +19,12 @@ export class DashboardComponent implements OnInit {
 
 
   constructor(public employee: EmployeeService, private appointmentService: AppointmentService) {}
+  confirmedButton(event) {
+    this.appointmentService.confirmAppointment(doctor.guid, event);
+  }
   ngOnInit(): void {
     this.currentUser = this.employee.getLoggedEmployee();
     this.appointments = this.appointmentService.getAllDoctorAppointments(this.currentUser.guid);
-
-
   }
 
 }

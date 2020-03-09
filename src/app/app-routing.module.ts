@@ -4,6 +4,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {AppointmentsComponent} from "./pages/appointments/appointments.component";
 import {CreateComponent} from "./pages/appointments/create/create.component";
+import {NewMessageComponent} from "./pages/appointments/new-message/new-message.component";
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: "appointments/create",
     component: CreateComponent
+  },
+  {
+    path: "appointments/newMessage",
+    component: NewMessageComponent
   },
 ];
 

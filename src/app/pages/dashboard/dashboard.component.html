@@ -7,7 +7,7 @@
   </div>
   <div class="row">
     <div class="col-9">
-      <app-upcoming-appointments [appointments]="appointments" [appointmentTitle]="appointmentsTitle" ></app-upcoming-appointments>
+      <app-upcoming-appointments [appointments]="appointments" [appointmentTitle]="appointmentsTitle" (confirmedButton)="confirmedButton($event)" ></app-upcoming-appointments>
     </div>
     <div class="col-3 ">
       <app-quick-links></app-quick-links>

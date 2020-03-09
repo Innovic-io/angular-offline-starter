@@ -20,10 +20,8 @@ export class AppointmentService {
   }
 
   confirmAppointment(doctorGUID: string, appointmentGUID: string) {
-    const array = this.appointments.filter(appointment => appointment.guid === appointmentGUID);
-    console.log(array);
-    for (const element of array) {
-      element.confirmed = true;
+    if (confirm('Are you sure you want to confirm?')) {
+      this.appointments.find(appointment => appointment.guid === appointmentGUID).confirmed = true;
     }
   }
 }

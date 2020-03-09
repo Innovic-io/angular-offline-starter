@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AppointmentModel } from '../../models/appointment.model';
 import { AppointmentService } from '../../services/appointment.service';
 import { EmployeeModel } from '../../models/employee.model';
-import { doctor } from '../../data/dummy';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -19,10 +18,9 @@ export class UpcomingAppointmentsComponent {
   public  faChecked = faCheck;
   dateS = new Date();
 
-  constructor(private appointmentService: AppointmentService) { }
   onClickedConfirmed(guid) {
     this.confirmedButton.emit(guid);
-    this.appointmentService.confirmAppointment(doctor.guid, guid);
+
   }
 
 }

@@ -23,6 +23,7 @@ import { CurrentDateComponent } from './components/current-date/current-date.com
 import { UpcomingPastComponent } from './pages/appointments/upcoming-past/upcoming-past.component';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { TableComponent } from './pages/appointments/table/table.component';
+import { NewMessageComponent } from './pages/appointments/new-message/new-message.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { TableComponent } from './pages/appointments/table/table.component';
     UpcomingPastComponent,
     RolePipe,
     TimeAgoPipe,
-    TableComponent
+    TableComponent,
+    NewMessageComponent
   ],
   imports: [
     BrowserModule,
