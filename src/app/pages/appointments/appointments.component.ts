@@ -13,6 +13,7 @@ import { AppointmentService } from '../../services/appointment.service';
 export class AppointmentsComponent implements OnInit {
   currentUser: EmployeeModel;
   appointments: AppointmentModel[];
+  markedAppointments: string[] = [];
 
   constructor(public employee: EmployeeService, public appointmentService: AppointmentService) { }
 
@@ -21,4 +22,10 @@ export class AppointmentsComponent implements OnInit {
     this.appointments = this.appointmentService.getAllDoctorAppointments(this.currentUser.guid);
   }
 
+  appointmentSelect(event: { checked: boolean, guid: string }) {
+    console.log(event);
+  }
+
+  deleteAppointments() {
+  }
 }

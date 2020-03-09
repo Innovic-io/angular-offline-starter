@@ -17,7 +17,5 @@ export class AppointmentModel {
   constructor() {
     this.guid = uuidv4();
     this.confirmed = false;
-
   }
-
 }
