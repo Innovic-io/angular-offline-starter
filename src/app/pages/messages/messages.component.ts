@@ -8,13 +8,10 @@ import {EmployeeModel} from '../../models/employee.model';
   styleUrls: ['./messages.component.css']
 })
 export class MessagesComponent implements OnInit {
-  currentUserEmail: string;
 
-  constructor(public employee: EmployeeService) {
+  constructor() {
   }
   ngOnInit(): void {
-    this.currentUserEmail = this.employee.getLoggedEmployee().email;
-    console.log(this.employee.getLoggedEmployee().email);
   }
 
 }

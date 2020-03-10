@@ -27,6 +27,7 @@ export class CreateComponent implements OnInit {
       this.appointmentService.createAppointment(this.appointment);
       this.appointment = new AppointmentModel();
       alert('Appointment is created successfully!');
+      form.reset();
     }
   }
 

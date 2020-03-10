@@ -9,8 +9,7 @@
       <form (ngSubmit)="onSubmit(messageForm)" #messageForm="ngForm">
         <div class="row">
           <div class="col-12">
-            <input type="text" class="form-control" [(ngModel)]="message.doctorEmail" name="doctorEmail"
-                   *ngFor="let doctor of doctors" [value]="doctor.email" [placeholder]="doctor.email"
+            <input type="text" class="form-control" [(ngModel)]="message.doctorEmail"  name="doctorEmail" disabled
                    #doctorEmail="ngModel"
                    [ngClass]="{'is-valid': doctorEmail.valid && recipient.touched, 'is-invalid': doctorEmail.invalid && doctorEmail.touched}"
                    autocomplete="off" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
@@ -51,7 +50,7 @@
             </div>
           </div>
           <div class="col-9">
-            <button class="btn btn-primary float-right" type="submit" [disabled]="!messageForm.form.valid"> Submit
+            <button class="btn btn-primary float-right ml-2" type="submit" [disabled]="!messageForm.form.valid"> Submit
             </button>
             <button class="btn btn-default float-right" (click)="cancel()"> Cancel</button>
           </div>
