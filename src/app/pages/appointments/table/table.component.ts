@@ -11,6 +11,7 @@ export class TableComponent implements OnInit {
   @Input() appointments: AppointmentModel[];
   @Output() checked = new EventEmitter<{ checked: boolean, guid: string }>();
   @Output() checkedArray = new EventEmitter<boolean>();
+  @Input() isChecked = false;
   ngOnInit(): void {}
 
   checkBox(event, appointmentGUID: string) {
@@ -18,5 +19,6 @@ export class TableComponent implements OnInit {
   }
   checkAll(event) {
     this.checkedArray.emit(event);
+    this.isChecked = true;
   }
 }

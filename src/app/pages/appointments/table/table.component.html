@@ -14,11 +14,17 @@
   </tr>
   </thead>
   <tbody *ngFor="let appointment of appointments; let i = index">
-    <th scope="row">
+    <th scope="row" *ngIf="isChecked">
       <div class="custom-control custom-checkbox">
-      <input type="checkbox" #checkbox class="custom-control-input" id="defaultUnchecked{{i}}" (change)="checkBox(checkbox.checked, appointment.guid)">
-      <label class="custom-control-label" for="defaultUnchecked{{i}}"></label>
+      <input type="checkbox" #checkbox class="custom-control-input" id="defaultUnchecked1" (change)="checkBox(checkbox.checked, appointment.guid)" checked>
+      <label class="custom-control-label" for="defaultUnchecked1"></label>
     </div>
+    </th>
+    <th scope="row" *ngIf="!isChecked">
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" #checkbox class="custom-control-input" id="defaultUnchecked{{i}}" (change)="checkBox(checkbox.checked, appointment.guid)">
+        <label class="custom-control-label" for="defaultUnchecked{{i}}"></label>
+      </div>
     </th>
     <td scope="col">{{appointment?.date | date:'medium': undefined: 'sr-RS' }}</td>
     <td scope="col">{{appointment?.appType}}</td>
