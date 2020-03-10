@@ -20,7 +20,7 @@
       <button class="btn btn-default float-right dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Action</button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" (click)="deleteAppointments()" (click)="deleteAll()">Delete</a>
+          <a class="dropdown-item" (click)="deleteAppointments()">Delete</a>
         </div>
       </div>
       <button class="btn btn-default float-right btnMargin" routerLink="/appointments/create">Make an app</button>
@@ -28,7 +28,7 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <app-table [appointments]="appointments" (checked)="appointmentSelect($event)" (checkedArray)="appointmentSelect1($event)"></app-table>
+      <app-table [appointments]="appointments" (checked)="appointmentSelect($event)" (checkedArray)="appointmentSelectAll($event)"></app-table>
     </div>
   </div>
 </div>
