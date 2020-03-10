@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import {AppointmentModel} from '../models/appointment.model';
+import { AppointmentModel } from '../models/appointment.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +19,11 @@ export class AppointmentService {
     return this.appointments.filter(appointment => appointment.provider.guid === doctorGUID);
   }
 
-  deleteAppointment(deletedAppointments: AppointmentModel[]) {
-    return this.appointments = deletedAppointments;
+  deleteAppointments(appointmentGUID: string) {
+    const appointmentIndex = this.appointments.findIndex(appointment => appointment.guid === appointmentGUID);
+    if (appointmentIndex >= 0 && confirm('Are you sure you want to delete this appointment?')) {
+      this.appointments.splice(appointmentIndex, 1);
+    }
   }
 
   confirmAppointment(doctorGUID: string, appointmentGUID: string) {

@@ -23,6 +23,7 @@
         </div>
         <div class="row">
           <div class="col-6">
+            <app-alerts  *ngIf="alert === true"></app-alerts>
             <dl-date-time-picker
               startView="day"
               maxView="year"
