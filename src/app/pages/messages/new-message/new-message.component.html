@@ -1,0 +1,62 @@
+<div class="container-fluid space">
+  <div class="row">
+    <div class="col-12 make-app">
+      <h2>New Message</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form (ngSubmit)="onSubmit(messageForm)" #messageForm="ngForm">
+        <div class="row">
+          <div class="col-12">
+            <input type="text" class="form-control" [(ngModel)]="message.doctorEmail" name="doctorEmail"
+                   *ngFor="let doctor of doctors" [value]="doctor.email" [placeholder]="doctor.email"
+                   #doctorEmail="ngModel"
+                   [ngClass]="{'is-valid': doctorEmail.valid && recipient.touched, 'is-invalid': doctorEmail.invalid && doctorEmail.touched}"
+                   autocomplete="off" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <input type="text" class="form-control" placeholder="To:" [(ngModel)]="message.recipient" name="recipient"
+                   #recipient="ngModel"
+                   [ngClass]="{'is-valid': recipient.valid && recipient.touched, 'is-invalid': recipient.invalid && recipient.touched}"
+                   autocomplete="off" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <input type="text" class="form-control" placeholder="Subject:" [(ngModel)]="message.subject" name="subject"
+                   #subject="ngModel"
+                   [ngClass]="{'is-valid': subject.valid && subject.touched, 'is-invalid': subject.invalid && subject.touched}"
+                   required minlength="2" autocomplete="off">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <textarea class="form-control" rows="12" placeholder="Message:" [(ngModel)]="message.patientMessage"
+                      name="patientMessage"
+                      #patientMessage="ngModel"
+                      [ngClass]="{'is-valid': patientMessage.valid && patientMessage.touched, 'is-invalid': patientMessage.invalid && patientMessage.touched}"
+                      minlength="10" required autocomplete="off">
+            </textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="defaultUnchecked1" [(ngModel)]="message.urgent"
+                     name="urgent">
+              <label class="custom-control-label text-secondary" for="defaultUnchecked1"> Urgent</label>
+            </div>
+          </div>
+          <div class="col-9">
+            <button class="btn btn-primary float-right" type="submit" [disabled]="!messageForm.form.valid"> Submit
+            </button>
+            <button class="btn btn-default float-right" (click)="cancel()"> Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
