@@ -9,7 +9,7 @@
       <form (ngSubmit)="onSubmit(messageForm)" #messageForm="ngForm">
         <div class="row">
           <div class="col-12">
-            <input type="text" class="form-control" [(ngModel)]="message.doctorEmail"  name="doctorEmail" disabled
+            <input type="text" class="form-control" [(ngModel)]="message.doctorEmail" name="doctorEmail" disabled
                    #doctorEmail="ngModel"
                    [ngClass]="{'is-valid': doctorEmail.valid && recipient.touched, 'is-invalid': doctorEmail.invalid && doctorEmail.touched}"
                    autocomplete="off" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">

@@ -75,12 +75,11 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-8"></div>
-          <div class="col-2">
-          </div>
-          <div class="col-2">
-            <button class="btn btn-default" type="button" (click)="cancel();"> Cancel</button>
-            <button class="btn btn-primary float-right" type="submit" [disabled]="!myForm.form.valid"> Submit</button>
+          <div class="col-3"></div>
+          <div class="col-9">
+            <button class="btn btn-primary float-right ml-2" type="submit" [disabled]="!myForm.form.valid"> Submit
+            </button>
+            <button class="btn btn-default float-right" type="button" (click)="cancel();"> Cancel</button>
           </div>
         </div>
       </form>
