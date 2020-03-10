@@ -19,6 +19,10 @@ export class AppointmentService {
     return this.appointments.filter(appointment => appointment.provider.guid === doctorGUID);
   }
 
+  deleteAppointment(deletedAppointments: AppointmentModel[]) {
+    return this.appointments = deletedAppointments;
+  }
+
   confirmAppointment(doctorGUID: string, appointmentGUID: string) {
     if (confirm('Are you sure you want to confirm?')) {
       this.appointments.find(appointment => appointment.guid === appointmentGUID).confirmed = true;

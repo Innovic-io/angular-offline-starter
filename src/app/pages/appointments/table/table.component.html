@@ -3,7 +3,7 @@
   <tr class="tableColor" scope="row">
     <th scope="col" width="5%">
       <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+        <input type="checkbox" #checkbox class="custom-control-input" id="defaultUnchecked" (change)="checkAll(checkbox.checked)">
         <label class="custom-control-label" for="defaultUnchecked"></label>
       </div>
     </th>
@@ -20,13 +20,13 @@
       <label class="custom-control-label" for="defaultUnchecked{{i}}"></label>
     </div>
     </th>
-    <td scope="col">{{appointment?.date}}</td>
+    <td scope="col">{{appointment?.date | date:'medium': undefined: 'sr-RS' }}</td>
     <td scope="col">{{appointment?.appType}}</td>
     <td scope="col">{{appointment?.provider?.name}}</td>
-    <td scope="col" *ngIf="status">
+    <td scope="col" *ngIf="appointment?.confirmed">
       <span class="badge badge-success">Confirmed</span>
     </td>
-    <td scope="col" *ngIf="!status">
+    <td scope="col" *ngIf="!appointment?.confirmed">
       <span class="badge badge-danger">Not confirmed</span>
     </td>
   </tbody>

@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { AppointmentModel } from '../../../models/appointment.model';
-import { AppointmentType } from '../../../models/system.models';
 
 @Component({
   selector: 'app-table',
@@ -10,12 +9,14 @@ import { AppointmentType } from '../../../models/system.models';
 })
 export class TableComponent implements OnInit {
   @Input() appointments: AppointmentModel[];
-  @Input() status: AppointmentType;
   @Output() checked = new EventEmitter<{ checked: boolean, guid: string }>();
-
+  @Output() checkedArray = new EventEmitter<boolean>();
   ngOnInit(): void {}
 
   checkBox(event, appointmentGUID: string) {
     this.checked.emit({ checked: event, guid: appointmentGUID });
+  }
+  checkAll(event) {
+    this.checkedArray.emit(event);
   }
 }
