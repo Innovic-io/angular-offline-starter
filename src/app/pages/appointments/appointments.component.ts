@@ -43,7 +43,7 @@ export class AppointmentsComponent implements OnInit {
     if (confirm('Are you sure you want to delete this appointment?')) {
       this.markedAppointments.forEach(appointmentGUID => this.appointmentService.deleteAppointments(appointmentGUID));
     }
-    this.appointments = this.appointmentService.getAllDoctorAppointments(this.currentUser.guid);
 
+    this.appointments = this.appointmentService.getAllDoctorAppointments(this.currentUser.guid);
   }
 }

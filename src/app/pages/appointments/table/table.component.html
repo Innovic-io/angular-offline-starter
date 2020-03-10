@@ -16,7 +16,7 @@
   <tbody *ngFor="let appointment of appointments; let i = index">
     <th scope="row">
       <div class="custom-control custom-checkbox">
-      <input type="checkbox" #checkbox class="custom-control-input" id="defaultUnchecked{{i}}" (change)="checkBox(checkbox.checked, appointment.guid)" [checked]="isChecked">
+      <input type="checkbox" #checkbox class="custom-control-input" id="defaultUnchecked{{i}}" (change)="checkBox(checkbox.checked, appointment.guid)" [checked]="checkboxAll.checked">
       <label class="custom-control-label" for="defaultUnchecked{{i}}"></label>
     </div>
     </th>
