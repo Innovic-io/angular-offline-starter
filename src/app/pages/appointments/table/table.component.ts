@@ -10,7 +10,7 @@ import { AppointmentModel } from '../../../models/appointment.model';
 export class TableComponent implements OnInit {
   @Input() appointments: AppointmentModel[];
   @Output() checked = new EventEmitter<{ checked: boolean, guid: string }>();
-  @Output() checkedArray = new EventEmitter<boolean>();
+  @Output() checkedAll = new EventEmitter<boolean>();
   @Input() isChecked = false;
   ngOnInit(): void {}
 
@@ -18,7 +18,7 @@ export class TableComponent implements OnInit {
     this.checked.emit({ checked: event, guid: appointmentGUID });
   }
   checkAll(event) {
-    this.checkedArray.emit(event);
-    this.isChecked = true;
+      this.checkedAll.emit(event);
+      this.isChecked = event;
   }
 }

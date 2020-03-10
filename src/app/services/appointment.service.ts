@@ -21,7 +21,7 @@ export class AppointmentService {
 
   deleteAppointments(appointmentGUID: string) {
     const appointmentIndex = this.appointments.findIndex(appointment => appointment.guid === appointmentGUID);
-    if (appointmentIndex >= 0 && confirm('Are you sure you want to delete this appointment?')) {
+    if (appointmentIndex >= 0) {
       this.appointments.splice(appointmentIndex, 1);
     }
   }
