@@ -1,9 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {NgForm} from '@angular/forms';
-import {MessageService} from '../../../services/message.service';
-import {MessageModel} from '../../../models/message.model';
-import {EmployeeService} from '../../../services/employee.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+
+import { MessageService } from '../../../services/message.service';
+import { MessageModel } from '../../../models/message.model';
+import { EmployeeService } from '../../../services/employee.service';
 
 @Component({
   selector: 'app-new-message',

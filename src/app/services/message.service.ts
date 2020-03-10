@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {doctor} from '../data/dummy';
-import {MessageModel} from '../models/message.model';
+import { Injectable } from '@angular/core';
+
+import { MessageModel } from '../models/message.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,5 @@ export class MessageService {
 
   createMessage(message: MessageModel) {
     this.messages.push(message);
-    console.log(message);
   }
 }
