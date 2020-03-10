@@ -23,6 +23,7 @@ import { CurrentDateComponent } from './components/current-date/current-date.com
 import { UpcomingPastComponent } from './pages/appointments/upcoming-past/upcoming-past.component';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { TableComponent } from './pages/appointments/table/table.component';
+import { AlertsComponent } from './components/alerts/alerts.component';
 import { NewMessageComponent } from './pages/messages/new-message/new-message.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 
@@ -43,7 +44,9 @@ import { MessagesComponent } from './pages/messages/messages.component';
     TimeAgoPipe,
     TableComponent,
     NewMessageComponent,
-    MessagesComponent
+    MessagesComponent,
+    TableComponent,
+    AlertsComponent
   ],
   imports: [
     BrowserModule,
