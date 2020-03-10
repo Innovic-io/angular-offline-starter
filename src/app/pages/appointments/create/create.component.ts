@@ -25,34 +25,27 @@ export class CreateComponent implements OnInit {
 
   checkAvailableAppointment() {
     const arrayOfAppointments = this.appointmentService.getAllDoctorAppointments(this.appointment.provider.guid);
+    const emptyArray = [];
 
-    arrayOfAppointments.forEach(appointment => {
-      const availableTimeAfter = appointment.date.getTime() + 15 * 60000;
-      const availableTimeBefore = appointment.date.getTime() - 15 * 60000;
-      const a = this.appointment.date.getTime();
-
-      console.log(availableTimeBefore);
-      console.log(availableTimeAfter);
-      console.log(a);
-
-      if (a < availableTimeBefore || a > availableTimeAfter) {
-        this.alert = false;
+/*    arrayOfAppointments.forEach(appointment => {
+      if (this.appointment.date.getTime() === appointment.date.getTime()) {
+        emptyArray.push(appointment);
       }
-      this.alert = true;
     });
-
-    console.log(this.alert);
-    return this.alert;
+    return emptyArray.length === 1;*/
+    return arrayOfAppointments.some(appointment => this.appointment.date.getTime() === appointment.date.getTime());
   }
 
   onSubmit(form: NgForm) {
     if (form.valid) {
-      if (this.checkAvailableAppointment() === true) {
-        // form.reset();
-        console.log('Nesto');
+      this.alert = this.checkAvailableAppointment();
+      if (this.alert) {
+        return;
       }
+      this.alert = false;
       this.appointmentService.createAppointment(this.appointment);
       this.appointment = new AppointmentModel();
+      alert('Appointment is sent!');
     }
     form.reset();
   }
