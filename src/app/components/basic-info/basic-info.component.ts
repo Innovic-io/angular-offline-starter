@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { EmployeeModel } from '../../models/employee.model';
 
@@ -7,12 +7,6 @@ import { EmployeeModel } from '../../models/employee.model';
   templateUrl: './basic-info.component.html',
   styleUrls: ['./basic-info.component.css']
 })
-export class BasicInfoComponent implements OnInit {
+export class BasicInfoComponent {
   @Input() user: EmployeeModel;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

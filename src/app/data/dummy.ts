@@ -43,5 +43,5 @@ doctor.healthInfo.bloodPressureDIAS = 80;
 doctor.healthInfo.drugAllergies = ['Penicillin', 'Sulfa'];
 doctor.healthInfo.nonDrugAllergies = ['Nuts', 'Diary'];
 doctor.healthInfo.medications = ['Allegra D (OTC)'];
-doctor.healthInfo.supplements = ['Fish Oil', 'Vitamin A+D'];
+doctor.healthInfo.supplements = ['Fish Oil', 'Vitamin A+D', 'Vitamin B'];
 
