@@ -1,17 +1,15 @@
 <div class="container space">
   <div class="row">
     <div class="col-12">
-      <app-profile-basic-info [user]="currentUser"></app-profile-basic-info>
+      <app-profile-basic-info [user]="currentUser" (update)="onUpdateEmployee($event)"></app-profile-basic-info>
     </div>
   </div>
   <div class="row">
     <div class="col-6">
-      <app-contact-information [email]="currentUser?.email" [address]="currentUser?.address" [cellPhone]="currentUser?.cellPhone" [city]="currentUser?.city"
-                               [homePhone]="currentUser?.homePhone" [state]="currentUser?.state" [workPhone]="currentUser?.workPhone" [zip]="currentUser?.zip"></app-contact-information>
+      <app-contact-information [user]="currentUser" (update)="onUpdateEmployee($event)"></app-contact-information>
     </div>
     <div class="col-6">
-      <app-emergency-contact [firstName]="currentUser?.name" [lastName]="currentUser?.lastName" [middleName]="currentUser?.middleName" [email]="currentUser?.email"
-                               [address]="currentUser?.address" [cellPhone]="currentUser?.cellPhone"></app-emergency-contact>
+      <app-emergency-contact [user]="currentUser" (update)="onUpdateEmployee($event)"></app-emergency-contact>
     </div>
   </div>
 </div>

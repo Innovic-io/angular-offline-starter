@@ -9,14 +9,14 @@ import { EmployeeModel } from '../../models/employee.model';
   styleUrls: ['./profile-basic-info.component.css']
 })
 export class ProfileBasicInfoComponent {
-  @Input() firstName: string;
-  @Input() lastName: string;
-  @Input() middleName: string;
-  @Input() gender: string;
-  genders = ['female', 'male'];
   @Input() user: EmployeeModel;
   @Output() update = new EventEmitter<EmployeeModel>();
-  onSubmit(form: NgForm) {
-    }
 
+  onSubmit(form: NgForm) {
+    if (form.valid) {
+      this.update.emit(form.value);
+    } else {
+      console.log('ne');
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import { Roles } from './system.models';
+import { Relationship, Roles } from './system.models';
 
 export class EmployeeModel {
   guid: string;
@@ -11,6 +11,15 @@ export class EmployeeModel {
   avatar: string;
   age: number;
   role: Roles;
+  contact: ContactModel;
+  emergencyPerson: EmergencyModel;
+  constructor() {
+    this.contact = new ContactModel();
+    this.emergencyPerson = new EmergencyModel();
+  }
+}
+
+export class ContactModel {
   cellPhone: number;
   workPhone: number;
   homePhone: number;
@@ -40,3 +49,13 @@ export class HealthInfoModel {
   supplements: string[];
 }
 
+export class EmergencyModel {
+  name: string;
+  lastName: string;
+  middleName: string;
+  phone: number;
+  email: string;
+  address: string;
+  city: string;
+  relationship: Relationship;
+}

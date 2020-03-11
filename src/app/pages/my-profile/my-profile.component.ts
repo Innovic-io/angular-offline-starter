@@ -14,7 +14,10 @@ export class MyProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.employeeService.getLoggedEmployee();
-    console.log(this.currentUser);
   }
+
+  onUpdateEmployee(employee: EmployeeModel) {
+    this.currentUser = this.employeeService.updateEmployee(employee);
+}
 
 }

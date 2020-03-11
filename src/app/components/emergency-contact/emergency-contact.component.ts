@@ -1,4 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { EmployeeModel } from '../../models/employee.model';
+import { NgForm } from '@angular/forms';
+import { enumSelector, Relationship } from '../../models/system.models';
 
 @Component({
   selector: 'app-emergency-contact',
@@ -6,12 +9,11 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./emergency-contact.component.css']
 })
 export class EmergencyContactComponent {
-  @Input() email: string;
-  @Input() address: string;
-  @Input() cellPhone: number;
-  @Input() firstName: string;
-  @Input() lastName: string;
-  @Input() middleName: string;
-  @Input() city: string;
+   @Input() user: EmployeeModel;
+   @Output() update = new EventEmitter<EmployeeModel>();
+   relationships = enumSelector(Relationship);
+  onSubmit(form: NgForm) {
+    this.update.emit(form.value);
+  }
 
 }

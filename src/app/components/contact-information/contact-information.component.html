@@ -1,57 +1,60 @@
 <h2>My Contact Info</h2>
 <div class="box row">
   <div class="col-12">
-  <form #myForm="ngForm">
+  <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
     <div class="row">
       <div class="col-12">
         <label>Cellphone</label>
-        <input type="text" class="form-control" name="cellPhone" value="{{cellPhone}}" autocomplete="off" minlength="2">
+        <input type="text" class="form-control" name="cellPhone" [value]="user.contact.cellPhone" [(ngModel)]="user.contact.cellPhone" autocomplete="off" minlength="2">
       </div>
     </div>
     <div class="row">
       <div class="col-12">
         <label>Email</label>
-        <input type="text" class="form-control" name="email" value="{{email}}" autocomplete="off"
+        <input type="text" class="form-control" name="email" [value]="user.email" [(ngModel)]="user.email" autocomplete="off"
                minlength="2">
       </div>
     </div>
     <div class="row">
       <div class="col-12">
         <label>Homephone</label>
-        <input type="text" class="form-control" name="homePhone" value="{{homePhone}}" autocomplete="off"
+        <input type="text" class="form-control" name="homePhone" [value]="user.contact.homePhone" [(ngModel)]="user.contact.homePhone" autocomplete="off"
                minlength="2">
       </div>
     </div>
     <div class="row">
       <div class="col-12">
         <label>Address</label>
-        <input type="text" class="form-control" name="address" value="{{address}}" autocomplete="off"
+        <input type="text" class="form-control" name="address" [value]="user.contact.address" [(ngModel)]="user.contact.address" autocomplete="off"
                minlength="2">
       </div>
     </div>
     <div class="row">
-      <div class="col-4">
+      <div class="col-3">
         <label>City</label>
-        <input type="text" class="form-control" name="city" value="{{city}}" autocomplete="off"
+        <input type="text" class="form-control" name="city" [value]="user.contact.city" [(ngModel)]="user.contact.city" autocomplete="off"
                minlength="2">
       </div>
-      <div class="col-4">
+      <div class="col-6">
         <label>State</label>
-        <input type="text" class="form-control" name="state" value="{{state}}" autocomplete="off"
+        <input type="text" class="form-control" name="state" [value]="user.contact.state" [(ngModel)]="user.contact.state" autocomplete="off"
                minlength="2">
       </div>
-      <div class="col-4">
+      <div class="col-3">
         <label>Zip</label>
-        <input type="text" class="form-control" name="zip" value="{{zip}}" autocomplete="off"
+        <input type="text" class="form-control" name="zip" [value]="user.contact.zip" [(ngModel)]="user.contact.zip" autocomplete="off"
                minlength="2">
       </div>
     </div>
     <div class="row">
       <div class="col-12">
         <label>Workphone</label>
-        <input type="text" class="form-control" name="workPhone" value="{{workPhone}}" autocomplete="off"
+        <input type="text" class="form-control" name="workPhone" [value]="user.contact.workPhone" [(ngModel)]="user.contact.workPhone" autocomplete="off"
                minlength="2">
       </div>
+    </div>
+    <div class="row">
+      <div class="col-12"><button class="btn btn-default" type="submit">Apply changes</button></div>
     </div>
   </form>
   </div>

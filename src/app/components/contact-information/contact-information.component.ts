@@ -1,4 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { ContactModel, EmployeeModel } from '../../models/employee.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-information',
@@ -6,13 +9,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./contact-information.component.css']
 })
 export class ContactInformationComponent {
-  @Input() email: string;
-  @Input() address: string;
-  @Input() state: string;
-  @Input() city: string;
-  @Input() zip: number;
-  @Input() cellPhone: number;
-  @Input() homePhone: number;
-  @Input() workPhone: number;
+  @Input() user: EmployeeModel;
+  @Output() update = new EventEmitter<EmployeeModel>();
+  onSubmit(form: NgForm) {
+    this.update.emit(form.value);
+  }
 
 }

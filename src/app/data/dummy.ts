@@ -1,5 +1,5 @@
 import { EmployeeModel } from '../models/employee.model';
-import { Roles } from '../models/system.models';
+import { Relationship, Roles } from '../models/system.models';
 import { uuidv4 } from '../helpers/uuid';
 
 export const doctor = new EmployeeModel();
@@ -11,13 +11,26 @@ doctor.email = 'anyaa@gmail.com';
 doctor.age = 23;
 doctor.role = Roles.doctor;
 doctor.gender = 'Female';
-doctor.workPhone = 2938291901;
-doctor.state = 'Bosnia and Herzegovina';
-doctor.city = 'Sarajevo';
-doctor.address = 'Univerzitetska 9';
-doctor.cellPhone = 39302022;
-doctor.zip = 71420;
-doctor.homePhone = 2839392;
+doctor.dateOfBirth = new Date('03/12/1997');
+doctor.gender = 'female';
+doctor.contact.workPhone = 2938291901;
+doctor.contact.state = 'Bosnia and Herzegovina';
+doctor.contact.city = 'Sarajevo';
+doctor.contact.address = 'Univerzitetska 9';
+doctor.contact.cellPhone = 39302022;
+doctor.contact.zip = 71420;
+doctor.contact.homePhone = 2839392;
+// tslint:disable-next-line:max-line-length
+doctor.avatar = 'https://previews.123rf.com/images/yupiramos/yupiramos1705/yupiramos170524444/78443570-a-female-doctor-avatar-character-vector-illustration-design.jpg';
+doctor.emergencyPerson.relationship = Relationship.family;
+doctor.emergencyPerson.address = 'Univerzitetska 9';
+doctor.emergencyPerson.phone = 28392929;
+doctor.emergencyPerson.name = 'Neco';
+doctor.emergencyPerson.city = 'Sarajevo';
+doctor.emergencyPerson.email = 'neco@gmail.com';
+doctor.emergencyPerson.lastName = 'Bush';
+doctor.emergencyPerson.middleName = 'Nele';
+
 
 doctor.healthInfo.height = 160;
 doctor.healthInfo.weight = 54;
