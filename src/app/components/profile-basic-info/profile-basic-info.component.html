@@ -1,1 +1,39 @@
-<p>profile-basic-info works!</p>
+<h2>Basic Info</h2>
+<div class="row box">
+  <div class="col-3">
+      <img src="../assets/doctors/user.png" width="230vh" height="230vh"/>
+      </div>
+  <div class="col-9">
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" [ngFormOptions]="{ updateOn: 'submit' }">
+      <div class="row">
+        <div class="col-5">
+          <input type="text" class="form-control" name="firstName" value="{{firstName}}" [(ngModel)]="firstName" autocomplete="off" minlength="2">
+        </div>
+        <div class="col-2">
+          <input type="text" class="form-control" name="middleName" value="{{middleName}}" [(ngModel)]="middleName" autocomplete="off" minlength="2">
+        </div>
+        <div class="col-5">
+          <input type="text" class="form-control" name="lastName" value="{{lastName}}" [(ngModel)]="lastName" autocomplete="off" minlength="2">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-5">
+          <input type="date" class="form-control" name="date" value="date" autocomplete="off" minlength="2">
+        </div>
+        <div class="col-2">
+          <select class="form-control" value="gender" name="gender" [(ngModel)]="gender">
+            <option *ngFor="let gender of genders" [value]="gender"> {{gender}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-5">Account Access</div>
+      </div>
+      <div class="row">
+        <div class="col-5"><button class="btn btn-default" type="button">Request Password Reset Email</button> </div>
+        <div class="col-5"><button class="btn btn-default" type="submit">Apply changes</button> </div>
+      </div>
+  </form>
+</div>
+</div>
+

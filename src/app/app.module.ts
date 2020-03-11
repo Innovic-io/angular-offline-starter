@@ -27,6 +27,9 @@ import { AlertsComponent } from './components/alerts/alerts.component';
 import { NewMessageComponent } from './pages/messages/new-message/new-message.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { ProfileBasicInfoComponent } from './components/profile-basic-info/profile-basic-info.component';
+import { MyProfileComponent } from './pages/my-profile/my-profile.component';
+import { ContactInformationComponent } from './components/contact-information/contact-information.component';
+import { EmergencyContactComponent } from './components/emergency-contact/emergency-contact.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { ProfileBasicInfoComponent } from './components/profile-basic-info/profi
     MessagesComponent,
     TableComponent,
     AlertsComponent,
-    ProfileBasicInfoComponent
+    ProfileBasicInfoComponent,
+    MyProfileComponent,
+    ContactInformationComponent,
+    EmergencyContactComponent
   ],
   imports: [
     BrowserModule,

@@ -20,7 +20,7 @@
       <button class="btn btn-default float-right dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [disabled]="markedAppointments.length === 0">
         Action</button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" (click)="deleteAppointments()">Delete</a>
+          <a class="dropdown-item btn btn-default" (click)="deleteAppointments()">Delete</a>
         </div>
       </div>
       <button class="btn btn-default float-right btnMargin" routerLink="/appointments/create">Make an app</button>
