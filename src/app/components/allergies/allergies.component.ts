@@ -8,6 +8,7 @@ import { EmployeeModel } from '../../models/employee.model';
 })
 export class AllergiesComponent implements OnInit {
   @Input() user: EmployeeModel;
+
   constructor() { }
 
   ngOnInit(): void {
