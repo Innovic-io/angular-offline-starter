@@ -13,9 +13,11 @@ export class EmployeeModel {
   role: Roles;
   contact: ContactModel;
   emergencyPerson: EmergencyModel;
+  healthInfo: HealthInfoModel;
   constructor() {
     this.contact = new ContactModel();
     this.emergencyPerson = new EmergencyModel();
+    this.healthInfo = new HealthInfoModel();
   }
 }
 
@@ -27,11 +29,6 @@ export class ContactModel {
   state: string;
   zip: number;
   address: string;
-  healthInfo: HealthInfoModel;
-
-  constructor() {
-    this.healthInfo = new HealthInfoModel();
-  }
 }
 
 export class HealthInfoModel {
