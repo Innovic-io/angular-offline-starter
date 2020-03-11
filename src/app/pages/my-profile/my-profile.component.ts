@@ -10,10 +10,10 @@ import { EmployeeService } from '../../services/employee.service';
 export class MyProfileComponent implements OnInit {
   currentUser: EmployeeModel;
 
-  constructor(public employee: EmployeeService) { }
+  constructor(public employeeService: EmployeeService) { }
 
   ngOnInit(): void {
-    this.currentUser = this.employee.getLoggedEmployee();
+    this.currentUser = this.employeeService.getLoggedEmployee();
     console.log(this.currentUser);
   }
 

@@ -4,16 +4,16 @@
       <img src="../assets/doctors/user.png" width="230vh" height="230vh"/>
       </div>
   <div class="col-9">
-    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" [ngFormOptions]="{ updateOn: 'submit' }">
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
       <div class="row">
         <div class="col-5">
-          <input type="text" class="form-control" name="firstName" value="{{firstName}}" [(ngModel)]="firstName" autocomplete="off" minlength="2">
+          <input type="text" class="form-control" name="firstName" [value]="user.name" [(ngModel)]="user.name" autocomplete="off" minlength="2">
         </div>
         <div class="col-2">
-          <input type="text" class="form-control" name="middleName" value="{{middleName}}" [(ngModel)]="middleName" autocomplete="off" minlength="2">
+          <input type="text" class="form-control" name="middleName" [value]="user.middleName" [(ngModel)]="user.middleName" autocomplete="off" minlength="2">
         </div>
         <div class="col-5">
-          <input type="text" class="form-control" name="lastName" value="{{lastName}}" [(ngModel)]="lastName" autocomplete="off" minlength="2">
+          <input type="text" class="form-control" name="lastName" [value]="user.lastName" [(ngModel)]="user.lastName" autocomplete="off" minlength="2">
         </div>
       </div>
       <div class="row">
@@ -21,7 +21,7 @@
           <input type="date" class="form-control" name="date" value="date" autocomplete="off" minlength="2">
         </div>
         <div class="col-2">
-          <select class="form-control" value="gender" name="gender" [(ngModel)]="gender">
+          <select class="form-control" value="gender" name="gender" [(ngModel)]="user.gender">
             <option *ngFor="let gender of genders" [value]="gender"> {{gender}}</option>
           </select>
         </div>
