@@ -1,0 +1,71 @@
+<div class="container-fluid space">
+  <div class="row">
+    <div class="col-3">
+      <input type="text" class="form-control" placeholder="Search">
+    </div>
+   <div class=col-9>
+      <div class="dropdown">
+        <button class="btn btn-default float-right dropdown-toggle ml-2" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Action
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item btn btn-default">Something</a>
+        </div>
+      </div>
+      <button class="float-right btn btn-primary">New Message</button>
+    </div>
+  </div>
+  <div class="row" *ngFor="let message of messages let i = index">
+    <div class="col-4">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home{{i}}" role="tab"
+           aria-controls="v-pills-home" aria-selected="true">
+          <div class="row">
+            <div class="col-7">From: {{message.doctorEmail.name}}</div>
+            <div class="col-5">{{message.date | date }}</div>
+          </div>
+          <div class="row">
+            <div class="col-12">To: {{message.recipient}}</div>
+          </div>
+          <div class="row">
+            <div class="col-12">Subject: {{message.subject}}</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show" id="v-pills-home{{i}}" role="tabpanel"
+             aria-labelledby="v-pills-home-tab">{{message.doctorMessage}}</div>
+      </div>
+    </div>
+    <!-- Nav tabs -->
+<!--  <div class="col-4">
+
+  <ul class="nav nav-tabs" id="myTab" role="tablist" >
+      <li class="nav-item">
+        <a class="nav-link" id="home-tab" data-toggle="tab" href="#home{{i}}" role="tab" aria-controls="home" aria-selected="false">
+          <div class="row">
+            <div class="col-7">From: {{message.doctorEmail.name}}</div>
+            <div class="col-5">{{message.date | date }}</div>
+          </div>
+          <div class="row">
+            <div class="col-12">To: {{message.recipient}}</div>
+          </div>
+          <div class="row">
+            <div class="col-12">Subject: {{message.subject}}</div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class=" col-8">
+    <div class="tab-content">
+      <div class="tab-pane " id="home{{i}}" role="tabpanel" aria-labelledby="home-tab">{{message.doctorMessage}}</div>
+
+    </div>
+  </div>-->
+
+  </div>
+</div>

@@ -1,13 +1,14 @@
 import {uuidv4} from '../helpers/uuid';
+import { EmployeeModel } from './employee.model';
 
 
 export class MessageModel {
   guid: string;
   date: Date = new Date();
-  doctorEmail: string;
+  doctorEmail: EmployeeModel;
   recipient: string;
   subject: string;
-  patientMessage: string;
+  doctorMessage: string;
   urgent: boolean;
 
   constructor() {

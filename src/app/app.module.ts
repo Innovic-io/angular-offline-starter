@@ -35,6 +35,7 @@ import { ProfileBasicInfoComponent } from './components/profile-basic-info/profi
 import { MyProfileComponent } from './pages/my-profile/my-profile.component';
 import { ContactInformationComponent } from './components/contact-information/contact-information.component';
 import { EmergencyContactComponent } from './components/emergency-contact/emergency-contact.component';
+import { InboxComponent } from './components/inbox/inbox.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { EmergencyContactComponent } from './components/emergency-contact/emerge
     ProfileBasicInfoComponent,
     MyProfileComponent,
     ContactInformationComponent,
-    EmergencyContactComponent
+    EmergencyContactComponent,
+    InboxComponent
   ],
   imports: [
     BrowserModule,
