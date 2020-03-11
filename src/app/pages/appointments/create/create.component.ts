@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {NgForm} from '@angular/forms';
 
-import { AppointmentModel } from '../../../models/appointment.model';
-import { AppointmentService } from '../../../services/appointment.service';
+import {AppointmentModel} from '../../../models/appointment.model';
+import {AppointmentService} from '../../../services/appointment.service';
 
-import { doctor } from '../../../data/dummy';
-import { AppointmentType, enumSelector } from '../../../models/system.models';
+import {doctor } from '../../../data/dummy';
+import {AppointmentType, enumSelector} from '../../../models/system.models';
 
 @Component({
   selector: 'app-create',
@@ -19,7 +18,7 @@ export class CreateComponent implements OnInit {
   appTypes = enumSelector(AppointmentType);
   alert: boolean;
 
-  constructor(private appointmentService: AppointmentService, private router: Router) {
+  constructor(private appointmentService: AppointmentService) {
   }
 
   checkAvailableAppointment() {
@@ -42,12 +41,8 @@ export class CreateComponent implements OnInit {
     }
   }
 
-  cancel() {
-    this.backOnDashboard();
-  }
-
-  backOnDashboard() {
-    this.router.navigate(['/dashboard']);
+  reset(form: NgForm) {
+    form.reset();
   }
 
   ngOnInit(): void {

@@ -30,7 +30,7 @@
               minView="minute"
               minuteStep="15"
               [ngModelOptions]="{standalone: true}"
-              [(ngModel)]="appointment.date"
+              [(ngModel)]="appointment.date" required
             >
             </dl-date-time-picker>
           </div>
@@ -80,7 +80,7 @@
           <div class="col-9">
             <button class="btn btn-primary float-right ml-2" type="submit" [disabled]="!myForm.form.valid"> Submit
             </button>
-            <button class="btn btn-default float-right" type="button" (click)="cancel();"> Cancel</button>
+            <button class="btn btn-default float-right" type="button" (click)="reset(myForm);">Reset</button>
           </div>
         </div>
       </form>
