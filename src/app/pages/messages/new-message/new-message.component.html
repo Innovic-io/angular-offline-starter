@@ -11,8 +11,8 @@
           <div class="col-12">
             <input type="text" class="form-control" [(ngModel)]="message.doctorEmail" name="doctorEmail" disabled
                    #doctorEmail="ngModel"
-                   [ngClass]="{'is-valid': doctorEmail.valid && recipient.touched, 'is-invalid': doctorEmail.invalid && doctorEmail.touched}"
-                   autocomplete="off" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                   [ngClass]="{'is-valid': doctorEmail.valid && doctorEmail.touched, 'is-invalid': doctorEmail.invalid && doctorEmail.touched}"
+                   autocomplete="off" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
           </div>
         </div>
         <div class="row">
@@ -33,10 +33,10 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <textarea class="form-control" rows="12" placeholder="Message:" [(ngModel)]="message.patientMessage"
+            <textarea class="form-control" rows="12" placeholder="Message:" [(ngModel)]="message.doctorMessage"
                       name="patientMessage"
-                      #patientMessage="ngModel"
-                      [ngClass]="{'is-valid': patientMessage.valid && patientMessage.touched, 'is-invalid': patientMessage.invalid && patientMessage.touched}"
+                      #doctorMessage="ngModel"
+                      [ngClass]="{'is-valid': doctorMessage.valid && doctorMessage.touched, 'is-invalid': doctorMessage.invalid && doctorMessage.touched}"
                       minlength="10" required autocomplete="off">
             </textarea>
           </div>
@@ -50,9 +50,9 @@
             </div>
           </div>
           <div class="col-9">
-            <button class="btn btn-primary float-right ml-2" type="submit" [disabled]="!messageForm.form.valid"> Submit
+            <button class="btn btn-primary float-right mr-2" type="submit" [disabled]="!messageForm.form.valid"> Submit
             </button>
-            <button class="btn btn-default float-right" (click)="cancel()"> Cancel</button>
+            <button class="btn btn-default float-right" (click)="reset(messageForm)">Reset</button>
           </div>
         </div>
       </form>

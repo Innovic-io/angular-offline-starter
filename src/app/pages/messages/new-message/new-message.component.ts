@@ -13,7 +13,6 @@ import { EmployeeService } from '../../../services/employee.service';
 })
 export class NewMessageComponent implements OnInit {
   message: MessageModel;
-  currentLoggedEmail: string;
 
   constructor(private messageService: MessageService, private employee: EmployeeService, private router: Router) {
   }
@@ -24,21 +23,20 @@ export class NewMessageComponent implements OnInit {
       this.message = new MessageModel();
       alert('Message is sent!');
       form.reset();
-      form.controls.doctorEmail.setValue(this.currentLoggedEmail);
+      form.controls.doctorEmail.setValue(this.employee.getLoggedEmployee());
     }
   }
 
-  cancel() {
-    this.backOnDashboard();
+  reset(form: NgForm) {
+
+    form.reset();
+    form.controls.doctorEmail.setValue(this.employee.getLoggedEmployee());
   }
 
-  backOnDashboard() {
-    this.router.navigate(['/dashboard']);
-  }
 
   ngOnInit(): void {
     this.message = new MessageModel();
-    this.currentLoggedEmail = this.employee.getLoggedEmployee().email;
-    this.message.doctorEmail = this.currentLoggedEmail;
+    this.message.doctorEmail = this.employee.getLoggedEmployee();
+
   }
 }

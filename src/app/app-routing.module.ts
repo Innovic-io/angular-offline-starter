@@ -32,7 +32,7 @@ const routes: Routes = [
     component: MessagesComponent
   },
   {
-    path: 'messages/newMessage',
+    path: 'messages/new',
     component: NewMessageComponent
   },
   {

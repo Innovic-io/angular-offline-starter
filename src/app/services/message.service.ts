@@ -14,4 +14,7 @@ export class MessageService {
   createMessage(message: MessageModel) {
     this.messages.push(message);
   }
+  getAllDoctorEmails(doctorGUID: string) {
+    return this.messages.filter(message => message.doctorEmail.guid === doctorGUID);
+  }
 }
