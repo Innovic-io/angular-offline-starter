@@ -1,0 +1,18 @@
+<div class="container space">
+  <div class="row">
+    <div class="col-12">
+      <app-profile-basic-info [firstName]="currentUser?.name" [lastName]="currentUser?.lastName" [middleName]="currentUser?.middleName"
+                              [gender]="currentUser?.gender"></app-profile-basic-info>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <app-contact-information [email]="currentUser?.email" [address]="currentUser?.address" [cellPhone]="currentUser?.cellPhone" [city]="currentUser?.city"
+                               [homePhone]="currentUser?.homePhone" [state]="currentUser?.state" [workPhone]="currentUser?.workPhone" [zip]="currentUser?.zip"></app-contact-information>
+    </div>
+    <div class="col-6">
+      <app-emergency-contact [firstName]="currentUser?.name" [lastName]="currentUser?.lastName" [middleName]="currentUser?.middleName" [email]="currentUser?.email"
+                               [address]="currentUser?.address" [cellPhone]="currentUser?.cellPhone"></app-emergency-contact>
+    </div>
+  </div>
+</div>

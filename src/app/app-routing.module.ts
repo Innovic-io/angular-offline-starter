@@ -7,6 +7,8 @@ import {CreateComponent} from './pages/appointments/create/create.component';
 import {NewMessageComponent} from './pages/messages/new-message/new-message.component';
 import {MessagesComponent} from './pages/messages/messages.component';
 import { MyHealthComponent } from './pages/my-health/my-health.component';
+import {MessagesComponent} from "./pages/messages/messages.component";
+import { MyProfileComponent } from './pages/my-profile/my-profile.component';
 
 const routes: Routes = [
   {
@@ -38,6 +40,10 @@ const routes: Routes = [
     path: 'my-health',
     component: MyHealthComponent
   }
+  {
+    path: 'my-profile',
+    component: MyProfileComponent
+  },
 ];
 
 @NgModule({

@@ -32,6 +32,9 @@ import { VitalStatsComponent } from './components/vital-stats/vital-stats.compon
 import { AllergiesComponent } from './components/allergies/allergies.component';
 import { MedicationsAndSupplementsComponent } from './components/medications-and-supplements/medications-and-supplements.component';
 import { ProfileBasicInfoComponent } from './components/profile-basic-info/profile-basic-info.component';
+import { MyProfileComponent } from './pages/my-profile/my-profile.component';
+import { ContactInformationComponent } from './components/contact-information/contact-information.component';
+import { EmergencyContactComponent } from './components/emergency-contact/emergency-contact.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +62,10 @@ import { ProfileBasicInfoComponent } from './components/profile-basic-info/profi
     AllergiesComponent,
     MedicationsAndSupplementsComponent,
     AlertsComponent,
-    ProfileBasicInfoComponent
+    ProfileBasicInfoComponent,
+    MyProfileComponent,
+    ContactInformationComponent,
+    EmergencyContactComponent
   ],
   imports: [
     BrowserModule,
