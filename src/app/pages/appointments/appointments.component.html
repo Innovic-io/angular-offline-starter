@@ -17,7 +17,7 @@
   <div class="row">
     <div class="col-12">
       <div class="dropdown">
-      <button class="btn btn-default float-right dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button class="btn btn-default float-right dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [disabled]="markedAppointments.length === 0">
         Action</button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" (click)="deleteAppointments()">Delete</a>

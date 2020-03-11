@@ -27,7 +27,8 @@ export class AppointmentsComponent implements OnInit {
     if (event.checked) {
       this.markedAppointments.push(event.guid);
     } else {
-      this.markedAppointments = [];
+      const guidIndex = this.markedAppointments.indexOf(event.guid);
+      this.markedAppointments.splice(guidIndex, 1);
     }
   }
 

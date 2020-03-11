@@ -26,6 +26,7 @@ import { TableComponent } from './pages/appointments/table/table.component';
 import { AlertsComponent } from './components/alerts/alerts.component';
 import { NewMessageComponent } from './pages/messages/new-message/new-message.component';
 import { MessagesComponent } from './pages/messages/messages.component';
+import { ProfileBasicInfoComponent } from './components/profile-basic-info/profile-basic-info.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { MessagesComponent } from './pages/messages/messages.component';
     NewMessageComponent,
     MessagesComponent,
     TableComponent,
-    AlertsComponent
+    AlertsComponent,
+    ProfileBasicInfoComponent
   ],
   imports: [
     BrowserModule,
