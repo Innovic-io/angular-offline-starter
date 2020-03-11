@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { EmployeeService } from '../../services/employee.service';
 import { EmployeeModel } from '../../models/employee.model';
@@ -18,7 +18,6 @@ export class MyHealthComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.employeeService.getLoggedEmployee();
-    this.appointments = this.appointmentService.getAllDoctorAppointments(this.currentUser.guid);
   }
 
 }
