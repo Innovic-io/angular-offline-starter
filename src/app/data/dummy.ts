@@ -7,10 +7,10 @@ doctor.guid = uuidv4();
 doctor.name = 'Anya';
 doctor.lastName = 'Bush';
 doctor.middleName = 'Lola';
-doctor.age = 23;
 doctor.email = 'anyaa@gmail.com';
+doctor.age = 23;
 doctor.role = Roles.doctor;
-doctor.gender = 'female';
+doctor.gender = 'Female';
 doctor.workPhone = 2938291901;
 doctor.state = 'Bosnia and Herzegovina';
 doctor.city = 'Sarajevo';
@@ -19,6 +19,7 @@ doctor.cellPhone = 39302022;
 doctor.zip = 71420;
 doctor.homePhone = 2839392;
 
-doctor.gender = 'Female';
 doctor.healthInfo.height = 160;
+doctor.healthInfo.weight = 54;
+doctor.healthInfo.bloodType = 'B+';
 

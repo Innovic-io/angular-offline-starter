@@ -11,6 +11,13 @@ export class EmployeeModel {
   avatar: string;
   age: number;
   role: Roles;
+  cellPhone: number;
+  workPhone: number;
+  homePhone: number;
+  city: string;
+  state: string;
+  zip: number;
+  address: string;
   healthInfo: HealthInfoModel;
 
   constructor() {
@@ -30,12 +37,5 @@ export class HealthInfoModel {
   nonDrugAllergies: string[];
   medications: string[];
   supplements: string[];
-  cellPhone: number;
-  workPhone: number;
-  homePhone: number;
-  city: string;
-  state: string;
-  zip: number;
-  address: string;
 }
 
