@@ -61,7 +61,10 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-6">
+          <div class="col-6 input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">+387</span>
+            </div>
             <input type="text" class="form-control" placeholder="Phone" [(ngModel)]="appointment.phone" name="phone"
                    #phone="ngModel"
                    [ngClass]="{'is-valid': phone.valid && phone.touched, 'is-invalid': phone.invalid && phone.touched}"

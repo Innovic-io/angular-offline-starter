@@ -26,6 +26,11 @@ import { TableComponent } from './pages/appointments/table/table.component';
 import { AlertsComponent } from './components/alerts/alerts.component';
 import { NewMessageComponent } from './pages/messages/new-message/new-message.component';
 import { MessagesComponent } from './pages/messages/messages.component';
+import { MyHealthComponent } from './pages/my-health/my-health.component';
+import { BasicInfoComponent } from './components/basic-info/basic-info.component';
+import { VitalStatsComponent } from './components/vital-stats/vital-stats.component';
+import { AllergiesComponent } from './components/allergies/allergies.component';
+import { MedicationsAndSupplementsComponent } from './components/medications-and-supplements/medications-and-supplements.component';
 import { ProfileBasicInfoComponent } from './components/profile-basic-info/profile-basic-info.component';
 
 @NgModule({
@@ -47,6 +52,12 @@ import { ProfileBasicInfoComponent } from './components/profile-basic-info/profi
     NewMessageComponent,
     MessagesComponent,
     TableComponent,
+    AlertsComponent,
+    MyHealthComponent,
+    BasicInfoComponent,
+    VitalStatsComponent,
+    AllergiesComponent,
+    MedicationsAndSupplementsComponent,
     AlertsComponent,
     ProfileBasicInfoComponent
   ],

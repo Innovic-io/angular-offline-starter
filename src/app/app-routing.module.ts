@@ -5,7 +5,8 @@ import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import {AppointmentsComponent} from './pages/appointments/appointments.component';
 import {CreateComponent} from './pages/appointments/create/create.component';
 import {NewMessageComponent} from './pages/messages/new-message/new-message.component';
-import {MessagesComponent} from "./pages/messages/messages.component";
+import {MessagesComponent} from './pages/messages/messages.component';
+import { MyHealthComponent } from './pages/my-health/my-health.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
     path: 'messages/newMessage',
     component: NewMessageComponent
   },
+  {
+    path: 'my-health',
+    component: MyHealthComponent
+  }
 ];
 
 @NgModule({
