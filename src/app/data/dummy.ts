@@ -22,4 +22,13 @@ doctor.homePhone = 2839392;
 doctor.healthInfo.height = 160;
 doctor.healthInfo.weight = 54;
 doctor.healthInfo.bloodType = 'B+';
+doctor.healthInfo.temperature = 36.5;
+doctor.healthInfo.heartRate = 79;
+doctor.healthInfo.bloodPressure = 'Normal';
+doctor.healthInfo.bloodPressureSYS = 120;
+doctor.healthInfo.bloodPressureDIAS = 80;
+doctor.healthInfo.drugAllergies = ['Penicillin', 'Sulfa'];
+doctor.healthInfo.nonDrugAllergies = ['Nuts', 'Diary'];
+doctor.healthInfo.medications = ['Allegra D (OTC)'];
+doctor.healthInfo.supplements = ['Fish Oil', 'Vitamin A+D'];
 

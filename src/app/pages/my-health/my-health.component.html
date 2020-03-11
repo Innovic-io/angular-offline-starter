@@ -6,17 +6,17 @@
     <div class="col-8">
       <div class="row">
         <div class="col-12">
-          <app-vital-stats></app-vital-stats>
+          <app-vital-stats [user]="currentUser"></app-vital-stats>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <app-allergies></app-allergies>
+          <app-allergies [user]="currentUser"></app-allergies>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <app-medications-and-supplements></app-medications-and-supplements>
+          <app-medications-and-supplements [user]="currentUser"></app-medications-and-supplements>
         </div>
       </div>
     </div>

@@ -31,6 +31,7 @@ export class HealthInfoModel {
   bloodType: string;
   temperature: number;
   heartRate: number;
+  bloodPressure: string;
   bloodPressureSYS: number;
   bloodPressureDIAS: number;
   drugAllergies: string[];
