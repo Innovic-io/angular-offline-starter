@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
 import { EmployeeModel } from '../../models/employee.model';
 
 @Component({
@@ -6,12 +7,6 @@ import { EmployeeModel } from '../../models/employee.model';
   templateUrl: './allergies.component.html',
   styleUrls: ['./allergies.component.css']
 })
-export class AllergiesComponent implements OnInit {
+export class AllergiesComponent {
   @Input() user: EmployeeModel;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

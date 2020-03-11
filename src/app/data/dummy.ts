@@ -18,6 +18,8 @@ doctor.address = 'Univerzitetska 9';
 doctor.cellPhone = 39302022;
 doctor.zip = 71420;
 doctor.homePhone = 2839392;
+// tslint:disable-next-line:max-line-length
+doctor.avatar = 'https://previews.123rf.com/images/yupiramos/yupiramos1705/yupiramos170524444/78443570-a-female-doctor-avatar-character-vector-illustration-design.jpg';
 
 doctor.healthInfo.height = 160;
 doctor.healthInfo.weight = 54;
@@ -30,5 +32,5 @@ doctor.healthInfo.bloodPressureDIAS = 80;
 doctor.healthInfo.drugAllergies = ['Penicillin', 'Sulfa'];
 doctor.healthInfo.nonDrugAllergies = ['Nuts', 'Diary'];
 doctor.healthInfo.medications = ['Allegra D (OTC)'];
-doctor.healthInfo.supplements = ['Fish Oil', 'Vitamin A+D'];
+doctor.healthInfo.supplements = ['Fish Oil', 'Vitamin A+D', 'Vitamin B'];
 
