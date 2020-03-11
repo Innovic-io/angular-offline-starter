@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { NgForm } from '@angular/forms';
-import { EmployeeService } from '../../services/employee.service';
-import { doctor } from '../../data/dummy';
 import { EmployeeModel } from '../../models/employee.model';
 
 @Component({
@@ -15,16 +14,9 @@ export class ProfileBasicInfoComponent {
   @Input() middleName: string;
   @Input() gender: string;
   genders = ['female', 'male'];
-  employeeModel: EmployeeModel;
-
-  constructor(private employee: EmployeeService) {}
+  @Input() user: EmployeeModel;
+  @Output() update = new EventEmitter<EmployeeModel>();
   onSubmit(form: NgForm) {
-    console.log(this.employeeModel);
-    if (form.valid) {
-      this.employee.updateEmployee(this.firstName);
-      console.log(doctor);
     }
-  }
-  get diagnostic() { return JSON.stringify(this.employee.getLoggedEmployee()); }
 
 }
