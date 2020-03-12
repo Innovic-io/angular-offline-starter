@@ -1,76 +1,82 @@
 <h2>My Contact Info</h2>
-<div class="box row">
-  <div class="col-12">
-    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
-      <div class="row">
-        <div class="col-12">
-          <label>Cellphone</label>
-          <input type="text" class="form-control" name="cellPhone" [value]="user.contact.cellPhone"
-                 [(ngModel)]="user.contact.cellPhone" #cellPhone="ngModel"
-                 [ngClass]="{'is-invalid': cellPhone.invalid}" required pattern="^[\d\s]+$" autocomplete="off"
-                 minlength="2">
-        </div>
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12">
+        <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+          <div class="row">
+            <div class="col-12">
+              <label>Cellphone</label>
+              <input type="text" class="form-control" name="cellPhone" [value]="user.contact.cellPhone"
+                     [(ngModel)]="user.contact.cellPhone" #cellPhone="ngModel"
+                     [ngClass]="{'is-invalid': cellPhone.invalid}" required pattern="^[\d\s]+$" autocomplete="off"
+                     minlength="2">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <label>Email</label>
+              <input type="text" class="form-control" name="email" [value]="user.contact.email"
+                     [(ngModel)]="user.contact.email" #email="ngModel"
+                     [ngClass]="{'is-invalid': email.invalid}" autocomplete="off" required
+                     pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" autocomplete="off">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <label>Homephone</label>
+              <input type="text" class="form-control" name="homePhone" [value]="user.contact.homePhone"
+                     [(ngModel)]="user.contact.homePhone" #homePhone="ngModel"
+                     [ngClass]="{'is-invalid': homePhone.invalid}" required pattern="^[\d\s]+$" autocomplete="off"
+                     minlength="2">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <label>Address</label>
+              <input type="text" class="form-control" name="address" [value]="user.contact.address"
+                     [(ngModel)]="user.contact.address" #address="ngModel"
+                     [ngClass]="{'is-invalid': address.invalid}" autocomplete="off" minlength="2">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3">
+              <label>City</label>
+              <input type="text" class="form-control" name="city" [value]="user.contact.city"
+                     [(ngModel)]="user.contact.city" #city="ngModel"
+                     [ngClass]="{'is-invalid': city.invalid}" autocomplete="off" minlength="2">
+            </div>
+            <div class="col-6">
+              <label>State</label>
+              <input type="text" class="form-control" name="state" [value]="user.contact.state"
+                     [(ngModel)]="user.contact.state" #state="ngModel"
+                     [ngClass]="{'is-invalid': state.invalid}" autocomplete="off" minlength="2">
+            </div>
+            <div class="col-3">
+              <label>Zip</label>
+              <input type="text" class="form-control" name="zip" [value]="user.contact.zip"
+                     [(ngModel)]="user.contact.zip"
+                     #zip="ngModel"
+                     [ngClass]="{'is-invalid': zip.invalid}" required pattern="^[\d\s]+$" autocomplete="off"
+                     minlength="2">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <label>Workphone</label>
+              <input type="text" class="form-control" name="workPhone" [value]="user.contact.workPhone"
+                     [(ngModel)]="user.contact.workPhone" #workPhone="ngModel"
+                     [ngClass]="{'is-invalid': workPhone.invalid}" required pattern="^[\d\s]+$" autocomplete="off"
+                     minlength="2">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <button class="btn btn-default" type="submit">Apply changes</button>
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="row">
-        <div class="col-12">
-          <label>Email</label>
-          <input type="text" class="form-control" name="email" [value]="user.contact.email"
-                 [(ngModel)]="user.contact.email" #email="ngModel"
-                 [ngClass]="{'is-invalid': email.invalid}" autocomplete="off" required
-                 pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" autocomplete="off">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <label>Homephone</label>
-          <input type="text" class="form-control" name="homePhone" [value]="user.contact.homePhone"
-                 [(ngModel)]="user.contact.homePhone" #homePhone="ngModel"
-                 [ngClass]="{'is-invalid': homePhone.invalid}" required pattern="^[\d\s]+$" autocomplete="off"
-                 minlength="2">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <label>Address</label>
-          <input type="text" class="form-control" name="address" [value]="user.contact.address"
-                 [(ngModel)]="user.contact.address" #address="ngModel"
-                 [ngClass]="{'is-invalid': address.invalid}" autocomplete="off" minlength="2">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-3">
-          <label>City</label>
-          <input type="text" class="form-control" name="city" [value]="user.contact.city"
-                 [(ngModel)]="user.contact.city" #city="ngModel"
-                 [ngClass]="{'is-invalid': city.invalid}" autocomplete="off" minlength="2">
-        </div>
-        <div class="col-6">
-          <label>State</label>
-          <input type="text" class="form-control" name="state" [value]="user.contact.state"
-                 [(ngModel)]="user.contact.state" #state="ngModel"
-                 [ngClass]="{'is-invalid': state.invalid}" autocomplete="off" minlength="2">
-        </div>
-        <div class="col-3">
-          <label>Zip</label>
-          <input type="text" class="form-control" name="zip" [value]="user.contact.zip" [(ngModel)]="user.contact.zip"
-                 #zip="ngModel"
-                 [ngClass]="{'is-invalid': zip.invalid}" required pattern="^[\d\s]+$" autocomplete="off" minlength="2">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <label>Workphone</label>
-          <input type="text" class="form-control" name="workPhone" [value]="user.contact.workPhone"
-                 [(ngModel)]="user.contact.workPhone" #workPhone="ngModel"
-                 [ngClass]="{'is-invalid': workPhone.invalid}" required pattern="^[\d\s]+$" autocomplete="off"
-                 minlength="2">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <button class="btn btn-default" type="submit">Apply changes</button>
-        </div>
-      </div>
-    </form>
+    </div>
   </div>
 </div>
