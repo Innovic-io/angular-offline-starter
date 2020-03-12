@@ -14,7 +14,6 @@ export class ContactInformationComponent {
   onSubmit(form: NgForm) {
     if (form.valid) {
       this.update.emit(form.value);
-      alert('Profile is updated!');
     }
   }
 }

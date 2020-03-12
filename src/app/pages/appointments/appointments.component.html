@@ -1,21 +1,21 @@
 <div class="container space">
   <div class="row">
-    <div class="col-12">
+    <div class="col-lg-12 col-sm-12">
       <app-welcome [name]="currentUser?.name" [role]="currentUser?.role"></app-welcome>
     </div>
   </div>
   <div class="row">
-    <div class="col-12">
+    <div class="col-lg-12 col-sm-12">
       <app-current-date> </app-current-date>
     </div>
   </div>
   <div class="row">
-    <div class="col-12">
+    <div class="col-lg-12 col-sm-12">
       <app-upcoming-past> </app-upcoming-past>
     </div>
   </div>
   <div class="row">
-    <div class="col-12">
+    <div class="col-lg-12 col-sm-12">
       <div class="dropdown">
       <button class="btn btn-default float-right dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [disabled]="markedAppointments.length === 0">
         Action</button>
@@ -27,7 +27,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-12">
+    <div class="col-lg-12 col-sm-12">
       <app-table [appointments]="appointments" (checked)="appointmentSelect($event)" (checkedAll)="appointmentSelectAll($event)"></app-table>
     </div>
   </div>

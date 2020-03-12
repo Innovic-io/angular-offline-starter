@@ -17,7 +17,8 @@ export class MyProfileComponent implements OnInit {
   }
 
   onUpdateEmployee(employee: EmployeeModel | ContactModel | EmergencyModel, type: string) {
-    this.currentUser = this.employeeService.updateEmployee(employee, type);
+      this.currentUser = this.employeeService.updateEmployee(employee, type);
+      confirm('Profile is updated!');
 }
 
 }

@@ -8,6 +8,7 @@ import {NewMessageComponent} from './pages/messages/new-message/new-message.comp
 import {MessagesComponent} from './pages/messages/messages.component';
 import { MyHealthComponent } from './pages/my-health/my-health.component';
 import { MyProfileComponent } from './pages/my-profile/my-profile.component';
+import { RequestComponent } from './pages/my-profile/request/request.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: 'my-profile',
     component: MyProfileComponent
+  },
+  {
+    path: 'my-profile/request',
+    component: RequestComponent
   }
 ];
 

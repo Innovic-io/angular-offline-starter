@@ -7,19 +7,19 @@
           <div class="row">
             <div class="col-4">
               <label>FN</label>
-              <input type="text" class="form-control" name="firstName" [value]="user.emergencyPerson.name"
+              <input type="text" class="form-control" name="firstName"
                      [(ngModel)]="user.emergencyPerson.name" #firstName="ngModel"
                      [ngClass]="{'is-invalid': firstName.invalid}" autocomplete="off" minlength="2">
             </div>
             <div class="col-4">
               <label>ML</label>
-              <input type="text" class="form-control" name="middleName" [value]="user.emergencyPerson.middleName"
+              <input type="text" class="form-control" name="middleName"
                      [(ngModel)]="user.emergencyPerson.middleName" #middleName="ngModel"
                      [ngClass]="{'is-invalid': middleName.invalid}" autocomplete="off" minlength="2">
             </div>
             <div class="col-4">
               <label>LN</label>
-              <input type="text" class="form-control" name="lastName" [value]="user.emergencyPerson.lastName"
+              <input type="text" class="form-control" name="lastName"
                      [(ngModel)]="user.emergencyPerson.lastName" #lastName="ngModel"
                      [ngClass]="{'is-invalid': lastName.invalid}" autocomplete="off" minlength="2">
             </div>
@@ -37,7 +37,7 @@
           <div class="row">
             <div class="col-12">
               <label>Phone</label>
-              <input type="text" class="form-control" name="phone" [value]="user.emergencyPerson.phone"
+              <input type="text" class="form-control" name="phone"
                      [(ngModel)]="user.emergencyPerson.phone" #phone="ngModel"
                      [ngClass]="{'is-invalid': phone.invalid}" required pattern="^[\d\s]+$" autocomplete="off"
                      minlength="2">
@@ -46,16 +46,16 @@
           <div class="row">
             <div class="col-12">
               <label>Email</label>
-              <input type="text" class="form-control" name="email" [value]="user.emergencyPerson.email"
+              <input type="text" class="form-control" name="email"
                      [(ngModel)]="user.emergencyPerson.email" #email="ngModel"
-                     [ngClass]="{'is-invalid': email.invalid}" autocomplete="off" required
-                     pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" autocomplete="off">
+                     [ngClass]="{'is-invalid': email.invalid}"
+                     required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" autocomplete="off">
             </div>
           </div>
           <div class="row">
             <div class="col-12">
               <label>Address</label>
-              <input type="text" class="form-control" name="address" [value]="user.emergencyPerson.address"
+              <input type="text" class="form-control" name="address"
                      [(ngModel)]="user.emergencyPerson.address" #address="ngModel"
                      [ngClass]="{'is-invalid': address.invalid}" autocomplete="off" minlength="2">
             </div>
@@ -63,7 +63,7 @@
           <div class="row">
             <div class="col-12">
               <label>City</label>
-              <input type="text" class="form-control" name="city" [value]="user.emergencyPerson.city"
+              <input type="text" class="form-control" name="city"
                      [(ngModel)]="user.emergencyPerson.city" #city="ngModel"
                      [ngClass]="{'is-invalid': city.invalid}" autocomplete="off" minlength="2">
             </div>

@@ -1,0 +1,35 @@
+<div class="container space">
+  <div class="row">
+    <div class="col-12">
+      <h2>Request password</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form #requestForm="ngForm">
+        <div class="row">
+          <div class="col-12">
+            <label>Enter your email</label>
+            <input type="email" class="form-control" placeholder="example@email.com"
+                   autocomplete="off" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <label>Are you human? </label>
+            <label>Write the result of {{ math }}!</label>
+          </div>
+          <div class="col-1">
+            <input type="text" class="form-control" name="math" (change)="onChange($event)" autocomplete="off">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button type="submit" class="btn btn-primary float-right ml-2" [disabled]="submitDisabled">Request</button>
+            <button type="button" class="btn btn-default float-right">Cancel</button>
+          </div>
+        </div>
+      </form>
+  </div>
+</div>
+</div>
