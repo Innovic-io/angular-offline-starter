@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
@@ -16,13 +16,26 @@ export class NewMessageComponent implements OnInit {
 
   constructor(private messageService: MessageService, private employee: EmployeeService, private router: Router) {
   }
+  countCharacters(input) {
+    const counter: HTMLElement = document.getElementById('counter');
+    const textareaMin = document.getElementById('textArea').getAttribute('minlength');
 
+    if (input?.target?.value?.length < 10) {
+      counter.style.color = 'red';
+      counter.innerHTML = (Number(textareaMin) - input?.target?.value?.length).toString();
+    } else {
+      counter.style.color = 'green';
+      counter.innerHTML = (input?.target?.value?.length - Number(textareaMin)).toString();
+    }
+
+  }
   onSubmit(form: NgForm) {
     if (form.valid) {
       this.messageService.createMessage(this.message);
       this.message = new MessageModel();
       alert('Message is sent!');
       form.reset();
+      document.getElementById('counter').innerHTML = '';
       form.controls.doctorEmail.setValue(this.employee.getLoggedEmployee());
     }
   }
@@ -30,6 +43,7 @@ export class NewMessageComponent implements OnInit {
   reset(form: NgForm) {
 
     form.reset();
+    document.getElementById('counter').innerHTML = '';
     form.controls.doctorEmail.setValue(this.employee.getLoggedEmployee());
   }
 

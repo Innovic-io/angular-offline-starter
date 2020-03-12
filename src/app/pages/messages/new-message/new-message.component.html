@@ -9,7 +9,7 @@
       <form (ngSubmit)="onSubmit(messageForm)" #messageForm="ngForm">
         <div class="row">
           <div class="col-12">
-            <input type="text" class="form-control" [(ngModel)]="message.doctorEmail" name="doctorEmail" disabled
+            <input type="text" class="form-control" [(ngModel)]="message.doctorEmail" name="doctorEmail" disabled hidden
                    #doctorEmail="ngModel"
                    [ngClass]="{'is-valid': doctorEmail.valid && doctorEmail.touched, 'is-invalid': doctorEmail.invalid && doctorEmail.touched}"
                    autocomplete="off" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
@@ -33,12 +33,13 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <textarea class="form-control" rows="12" placeholder="Message:" [(ngModel)]="message.doctorMessage"
-                      name="patientMessage"
+            <textarea class="form-control" rows="12" placeholder="Message:" [(ngModel)]="message.doctorMessage" id ="textArea"
+                      name="patientMessage" (keyup)="countCharacters($event)" (focus)="countCharacters($event)"
                       #doctorMessage="ngModel"
                       [ngClass]="{'is-valid': doctorMessage.valid && doctorMessage.touched, 'is-invalid': doctorMessage.invalid && doctorMessage.touched}"
                       minlength="10" required autocomplete="off">
             </textarea>
+            <label id ="counter"  for ="textArea"></label>
           </div>
         </div>
         <div class="row">
@@ -50,7 +51,7 @@
             </div>
           </div>
           <div class="col-9">
-            <button class="btn btn-primary float-right mr-2" type="submit" [disabled]="!messageForm.form.valid"> Submit
+            <button class="btn btn-primary float-right ml-2" type="submit" [disabled]="!messageForm.form.valid"> Submit
             </button>
             <button class="btn btn-default float-right" (click)="reset(messageForm)">Reset</button>
           </div>
