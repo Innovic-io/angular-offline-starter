@@ -10,9 +10,11 @@ export class MessageModel {
   subject: string;
   doctorMessage: string;
   urgent: boolean;
+  archive: boolean;
 
   constructor() {
     this.guid = uuidv4();
     this.urgent = false;
+    this.archive = false;
   }
 }

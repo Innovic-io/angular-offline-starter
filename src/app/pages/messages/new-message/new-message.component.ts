@@ -32,9 +32,11 @@ export class NewMessageComponent implements OnInit {
   onSubmit(form: NgForm) {
     if (form.valid) {
       this.messageService.createMessage(this.message);
+      console.log(this.message);
       this.message = new MessageModel();
       alert('Message is sent!');
       form.reset();
+      form.controls.urgent.setValue(false);
       document.getElementById('counter').innerHTML = '';
       form.controls.doctorEmail.setValue(this.employee.getLoggedEmployee());
     }
@@ -43,6 +45,7 @@ export class NewMessageComponent implements OnInit {
   reset(form: NgForm) {
 
     form.reset();
+    form.controls.urgent.setValue(false);
     document.getElementById('counter').innerHTML = '';
     form.controls.doctorEmail.setValue(this.employee.getLoggedEmployee());
   }

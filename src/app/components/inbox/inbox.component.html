@@ -1,9 +1,9 @@
 <div class="container-fluid space">
   <div class="row">
     <div class="col-3">
-      <input type="text" class="form-control" placeholder="Search">
+      <input type="text" class="form-control" name="search" autocomplete="off"  placeholder="Search" (input)='searchValue($event)'>
     </div>
-    <div class=col-9>
+    <div class="col-9">
       <div class="dropdown">
         <button class="btn btn-default float-right dropdown-toggle ml-2" type="button" id="dropdownMenuButton"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -17,52 +17,51 @@
     </div>
   </div>
   <div class="row">
-
-    <div class="col-4">
+    <div class="col-lg-4 pr-0 col-sm-12">
       <div class="card">
-
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home{{i}}" role="tab"
-             aria-controls="v-pills-home" aria-selected="true" *ngFor="let message of messages let i = index">
+          <a class="nav-link" [ngClass]="{active: i === 0}" id="v-pills-home-tab" data-toggle="pill"
+             href="#v-pills-home{{i}}" role="tab"
+             aria-controls="v-pills-home" aria-selected="true" *ngFor="let message of messages  | search: search  let i = index">
             <div class="row">
               <div class="col-7 blackLabel">From: {{message.doctorEmail.name}}</div>
               <div class="col-5 blackLabel">{{message.date | date }}</div>
             </div>
             <div class="row">
-              <div class="col-12 grayLabel">To: {{message.recipient}}</div>
+              <div class="col-12 grayLabel pb-0 pt-0">To: {{message.recipient}}</div>
             </div>
             <div class="row">
-              <div class="col-12 grayLabel">Subject: {{message.subject}}</div>
+              <div class="col-12 grayLabel pb-0 pt-0">Subject: {{message.subject}}</div>
             </div>
           </a>
         </div>
       </div>
     </div>
-    <div class="col-8">
+    <div class="col-lg-8 pl-0 col-sm-12">
       <div class="card ">
         <div class="tab-content" id="v-pills-tabContent">
-          <div class="tab-pane fade show" id="v-pills-home{{i}}" role="tabpanel"
+          <div class="tab-pane fade show" id="v-pills-home{{i}}" role="tabpanel" [ngClass]="{active: i === 0}"
                aria-labelledby="v-pills-home-tab" *ngFor="let message of messages let i = index">
             <div class="row pl-4 pr-4">
-              <div class="col-9 blackLabel ">From: {{message.doctorEmail.name}}</div>
-              <div class="col-3 blackLabel  text-right">{{message.date | date }}
+              <div class="col-9 pb-0">From: {{message.doctorEmail.name}}</div>
+              <div class="col-3 pb-0 text-right">{{message.date | date }}
               </div>
             </div>
             <div class="row pl-4 pr-4 ">
-              <div class="col-12 grayLabel">To: {{message.recipient}}</div>
+              <div class="col-12 pb-0 pt-0 text-secondary">To: {{message.recipient}}</div>
             </div>
             <div class="row pl-4 pr-4">
-              <div class="col-12  grayLabel">Subject: {{message.subject}}</div>
+              <div class="col-12 pb-0 pt-0 text-secondary">Subject: {{message.subject}}</div>
             </div>
             <hr>
             <div class="row pl-4 pr-4 ">
-              <div class="col-12 grayLabel">{{message.doctorMessage}}</div>
+              <div class="col-12 grayLabel pb-5 pt-0">{{message.doctorMessage}}</div>
             </div>
             <hr class="mb-0">
             <div class="row pl-2 pr-2">
               <div class="col-6">
-                <button class=" btn btn-default">Archive</button>
-                <button class=" btn btn-default ml-2">Delete</button>
+                <button class=" btn btn-default" (click)="onClick(message.guid)">Archive</button>
+                <button class=" btn btn-default ml-2" (click)="deleteClick(message.guid)">Delete</button>
               </div>
               <div class="col-6">
                 <button class="float-right btn btn-default ml-2">Forward</button>
@@ -70,11 +69,8 @@
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
-
     </div>
   </div>
 </div>

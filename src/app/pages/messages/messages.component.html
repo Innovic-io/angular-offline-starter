@@ -1,7 +1,8 @@
 <div class="container space">
   <div class="row">
     <div class="col-12">
-      <app-inbox [messages]="messages"></app-inbox>
+      <app-inbox [messages]="messages" (updateAchieve)="update($event)" (deleteMessage)="delete($event)"
+      (textToSearch)="onSearch($event)" ></app-inbox>
     </div>
   </div>
 </div>

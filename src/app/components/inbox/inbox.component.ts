@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MessageModel } from '../../models/message.model';
 
 @Component({
@@ -6,11 +6,23 @@ import { MessageModel } from '../../models/message.model';
   templateUrl: './inbox.component.html',
   styleUrls: ['./inbox.component.css']
 })
-export class InboxComponent implements OnInit {
+export class InboxComponent {
   @Input() messages: MessageModel[];
-  constructor() { }
+  @Output() updateAchieve = new EventEmitter<string>();
+  @Output() deleteMessage = new EventEmitter<string>();
+  @Output() textToSearch = new EventEmitter<string>();
+  @Input() search: string;
 
-  ngOnInit(): void {
+  onClick(guid) {
+    this.updateAchieve.emit(guid);
+  }
+
+  deleteClick(guid) {
+    this.deleteMessage.emit(guid);
+  }
+
+  searchValue(event) {
+    this.textToSearch.emit(event.target.value);
   }
 
 }

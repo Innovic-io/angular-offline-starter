@@ -36,6 +36,7 @@ import { MyProfileComponent } from './pages/my-profile/my-profile.component';
 import { ContactInformationComponent } from './components/contact-information/contact-information.component';
 import { EmergencyContactComponent } from './components/emergency-contact/emergency-contact.component';
 import { InboxComponent } from './components/inbox/inbox.component';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { InboxComponent } from './components/inbox/inbox.component';
     MyProfileComponent,
     ContactInformationComponent,
     EmergencyContactComponent,
-    InboxComponent
+    InboxComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
