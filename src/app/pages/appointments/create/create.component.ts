@@ -33,15 +33,14 @@ export class CreateComponent implements OnInit {
       if (this.alert) {
         return;
       }
-      console.log(form.value);
       this.appointmentService.createAppointment(this.appointment);
-      this.appointment = new AppointmentModel();
+      this.reset(form);
       alert('Appointment is created successfully!');
-      form.reset();
     }
   }
 
   reset(form: NgForm) {
+    this.appointment = new AppointmentModel();
     form.reset();
   }
 

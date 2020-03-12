@@ -8,13 +8,13 @@
     <div class="col-12">
       <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
         <div class="row">
-          <div class="col-6">
+          <div class="col-lg-6 col-sm-12">
             <input type="text" class="form-control" placeholder="First Name" [(ngModel)]="appointment.firstName"
                    name="firstName" #firstName="ngModel"
                    [ngClass]="{'is-valid': firstName.valid && firstName.touched, 'is-invalid': firstName.invalid && firstName.touched}"
                    autocomplete="off" minlength="2" required>
           </div>
-          <div class="col-6">
+          <div class="col-lg-6 col-sm-12">
             <input type="text" class="form-control" placeholder="Last Name" [(ngModel)]="appointment.lastName"
                    name="lastName" #lastName="ngModel"
                    [ngClass]="{'is-valid': lastName.valid && lastName.touched, 'is-invalid': lastName.invalid && lastName.touched}"
@@ -22,8 +22,8 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-6">
-            <app-alerts  *ngIf="alert === true"></app-alerts>
+          <div class="col-lg-6 col-sm-12">
+            <app-alerts *ngIf="alert === true"></app-alerts>
             <dl-date-time-picker
               startView="day"
               maxView="year"
@@ -32,8 +32,8 @@
               [ngModelOptions]="{standalone: true}"
               [(ngModel)]="appointment.date" required>
             </dl-date-time-picker>
-            </div>
-          <div class="col-6">
+          </div>
+          <div class="col-lg-6 col-sm-12">
             <select class="form-control" [(ngModel)]="appointment.provider" name="provider" #provider="ngModel"
                     [ngClass]="{'is-valid': provider.valid && provider.touched, 'is-invalid': provider.invalid && provider.touched}"
                     required>
@@ -60,7 +60,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-6 input-group">
+          <div class="col-lg-6 col-sm-12 input-group">
             <div class="input-group-prepend">
               <span class="input-group-text">+387</span>
             </div>
@@ -69,7 +69,7 @@
                    [ngClass]="{'is-valid': phone.valid && phone.touched, 'is-invalid': phone.invalid && phone.touched}"
                    autocomplete="off" required pattern="^[\d\s]+$" minlength="3">
           </div>
-          <div class="col-6">
+          <div class="col-lg-6 col-sm-12">
             <input type="email" class="form-control" placeholder="example@email.com" [(ngModel)]="appointment.email"
                    name="email"
                    #email="ngModel"
@@ -78,8 +78,8 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-3"></div>
-          <div class="col-9">
+          <div class="col-lg-3 col-sm-12"></div>
+          <div class="col-lg-9 col-sm-12">
             <button class="btn btn-primary float-right ml-2" type="submit" [disabled]="!myForm.form.valid"> Submit
             </button>
             <button class="btn btn-default float-right" type="button" (click)="reset(myForm);">Reset</button>

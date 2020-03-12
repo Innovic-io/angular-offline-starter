@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { faHospitalSymbol, faFile, faUser, faCalendarAlt, faComments, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { EmployeeModel } from '../../models/employee.model';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,8 @@ export class HeaderComponent implements OnInit {
   public faCalendarAlt = faCalendarAlt;
   public faComments = faComments;
   public faHeart = faHeart;
+
+  @Input() user: EmployeeModel;
 
   constructor() { }
 

@@ -1,45 +1,62 @@
 <nav class="navbar navbar-expand-lg medic-header row">
   <img src="../assets/logo/logo.png" class="logo">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button>
+  </button>-->
 
   <div class="collapse navbar-collapse container" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav w-100">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/dashboard" [routerLinkActiveOptions]="{ exact: true }"  routerLinkActive="active">
-          <fa-icon [icon]="faHospitalSymbol" ></fa-icon>
+        <a class="nav-link" routerLink="/dashboard" [routerLinkActiveOptions]="{ exact: true }"
+           routerLinkActive="active">
+          <fa-icon [icon]="faHospitalSymbol"></fa-icon>
           <p>Dashboard</p><span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/appointments" [routerLinkActiveOptions]="{ exact: true }"  routerLinkActive="active">
+        <a class="nav-link" routerLink="/appointments" [routerLinkActiveOptions]="{ exact: true }"
+           routerLinkActive="active">
           <fa-icon [icon]="faCalendarAlt"></fa-icon>
           <p>Appointment</p>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/messages" [routerLinkActiveOptions]="{ exact: true }"  routerLinkActive="active">
-        <fa-icon [icon]="faComments"></fa-icon>
-        <p>Messages</p>
+        <a class="nav-link" routerLink="/messages" [routerLinkActiveOptions]="{ exact: true }"
+           routerLinkActive="active">
+          <fa-icon [icon]="faComments"></fa-icon>
+          <p>Messages</p>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/my-health" [routerLinkActiveOptions]="{ exact: true }"  routerLinkActive="active">
-        <fa-icon [icon]="faHeart"></fa-icon>
-        <p>My health</p>
+        <a class="nav-link" routerLink="/my-health" [routerLinkActiveOptions]="{ exact: true }"
+           routerLinkActive="active">
+          <fa-icon [icon]="faHeart"></fa-icon>
+          <p>My health</p>
         </a>
       </li>
-     <li class="nav-item">
-       <a class="nav-link" routerLink="/my-profile" [routerLinkActiveOptions]="{ exact: true }"  routerLinkActive="active">
-        <fa-icon [icon]="faUser"></fa-icon>
-        <p>My profile</p>
-       </a>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/my-profile" [routerLinkActiveOptions]="{ exact: true }"
+           routerLinkActive="active">
+          <fa-icon [icon]="faUser"></fa-icon>
+          <p>My profile</p>
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="" [routerLinkActiveOptions]="{ exact: true }"  routerLinkActive="active">
-        <fa-icon [icon]="faFile"></fa-icon>
-        <p>My documents</p>
+        <a class="nav-link" routerLink="" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">
+          <fa-icon [icon]="faFile"></fa-icon>
+          <p>My documents</p>
+        </a>
+      </li>
+      <li class="nav-item ml-auto align-self-center">
+        <a class="nav-link d-flex flex-row align-items-center" href="#">
+          <p class="mr-1">{{user?.name}}</p>
+          <div *ngIf="user?.avatar; else elseAvatar">
+            <img src="{{user?.avatar}}" class="d-inline-block userAvatar rounded-circle">
+          </div>
+          <ng-template #elseAvatar>
+            <img src="../assets/doctors/user.png" class="d-inline-block userAvatar rounded-circle">
+          </ng-template>
         </a>
       </li>
     </ul>
