@@ -4,19 +4,19 @@
     <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
       <div class="row">
         <div class="col-4">
-          <label>First name</label>
+          <label>FN</label>
           <input type="text" class="form-control" name="firstName" [value]="user.emergencyPerson.name"
                  [(ngModel)]="user.emergencyPerson.name" #firstName="ngModel"
                  [ngClass]="{'is-invalid': firstName.invalid}" autocomplete="off" minlength="2">
         </div>
         <div class="col-4">
-          <label>Middle name</label>
+          <label>ML</label>
           <input type="text" class="form-control" name="middleName" [value]="user.emergencyPerson.middleName"
                  [(ngModel)]="user.emergencyPerson.middleName" #middleName="ngModel"
                  [ngClass]="{'is-invalid': middleName.invalid}" autocomplete="off" minlength="2">
         </div>
         <div class="col-4">
-          <label>Last name</label>
+          <label>LN</label>
           <input type="text" class="form-control" name="lastName" [value]="user.emergencyPerson.lastName"
                  [(ngModel)]="user.emergencyPerson.lastName" #lastName="ngModel"
                  [ngClass]="{'is-invalid': lastName.invalid}" autocomplete="off" minlength="2">
