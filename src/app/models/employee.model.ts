@@ -7,7 +7,6 @@ export class EmployeeModel {
   middleName: string;
   dateOfBirth: Date;
   gender: string;
-  email: string;
   avatar: string;
   age: number;
   role: Roles;
@@ -29,6 +28,7 @@ export class ContactModel {
   state: string;
   zip: number;
   address: string;
+  email: string;
 }
 
 export class HealthInfoModel {

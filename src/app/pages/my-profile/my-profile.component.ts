@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeModel } from '../../models/employee.model';
+import { ContactModel, EmergencyModel, EmployeeModel } from '../../models/employee.model';
 import { EmployeeService } from '../../services/employee.service';
 
 @Component({
@@ -16,8 +16,8 @@ export class MyProfileComponent implements OnInit {
     this.currentUser = this.employeeService.getLoggedEmployee();
   }
 
-  onUpdateEmployee(employee: EmployeeModel) {
-    this.currentUser = this.employeeService.updateEmployee(employee);
+  onUpdateEmployee(employee: EmployeeModel | ContactModel | EmergencyModel, type: string) {
+    this.currentUser = this.employeeService.updateEmployee(employee, type);
 }
 
 }
