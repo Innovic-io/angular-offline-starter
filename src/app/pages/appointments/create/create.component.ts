@@ -33,7 +33,7 @@ export class CreateComponent implements OnInit {
       if (this.alert) {
         return;
       }
-
+      console.log(form.value);
       this.appointmentService.createAppointment(this.appointment);
       this.appointment = new AppointmentModel();
       alert('Appointment is created successfully!');
@@ -45,7 +45,7 @@ export class CreateComponent implements OnInit {
     form.reset();
   }
 
+
   ngOnInit(): void {
   }
-
 }

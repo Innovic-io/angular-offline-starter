@@ -30,10 +30,9 @@
               minView="minute"
               minuteStep="15"
               [ngModelOptions]="{standalone: true}"
-              [(ngModel)]="appointment.date" required
-            >
+              [(ngModel)]="appointment.date" required>
             </dl-date-time-picker>
-          </div>
+            </div>
           <div class="col-6">
             <select class="form-control" [(ngModel)]="appointment.provider" name="provider" #provider="ngModel"
                     [ngClass]="{'is-valid': provider.valid && provider.touched, 'is-invalid': provider.invalid && provider.touched}"
