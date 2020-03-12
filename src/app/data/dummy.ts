@@ -12,7 +12,6 @@ doctor.age = 23;
 doctor.role = Roles.doctor;
 doctor.gender = 'Female';
 doctor.dateOfBirth = new Date('03/12/1997');
-doctor.gender = 'female';
 doctor.contact.workPhone = 2938291901;
 doctor.contact.state = 'Bosnia and Herzegovina';
 doctor.contact.city = 'Sarajevo';
