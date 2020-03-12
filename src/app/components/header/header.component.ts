@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   public faCalendarAlt = faCalendarAlt;
   public faComments = faComments;
   public faHeart = faHeart;
+  isCollapsed = false;
 
   @Input() user: EmployeeModel;
 
