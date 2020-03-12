@@ -1,15 +1,15 @@
 <div class="container space">
   <div class="row">
-    <div class="col-12">
-      <app-profile-basic-info [user]="currentUser" (update)="onUpdateEmployee($event)"></app-profile-basic-info>
+    <div class="col-lg-12 col-sm-12">
+      <app-profile-basic-info [user]="currentUser" (update)="onUpdateEmployee($event, 'basic')"></app-profile-basic-info>
     </div>
   </div>
   <div class="row">
-    <div class="col-6">
-      <app-contact-information [user]="currentUser" (update)="onUpdateEmployee($event)"></app-contact-information>
+    <div class="col-lg-6 col-sm-12">
+      <app-contact-information [user]="currentUser" (update)="onUpdateEmployee($event, 'contact')"></app-contact-information>
     </div>
-    <div class="col-6">
-      <app-emergency-contact [user]="currentUser" (update)="onUpdateEmployee($event)"></app-emergency-contact>
+    <div class="col-lg-6 col-sm-12">
+      <app-emergency-contact [user]="currentUser" (update)="onUpdateEmployee($event, 'emergency')"></app-emergency-contact>
     </div>
   </div>
 </div>

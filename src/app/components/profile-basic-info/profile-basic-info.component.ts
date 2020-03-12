@@ -15,8 +15,7 @@ export class ProfileBasicInfoComponent {
   onSubmit(form: NgForm) {
     if (form.valid) {
       this.update.emit(form.value);
-    } else {
-      console.log('ne');
+      alert('Profile is updated!');
     }
   }
 }

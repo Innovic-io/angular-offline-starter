@@ -13,7 +13,9 @@ export class EmergencyContactComponent {
    @Output() update = new EventEmitter<EmployeeModel>();
    relationships = enumSelector(Relationship);
   onSubmit(form: NgForm) {
-    this.update.emit(form.value);
+    if (form.valid) {
+      this.update.emit(form.value);
+      alert('Profile is updated!');
+    }
   }
-
 }

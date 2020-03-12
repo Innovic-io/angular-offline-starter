@@ -1,40 +1,62 @@
 <h2>Basic Info</h2>
-<div class="row box">
-  <div class="col-3">
-      <img [src]="user.avatar" width="230vh" height="230vh"/>
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-3 col-sm-3">
+        <img [src]="user.avatar" class="profilePhoto"/>
       </div>
-  <div class="col-9">
-    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
-      <div class="row">
-        <div class="col-5">
-          <input type="text" class="form-control" name="firstName" [value]="user.name" [(ngModel)]="user.name" autocomplete="off" minlength="2">
-        </div>
-        <div class="col-2">
-          <input type="text" class="form-control" name="middleName" [value]="user.middleName" [(ngModel)]="user.middleName" autocomplete="off" minlength="2">
-        </div>
-        <div class="col-5">
-          <input type="text" class="form-control" name="lastName" [value]="user.lastName" [(ngModel)]="user.lastName" autocomplete="off" minlength="2">
-        </div>
+      <div class="col-lg-9 col-sm-12">
+        <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+          <div class="row">
+            <div class="col-lg-5 col-sm-5">
+              <input type="text" class="form-control" name="firstName" [value]="user.name" [(ngModel)]="user.name"
+                     #firstName="ngModel"
+                     [ngClass]="{'is-invalid': firstName.invalid}"
+                     autocomplete="off" minlength="2">
+            </div>
+            <div class="col-lg-2 col-sm-2">
+              <input type="text" class="form-control" name="middleName" [value]="user.middleName"
+                     [(ngModel)]="user.middleName" #middleName="ngModel"
+                     [ngClass]="{'is-invalid': middleName.invalid}"
+                     autocomplete="off" minlength="2">
+            </div>
+            <div class="col-lg-5 col-sm-5">
+              <input type="text" class="form-control" name="lastName" [value]="user.lastName"
+                     [(ngModel)]="user.lastName"
+                     #lastName="ngModel"
+                     [ngClass]="{'is-invalid': lastName.invalid}"
+                     autocomplete="off" minlength="2">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 col-sm-5">
+              <input type="date" class="form-control" name="dateOfBirth" [value]="user.dateOfBirth"
+                     [(ngModel)]="user.dateOfBirth" #dateOfBirth="ngModel"
+                     [ngClass]="{'is-invalid': dateOfBirth.invalid}"
+                     autocomplete="off" minlength="2">
+            </div>
+            <div class="col-lg-2 col-sm-2">
+              <select class="form-control" [value]="user.gender" name="gender" [(ngModel)]="user.gender" #gender="ngModel"
+                      [ngClass]="{'is-invalid': gender.invalid}">
+                <option>female</option>
+                <option>male</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 col-sm-5">Account Access</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 col-sm-9">
+              <button class="btn btn-default" type="button">Request Password Reset Email</button>
+            </div>
+            <div class="col-lg-5 col-sm-5">
+              <button class="btn btn-default" type="submit">Apply changes</button>
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="row">
-        <div class="col-5">
-          <input type="date" class="form-control" name="date" [value]="user.dateOfBirth" [(ngModel)]="user.dateOfBirth" autocomplete="off" minlength="2">
-        </div>
-        <div class="col-2">
-          <select class="form-control" value="gender" name="gender" [(ngModel)]="user.gender">
-            <option>female</option>
-            <option>male</option>
-          </select>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-5">Account Access</div>
-      </div>
-      <div class="row">
-        <div class="col-5"><button class="btn btn-default" type="button">Request Password Reset Email</button> </div>
-        <div class="col-5"><button class="btn btn-default" type="submit">Apply changes</button> </div>
-      </div>
-  </form>
-</div>
+    </div>
+  </div>
 </div>
 
