@@ -2,15 +2,20 @@
 .nav-link {
   background-color: white;
 }
+
 .nav-link .blackLabel {
   color: black;
 }
+
 .nav-link .grayLabel {
   color: gray;
 }
 
-.nav-link.active, .nav-link.active .blackLabel, .nav-link.active .grayLabel{
+.nav-link.active, .nav-link.active .blackLabel, .nav-link.active .grayLabel {
   background-color: #FE8F00;
   color: white;
 }
 
+.preWrap {
+  white-space: pre-wrap;
+}

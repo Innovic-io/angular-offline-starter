@@ -14,7 +14,6 @@ export class MessagesComponent implements OnInit {
   messages: MessageModel[];
   message = MessageModel;
   currentUser: EmployeeModel;
-  search: string;
 
   constructor(private employeeService: EmployeeService, public messageService: MessageService) {
   }
@@ -39,9 +38,5 @@ export class MessagesComponent implements OnInit {
     this.messages = this.messageService.getAllDoctorEmails(this.currentUser.guid);
   }
 
-  onSearch(event) {
-    this.search = event;
-    console.log(event);
-  }
 }
 

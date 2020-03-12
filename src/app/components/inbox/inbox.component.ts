@@ -11,7 +11,7 @@ export class InboxComponent {
   @Output() updateAchieve = new EventEmitter<string>();
   @Output() deleteMessage = new EventEmitter<string>();
   @Output() textToSearch = new EventEmitter<string>();
-  @Input() search: string;
+  @Input() searchText: string;
 
   onClick(guid) {
     this.updateAchieve.emit(guid);
@@ -20,9 +20,8 @@ export class InboxComponent {
   deleteClick(guid) {
     this.deleteMessage.emit(guid);
   }
-
-  searchValue(event) {
-    this.textToSearch.emit(event.target.value);
+  onSearch(event) {
+    this.searchText = event;
   }
 
 }

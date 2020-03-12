@@ -15,14 +15,18 @@ export class MessageService {
     return this.messages.filter(message => message.doctorEmail.guid === doctorGUID);
   }
   updateArchive(messageGUID: string) {
-    return this.messages.find(message => message.guid === messageGUID).archive = true;
+    if (confirm('Are you sure you want to confirm?')) {
+      return this.messages.find(message => message.guid === messageGUID).archive = true;
+    }
   }
   deleteMessage(messageGUID: string) {
-    const messageIndex = this.messages.findIndex(message => message.guid === messageGUID);
-    if (messageIndex > -1) {
-      this.messages.splice(messageIndex, 1);
+    if (confirm('Are you sure you want to confirm?')) {
+      const messageIndex = this.messages.findIndex(message => message.guid === messageGUID);
+      if (messageIndex > -1) {
+        this.messages.splice(messageIndex, 1);
+      }
+      return this.messages;
     }
-    return this.messages;
   }
 
 }
