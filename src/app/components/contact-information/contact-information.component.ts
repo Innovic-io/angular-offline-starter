@@ -12,7 +12,9 @@ export class ContactInformationComponent {
   @Input() user: EmployeeModel;
   @Output() update = new EventEmitter<EmployeeModel>();
   onSubmit(form: NgForm) {
-    this.update.emit(form.value);
+    if (form.valid) {
+      this.update.emit(form.value);
+      alert('Profile is updated!');
+    }
   }
-
 }

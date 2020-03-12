@@ -36,7 +36,7 @@
                      autocomplete="off" minlength="2">
             </div>
             <div class="col-lg-2 col-sm-2">
-              <select class="form-control" value="gender" name="gender" [(ngModel)]="user.gender" #gender="ngModel"
+              <select class="form-control" [value]="user.gender" name="gender" [(ngModel)]="user.gender" #gender="ngModel"
                       [ngClass]="{'is-invalid': gender.invalid}">
                 <option>female</option>
                 <option>male</option>
