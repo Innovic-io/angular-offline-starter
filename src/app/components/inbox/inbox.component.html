@@ -20,7 +20,7 @@
     <div class="col-lg-4 pr-0 col-sm-12">
       <div class="card">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          <a class="nav-link" [ngClass]="{active: i === 0}" id="v-pills-home-tab" data-toggle="pill"
+          <a class="nav-link" [ngClass]="{'active': i === 0}" id="v-pills-home-tab" data-toggle="pill"
              href="#v-pills-home{{i}}" role="tab"
              aria-controls="v-pills-home" aria-selected="true" *ngFor="let message of messages  | search: searchText  let i = index">
             <div class="row">
@@ -40,7 +40,7 @@
     <div class="col-lg-8 pl-0 col-sm-12">
       <div class="card ">
         <div class="tab-content" id="v-pills-tabContent">
-          <div class="tab-pane fade show" id="v-pills-home{{i}}" role="tabpanel" [ngClass]="{active: i === 0}"
+          <div class="tab-pane fade show" id="v-pills-home{{i}}" role="tabpanel" [ngClass]="{'active': i === 0}"
                aria-labelledby="v-pills-home-tab" *ngFor="let message of messages  | search: searchText let i = index">
             <div class="row pl-4 pr-4">
               <div class="col-9 pb-0">From: {{message.doctorEmail.name}}</div>
@@ -65,7 +65,9 @@
               </div>
               <div class="col-6">
                 <button class="float-right btn btn-default ml-2">Forward</button>
-                <button class="float-right btn btn-primary">Replay</button>
+                <a  routerLink ="new/{{message.guid}}">
+                <button  class="float-right btn btn-primary">Reply</button>
+                </a>
               </div>
             </div>
           </div>

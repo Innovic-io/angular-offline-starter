@@ -39,6 +39,10 @@ const routes: Routes = [
     component: NewMessageComponent
   },
   {
+    path: 'messages/new/:id',
+    component: NewMessageComponent
+  },
+  {
     path: 'my-health',
     component: MyHealthComponent
   },

@@ -11,6 +11,7 @@ export class MessageModel {
   doctorMessage: string;
   urgent: boolean;
   archive: boolean;
+  replyTo: string;
 
   constructor() {
     this.guid = uuidv4();

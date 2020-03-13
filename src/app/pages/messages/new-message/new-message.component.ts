@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 import { MessageService } from '../../../services/message.service';
@@ -15,12 +15,13 @@ import { SystemService } from '../../../services/system.service';
 export class NewMessageComponent implements OnInit {
   message: MessageModel;
   minLengthTextArea = 10;
+  id: string;
 
   constructor(
     private systemService: SystemService,
     private messageService: MessageService,
     private employee: EmployeeService,
-    private router: Router) {
+    private route: ActivatedRoute) {
   }
 
   onSubmit(form: NgForm) {
@@ -46,6 +47,10 @@ export class NewMessageComponent implements OnInit {
   ngOnInit(): void {
     this.message = new MessageModel();
     this.message.doctorEmail = this.employee.getLoggedEmployee();
-
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.messageService.getEmail(this.id);
+    console.log( this.messageService.getEmail(this.id).forEach(el => el.subject));
+    console.log( this.messageService.getEmail(this.id));
+    console.log(this.id);
   }
 }

@@ -20,7 +20,6 @@ export class MessagesComponent implements OnInit {
 
   update($event) {
     if ($event) {
-      console.log(this.messages);
       return this.messageService.updateArchive($event);
     }
   }

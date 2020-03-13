@@ -28,5 +28,9 @@ export class MessageService {
       return this.messages;
     }
   }
+  getEmail(messageGUID: string) {
+    return this.messages.filter(message => message.guid === messageGUID);
+  }
+
 
 }
