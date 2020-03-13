@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactModel, EmergencyModel, EmployeeModel } from '../../models/employee.model';
 import { EmployeeService } from '../../services/employee.service';
+import { SystemService } from '../../services/system.service';
 
 @Component({
   selector: 'app-my-profile',
@@ -10,7 +11,7 @@ import { EmployeeService } from '../../services/employee.service';
 export class MyProfileComponent implements OnInit {
   currentUser: EmployeeModel;
 
-  constructor(public employeeService: EmployeeService) { }
+  constructor(public employeeService: EmployeeService, public systemService: SystemService) { }
 
   ngOnInit(): void {
     this.currentUser = this.employeeService.getLoggedEmployee();
@@ -18,7 +19,7 @@ export class MyProfileComponent implements OnInit {
 
   onUpdateEmployee(employee: EmployeeModel | ContactModel | EmergencyModel, type: string) {
       this.currentUser = this.employeeService.updateEmployee(employee, type);
-      confirm('Profile is updated!');
+      this.systemService.createAlertMessage('Profile is updated!');
 }
 
 }

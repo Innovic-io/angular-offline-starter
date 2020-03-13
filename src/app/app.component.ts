@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import { EmployeeModel } from './models/employee.model';
 import { EmployeeService } from './services/employee.service';
 import { SystemService } from './services/system.service';
+import { Observable } from 'rxjs';
 
 moment.locale('sr');
 
@@ -14,20 +15,13 @@ moment.locale('sr');
 })
 export class AppComponent implements OnInit {
   currentUser: EmployeeModel;
-  messages: string[] = [];
+  systemMessage$: Observable<string>;
 
   constructor(public employeeService: EmployeeService, public systemService: SystemService) {
   }
 
   ngOnInit(): void {
     this.currentUser = this.employeeService.getLoggedEmployee();
-
-    this.systemService.createAlertMessage('Successful!');
-    this.messages = this.systemService.getMessage();
-
-    setTimeout(() =>
-      this.messages.pop(), 2000);
+    this.systemMessage$ = this.systemService.getMessage();
   }
-
 }
-

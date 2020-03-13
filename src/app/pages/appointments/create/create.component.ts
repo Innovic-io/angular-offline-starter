@@ -6,6 +6,7 @@ import {AppointmentService} from '../../../services/appointment.service';
 
 import {doctor } from '../../../data/dummy';
 import {AppointmentType, enumSelector} from '../../../models/system.models';
+import { SystemService } from '../../../services/system.service';
 
 @Component({
   selector: 'app-create',
@@ -18,7 +19,7 @@ export class CreateComponent implements OnInit {
   appTypes = enumSelector(AppointmentType);
   alert: boolean;
 
-  constructor(private appointmentService: AppointmentService) {
+  constructor(private appointmentService: AppointmentService, public systemService: SystemService) {
   }
 
   checkAvailableAppointment() {
@@ -35,7 +36,7 @@ export class CreateComponent implements OnInit {
       }
       this.appointmentService.createAppointment(this.appointment);
       this.reset(form);
-      alert('Appointment is created successfully!');
+      this.systemService.createAlertMessage('Appointment created!');
     }
   }
 
