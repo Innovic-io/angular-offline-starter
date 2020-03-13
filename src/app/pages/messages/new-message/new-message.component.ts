@@ -49,6 +49,7 @@ export class NewMessageComponent implements OnInit {
     this.message.doctorEmail = this.employee.getLoggedEmployee();
     this.id = this.route.snapshot.paramMap.get('id');
     this.messageService.getEmail(this.id);
+    this.message.subject = this.messageService.getEmail(this.id)[0]?.subject;
     console.log( this.messageService.getEmail(this.id).forEach(el => el.subject));
     console.log( this.messageService.getEmail(this.id));
     console.log(this.id);
