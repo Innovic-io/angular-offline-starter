@@ -41,6 +41,10 @@ import { RequestComponent } from './pages/my-profile/request/request.component';
 import { SearchPipe } from './pipes/search.pipe';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { TabComponent } from './components/tabs/tab/tab.component';
+import { MyDocumentsComponent } from './pages/my-documents/my-documents.component';
+import { FormsComponent } from './components/forms/forms.component';
+import { NoticesComponent } from './components/notices/notices.component';
+import { UploadPatientFormComponent } from './pages/upload-patient-form/upload-patient-form.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +82,11 @@ import { TabComponent } from './components/tabs/tab/tab.component';
     InboxComponent,
     SearchPipe,
     TabsComponent,
-    TabComponent
+    TabComponent,
+    MyDocumentsComponent,
+    FormsComponent,
+    NoticesComponent,
+    UploadPatientFormComponent
   ],
   imports: [
     BrowserModule,

@@ -30,8 +30,6 @@ export class NewMessageComponent implements OnInit {
 
       form.reset();
       form.controls.urgent.setValue(false);
-
-      document.getElementById('counter').innerHTML = '';
       form.controls.doctorEmail.setValue(this.employee.getLoggedEmployee());
       this.systemService.createAlertMessage('Message sent!');
     }

@@ -1,0 +1,21 @@
+<div class="container space">
+  <div class="row">
+    <div class="col-12">
+      <app-welcome [name]="currentUser?.name" [role]="currentUser?.role">
+      </app-welcome>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <h2 class="row">My Document</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-sm-12">
+      <app-forms></app-forms>
+    </div>
+    <div class="col-lg-6 col-sm-12">
+      <app-notices></app-notices>
+    </div>
+  </div>
+</div>
