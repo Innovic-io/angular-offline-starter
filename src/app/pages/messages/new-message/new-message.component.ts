@@ -13,30 +13,16 @@ import { EmployeeService } from '../../../services/employee.service';
 })
 export class NewMessageComponent implements OnInit {
   message: MessageModel;
+  minLengthTextArea = 10;
 
   constructor(private messageService: MessageService, private employee: EmployeeService, private router: Router) {
-  }
-  countCharacters(input) {
-    const counter: HTMLElement = document.getElementById('counter');
-    const textareaMin = document.getElementById('textArea').getAttribute('minlength');
-
-    if (input?.target?.value?.length < 10) {
-      counter.style.color = 'red';
-      counter.innerHTML = (Number(textareaMin) - input?.target?.value?.length).toString();
-    } else {
-      counter.style.color = 'green';
-      counter.innerHTML = (input?.target?.value?.length - Number(textareaMin)).toString();
-    }
-
   }
   onSubmit(form: NgForm) {
     if (form.valid) {
       this.messageService.createMessage(this.message);
       this.message = new MessageModel();
-      alert('Message is sent!');
       form.reset();
       form.controls.urgent.setValue(false);
-      document.getElementById('counter').innerHTML = '';
       form.controls.doctorEmail.setValue(this.employee.getLoggedEmployee());
     }
   }
@@ -45,7 +31,6 @@ export class NewMessageComponent implements OnInit {
 
     form.reset();
     form.controls.urgent.setValue(false);
-    document.getElementById('counter').innerHTML = '';
     form.controls.doctorEmail.setValue(this.employee.getLoggedEmployee());
   }
 

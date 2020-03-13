@@ -33,13 +33,17 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <textarea class="form-control" rows="12" placeholder="Message:" [(ngModel)]="message.doctorMessage" id ="textArea"
-                      name="patientMessage" (keyup)="countCharacters($event)" (focus)="countCharacters($event)"
+            <textarea class="form-control" rows="12" placeholder="Message:" [(ngModel)]="message.doctorMessage"
+                      id="textArea"
+                      name="patientMessage"
                       #doctorMessage="ngModel"
                       [ngClass]="{'is-valid': doctorMessage.valid && doctorMessage.touched, 'is-invalid': doctorMessage.invalid && doctorMessage.touched}"
-                      minlength="10" required autocomplete="off">
+                      [minlength]= minLengthTextArea required autocomplete="off">
             </textarea>
-            <label id ="counter"  for ="textArea"></label>
+            <label class="badge" [ngClass]="{'badge-danger': message.doctorMessage?.length< minLengthTextArea,
+            'badge-success': message.doctorMessage?.length >= minLengthTextArea}">
+              {{message.doctorMessage?.length - minLengthTextArea}}
+            </label>
           </div>
         </div>
         <div class="row">
