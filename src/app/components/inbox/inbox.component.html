@@ -1,9 +1,9 @@
 <div class="container-fluid space">
   <div class="row">
-    <div class="col-3">
+    <div class="col-lg-3 col-sm-12">
       <input type="text" class="form-control" name="search" autocomplete="off" #search placeholder="Search" (input)='onSearch(search.value)'>
     </div>
-    <div class="col-9">
+    <div class="col-lg-9 col-sm-12">
       <div class="dropdown">
         <button class="btn btn-default float-right dropdown-toggle ml-2" type="button" id="dropdownMenuButton"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -71,6 +71,14 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <div class = "row" *ngIf="(messages | search: searchText)?.length === 0" >
+    <div class="col-12 d-flex justify-content-center" >
+      <img src = "../assets/noResults/no_result.png" class="w-25  mt-5">
+    </div>
+    <div class="col-12 d-flex justify-content-center" >
+      <p class ="text-center">No results... </p>
     </div>
   </div>
 </div>
