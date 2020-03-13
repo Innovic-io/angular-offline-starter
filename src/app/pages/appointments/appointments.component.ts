@@ -37,7 +37,6 @@ export class AppointmentsComponent implements OnInit {
   appointmentSelectAll(event) {
     if (event) {
       this.markedAppointments = this.upcomingAppointments.map(appointment => appointment.guid);
-      console.log(this.markedAppointments);
     } else {
       this.markedAppointments = [];
     }
@@ -46,7 +45,6 @@ export class AppointmentsComponent implements OnInit {
   pastAppointmentSelectAll(event) {
     if (event) {
       this.markedAppointments = this.pastAppointments.map(appointment => appointment.guid);
-      console.log(this.markedAppointments);
     } else {
       this.markedAppointments = [];
     }
