@@ -1,7 +1,9 @@
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" routerLinkActive="active">
-      <ng-content></ng-content></a>
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item" *ngFor="let tab of contentChildren; let i = index">
+    <a class="nav-link" [ngClass]="{'active': tab?.active}" data-toggle="tab" role="tab" aria-selected="true" (click)="onTabClick(i)">{{ tab?.title }}</a>
   </li>
 </ul>
+<div class="tab-content">
+  <ng-content></ng-content>
+</div>
 

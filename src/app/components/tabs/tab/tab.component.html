@@ -1,3 +1,3 @@
-<div>
- {{title}}
+<div *ngIf="active" class="tab-pane fade" [ngClass]="{'active': active, 'show': active}" role="tabpanel">
+ <ng-content></ng-content>
 </div>

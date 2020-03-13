@@ -1,14 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ContentChildren, QueryList } from '@angular/core';
+import { TabComponent } from './tab/tab.component';
 
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.css']
 })
-export class TabsComponent implements OnInit {
+export class TabsComponent {
+  @ContentChildren(TabComponent) contentChildren !: QueryList<TabComponent>;
 
-  constructor() { }
-  ngOnInit(): void {
+  onTabClick(index) {
+    this.contentChildren.forEach(item => {
+      item.active = false;
+    });
+    const element = this.contentChildren.toArray()[index];
+    element.active = true;
   }
 
 }

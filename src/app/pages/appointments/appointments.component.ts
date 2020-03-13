@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { EmployeeModel } from '../../models/employee.model';
 import { EmployeeService } from '../../services/employee.service';
@@ -12,16 +12,17 @@ import { AppointmentService } from '../../services/appointment.service';
 })
 export class AppointmentsComponent implements OnInit {
   currentUser: EmployeeModel;
-  appointments: AppointmentModel[];
+  upcomingAppointments: AppointmentModel[];
+  pastAppointments: AppointmentModel[];
   markedAppointments: string[] = [];
-  @ViewChild('upcoming') TableComponent;
 
   constructor(public employee: EmployeeService, public appointmentService: AppointmentService) {
   }
 
   ngOnInit(): void {
     this.currentUser = this.employee.getLoggedEmployee();
-    this.appointments = this.appointmentService.getAllDoctorAppointments(this.currentUser.guid);
+    this.upcomingAppointments = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
+    this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
   }
 
   appointmentSelect(event: { checked: boolean, guid: string }) {
@@ -35,7 +36,17 @@ export class AppointmentsComponent implements OnInit {
 
   appointmentSelectAll(event) {
     if (event) {
-      this.markedAppointments = this.appointments.map(appointment => appointment.guid);
+      this.markedAppointments = this.upcomingAppointments.map(appointment => appointment.guid);
+      console.log(this.markedAppointments);
+    } else {
+      this.markedAppointments = [];
+    }
+  }
+
+  pastAppointmentSelectAll(event) {
+    if (event) {
+      this.markedAppointments = this.pastAppointments.map(appointment => appointment.guid);
+      console.log(this.markedAppointments);
     } else {
       this.markedAppointments = [];
     }
@@ -46,6 +57,7 @@ export class AppointmentsComponent implements OnInit {
       this.markedAppointments.forEach(appointmentGUID => this.appointmentService.deleteAppointments(appointmentGUID));
     }
 
-    this.appointments = this.appointmentService.getAllDoctorAppointments(this.currentUser.guid);
+    this.upcomingAppointments = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
+    this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
   }
 }

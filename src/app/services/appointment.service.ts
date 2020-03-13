@@ -7,6 +7,7 @@ import { AppointmentModel } from '../models/appointment.model';
 })
 export class AppointmentService {
   private appointments: AppointmentModel[] = [];
+  private now = new Date();
 
   constructor() {
   }
@@ -15,8 +16,12 @@ export class AppointmentService {
     this.appointments.push(appointment);
   }
 
-  getAllDoctorAppointments(doctorGUID: string) {
-    return this.appointments.filter(appointment => appointment.provider.guid === doctorGUID);
+  getAllUpcomingDoctorAppointments(doctorGUID: string) {
+    return this.appointments.filter(appointment => appointment.provider.guid === doctorGUID && appointment.date >= this.now);
+  }
+
+  getAllPastDoctorAppointments(doctorGUID: string) {
+    return this.appointments.filter(appointment => appointment.provider.guid === doctorGUID && appointment.date < this.now);
   }
 
   deleteAppointments(appointmentGUID: string) {

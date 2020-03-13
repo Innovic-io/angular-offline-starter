@@ -18,11 +18,10 @@ import { AppointmentsComponent } from './pages/appointments/appointments.compone
 import { UpcomingAppointmentsComponent } from './components/upcoming-appointments/upcoming-appointments.component';
 import { CreateComponent } from './pages/appointments/create/create.component';
 import { RolePipe } from './pipes/role.pipe';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { CurrentDateComponent } from './components/current-date/current-date.component';
-import { UpcomingPastComponent } from './pages/appointments/upcoming-past/upcoming-past.component';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
-import { TableComponent } from './pages/appointments/table/table.component';
+import { TableComponent } from './components/table/table.component';
 import { AlertsComponent } from './components/alerts/alerts.component';
 import { NewMessageComponent } from './pages/messages/new-message/new-message.component';
 import { MessagesComponent } from './pages/messages/messages.component';
@@ -58,13 +57,11 @@ import { UploadPatientFormComponent } from './pages/upload-patient-form/upload-p
     HeaderComponent,
     RolePipe,
     CurrentDateComponent,
-    UpcomingPastComponent,
     RolePipe,
     TimeAgoPipe,
     TableComponent,
     NewMessageComponent,
     MessagesComponent,
-    TableComponent,
     AlertsComponent,
     MyHealthComponent,
     BasicInfoComponent,

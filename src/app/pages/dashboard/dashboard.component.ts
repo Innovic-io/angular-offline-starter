@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.employee.getLoggedEmployee();
-    this.appointments = this.appointmentService.getAllDoctorAppointments(this.currentUser.guid);
+    this.appointments = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
   }
 
 }

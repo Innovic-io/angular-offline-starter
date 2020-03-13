@@ -12,36 +12,41 @@
   <div class="row">
     <div class="col-lg-12 col-sm-12">
       <app-tabs>
-        <app-tab title="Upcoming">
+        <div class="row">
+          <div class="col-lg-12 col-sm-12">
+            <div class="dropdown">
+              <button class="btn btn-default float-right dropdown-toggle" type="button" id="dropdownMenuButton"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                      [disabled]="markedAppointments.length === 0">
+                Action
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item btn btn-default" (click)="deleteAppointments()">Delete</a>
+              </div>
+            </div>
+            <button class="btn btn-default float-right btnMargin" routerLink="/appointments/create">Make an app</button>
+          </div>
+        </div>
+        <app-tab title="Upcoming Apps" [active]="true">
+          <div class="row">
+            <div class="col-lg-12">
+              <app-table [appointments]="upcomingAppointments"
+                         (checked)="appointmentSelect($event)"
+                         (checkedAll)="appointmentSelectAll($event)"></app-table>
+            </div>
+          </div>
+        </app-tab>
+        <app-tab title="Past Apps" [active]="false">
+          <div class="row">
+            <div class="col-lg-12">
+              <app-table [appointments]="pastAppointments"
+                         (checked)="appointmentSelect($event)"
+                         (checkedAll)="pastAppointmentSelectAll($event)"></app-table>
+            </div>
+          </div>
         </app-tab>
       </app-tabs>
-      <div class="row">
-        <div class="col-lg-12">
-      <app-table type="table" [appointments]="appointments" (checked)="appointmentSelect($event)"
-                 (checkedAll)="appointmentSelectAll($event)"></app-table>
-        </div>
-      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-12 col-sm-12">
-      <div class="dropdown">
-        <button class="btn btn-default float-right dropdown-toggle" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                [disabled]="markedAppointments.length === 0">
-          Action
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item btn btn-default" (click)="deleteAppointments()">Delete</a>
-        </div>
-      </div>
-      <button class="btn btn-default float-right btnMargin" routerLink="/appointments/create">Make an app</button>
-    </div>
-  </div>
-  <!--  <div class="row">-->
-  <!--    <div class="col-lg-12 col-sm-12">-->
-  <!--      <app-table [appointments]="appointments" (checked)="appointmentSelect($event)" (checkedAll)="appointmentSelectAll($event)"></app-table>-->
-  <!--    </div>-->
-  <!--  </div>-->
 </div>
 

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { AppointmentModel } from '../../../models/appointment.model';
+import { AppointmentModel } from '../../models/appointment.model';
 
 @Component({
   selector: 'app-table',

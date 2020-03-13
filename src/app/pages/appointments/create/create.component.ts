@@ -23,7 +23,7 @@ export class CreateComponent implements OnInit {
   }
 
   checkAvailableAppointment() {
-    const arrayOfAppointments = this.appointmentService.getAllDoctorAppointments(this.appointment.provider.guid);
+    const arrayOfAppointments = this.appointmentService.getAllUpcomingDoctorAppointments(this.appointment.provider.guid);
 
     return arrayOfAppointments.some(appointment => this.appointment.date.getTime() === appointment.date.getTime());
   }
