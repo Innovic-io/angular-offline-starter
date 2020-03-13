@@ -39,6 +39,8 @@ import { InboxComponent } from './components/inbox/inbox.component';
 import { SuccessComponent } from './components/success/success.component';
 import { RequestComponent } from './pages/my-profile/request/request.component';
 import { SearchPipe } from './pipes/search.pipe';
+import { TabsComponent } from './components/tabs/tabs.component';
+import { TabComponent } from './components/tabs/tab/tab.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,9 @@ import { SearchPipe } from './pipes/search.pipe';
     SuccessComponent,
     RequestComponent,
     InboxComponent,
-    SearchPipe
+    SearchPipe,
+    TabsComponent,
+    TabComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
 
 import { EmployeeModel } from '../../models/employee.model';
 import { EmployeeService } from '../../services/employee.service';
@@ -14,6 +14,7 @@ export class AppointmentsComponent implements OnInit {
   currentUser: EmployeeModel;
   appointments: AppointmentModel[];
   markedAppointments: string[] = [];
+  @ViewChild('upcoming') TableComponent;
 
   constructor(public employee: EmployeeService, public appointmentService: AppointmentService) {
   }

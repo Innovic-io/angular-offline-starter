@@ -6,19 +6,31 @@
   </div>
   <div class="row">
     <div class="col-lg-12 col-sm-12">
-      <app-current-date> </app-current-date>
+      <app-current-date></app-current-date>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-12 col-sm-12">
-      <app-upcoming-past> </app-upcoming-past>
+      <app-tabs>
+        <app-tab title="Upcoming">
+        </app-tab>
+      </app-tabs>
+      <div class="row">
+        <div class="col-lg-12">
+      <app-table type="table" [appointments]="appointments" (checked)="appointmentSelect($event)"
+                 (checkedAll)="appointmentSelectAll($event)"></app-table>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-12 col-sm-12">
       <div class="dropdown">
-      <button class="btn btn-default float-right dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [disabled]="markedAppointments.length === 0">
-        Action</button>
+        <button class="btn btn-default float-right dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                [disabled]="markedAppointments.length === 0">
+          Action
+        </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item btn btn-default" (click)="deleteAppointments()">Delete</a>
         </div>
@@ -26,10 +38,10 @@
       <button class="btn btn-default float-right btnMargin" routerLink="/appointments/create">Make an app</button>
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-12 col-sm-12">
-      <app-table [appointments]="appointments" (checked)="appointmentSelect($event)" (checkedAll)="appointmentSelectAll($event)"></app-table>
-    </div>
-  </div>
+  <!--  <div class="row">-->
+  <!--    <div class="col-lg-12 col-sm-12">-->
+  <!--      <app-table [appointments]="appointments" (checked)="appointmentSelect($event)" (checkedAll)="appointmentSelectAll($event)"></app-table>-->
+  <!--    </div>-->
+  <!--  </div>-->
 </div>
 
