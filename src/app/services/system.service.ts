@@ -9,6 +9,9 @@ export class SystemService {
 
   createAlertMessage(message: string) {
     this.alertMessages.push(message);
-    console.log(this.alertMessages);
+  }
+
+  getMessage() {
+    return this.alertMessages;
   }
 }

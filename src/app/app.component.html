@@ -1,5 +1,5 @@
 <app-header [user]="currentUser"></app-header>
 <main role="main" class="container">
-  <app-success [title]="alertMessage"></app-success>
+  <app-success  *ngFor="let message of messages" [title]="message"></app-success>
   <router-outlet></router-outlet>
 </main>

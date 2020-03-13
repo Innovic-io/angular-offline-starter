@@ -14,14 +14,19 @@ moment.locale('sr');
 })
 export class AppComponent implements OnInit {
   currentUser: EmployeeModel;
-  alertMessage = 'Successful!';
+  messages: string[] = [];
 
   constructor(public employeeService: EmployeeService, public systemService: SystemService) {
   }
 
   ngOnInit(): void {
     this.currentUser = this.employeeService.getLoggedEmployee();
-    this.systemService.createAlertMessage(this.alertMessage);
+
+    this.systemService.createAlertMessage('Successful!');
+    this.messages = this.systemService.getMessage();
+
+    setTimeout(() =>
+      this.messages.pop(), 2000);
   }
 
 }
