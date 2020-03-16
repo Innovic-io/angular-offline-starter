@@ -34,3 +34,10 @@ body {
   letter-spacing: 1px;
 }
 
+.btn.btn-link {
+  font-family: 'Andada', serif;
+  font-variant: small-caps;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+

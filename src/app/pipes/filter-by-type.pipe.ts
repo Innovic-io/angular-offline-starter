@@ -1,0 +1,19 @@
+import { Pipe, PipeTransform } from '@angular/core';
+import { AppointmentModel } from '../models/appointment.model';
+
+@Pipe({
+  name: 'filterByType'
+})
+export class FilterByTypePipe implements PipeTransform {
+
+  transform(appointments: AppointmentModel[], selectedType: string): AppointmentModel[] {
+    if (!appointments || !selectedType) {
+      return appointments;
+    }
+    return appointments.filter(item => {
+      return item.appType === selectedType;
+    }).sort( (a, b) => {
+      return new Date(b.date) - new Date(a.date);
+    });
+  }
+}

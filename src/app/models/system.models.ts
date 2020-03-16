@@ -4,9 +4,9 @@ export enum Roles {
 }
 
 export enum AppointmentType {
-  check = 'Check',
-  consultation = 'Consultation',
-  prescription = 'Prescription'
+  check = 'check',
+  consultation = 'consultation',
+  prescription = 'prescription'
 }
 
 export enum Relationship {
