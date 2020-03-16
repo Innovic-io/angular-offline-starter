@@ -16,26 +16,26 @@ export class MessageService {
 
   getAllDoctorEmails(doctorGUID: string) {
     const lastMessage = [];
-    const conver = [{
-      date: '',
-      guid: '',
-      urgent: false,
-      archive: false,
-      doctorEmail: '',
-      recipient: '',
-      subject: '',
-      doctorMessage: '',
-      dis: [{
-        date: '',
-        guid: '',
-        urgent: false,
-        archive: false,
-        doctorEmail: '',
-        recipient: '',
-        subject: '',
-        doctorMessage: '',
-      }]
-    }];
+    // const conver = [{
+    //   date: '',
+    //   guid: '',
+    //   urgent: false,
+    //   archive: false,
+    //   doctorEmail: '',
+    //   recipient: '',
+    //   subject: '',
+    //   doctorMessage: '',
+    //   dis: [{
+    //     date: '',
+    //     guid: '',
+    //     urgent: false,
+    //     archive: false,
+    //     doctorEmail: '',
+    //     recipient: '',
+    //     subject: '',
+    //     doctorMessage: '',
+    //   }]
+    // }];
     const doctorMessages = this.messages.filter(message => message.doctorEmail.guid === doctorGUID);
     const allOther = this.messages.filter(message => message.doctorEmail.guid === doctorGUID);
     lastMessage.push(doctorMessages.reduce((a, b) => (a.date > b.date ? a : b)));
