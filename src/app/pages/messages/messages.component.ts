@@ -26,7 +26,6 @@ export class MessagesComponent implements OnInit {
 
   delete($event) {
     if ($event) {
-      console.log($event);
       this.messageService.deleteMessage($event);
       this.messages = this.messageService.getAllDoctorEmails(this.currentUser.guid);
     }
@@ -35,6 +34,7 @@ export class MessagesComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = this.employeeService.getLoggedEmployee();
     this.messages = this.messageService.getAllDoctorEmails(this.currentUser.guid);
+  //  this.message = this.messageService.getLastEmailInConversation(this.currentUser.guid);
   }
 
 }

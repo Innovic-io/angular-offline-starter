@@ -15,7 +15,7 @@ import { SystemService } from '../../../services/system.service';
 export class NewMessageComponent implements OnInit {
   message: MessageModel;
   minLengthTextArea = 10;
-  id: string;
+  messages: MessageModel[];
 
   constructor(
     private systemService: SystemService,
@@ -27,7 +27,9 @@ export class NewMessageComponent implements OnInit {
   onSubmit(form: NgForm) {
     if (form.valid) {
       this.messageService.createMessage(this.message);
+      this.messageService.createConversation(this.message);
       this.message = new MessageModel();
+      console.log(this.message);
 
       form.reset();
       form.controls.urgent.setValue(false);
@@ -45,13 +47,16 @@ export class NewMessageComponent implements OnInit {
 
 
   ngOnInit(): void {
+    const { replayTo } = this.route.snapshot.queryParams;
     this.message = new MessageModel();
     this.message.doctorEmail = this.employee.getLoggedEmployee();
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.messageService.getEmail(this.id);
-    this.message.subject = this.messageService.getEmail(this.id)[0]?.subject;
-    console.log( this.messageService.getEmail(this.id).forEach(el => el.subject));
-    console.log( this.messageService.getEmail(this.id));
-    console.log(this.id);
+
+    if (replayTo) {
+      const replayToMessage = this.messageService.getEmail(replayTo);
+      this.message.subject = 'RE: ' + replayToMessage.subject;
+      this.message.recipient = replayToMessage.recipient;
+      this.message.replyTo = replayTo;
+    }
+
   }
 }

@@ -65,7 +65,7 @@
               </div>
               <div class="col-6">
                 <button class="float-right btn btn-default ml-2">Forward</button>
-                <a  routerLink ="new/{{message.guid}}">
+                <a [routerLink]="['./new']" [queryParams]="{replayTo: message.guid}">
                 <button  class="float-right btn btn-primary">Reply</button>
                 </a>
               </div>
@@ -80,7 +80,7 @@
       <img src = "../assets/noResults/noResult.png"  alt="noResults" class="w-25  mt-5">
     </div>
     <div class="col-12 d-flex justify-content-center" >
-      <p class ="text-center">No results... </p>
+      <p class ="text-center">No messages... </p>
     </div>
   </div>
 </div>
