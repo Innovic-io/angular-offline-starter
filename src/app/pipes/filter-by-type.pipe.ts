@@ -12,8 +12,7 @@ export class FilterByTypePipe implements PipeTransform {
     }
     return appointments.filter(item => {
       return item.appType === selectedType;
-    }).sort( (a, b) => {
-      return new Date(b.date) - new Date(a.date);
     });
+    
   }
 }
