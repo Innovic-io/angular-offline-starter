@@ -4,6 +4,7 @@
 
 .nav-item {
   padding-left: 20px;
+  cursor: pointer;
 }
 
 .nav-link.active {

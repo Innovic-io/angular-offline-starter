@@ -11,3 +11,7 @@ select {
   background-color: #F2F2F2;
   cursor: pointer;
 }
+
+option {
+  cursor: pointer;
+}
