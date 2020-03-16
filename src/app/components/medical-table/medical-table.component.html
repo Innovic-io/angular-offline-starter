@@ -13,15 +13,15 @@
        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter By Type
        </button>
-       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" *ngFor="let appType of appTypes">
-          <a class="dropdown-item btn">{{appType.title}}</a>
+       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item btn" *ngFor="let appType of appTypes" (click)="onClick(appType.title)">{{appType.title}}</a>
        </div>
      </div>
    </th>
    <th scope="col" width="25%">View PDF</th>
  </tr>
  </thead>
-  <tbody *ngFor="let appointment of appointments; let i = index">
+  <tbody *ngFor="let appointment of appointments | filterByType: selectedType let i = index">
   <th scope="row">
     <div class="custom-control custom-checkbox">
       <input type="checkbox" #checkbox class="custom-control-input" id="defaultUnchecked{{i}}" (change)="checkBox(checkbox.checked, appointment.guid)" [checked]="checkboxAll.checked">
