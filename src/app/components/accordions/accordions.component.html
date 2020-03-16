@@ -1,0 +1,12 @@
+  <div class="card">
+    <div class="card-header" *ngFor="let accordion of contentChildren; let i = index">
+      <h5 class="mb-0">
+        <button class="btn btn-link" [ngClass]="{'active': accordion?.active}" data-toggle="collapse" aria-expanded="true" (click)="onAccordionClick(i)">
+          {{accordion?.title}}
+        </button>
+      </h5>
+    </div>
+    <ng-content></ng-content>
+  </div>
+
+

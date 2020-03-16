@@ -1,0 +1,5 @@
+<div *ngIf="active" [ngClass]="{'show': active, 'active': active}" class="collapse fade" role="tabpanel">
+  <div class="card-body">
+  <ng-content></ng-content>
+  </div>
+</div>

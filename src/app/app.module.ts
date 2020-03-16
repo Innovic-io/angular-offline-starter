@@ -44,6 +44,8 @@ import { MyDocumentsComponent } from './pages/my-documents/my-documents.componen
 import { FormsComponent } from './components/forms/forms.component';
 import { NoticesComponent } from './components/notices/notices.component';
 import { UploadPatientFormComponent } from './pages/upload-patient-form/upload-patient-form.component';
+import { AccordionsComponent } from './components/accordions/accordions.component';
+import { AccordionComponent } from './components/accordions/accordion/accordion.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +85,9 @@ import { UploadPatientFormComponent } from './pages/upload-patient-form/upload-p
     MyDocumentsComponent,
     FormsComponent,
     NoticesComponent,
-    UploadPatientFormComponent
+    UploadPatientFormComponent,
+    AccordionsComponent,
+    AccordionComponent
   ],
   imports: [
     BrowserModule,

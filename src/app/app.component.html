@@ -5,3 +5,14 @@
   </ng-container>
   <router-outlet></router-outlet>
 </main>
+
+<app-accordions>
+  <app-accordion title="Inbox" [active]="true">
+   <p>Some text</p>
+  </app-accordion>
+  <app-accordion title="Sent" [active]="false">
+  <p>Something else</p>
+  </app-accordion>
+</app-accordions>
+
+
