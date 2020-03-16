@@ -13,6 +13,5 @@ export class FilterByTypePipe implements PipeTransform {
     return appointments.filter(item => {
       return item.appType === selectedType;
     });
-    
   }
 }

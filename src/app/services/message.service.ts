@@ -42,15 +42,12 @@ export class MessageService {
     console.log('last', lastMessage);
     const indexOfLastMessage = doctorMessages.indexOf(lastMessage[0]);
     console.log(indexOfLastMessage);
-
     allOther.splice(indexOfLastMessage, 1);
     console.log('all other', allOther);
     lastMessage.push(allOther);
     console.log(lastMessage);
 
     return doctorMessages;
-
-
   }
 
   updateArchive(messageGUID: string) {
