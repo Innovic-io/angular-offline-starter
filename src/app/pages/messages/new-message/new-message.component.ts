@@ -27,7 +27,6 @@ export class NewMessageComponent implements OnInit {
   onSubmit(form: NgForm) {
     if (form.valid) {
       this.messageService.createMessage(this.message);
-      this.messageService.createConversation(this.message);
       this.message = new MessageModel();
       console.log(this.message);
 
