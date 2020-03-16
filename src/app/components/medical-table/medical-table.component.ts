@@ -11,15 +11,16 @@ import { AppointmentType, enumSelector } from '../../models/system.models';
 })
 export class MedicalTableComponent {
   @Input() appointments: AppointmentModel[];
+  @Input() selectedType: string;
   @Output() checkedAll = new EventEmitter<boolean>();
   @Output() checked = new EventEmitter<{ checked: boolean, guid: string }>();
   appTypes = enumSelector(AppointmentType);
   public faFileAlt = faFileAlt;
-  @Input() selectedType: string;
 
   checkAll(event) {
     this.checkedAll.emit(event);
   }
+
   checkBox(event, appointmentGUID: string) {
     this.checked.emit({ checked: event, guid: appointmentGUID });
   }

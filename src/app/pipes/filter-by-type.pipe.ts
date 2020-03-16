@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { MessageModel } from '../models/message.model';
 import { AppointmentModel } from '../models/appointment.model';
 
 @Pipe({
@@ -13,6 +12,8 @@ export class FilterByTypePipe implements PipeTransform {
     }
     return appointments.filter(item => {
       return item.appType === selectedType;
+    }).sort( (a, b) => {
+      return new Date(b.date) - new Date(a.date);
     });
   }
 }
