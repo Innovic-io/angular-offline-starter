@@ -9,16 +9,4 @@ import { AccordionComponent } from './accordion/accordion.component';
 export class AccordionsComponent {
   @ContentChildren(AccordionComponent) contentChildren !: QueryList<AccordionComponent>;
 
-  onAccordionClick(index) {
-    const element = this.contentChildren.toArray()[index];
-    if (element.active) {
-      element.active = false;
-    } else {
-      this.contentChildren.forEach(item => {
-        item.active = false;
-      });
-      element.active = true;
-    }
-  }
-
 }

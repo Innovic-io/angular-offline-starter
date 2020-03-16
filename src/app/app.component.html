@@ -1,17 +1,17 @@
 <app-header [user]="currentUser"></app-header>
 <main role="main" class="container">
   <ng-container *ngIf="systemMessage$ | async as message">
-  <app-success [title]="message"></app-success>
+    <app-success [title]="message"></app-success>
   </ng-container>
   <router-outlet></router-outlet>
 </main>
 
 <app-accordions>
-  <app-accordion title="Inbox" [active]="true">
-   <p>Some text</p>
+  <app-accordion title="Inbox">
+    <p>Some text</p>
   </app-accordion>
-  <app-accordion title="Sent" [active]="false">
-  <p>Something else</p>
+  <app-accordion title="Sent">
+    <p>Something else</p>
   </app-accordion>
 </app-accordions>
 
