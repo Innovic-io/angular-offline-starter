@@ -8,14 +8,41 @@
   <div class="row">
     <div class="col-12">
       <h2 class="row">My Document</h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-6 col-sm-12">
-      <app-forms></app-forms>
-    </div>
-    <div class="col-lg-6 col-sm-12">
-      <app-notices></app-notices>
+      <app-tabs>
+        <div class="row">
+          <div class="col-lg-12 col-sm-12">
+            <div class="dropdown">
+              <button class="btn btn-default float-right dropdown-toggle" type="button" id="dropdownMenuButton"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                      [disabled]="markedAppointments.length === 0">
+                Action
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item btn btn-default" (click)="deleteAppointments()">Delete</a>
+              </div>
+            </div>
+            <button class="btn btn-default float-right btnMargin" routerLink="/appointments/create">Make an app</button>
+          </div>
+        </div>
+        <app-tab title="Medical" [active]="true">
+          <div class="row">
+            <div class="col-lg-12">
+              <app-medical-table [appointments]="pastAppointments" (checked)="appointmentSelect($event)" (checkedAll)="pastAppointmentSelectAll($event)"
+                                 ></app-medical-table>
+            </div>
+          </div>
+        </app-tab>
+        <app-tab title="Legal" [active]="false">
+            <div class="row">
+              <div class="col-lg-6 col-sm-12">
+                <app-forms></app-forms>
+              </div>
+              <div class="col-lg-6 col-sm-12">
+                <app-notices></app-notices>
+              </div>
+            </div>
+        </app-tab>
+      </app-tabs>
     </div>
   </div>
 </div>

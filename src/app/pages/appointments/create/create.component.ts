@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
-import {AppointmentModel} from '../../../models/appointment.model';
-import {AppointmentService} from '../../../services/appointment.service';
+import { AppointmentModel } from '../../../models/appointment.model';
+import { AppointmentService } from '../../../services/appointment.service';
 
-import {doctor } from '../../../data/dummy';
-import {AppointmentType, enumSelector} from '../../../models/system.models';
+import { doctor } from '../../../data/dummy';
+import { AppointmentType, enumSelector } from '../../../models/system.models';
 import { SystemService } from '../../../services/system.service';
 
 @Component({

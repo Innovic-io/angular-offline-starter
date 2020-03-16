@@ -1,0 +1,35 @@
+<table class="table table-bordered">
+ <thead>
+ <tr class="tableColor" scope="row">
+   <th scope="col" width="5%">
+     <div class="custom-control custom-checkbox">
+       <input type="checkbox" #checkboxAll class="custom-control-input" id="defaultUnchecked" (change)="checkAll(checkboxAll.checked)">
+       <label class="custom-control-label" for="defaultUnchecked"></label>
+     </div>
+   </th>
+   <th scope="col" width="25%">Appointment Date</th>
+   <th scope="col" width="55%">
+     <div class="dropdown">
+       <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter By Type
+       </button>
+       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" *ngFor="let appType of appTypes">
+          <a class="dropdown-item btn">{{appType.title}}</a>
+       </div>
+     </div>
+   </th>
+   <th scope="col" width="25%">View PDF</th>
+ </tr>
+ </thead>
+  <tbody *ngFor="let appointment of appointments; let i = index">
+  <th scope="row">
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" #checkbox class="custom-control-input" id="defaultUnchecked{{i}}" (change)="checkBox(checkbox.checked, appointment.guid)" [checked]="checkboxAll.checked">
+      <label class="custom-control-label" for="defaultUnchecked{{i}}"></label>
+    </div>
+  </th>
+  <td scope="col">{{appointment?.date | date:'medium': undefined: 'sr-RS' }}</td>
+  <td scope="col">{{appointment?.appType}}</td>
+  <td scope="col"><fa-icon [icon]="faFileAlt" class="mr-2"></fa-icon></td>
+  </tbody>
+</table>

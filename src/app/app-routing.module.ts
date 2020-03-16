@@ -10,7 +10,7 @@ import { MyHealthComponent } from './pages/my-health/my-health.component';
 import { MyProfileComponent } from './pages/my-profile/my-profile.component';
 import { RequestComponent } from './pages/my-profile/request/request.component';
 import { MyDocumentsComponent } from './pages/my-documents/my-documents.component';
-import { UploadPatientFormComponent } from './pages/upload-patient-form/upload-patient-form.component';
+import { UploadPatientFormComponent } from './pages/my-documents/upload-patient-form/upload-patient-form.component';
 
 const routes: Routes = [
   {

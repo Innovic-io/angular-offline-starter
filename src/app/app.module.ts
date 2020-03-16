@@ -43,7 +43,8 @@ import { TabComponent } from './components/tabs/tab/tab.component';
 import { MyDocumentsComponent } from './pages/my-documents/my-documents.component';
 import { FormsComponent } from './components/forms/forms.component';
 import { NoticesComponent } from './components/notices/notices.component';
-import { UploadPatientFormComponent } from './pages/upload-patient-form/upload-patient-form.component';
+import { UploadPatientFormComponent } from './pages/my-documents/upload-patient-form/upload-patient-form.component';
+import { MedicalTableComponent } from './components/medical-table/medical-table.component';
 import { AccordionsComponent } from './components/accordions/accordions.component';
 import { AccordionComponent } from './components/accordions/accordion/accordion.component';
 
@@ -85,6 +86,8 @@ import { AccordionComponent } from './components/accordions/accordion/accordion.
     MyDocumentsComponent,
     FormsComponent,
     NoticesComponent,
+    UploadPatientFormComponent,
+    MedicalTableComponent,
     UploadPatientFormComponent,
     AccordionsComponent,
     AccordionComponent
