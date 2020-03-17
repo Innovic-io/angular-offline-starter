@@ -48,6 +48,7 @@ import { MedicalTableComponent } from './components/medical-table/medical-table.
 import { AccordionsComponent } from './components/accordions/accordions.component';
 import { AccordionComponent } from './components/accordions/accordion/accordion.component';
 import { FilterByTypePipe } from './pipes/filter-by-type.pipe';
+import { DisplayMessageComponent } from './components/inbox/display-message/display-message.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { FilterByTypePipe } from './pipes/filter-by-type.pipe';
     UploadPatientFormComponent,
     AccordionsComponent,
     AccordionComponent,
-    FilterByTypePipe
+    FilterByTypePipe,
+    DisplayMessageComponent
   ],
   imports: [
     BrowserModule,

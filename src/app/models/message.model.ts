@@ -12,6 +12,7 @@ export class MessageModel {
   urgent: boolean;
   archive: boolean;
   replyTo: string;
+  conversation: MessageModel[];
 
   constructor() {
     this.guid = uuidv4();

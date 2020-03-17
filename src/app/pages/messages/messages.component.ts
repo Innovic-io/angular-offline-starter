@@ -34,9 +34,6 @@ export class MessagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.employeeService.getLoggedEmployee();
-    for (const message of generateMessages(14)) {
-      this.messageService.createMessage(message);
-    }
     this.messages = this.messageService.getAllDoctorEmails(this.currentUser.guid);
   }
 

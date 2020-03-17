@@ -1,7 +1,8 @@
 <div class="container-fluid space">
   <div class="row">
     <div class="col-lg-3 col-sm-12">
-      <input type="text" class="form-control" name="search" autocomplete="off" #search placeholder="Search" (input)='onSearch(search.value)'>
+      <input type="text" class="form-control" name="search" autocomplete="off" #search placeholder="Search"
+             (input)='onSearch(search.value)'>
     </div>
     <div class="col-lg-9 col-sm-12">
       <div class="dropdown">
@@ -22,7 +23,8 @@
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
           <a class="nav-link" [ngClass]="{'active': i === 0}" id="v-pills-home-tab" data-toggle="pill"
              href="#v-pills-home{{i}}" role="tab"
-             aria-controls="v-pills-home" aria-selected="true" *ngFor="let message of messages  | search: searchText  let i = index">
+             aria-controls="v-pills-home" aria-selected="true"
+             *ngFor="let message of messages  | search: searchText  let i = index">
             <div class="row">
               <div class="col-7 blackLabel">From: {{message.doctorEmail.name}}</div>
               <div class="col-5 blackLabel">{{message.date | date }}</div>
@@ -42,45 +44,30 @@
         <div class="tab-content" id="v-pills-tabContent">
           <div class="tab-pane fade show" id="v-pills-home{{i}}" role="tabpanel" [ngClass]="{'active': i === 0}"
                aria-labelledby="v-pills-home-tab" *ngFor="let message of messages  | search: searchText let i = index">
-            <div class="row pl-4 pr-4">
-              <div class="col-9 pb-0">From: {{message.doctorEmail.name}}</div>
-              <div class="col-3 pb-0 text-right">{{message.date | date }}
-              </div>
-            </div>
-            <div class="row pl-4 pr-4 ">
-              <div class="col-12 pb-0 pt-0 text-secondary">To: {{message.recipient}}</div>
-            </div>
-            <div class="row pl-4 pr-4">
-              <div class="col-12 pb-0 pt-0 text-secondary ">Subject: {{message.subject}}</div>
-            </div>
-            <hr>
-            <div class="row pl-4 pr-4 ">
-              <div class="col-12 grayLabel pb-5 pt-0 preWrap">{{message.doctorMessage}}</div>
-            </div>
-            <hr class="mb-0">
-            <div class="row pl-2 pr-2">
-              <div class="col-6">
-                <button class=" btn btn-default" (click)="onClick(message.guid)">Archive</button>
-                <button class=" btn btn-default ml-2" (click)="deleteClick(message.guid)">Delete</button>
-              </div>
-              <div class="col-6">
-                <button class="float-right btn btn-default ml-2">Forward</button>
-                <a [routerLink]="['./new']" [queryParams]="{replayTo: message.guid}">
-                <button  class="float-right btn btn-primary">Reply</button>
-                </a>
-              </div>
-            </div>
+            <app-display-message [message]="message"
+                                 (deleteMessage)="deleteIC($event)"
+                                 (updateAchieve)="updateIC($event)">
+            </app-display-message>
+            <app-accordions>
+              <app-accordion *ngFor="let message of message.conversation | search: searchText"
+                             [title]="message?.subject">
+                <app-display-message [message]="message"
+                                     (deleteMessage)="deleteIC($event)"
+                                     (updateAchieve)="updateIC($event)">
+                </app-display-message>
+              </app-accordion>
+            </app-accordions>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class = "row" *ngIf="(messages | search: searchText)?.length === 0" >
-    <div class="col-12 d-flex justify-content-center" >
-      <img src = "../assets/noResults/noResult.png"  alt="noResults" class="w-25  mt-5">
+  <div class="row" *ngIf="(messages | search: searchText)?.length === 0">
+    <div class="col-12 d-flex justify-content-center">
+      <img src="../assets/noResults/noResult.png" alt="noResults" class="w-25  mt-5">
     </div>
-    <div class="col-12 d-flex justify-content-center" >
-      <p class ="text-center">No messages... </p>
+    <div class="col-12 d-flex justify-content-center">
+      <p class="text-center">No messages... </p>
     </div>
   </div>
 </div>

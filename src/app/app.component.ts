@@ -5,6 +5,8 @@ import { EmployeeModel } from './models/employee.model';
 import { EmployeeService } from './services/employee.service';
 import { SystemService } from './services/system.service';
 import { Observable } from 'rxjs';
+import { generateMessages } from './data/appointment';
+import { MessageService } from './services/message.service';
 
 moment.locale('sr');
 
@@ -17,11 +19,14 @@ export class AppComponent implements OnInit {
   currentUser: EmployeeModel;
   systemMessage$: Observable<string>;
 
-  constructor(public employeeService: EmployeeService, public systemService: SystemService) {
+  constructor(public employeeService: EmployeeService, public systemService: SystemService, public messageService: MessageService) {
   }
 
   ngOnInit(): void {
     this.currentUser = this.employeeService.getLoggedEmployee();
     this.systemMessage$ = this.systemService.getMessage();
+    for (const message of generateMessages(14)) {
+      this.messageService.createMessage(message);
+    }
   }
 }

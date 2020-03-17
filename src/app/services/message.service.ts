@@ -1,14 +1,7 @@
-import { Injectable } from '@angular/core';
-
 import { MessageModel } from '../models/message.model';
-import { doctor } from '../data/dummy';
 
-@Injectable({
-  providedIn: 'root'
-})
 export class MessageService {
   private messages: MessageModel[] = [];
-  private conversation: MessageModel[] = [];
 
   createMessage(message: MessageModel) {
     this.messages.push(message);
@@ -16,32 +9,35 @@ export class MessageService {
 
   getAllDoctorEmails(doctorGUID: string) {
     const doctorMessages = this.messages.filter(message => message.doctorEmail.guid === doctorGUID);
-    console.log(doctorMessages);
-    const conversation = [];
     const lastMessages = [];
 
     for (const message of this.messages) {
-      if (message.replyTo == null ) {
-        console.log('first', message);
-      }
-    }
-    for (let i = 0; i < this.messages.length; i++) {
-      if (this.messages[i].replyTo == null && this.messages[i + 1].replyTo !== this.messages[i].guid) {
-        lastMessages.push(this.messages[i]);
-      }
-    }
-    for (let i = 0; i < this.messages.length - 1; i++) {
-      if (this.messages[i + 1].replyTo === this.messages[i].guid) {
-        conversation.push(this.messages[i]);
-        console.log(this.messages.length);
-        lastMessages.push(this.messages[this.messages.length - 1]);
-      }
-    }
-    const uniqueArrayOfLastMessages = [...new Set(lastMessages)];
-    console.log('last ', uniqueArrayOfLastMessages);
-    console.log('conversation', conversation);
+      if (!message.replyTo) {
+        message.conversation = [];
+        message.conversation.push(message);
 
-    return uniqueArrayOfLastMessages;
+        let  guid = message.guid;
+        let replayed;
+
+        do {
+          replayed = doctorMessages.find(dm => dm.replyTo === guid);
+          if (replayed) {
+            message.conversation.push(replayed);
+            guid = replayed.guid;
+          }
+        }while (replayed);
+
+        lastMessages.push(this.replaceLastWithFirst(message));
+      }
+    }
+    return lastMessages;
+  }
+
+  private replaceLastWithFirst(message: MessageModel) {
+    const last = message.conversation.pop();
+    return Object.assign({}, message, last, {
+      conversation: message.conversation
+    });
   }
 
   updateArchive(messageGUID: string) {
