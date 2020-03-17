@@ -41,3 +41,7 @@ body {
   text-decoration: none;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+

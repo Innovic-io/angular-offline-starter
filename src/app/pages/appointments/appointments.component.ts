@@ -16,11 +16,11 @@ export class AppointmentsComponent implements OnInit {
   pastAppointments: AppointmentModel[];
   markedAppointments: string[] = [];
 
-  constructor(public employee: EmployeeService, public appointmentService: AppointmentService) {
+  constructor(public employeeService: EmployeeService, public appointmentService: AppointmentService) {
   }
 
   ngOnInit(): void {
-    this.currentUser = this.employee.getLoggedEmployee();
+    this.currentUser = this.employeeService.getLoggedEmployee();
     this.upcomingAppointments = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
     this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
   }

@@ -16,7 +16,7 @@ export class EmployeeService {
   }
 
   updateEmployee(employee: EmployeeModel | ContactModel | EmergencyModel, type: string) {
-    switch(type) {
+    switch (type) {
       case 'basic':
         this.currentUser = {...this.currentUser, ...employee};
         break;

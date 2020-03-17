@@ -1,5 +1,5 @@
 <ul class="nav nav-tabs" role="tablist">
-  <li class="nav-item" *ngFor="let tab of contentChildren; let i = index">
+  <li class="nav-item cursor-pointer" *ngFor="let tab of contentChildren; let i = index">
     <a class="nav-link" [ngClass]="{'active': tab?.active}" data-toggle="tab" role="tab" aria-selected="true" (click)="onTabClick(i)">{{ tab?.title }}</a>
   </li>
 </ul>

@@ -20,6 +20,7 @@ export class MyProfileComponent implements OnInit {
   onUpdateEmployee(employee: EmployeeModel | ContactModel | EmergencyModel, type: string) {
       this.currentUser = this.employeeService.updateEmployee(employee, type);
       this.systemService.createAlertMessage('Profile is updated!');
+      console.log(this.currentUser);
 }
 
 }
