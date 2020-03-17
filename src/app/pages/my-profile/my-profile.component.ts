@@ -18,9 +18,16 @@ export class MyProfileComponent implements OnInit {
   }
 
   onUpdateEmployee(employee: EmployeeModel | ContactModel | EmergencyModel, type: string) {
-      this.currentUser = this.employeeService.updateEmployee(employee, type);
-      this.systemService.createAlertMessage('Profile is updated!');
-      console.log(this.currentUser);
-}
+    this.currentUser = this.employeeService.updateEmployee(employee, type);
+    this.systemService.createAlertMessage('Profile is updated!');
+  }
+
+  onUpdateAvatar(avatarURL: string) {
+    this.currentUser = this.employeeService.updateEmployeeAvatar(avatarURL);
+    this.systemService.createAlertMessage('Avatar is updated!');
+    console.log(this.currentUser);
+    this.employeeService.nextEmployee(this.currentUser);
+  }
+
 
 }
