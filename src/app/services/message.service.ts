@@ -15,39 +15,33 @@ export class MessageService {
   }
 
   getAllDoctorEmails(doctorGUID: string) {
-    const lastMessage = [];
-    // const conver = [{
-    //   date: '',
-    //   guid: '',
-    //   urgent: false,
-    //   archive: false,
-    //   doctorEmail: '',
-    //   recipient: '',
-    //   subject: '',
-    //   doctorMessage: '',
-    //   dis: [{
-    //     date: '',
-    //     guid: '',
-    //     urgent: false,
-    //     archive: false,
-    //     doctorEmail: '',
-    //     recipient: '',
-    //     subject: '',
-    //     doctorMessage: '',
-    //   }]
-    // }];
     const doctorMessages = this.messages.filter(message => message.doctorEmail.guid === doctorGUID);
-    const allOther = this.messages.filter(message => message.doctorEmail.guid === doctorGUID);
-    lastMessage.push(doctorMessages.reduce((a, b) => (a.date > b.date ? a : b)));
-    console.log('last', lastMessage);
-    const indexOfLastMessage = doctorMessages.indexOf(lastMessage[0]);
-    console.log(indexOfLastMessage);
-    allOther.splice(indexOfLastMessage, 1);
-    console.log('all other', allOther);
-    lastMessage.push(allOther);
-    console.log(lastMessage);
+    console.log(doctorMessages);
+    const conversation = [];
+    const lastMessages = [];
 
-    return doctorMessages;
+    for (const message of this.messages) {
+      if (message.replyTo == null ) {
+        console.log('first', message);
+      }
+    }
+    for (let i = 0; i < this.messages.length; i++) {
+      if (this.messages[i].replyTo == null && this.messages[i + 1].replyTo !== this.messages[i].guid) {
+        lastMessages.push(this.messages[i]);
+      }
+    }
+    for (let i = 0; i < this.messages.length - 1; i++) {
+      if (this.messages[i + 1].replyTo === this.messages[i].guid) {
+        conversation.push(this.messages[i]);
+        console.log(this.messages.length);
+        lastMessages.push(this.messages[this.messages.length - 1]);
+      }
+    }
+    const uniqueArrayOfLastMessages = [...new Set(lastMessages)];
+    console.log('last ', uniqueArrayOfLastMessages);
+    console.log('conversation', conversation);
+
+    return uniqueArrayOfLastMessages;
   }
 
   updateArchive(messageGUID: string) {

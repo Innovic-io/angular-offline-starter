@@ -4,6 +4,7 @@ import { EmployeeService } from '../../services/employee.service';
 import { EmployeeModel } from '../../models/employee.model';
 import { MessageModel } from '../../models/message.model';
 import { MessageService } from '../../services/message.service';
+import { generateMessages } from '../../data/appointment';
 
 @Component({
   selector: 'app-messages',
@@ -33,8 +34,10 @@ export class MessagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.employeeService.getLoggedEmployee();
+    for (const message of generateMessages(14)) {
+      this.messageService.createMessage(message);
+    }
     this.messages = this.messageService.getAllDoctorEmails(this.currentUser.guid);
-  //  this.message = this.messageService.getLastEmailInConversation(this.currentUser.guid);
   }
 
 }
