@@ -49,6 +49,7 @@ import { AccordionsComponent } from './components/accordions/accordions.componen
 import { AccordionComponent } from './components/accordions/accordion/accordion.component';
 import { FilterByTypePipe } from './pipes/filter-by-type.pipe';
 import { AvatarUploadComponent } from './components/avatar-upload/avatar-upload.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { AvatarUploadComponent } from './components/avatar-upload/avatar-upload.
     AccordionsComponent,
     AccordionComponent,
     FilterByTypePipe,
-    AvatarUploadComponent
+    AvatarUploadComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

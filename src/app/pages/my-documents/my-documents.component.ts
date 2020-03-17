@@ -17,6 +17,7 @@ export class MyDocumentsComponent implements OnInit {
   currentUser: EmployeeModel;
   pastAppointments: AppointmentModel[];
   markedAppointments: string[] = [];
+  page: number;
   pager: any = {};
   pagedItems: AppointmentModel[];
 
@@ -28,7 +29,7 @@ export class MyDocumentsComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = this.employeeService.getLoggedEmployee();
 
-    for (const app of generateAppointments(55)) {
+    for (const app of generateAppointments(25)) {
       this.appointmentService.createAppointment(app);
     }
     this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
@@ -62,8 +63,8 @@ export class MyDocumentsComponent implements OnInit {
     this.setPage(1);
   }
 
-  setPage(page: number) {
-    this.pager = this.paginationService.getPager(this.pastAppointments.length, page);
+  setPage($event) {
+    this.page = $event;
     this.pagedItems = this.pastAppointments.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
 
