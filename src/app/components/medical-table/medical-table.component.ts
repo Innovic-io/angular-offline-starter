@@ -25,9 +25,8 @@ export class MedicalTableComponent {
     this.checked.emit({ checked: event, guid: appointmentGUID });
   }
 
-  onClick(event) {
+  onClickFilterByType(event) {
     console.log(event);
     this.selectedType = event;
   }
-
 }
