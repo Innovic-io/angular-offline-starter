@@ -3,7 +3,7 @@
   <div class="card-body">
     <div class="row">
       <div class="col-lg-3 col-sm-12">
-        <img [src]="user.avatar" class="profilePhoto"/>
+        <app-avatar-upload [user]="user" (imageURL)="onAvatarChange($event)"></app-avatar-upload>
       </div>
       <div class="col-lg-9 col-sm-12">
         <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
@@ -12,20 +12,20 @@
               <input type="text" class="form-control" name="firstName" [(ngModel)]="user.name"
                      #firstName="ngModel"
                      [ngClass]="{'is-invalid': firstName.invalid}"
-                     autocomplete="off" minlength="2">
+                     autocomplete="off" minlength="2" required>
             </div>
             <div class="col-lg-2 col-sm-2">
               <input type="text" class="form-control" name="middleName"
                      [(ngModel)]="user.middleName" #middleName="ngModel"
                      [ngClass]="{'is-invalid': middleName.invalid}"
-                     autocomplete="off" minlength="2">
+                     autocomplete="off" minlength="2" required>
             </div>
             <div class="col-lg-5 col-sm-5">
               <input type="text" class="form-control" name="lastName"
                      [(ngModel)]="user.lastName"
                      #lastName="ngModel"
                      [ngClass]="{'is-invalid': lastName.invalid}"
-                     autocomplete="off" minlength="2">
+                     autocomplete="off" minlength="2" required>
             </div>
           </div>
           <div class="row">
@@ -33,11 +33,11 @@
               <input type="date" class="form-control" name="dateOfBirth"
                      [ngModel]="user.dateOfBirth | date:'yyyy-MM-dd'" (ngModelChange)="user.dateOfBirth=$event" #dateOfBirth="ngModel"
                      [ngClass]="{'is-invalid': dateOfBirth.invalid}"
-              >
+                     required>
             </div>
             <div class="col-lg-2 col-sm-2">
               <select class="form-control" name="gender" [(ngModel)]="user.gender" #gender="ngModel"
-                      [ngClass]="{'is-invalid': gender.invalid}">
+                      [ngClass]="{'is-invalid': gender.invalid}" required>
                 <option>female</option>
                 <option>male</option>
               </select>
@@ -51,7 +51,7 @@
               <button class="btn btn-default" type="button" routerLink="/my-profile/request">Request Password Reset Email</button>
             </div>
             <div class="col-lg-5 col-sm-5">
-              <button class="btn btn-default" type="submit">Apply changes</button>
+              <button class="btn btn-default" type="submit" [disabled]="myForm.form.invalid">Apply changes</button>
             </div>
           </div>
         </form>

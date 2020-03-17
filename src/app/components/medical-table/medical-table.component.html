@@ -8,7 +8,7 @@
         <label class="custom-control-label" for="defaultUnchecked"></label>
       </div>
     </th>
-    <th scope="col" width="25%">Appointment Date</th>
+    <th scope="col" width="20%">Appointment Date</th>
     <th scope="col" width="55%">
       <div class="dropdown">
         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -16,11 +16,11 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item btn" *ngFor="let appType of appTypes"
-             (click)="onClick(appType.title)">{{appType.title}}</a>
+             (click)="onClickFilterByType(appType.title)">{{appType.title}}</a>
         </div>
       </div>
     </th>
-    <th scope="col" width="25%">View PDF</th>
+    <th scope="col" width="20%">View PDF</th>
   </tr>
   </thead>
   <tbody *ngFor="let appointment of appointments | filterByType: selectedType let i = index">
@@ -38,3 +38,5 @@
   </td>
   </tbody>
 </table>
+
+

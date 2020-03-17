@@ -30,7 +30,6 @@ doctor.emergencyPerson.email = 'neco@gmail.com';
 doctor.emergencyPerson.lastName = 'Bush';
 doctor.emergencyPerson.middleName = 'Nele';
 
-
 doctor.healthInfo.height = 160;
 doctor.healthInfo.weight = 54;
 doctor.healthInfo.bloodType = 'B+';

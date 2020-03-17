@@ -24,6 +24,7 @@
 .nav-item fa-icon {
   font-size: 40px;
 }
+
 .nav-link.active {
   background-color: #2E877B;
   border-bottom: 4px solid orange;

@@ -48,6 +48,8 @@ import { MedicalTableComponent } from './components/medical-table/medical-table.
 import { AccordionsComponent } from './components/accordions/accordions.component';
 import { AccordionComponent } from './components/accordions/accordion/accordion.component';
 import { FilterByTypePipe } from './pipes/filter-by-type.pipe';
+import { AvatarUploadComponent } from './components/avatar-upload/avatar-upload.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 import { DisplayMessageComponent } from './components/inbox/display-message/display-message.component';
 
 @NgModule({
@@ -94,6 +96,8 @@ import { DisplayMessageComponent } from './components/inbox/display-message/disp
     AccordionsComponent,
     AccordionComponent,
     FilterByTypePipe,
+    AvatarUploadComponent,
+    PaginationComponent,
     DisplayMessageComponent
   ],
   imports: [

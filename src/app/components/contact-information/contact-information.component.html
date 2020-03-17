@@ -36,7 +36,7 @@
               <label>Address</label>
               <input type="text" class="form-control" name="address"
                      [(ngModel)]="user.contact.address" #address="ngModel"
-                     [ngClass]="{'is-invalid': address.invalid}" autocomplete="off" minlength="2">
+                     [ngClass]="{'is-invalid': address.invalid}" autocomplete="off" minlength="2" required>
             </div>
           </div>
           <div class="row">
@@ -44,13 +44,13 @@
               <label>City</label>
               <input type="text" class="form-control" name="city"
                      [(ngModel)]="user.contact.city" #city="ngModel"
-                     [ngClass]="{'is-invalid': city.invalid}" autocomplete="off" minlength="2">
+                     [ngClass]="{'is-invalid': city.invalid}" autocomplete="off" minlength="2" required>
             </div>
             <div class="col-6">
               <label>State</label>
               <input type="text" class="form-control" name="state"
                      [(ngModel)]="user.contact.state" #state="ngModel"
-                     [ngClass]="{'is-invalid': state.invalid}" autocomplete="off" minlength="2">
+                     [ngClass]="{'is-invalid': state.invalid}" autocomplete="off" minlength="2" required>
             </div>
             <div class="col-3">
               <label>Zip</label>
@@ -72,7 +72,7 @@
           </div>
           <div class="row">
             <div class="col-12">
-              <button class="btn btn-default" type="submit">Apply changes</button>
+              <button class="btn btn-default" type="submit" [disabled]="myForm.form.invalid">Apply changes</button>
             </div>
           </div>
         </form>

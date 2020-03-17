@@ -11,10 +11,15 @@ import { EmployeeModel } from '../../models/employee.model';
 export class ProfileBasicInfoComponent {
   @Input() user: EmployeeModel;
   @Output() update = new EventEmitter<EmployeeModel>();
+  @Output() updateAvatar = new EventEmitter<string>();
 
   onSubmit(form: NgForm) {
     if (form.valid) {
       this.update.emit(form.value);
     }
+  }
+
+  onAvatarChange(avatarURL: string) {
+    this.updateAvatar.emit(avatarURL);
   }
 }
