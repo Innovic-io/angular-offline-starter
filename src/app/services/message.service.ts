@@ -31,7 +31,6 @@ export class MessageService {
         lastMessages.push(this.replaceLastWithFirst(message));
       }
     }
-    console.log(doctorMessages);
     return lastMessages;
   }
 
