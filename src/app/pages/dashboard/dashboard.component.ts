@@ -6,6 +6,7 @@ import { AppointmentModel } from '../../models/appointment.model';
 import { EmployeeService } from '../../services/employee.service';
 import { AppointmentService } from '../../services/appointment.service';
 import { doctor } from '../../data/dummy';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +14,7 @@ import { doctor } from '../../data/dummy';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  currentUser$: Observable<EmployeeModel>;
   currentUser: EmployeeModel;
   appointments: AppointmentModel[];
   appointmentsTitle = 'New Patient Appointment';
@@ -24,6 +26,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.currentUser$ = this.employeeService.getLoggedEmployee$();
     this.currentUser = this.employeeService.getLoggedEmployee();
     this.appointments = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
   }

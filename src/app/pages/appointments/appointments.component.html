@@ -1,7 +1,7 @@
 <div class="container space">
   <div class="row">
     <div class="col-lg-12 col-sm-12">
-      <app-welcome [name]="currentUser?.name" [role]="currentUser?.role"></app-welcome>
+      <app-welcome [user]="currentUser$ | async"></app-welcome>
     </div>
   </div>
   <div class="row">

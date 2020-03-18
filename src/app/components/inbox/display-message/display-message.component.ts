@@ -12,6 +12,7 @@ export class DisplayMessageComponent {
   @Input() message: MessageModel;
   @Output() updateAchieve = new EventEmitter<string>();
   @Output() deleteMessage = new EventEmitter<string>();
+  @Input() showButtons = true;
 
   updateClick(guid) {
     this.updateAchieve.emit(guid);

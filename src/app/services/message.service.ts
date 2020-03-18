@@ -19,10 +19,8 @@ export class MessageService {
       if (!message.replyTo) {
         message.conversation = [];
         message.conversation.push(message);
-
         let  guid = message.guid;
         let replayed;
-
         do {
           replayed = doctorMessages.find(dm => dm.replyTo === guid);
           if (replayed) {
@@ -30,10 +28,10 @@ export class MessageService {
             guid = replayed.guid;
           }
         }while (replayed);
-
         lastMessages.push(this.replaceLastWithFirst(message));
       }
     }
+
     return lastMessages;
   }
 
@@ -53,7 +51,6 @@ export class MessageService {
   deleteMessage(messageGUID: string) {
     if (confirm('Are you sure you want to confirm?')) {
       const messageIndex = this.messages.findIndex(message => message.guid === messageGUID);
-      console.log(messageIndex);
       if (messageIndex > -1) {
         this.messages.splice(messageIndex, 1);
       }
