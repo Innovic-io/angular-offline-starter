@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ContactModel, EmergencyModel, EmployeeModel } from '../../models/employee.model';
 import { EmployeeService } from '../../services/employee.service';
 import { SystemService } from '../../services/system.service';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-my-profile',
@@ -9,24 +10,22 @@ import { SystemService } from '../../services/system.service';
   styleUrls: ['./my-profile.component.css']
 })
 export class MyProfileComponent implements OnInit {
-  currentUser: EmployeeModel;
+  currentUser$: Observable<EmployeeModel>;
 
   constructor(public employeeService: EmployeeService, public systemService: SystemService) { }
 
   ngOnInit(): void {
-    this.currentUser = this.employeeService.getLoggedEmployee();
+    this.currentUser$ = this.employeeService.getLoggedEmployee$();
   }
 
   onUpdateEmployee(employee: EmployeeModel | ContactModel | EmergencyModel, type: string) {
-    this.currentUser = this.employeeService.updateEmployee(employee, type);
+    this.employeeService.updateEmployee(employee, type);
     this.systemService.createAlertMessage('Profile is updated!');
   }
 
   onUpdateAvatar(avatarURL: string) {
-    this.currentUser = this.employeeService.updateEmployeeAvatar(avatarURL);
+    this.employeeService.updateEmployeeAvatar(avatarURL);
     this.systemService.createAlertMessage('Avatar is updated!');
-    console.log(this.currentUser);
-    this.employeeService.nextEmployee(this.currentUser);
   }
 
 

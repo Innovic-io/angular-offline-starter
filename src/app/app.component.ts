@@ -16,16 +16,16 @@ moment.locale('sr');
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  currentUser: EmployeeModel;
   systemMessage$: Observable<string>;
-  employee$: Observable<EmployeeModel>;
+  currentUser$: Observable<EmployeeModel>;
+  currentUser: EmployeeModel;
 
   constructor(public employeeService: EmployeeService, public systemService: SystemService, public messageService: MessageService) {
   }
 
   ngOnInit(): void {
-    this.employee$ = this.employeeService.getObservableEmployee();
     this.currentUser = this.employeeService.getLoggedEmployee();
+    this.currentUser$ = this.employeeService.getLoggedEmployee$();
     this.systemMessage$ = this.systemService.getMessage();
     for (const message of generateMessages(14)) {
       this.messageService.createMessage(message);

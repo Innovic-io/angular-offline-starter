@@ -1,16 +1,16 @@
 <div class="container space">
   <div class="row">
     <div class="col-lg-12 col-sm-12">
-      <app-profile-basic-info [user]="currentUser" (update)="onUpdateEmployee($event, 'basic')" (updateAvatar)="onUpdateAvatar($event)">
+      <app-profile-basic-info [user]="currentUser$ | async" (update)="onUpdateEmployee($event, 'basic')" (updateAvatar)="onUpdateAvatar($event)">
       </app-profile-basic-info>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-6 col-sm-12">
-      <app-contact-information [user]="currentUser" (update)="onUpdateEmployee($event, 'contact')"></app-contact-information>
+      <app-contact-information [user]="currentUser$ | async" (update)="onUpdateEmployee($event, 'contact')"></app-contact-information>
     </div>
     <div class="col-lg-6 col-sm-12">
-      <app-emergency-contact [user]="currentUser" (update)="onUpdateEmployee($event, 'emergency')"></app-emergency-contact>
+      <app-emergency-contact [user]="currentUser$ | async" (update)="onUpdateEmployee($event, 'emergency')"></app-emergency-contact>
     </div>
   </div>
 </div>

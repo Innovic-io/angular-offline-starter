@@ -1,7 +1,7 @@
 <div class="avatar-wrapper">
   <img [src]="url ? url : user?.avatar" class="profile-pic"/>
-<!--  <div class="upload-button">-->
-<!--    <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>-->
-<!--  </div>-->
+  <div class="upload-button" (click)="clickOnFileInput()">
+    <fa-icon [icon]="faArrowUp" class="fa-arrow-circle-up" ></fa-icon>
+  </div>
+<input class="file-upload" id="upload" type="file" accept=".jpg, .png" (change)="onSelectFile($event)"/>
 </div>
-<input type="file" accept=".jpg, .png" (change)="onSelectFile($event)"/>

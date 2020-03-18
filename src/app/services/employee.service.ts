@@ -2,33 +2,25 @@ import { Injectable } from '@angular/core';
 
 import { doctor } from '../data/dummy';
 import { ContactModel, EmergencyModel, EmployeeModel } from '../models/employee.model';
-import { Observable, Subscriber } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
   private currentUser = {...doctor};
-  private employeeObserver: Subscriber<EmployeeModel>;
-  private readonly employee$: Observable<EmployeeModel>;
-
+  private readonly employee$: BehaviorSubject<EmployeeModel>;
 
   constructor() {
-    this.employee$ = new Observable<EmployeeModel>((observer) => {
-    this.employeeObserver = observer;
-  });
+    this.employee$ = new BehaviorSubject<EmployeeModel>(this.currentUser);
   }
 
   getLoggedEmployee() {
     return this.currentUser;
   }
 
-  getObservableEmployee() {
-    return this.employee$;
-  }
-
-  nextEmployee(nextEmployee: EmployeeModel) {
-    this.employeeObserver.next(nextEmployee);
+  getLoggedEmployee$() {
+    return this.employee$.asObservable();
   }
 
   updateEmployee(employee: EmployeeModel | ContactModel | EmergencyModel, type: string) {
@@ -43,11 +35,11 @@ export class EmployeeService {
         this.currentUser.emergencyPerson = {...this.currentUser.emergencyPerson, ...employee};
         break;
     }
-    return this.currentUser;
+    this.employee$.next(this.currentUser);
   }
 
   updateEmployeeAvatar(avatarURL: string) {
     this.currentUser = { ...this.currentUser, avatar: avatarURL};
-    return this.currentUser;
+    this.employee$.next(this.currentUser);
   }
 }

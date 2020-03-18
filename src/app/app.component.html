@@ -1,4 +1,4 @@
-<app-header [user]="currentUser"></app-header>
+<app-header [user]="currentUser$ | async"></app-header>
 <main role="main" class="container">
   <ng-container *ngIf="systemMessage$ | async as message">
     <app-success [title]="message"></app-success>
