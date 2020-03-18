@@ -7,6 +7,7 @@ import { AppointmentService } from '../../services/appointment.service';
 import { generateAppointments } from '../../data/appointment';
 import { PaginationService } from '../../services/pagination.service';
 import { SystemService } from '../../services/system.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-my-documents',
@@ -15,6 +16,7 @@ import { SystemService } from '../../services/system.service';
 })
 export class MyDocumentsComponent implements OnInit {
   currentUser: EmployeeModel;
+  currentUser$: Observable<EmployeeModel>;
   pastAppointments: AppointmentModel[];
   markedAppointments: string[] = [];
   page: number;
@@ -28,6 +30,7 @@ export class MyDocumentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.employeeService.getLoggedEmployee();
+    this.currentUser$ = this.employeeService.getLoggedEmployee$();
 
     for (const app of generateAppointments(25)) {
       this.appointmentService.createAppointment(app);

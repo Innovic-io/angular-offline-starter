@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { EmployeeService } from '../../services/employee.service';
 import { EmployeeModel } from '../../models/employee.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-my-health',
@@ -9,12 +10,12 @@ import { EmployeeModel } from '../../models/employee.model';
   styleUrls: ['./my-health.component.css']
 })
 export class MyHealthComponent implements OnInit {
-  currentUser: EmployeeModel;
+  currentUser$: Observable<EmployeeModel>;
 
   constructor(public employeeService: EmployeeService) { }
 
   ngOnInit(): void {
-    this.currentUser = this.employeeService.getLoggedEmployee();
+    this.currentUser$ = this.employeeService.getLoggedEmployee$();
   }
 
 }

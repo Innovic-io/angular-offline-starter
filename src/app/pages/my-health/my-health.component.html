@@ -3,24 +3,24 @@
     <div class="col-lg-4 col-sm-12">
       <div class="row">
         <div class="col-12">
-          <app-basic-info [user]="currentUser"></app-basic-info>
+          <app-basic-info [user]="currentUser$ | async"></app-basic-info>
         </div>
       </div>
     </div>
     <div class="col-lg-8 col-sm-12">
       <div class="row">
         <div class="col-lg-12 col-sm-12">
-          <app-vital-stats [user]="currentUser"></app-vital-stats>
+          <app-vital-stats [user]="currentUser$ | async"></app-vital-stats>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-12 co-sm-12">
-          <app-allergies [user]="currentUser"></app-allergies>
+          <app-allergies [user]="currentUser$ | async"></app-allergies>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-12 col-sm-12">
-          <app-medications-and-supplements [user]="currentUser"></app-medications-and-supplements>
+          <app-medications-and-supplements [user]="currentUser$ | async"></app-medications-and-supplements>
         </div>
       </div>
     </div>

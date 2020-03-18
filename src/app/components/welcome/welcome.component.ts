@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Roles } from '../../models/system.models';
+import { EmployeeModel } from '../../models/employee.model';
 
 @Component({
   selector: 'app-welcome',
@@ -7,6 +8,5 @@ import { Roles } from '../../models/system.models';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent  {
-  @Input() name: string;
-  @Input() role: Roles;
+  @Input() user: EmployeeModel;
 }

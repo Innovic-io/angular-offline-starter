@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ContactModel, EmergencyModel, EmployeeModel } from '../../models/employee.model';
 import { EmployeeService } from '../../services/employee.service';
 import { SystemService } from '../../services/system.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-my-profile',
