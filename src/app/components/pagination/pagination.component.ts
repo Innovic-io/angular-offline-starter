@@ -19,11 +19,15 @@ export class PaginationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.pager = this.paginationService.getPager(this.total, this.currentPage, this.perPage);
+    this.pager = this.paginationService.getPager(this.total, this.currentPage || 1, this.perPage);
+
+    setTimeout(() => {
+      this.page.emit(this.pager);
+    }, 250);
   }
 
   setPage(page) {
-    console.log(page);
-    this.page.emit(page);
+    this.pager = this.paginationService.getPager(this.total, page, this.perPage);
+    this.page.emit(this.pager);
   }
 }

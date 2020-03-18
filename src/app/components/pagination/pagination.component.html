@@ -9,7 +9,7 @@
     <li class="page-item" *ngFor="let page of pager.pages1" [ngClass]="{'active': pager.currentPage === page}">
       <a class="page-link" (click)="setPage(page)"> {{ page }} </a>
     </li>
-    <li class="page-item" [ngClass]="{'disabled': pager.currentPage === total}">
+    <li class="page-item" [ngClass]="{'disabled': pager.currentPage === pager.totalPages}">
       <a class="page-link" aria-label="Next" (click)="setPage(pager.currentPage + 1)">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>

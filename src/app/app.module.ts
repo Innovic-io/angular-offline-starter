@@ -50,6 +50,7 @@ import { AccordionComponent } from './components/accordions/accordion/accordion.
 import { FilterByTypePipe } from './pipes/filter-by-type.pipe';
 import { AvatarUploadComponent } from './components/avatar-upload/avatar-upload.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { PaginationPipe } from './pipes/pagination.pipe';
 import { DisplayMessageComponent } from './components/inbox/display-message/display-message.component';
 
 @NgModule({
@@ -97,6 +98,8 @@ import { DisplayMessageComponent } from './components/inbox/display-message/disp
     AccordionComponent,
     FilterByTypePipe,
     AvatarUploadComponent,
+    PaginationComponent,
+    PaginationPipe,
     PaginationComponent,
     DisplayMessageComponent
   ],

@@ -14,8 +14,10 @@ export class MedicalTableComponent {
   @Input() selectedType: string;
   @Output() checkedAll = new EventEmitter<boolean>();
   @Output() checked = new EventEmitter<{ checked: boolean, guid: string }>();
-  appTypes = enumSelector(AppointmentType);
+
+  public appTypes = enumSelector(AppointmentType);
   public faFileAlt = faFileAlt;
+  public pager;
 
   checkAll(event) {
     this.checkedAll.emit(event);
@@ -28,5 +30,9 @@ export class MedicalTableComponent {
   onClickFilterByType(event) {
     console.log(event);
     this.selectedType = event;
+  }
+
+  setPage(currentPage) {
+    this.pager = currentPage;
   }
 }

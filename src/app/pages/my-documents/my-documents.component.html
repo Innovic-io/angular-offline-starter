@@ -29,7 +29,6 @@
               <app-medical-table [appointments]="pastAppointments"
                                  (checked)="appointmentSelect($event)" (checkedAll)="pastAppointmentSelectAll($event)"
                                  ></app-medical-table>
-              <app-pagination [total]="pastAppointments.length" [perPage]="10" [currentPage]="1" (page)="setPage($event);"></app-pagination>
             </div>
           </div>
         </app-tab>

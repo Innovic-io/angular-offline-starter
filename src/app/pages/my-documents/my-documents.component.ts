@@ -5,7 +5,6 @@ import { EmployeeService } from '../../services/employee.service';
 import { AppointmentModel } from '../../models/appointment.model';
 import { AppointmentService } from '../../services/appointment.service';
 import { generateAppointments } from '../../data/appointment';
-import { PaginationService } from '../../services/pagination.service';
 import { SystemService } from '../../services/system.service';
 
 @Component({
@@ -17,13 +16,9 @@ export class MyDocumentsComponent implements OnInit {
   currentUser: EmployeeModel;
   pastAppointments: AppointmentModel[];
   markedAppointments: string[] = [];
-  page: number;
-  pager: any = {};
-  pagedItems: AppointmentModel[];
 
   constructor(public employeeService: EmployeeService,
               public appointmentService: AppointmentService,
-              public paginationService: PaginationService,
               public systemService: SystemService) { }
 
   ngOnInit(): void {
@@ -33,7 +28,6 @@ export class MyDocumentsComponent implements OnInit {
       this.appointmentService.createAppointment(app);
     }
     this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
-    this.setPage(1);
   }
 
   appointmentSelect(event: { checked: boolean, guid: string }) {
@@ -60,12 +54,5 @@ export class MyDocumentsComponent implements OnInit {
     }
     this.systemService.createAlertMessage('Delete completed!');
     this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
-    this.setPage(1);
   }
-
-  setPage($event) {
-    this.page = $event;
-    this.pagedItems = this.pastAppointments.slice(this.pager.startIndex, this.pager.endIndex + 1);
-  }
-
 }
