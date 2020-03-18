@@ -19,7 +19,7 @@ export class MessageService {
       if (!message.replyTo) {
         message.conversation = [];
         message.conversation.push(message);
-        let  guid = message.guid;
+        let guid = message.guid;
         let replayed;
         do {
           replayed = doctorMessages.find(dm => dm.replyTo === guid);
@@ -27,11 +27,11 @@ export class MessageService {
             message.conversation.push(replayed);
             guid = replayed.guid;
           }
-        }while (replayed);
+        } while (replayed);
         lastMessages.push(this.replaceLastWithFirst(message));
       }
     }
-
+    console.log(doctorMessages);
     return lastMessages;
   }
 
@@ -51,8 +51,13 @@ export class MessageService {
   deleteMessage(messageGUID: string) {
     if (confirm('Are you sure you want to confirm?')) {
       const messageIndex = this.messages.findIndex(message => message.guid === messageGUID);
-      if (messageIndex > -1) {
+      if (messageIndex === 0) {
         this.messages.splice(messageIndex, 1);
+        this.messages[messageIndex].replyTo = null;
+      }
+      if (messageIndex > 0) {
+        this.messages.splice(messageIndex, 1);
+        this.messages[messageIndex - 1].guid = this.messages[messageIndex].replyTo;
       }
       return this.messages;
     }
