@@ -52,6 +52,8 @@ import { AvatarUploadComponent } from './components/avatar-upload/avatar-upload.
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { PaginationPipe } from './pipes/pagination.pipe';
 import { DisplayMessageComponent } from './components/inbox/display-message/display-message.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -100,8 +102,9 @@ import { DisplayMessageComponent } from './components/inbox/display-message/disp
     AvatarUploadComponent,
     PaginationComponent,
     PaginationPipe,
-    PaginationComponent,
-    DisplayMessageComponent
+    DisplayMessageComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

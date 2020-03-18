@@ -1,0 +1,16 @@
+:host {
+  color: #41B6A6;
+}
+
+.singInSpace {
+  padding-top: 250px;
+  padding-bottom: 250px;
+  max-width: 600px;
+}
+
+.row>[class^=col-] {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+}
+
+
