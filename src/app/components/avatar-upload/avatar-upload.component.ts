@@ -14,14 +14,9 @@ export class AvatarUploadComponent {
   private reader = new FileReader();
   public faArrowUp = faArrowUp;
   public url;
-  public click;
   @Output() imageURL = new EventEmitter<string>();
 
   constructor(private sanitizer: DomSanitizer) {
-  }
-
-  clickOnFileInput() {
-    console.log(document.getElementById('upload').addEventListener('click', this.onSelectFile));
   }
 
   onSelectFile(event) {
@@ -31,7 +26,7 @@ export class AvatarUploadComponent {
       this.reader.readAsDataURL(event.target.files[0]);
 
       this.reader.onload = (eventURL) => {
-        this.url =  this.sanitizer.bypassSecurityTrustUrl(eventURL.target.result.toString());
+        this.url = this.sanitizer.bypassSecurityTrustUrl(eventURL.target.result.toString());
         this.imageURL.emit(eventURL.target.result.toString());
       };
     }

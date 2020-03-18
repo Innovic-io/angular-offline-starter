@@ -1,7 +1,3 @@
-.profilePhoto {
-  width: 230px;
-  height: 230px;
-}
 .avatar-wrapper {
   position: relative;
   height: 230px;
@@ -11,18 +7,22 @@
   box-shadow: 1px 1px 15px -5px black;
   transition: all .3s ease;
 }
+
 .avatar-wrapper:hover {
   transform: scale(1.05);
   cursor: pointer;
 }
+
 .avatar-wrapper:hover .profile-pic {
-  opacity: .5;
+  opacity: .1;
 }
+
 .avatar-wrapper .profile-pic {
   height: 100%;
   width: 100%;
   transition: all .3s ease;
 }
+
 .avatar-wrapper .profile-pic:after {
   width: 100%;
   height: 100%;
@@ -32,6 +32,7 @@
   color: #34495e;
   text-align: center;
 }
+
 .avatar-wrapper .upload-button {
   position: absolute;
   top: 0;
@@ -39,16 +40,18 @@
   height: 100%;
   width: 100%;
 }
+
 .avatar-wrapper .upload-button .fa-arrow-circle-up {
   position: absolute;
-  font-size: 234px;
-  top: -30px;
+  font-size: 240px;
+  top: -60px;
   left: 10px;
   text-align: center;
   opacity: 0;
   transition: all .3s ease;
   color: #34495e;
 }
+
 .avatar-wrapper .upload-button:hover .fa-arrow-circle-up {
   opacity: .9;
 }
