@@ -50,8 +50,8 @@
             </app-display-message>
             <app-accordions>
               <app-accordion *ngFor="let message of message.conversation | search: searchText"
-                             [title]="message?.subject">
-                <app-display-message [message]="message"
+                             [title]="message?.subject" [style.display]="message.archive === false ? 'block' : 'none'">
+                <app-display-message [message]="message" [showButtons]="false"
                                      (deleteMessage)="deleteIC($event)"
                                      (updateAchieve)="updateIC($event)">
                 </app-display-message>
