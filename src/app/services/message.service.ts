@@ -56,7 +56,9 @@ export class MessageService {
       }
       if (messageIndex > 0) {
         this.messages.splice(messageIndex, 1);
-        this.messages[messageIndex - 1].guid = this.messages[messageIndex].replyTo;
+        if (this.messages[messageIndex]) {
+          this.messages[messageIndex].replyTo = this.messages[messageIndex - 1].guid;
+        }
       }
       return this.messages;
     }
