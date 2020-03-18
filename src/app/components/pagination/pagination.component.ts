@@ -15,8 +15,7 @@ export class PaginationComponent implements OnInit {
   @Output() page = new EventEmitter<number>();
   pager: any = {};
 
-  constructor(public paginationService: PaginationService) {
-  }
+  constructor(public paginationService: PaginationService) { }
 
   ngOnInit(): void {
     this.pager = this.paginationService.getPager(this.total, this.currentPage || 1, this.perPage);

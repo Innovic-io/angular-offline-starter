@@ -13,7 +13,7 @@
     <th scope="col" width="20%">Status</th>
   </tr>
   </thead>
-  <tbody *ngFor="let appointment of appointments; let i = index">
+  <tbody *ngFor="let appointment of appointments | pagination: pager; let i = index">
     <th scope="row">
       <div class="custom-control custom-checkbox">
       <input type="checkbox" #checkbox class="custom-control-input" id="defaultUnchecked{{i}}" (change)="checkBox(checkbox.checked, appointment.guid)" [checked]="checkboxAll.checked">
@@ -31,3 +31,4 @@
     </td>
   </tbody>
 </table>
+<app-pagination [total]="appointments.length" [perPage]="10" [currentPage]="pager?.currentPage" (page)="setPage($event);"></app-pagination>

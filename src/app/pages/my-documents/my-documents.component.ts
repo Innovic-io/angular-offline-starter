@@ -4,7 +4,6 @@ import { EmployeeModel } from '../../models/employee.model';
 import { EmployeeService } from '../../services/employee.service';
 import { AppointmentModel } from '../../models/appointment.model';
 import { AppointmentService } from '../../services/appointment.service';
-import { generateAppointments } from '../../data/appointment';
 import { SystemService } from '../../services/system.service';
 import { Observable } from 'rxjs';
 
@@ -26,10 +25,6 @@ export class MyDocumentsComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = this.employeeService.getLoggedEmployee();
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
-
-    for (const app of generateAppointments(25)) {
-      this.appointmentService.createAppointment(app);
-    }
     this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
   }
 

@@ -5,6 +5,7 @@ import { EmployeeService } from '../../services/employee.service';
 import { AppointmentModel } from '../../models/appointment.model';
 import { AppointmentService } from '../../services/appointment.service';
 import { Observable } from 'rxjs';
+import { SystemService } from '../../services/system.service';
 
 @Component({
   selector: 'app-appointments',
@@ -18,7 +19,7 @@ export class AppointmentsComponent implements OnInit {
   pastAppointments: AppointmentModel[];
   markedAppointments: string[] = [];
 
-  constructor(public employeeService: EmployeeService, public appointmentService: AppointmentService) {
+  constructor(public employeeService: EmployeeService, public appointmentService: AppointmentService, public systemService: SystemService) {
   }
 
   ngOnInit(): void {
@@ -57,7 +58,7 @@ export class AppointmentsComponent implements OnInit {
     if (confirm('Are you sure you want to delete this appointment?')) {
       this.markedAppointments.forEach(appointmentGUID => this.appointmentService.deleteAppointments(appointmentGUID));
     }
-
+    this.systemService.createAlertMessage('Delete completed!');
     this.upcomingAppointments = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
     this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
   }

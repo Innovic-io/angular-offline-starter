@@ -5,8 +5,9 @@ import { EmployeeModel } from './models/employee.model';
 import { EmployeeService } from './services/employee.service';
 import { SystemService } from './services/system.service';
 import { Observable } from 'rxjs';
-import { generateMessages } from './data/appointment';
+import { generateMessages, generatePastAppointments, generateUppcomingAppointments } from './data/appointment';
 import { MessageService } from './services/message.service';
+import { AppointmentService } from './services/appointment.service';
 
 moment.locale('sr');
 
@@ -19,7 +20,11 @@ export class AppComponent implements OnInit {
   systemMessage$: Observable<string>;
   currentUser$: Observable<EmployeeModel>;
 
-  constructor(public employeeService: EmployeeService, public systemService: SystemService, public messageService: MessageService) {
+  constructor(
+              public employeeService: EmployeeService,
+              public systemService: SystemService,
+              public messageService: MessageService,
+              public appointmentService: AppointmentService) {
   }
 
   ngOnInit(): void {
@@ -28,5 +33,12 @@ export class AppComponent implements OnInit {
     for (const message of generateMessages(14)) {
       this.messageService.createMessage(message);
     }
+    for (const app of generateUppcomingAppointments(25)) {
+      this.appointmentService.createAppointment(app);
+    }
+    for (const app of generatePastAppointments(20)) {
+      this.appointmentService.createAppointment(app);
+    }
+
   }
 }

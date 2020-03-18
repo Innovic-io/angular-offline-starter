@@ -11,6 +11,7 @@ export class TableComponent {
   @Input() appointments: AppointmentModel[];
   @Output() checked = new EventEmitter<{ checked: boolean, guid: string }>();
   @Output() checkedAll = new EventEmitter<boolean>();
+  public pager;
 
   checkBox(event, appointmentGUID: string) {
     this.checked.emit({ checked: event, guid: appointmentGUID });
@@ -18,5 +19,9 @@ export class TableComponent {
 
   checkAll(event) {
       this.checkedAll.emit(event);
+  }
+
+  setPage(currentPage) {
+    this.pager = currentPage;
   }
 }
