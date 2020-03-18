@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 
 import { doctor } from '../data/dummy';
 import { ContactModel, EmergencyModel, EmployeeModel } from '../models/employee.model';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
+  private employees: EmployeeModel[] = [];
   private currentUser = {...doctor};
   private readonly employee$: BehaviorSubject<EmployeeModel>;
 
@@ -20,11 +22,11 @@ export class EmployeeService {
   }
 
   getLoggedEmployee$() {
-    return this.employee$.asObservable();
+      return this.employee$.asObservable();
   }
 
-  createNewEmployee$() {
-
+  register(employee: EmployeeModel) {
+    this.employees.push(employee);
   }
 
   updateEmployee(employee: EmployeeModel | ContactModel | EmergencyModel, type: string) {

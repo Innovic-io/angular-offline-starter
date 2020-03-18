@@ -1,40 +1,56 @@
 <div class="container singInSpace">
   <div class="row justify-content-center align-items-center">
     <div class="col-12">
-      <form>
+      <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
         <div class="row">
           <div class="col-12">
             <label>First Name:</label>
-            <input type="text" name="name" class="form-control" autocomplete="off" minlength="2" required>
+            <input type="text" name="name" class="form-control" [(ngModel)]="employee.name"
+                   #name="ngModel"
+                   [ngClass]="{'is-valid': name.valid && name.touched, 'is-invalid': name.invalid && name.touched}"
+                   autocomplete="off" minlength="2" required>
           </div>
         </div>
         <div class="row">
           <div class="col-12">
             <label>Last Name:</label>
-            <input type="text" name="lastName" class="form-control" autocomplete="off" minlength="2" required>
+            <input type="text" name="lastName" class="form-control" [(ngModel)]="employee.lastName"
+                   #lastName="ngModel"
+                   [ngClass]="{'is-valid': lastName.valid && lastName.touched, 'is-invalid': lastName.invalid && lastName.touched}"
+                   autocomplete="off" minlength="2" required>
           </div>
         </div>
         <div class="row">
           <div class="col-12">
             <label>Email:</label>
-            <input type="text" name="email" class="form-control" autocomplete="off" minlength="2" required>
+            <input type="text" name="email" class="form-control" [(ngModel)]="employee.contact.email"
+                   #email="ngModel"
+                   [ngClass]="{'is-valid': email.valid && email.touched, 'is-invalid': email.invalid && email.touched}"
+                   autocomplete="off" minlength="2" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
           </div>
         </div>
         <div class="row">
           <div class="col-12">
             <label>Password:</label>
-            <input type="password" name="password" class="form-control" autocomplete="off" minlength="2" required>
+            <input type="password" name="password1" class="form-control" [(ngModel)]="employee.password"
+                   #password="ngModel"
+                   [ngClass]="{'is-valid': password.valid && password.touched, 'is-invalid': password.invalid && password.touched}"
+                   autocomplete="off" minlength="2" required>
           </div>
         </div>
         <div class="row">
           <div class="col-12">
             <label>Repeat password:</label>
-            <input type="password" name="password" class="form-control" autocomplete="off" minlength="2" required>
+            <input type="password" name="password2" class="form-control" [(ngModel)]="employee.confirmPassword"
+                   #password2="ngModel"
+                   [ngClass]="{'is-valid': password2.valid && password2.touched, 'is-invalid': password2.invalid && password2.touched}"
+                   autocomplete="off" minlength="2" required>
+            <div class="alert alert-danger" role="alert" [hidden]="employee.confirmPassword === employee.password">Passwords don't match!</div>
           </div>
         </div>
         <div class="row">
           <div class="col-12">
-            <input type="submit" name="submit" class="btn btn-primary mt-2" value="Register">
+            <button type="submit" class="btn btn-primary mt-2" [disabled]="!myForm.form.valid || password !== password2"> Register</button>
           </div>
         </div>
       </form>
