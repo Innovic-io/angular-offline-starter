@@ -23,6 +23,10 @@ export class EmployeeService {
     return this.employee$.asObservable();
   }
 
+  createNewEmployee$() {
+
+  }
+
   updateEmployee(employee: EmployeeModel | ContactModel | EmergencyModel, type: string) {
     switch (type) {
       case 'basic':
