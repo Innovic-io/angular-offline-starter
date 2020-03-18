@@ -50,7 +50,7 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <button type="submit" class="btn btn-primary mt-2" [disabled]="!myForm.form.valid || password !== password2"> Register</button>
+            <button type="submit" class="btn btn-primary mt-2" [disabled]="!myForm.form.valid || employee.confirmPassword !== employee.password"> Register</button>
           </div>
         </div>
       </form>
