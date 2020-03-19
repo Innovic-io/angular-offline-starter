@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
   systemMessage$: Observable<string>;
   systemMessageDanger$: Observable<string>;
   currentUser$: Observable<EmployeeModel>;
+  title: string;
 
   constructor(
               public employeeService: EmployeeService,
