@@ -5,6 +5,8 @@
       <div class="row">
         <div class="col-lg-6 col-sm-6">
           <input type="number" class="form-control" placeholder="Temperature:" autocomplete="off" minlength="2"
+                 #temperature="ngModel"
+                 [ngClass]="{'is-valid': temperature.valid && temperature.touched, 'is-invalid': temperature.invalid && temperature.touched}"
                  [(ngModel)]="appointmentHealthInfo.temperature" name="temperature"
                  required>
         </div>
@@ -21,12 +23,16 @@
         <div class="col-lg-6 col-sm-6">
           <input type="number" class="form-control" name="hearthRate" placeholder="Heart Rate:" autocomplete="off"
                  minlength="2"
+                 #hearthRate="ngModel"
+                 [ngClass]="{'is-valid': hearthRate.valid && hearthRate.touched, 'is-invalid': hearthRate.invalid && hearthRate.touched}"
                  [(ngModel)]="appointmentHealthInfo.hearthRate"
                  required>
         </div>
         <div class="col-lg-6 col-sm-6">
           <input type="number" class="form-control" placeholder="SYS(mmHg):" autocomplete="off" minlength="2"
                  name="bloodPressureSYS"
+                 #bloodPressureSYS="ngModel"
+                 [ngClass]="{'is-valid': bloodPressureSYS.valid && bloodPressureSYS.touched, 'is-invalid': bloodPressureSYS.invalid && bloodPressureSYS.touched}"
                  [(ngModel)]="appointmentHealthInfo.bloodPressureSYS"
                  required>
         </div>
@@ -43,6 +49,8 @@
         <div class="col-lg-6 col-sm-6">
           <input type="number" class="form-control" placeholder="DIAS(mmHg):" autocomplete="off" minlength="2"
                  name="bloodPressureDIAS"
+                 #bloodPressureDIAS="ngModel"
+                 [ngClass]="{'is-valid': bloodPressureDIAS.valid && bloodPressureDIAS.touched, 'is-invalid': bloodPressureDIAS.invalid && bloodPressureDIAS.touched}"
                  [(ngModel)]="appointmentHealthInfo.bloodPressureDIAS"
                  required>
         </div>
