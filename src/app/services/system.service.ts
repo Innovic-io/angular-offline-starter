@@ -8,13 +8,19 @@ import html2canvas from 'html2canvas';
 })
 export class SystemService {
   private messageObserver: Subscriber<string>;
+  private messageDangerObserver: Subscriber<string>;
   private readonly alertMessages$: Observable<string>;
+  private readonly dangerAlertMessages$: Observable<string>;
 
   constructor() {
     this.alertMessages$ = new Observable<string>((observer) => {
       this.messageObserver = observer;
     });
+    this.dangerAlertMessages$ = new Observable<string>((observer) => {
+      this.messageDangerObserver = observer;
+    });
   }
+
   exportAsPDF(data: HTMLDivElement, name: string) {
     html2canvas(data).then(canvas => {
       const contentDataURL = canvas.toDataURL('image/png');
@@ -33,7 +39,19 @@ export class SystemService {
     }, 2000);
   }
 
+  createDangerAlertMessage(message: string) {
+    this.messageDangerObserver.next(message);
+
+    setTimeout(() => {
+      this.messageDangerObserver.next(null);
+    }, 2000);
+  }
+
   getMessage() {
     return this.alertMessages$;
+  }
+
+  getDangerMessage() {
+    return this.dangerAlertMessages$;
   }
 }

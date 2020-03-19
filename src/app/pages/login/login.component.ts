@@ -25,7 +25,7 @@ export class LoginComponent {
       if (isUserLoggedIn) {
         this.route.navigateByUrl('/dashboard');
       } else {
-        this.systemService.createAlertMessage('Email or password is wrong!');
+        this.systemService.createDangerAlertMessage('Email or password is wrong!');
         form.reset();
       }
     }

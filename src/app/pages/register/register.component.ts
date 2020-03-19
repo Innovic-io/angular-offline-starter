@@ -21,7 +21,7 @@ export class RegisterComponent {
         this.systemService.createAlertMessage('Registration was successful!');
         this.route.navigateByUrl('/login');
       } else {
-        this.systemService.createAlertMessage('User already exists!');
+        this.systemService.createDangerAlertMessage('User already exists!');
         form.reset();
       }
     }

@@ -4,6 +4,9 @@
   <ng-container *ngIf="systemMessage$ | async as message">
     <app-success [title]="message"></app-success>
   </ng-container>
+  <ng-container *ngIf="systemMessageDanger$ | async as message">
+    <app-danger-alert [title]="message"></app-danger-alert>
+  </ng-container>
   <router-outlet></router-outlet>
 </main>
 
