@@ -7,6 +7,9 @@ import { AppointmentService } from '../../../services/appointment.service';
 import { doctor } from '../../../data/dummy';
 import { AppointmentType, enumSelector } from '../../../models/system.models';
 import { SystemService } from '../../../services/system.service';
+import { EmployeeModel } from '../../../models/employee.model';
+import { EmployeeService } from '../../../services/employee.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-create',
@@ -14,12 +17,15 @@ import { SystemService } from '../../../services/system.service';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  providers = [doctor];
+  // providers = [doctor];
+  providers: EmployeeModel[];
   appointment = new AppointmentModel();
   appTypes = enumSelector(AppointmentType);
   alert: boolean;
 
-  constructor(private appointmentService: AppointmentService, public systemService: SystemService) {
+  constructor(private appointmentService: AppointmentService,
+              public systemService: SystemService,
+              private employeeService: EmployeeService) {
   }
 
   checkAvailableAppointment() {
@@ -47,5 +53,6 @@ export class CreateComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.providers = this.employeeService.getAllEmployees();
   }
 }

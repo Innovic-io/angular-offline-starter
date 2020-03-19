@@ -52,6 +52,10 @@ export class EmployeeService {
     }
   }
 
+  getAllEmployees() {
+    return this.employees;
+  }
+
   updateEmployee(employee: EmployeeModel | ContactModel | EmergencyModel, type: string) {
     switch (type) {
       case 'basic':
