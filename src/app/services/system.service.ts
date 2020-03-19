@@ -24,9 +24,11 @@ export class SystemService {
   exportAsPDF(data: HTMLDivElement, name: string) {
     html2canvas(data).then(canvas => {
       const contentDataURL = canvas.toDataURL('image/png');
-      const pdf = new jspdf('l', 'cm', 'a4'); // Generates PDF in landscape mode
-      // const pdf = new jspdf('p', 'cm', 'a4'); // Generates PDF in portrait mode
-      pdf.addImage(contentDataURL, 'PNG', 0, 0, 29.7, 21.0);
+      const pdf = new jspdf({orientation: 'landscape'});
+      const imgProps = pdf.getImageProperties(contentDataURL);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      pdf.addImage(contentDataURL, 'PNG', 0, 0, pdfWidth, pdfHeight);
       pdf.save(name);
     });
   }

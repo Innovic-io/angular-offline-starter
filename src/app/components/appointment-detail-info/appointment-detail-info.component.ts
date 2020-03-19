@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+
 import { AppointmentModel } from '../../models/appointment.model';
+import { SystemService } from '../../services/system.service';
 
 @Component({
   selector: 'app-appointment-detail-info',
@@ -9,9 +11,13 @@ import { AppointmentModel } from '../../models/appointment.model';
 export class AppointmentDetailInfoComponent implements OnInit {
   @Input() appointment: AppointmentModel;
 
-  constructor() { }
+  constructor(public systemService: SystemService) { }
 
   ngOnInit(): void {
+  }
+
+  exportToPDF(event, name) {
+    this.systemService.exportAsPDF(event, name);
   }
 
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { AppointmentModel, DiagnosisModel, InvoiceModel } from '../models/appointment.model';
-import { ContactModel, EmergencyModel, EmployeeModel, HealthInfoModel } from '../models/employee.model';
+import {  HealthInfoModel } from '../models/employee.model';
 
 @Injectable({
   providedIn: 'root'
@@ -43,10 +43,10 @@ export class AppointmentService {
         this.appointment.appointmentHealthInfo = {...this.appointment.appointmentHealthInfo, ...appointment};
         break;
       case 'diagnosis':
-        this.appointment = {...this.appointment, ...appointment};
+        this.appointment.diagnosis = {...this.appointment.diagnosis, ...appointment, diagnosisDate: new Date()};
         break;
       case 'invoice':
-        this.appointment.invoice = {...this.appointment.invoice, ...appointment};
+        this.appointment.invoice = {...this.appointment.invoice, ...appointment, invoiceDate: new Date()};
         break;
     }
     console.log(appointment);

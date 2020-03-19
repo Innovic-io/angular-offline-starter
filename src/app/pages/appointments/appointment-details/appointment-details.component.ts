@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import { AppointmentModel, DiagnosisModel, InvoiceModel } from '../../../models/appointment.model';
 import { AppointmentService } from '../../../services/appointment.service';
-import { ContactModel, EmergencyModel, EmployeeModel, HealthInfoModel } from '../../../models/employee.model';
+import { HealthInfoModel } from '../../../models/employee.model';
 import { SystemService } from '../../../services/system.service';
 
 @Component({

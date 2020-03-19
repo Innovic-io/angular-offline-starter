@@ -1,5 +1,5 @@
 <h2>Appointment Health Info:</h2>
-<div class="card">
+<div class="card" *ngIf="diagnosisView === false">
   <div class="card-body">
     <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
       <div class="row">
@@ -56,11 +56,54 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-10"></div>
-        <div class="col-2">
-          <button type="submit" class="btn btn-default" [disabled]="!myForm.form.valid">Save Heath Info</button>
+        <div class="col-8"></div>
+        <div class="col-4">
+          <button type="submit" class="btn btn-default float-right ml-2" [disabled]="!myForm.form.valid">Save Heath
+            Info
+          </button>
         </div>
       </div>
     </form>
+  </div>
+</div>
+<div class="card" *ngIf="diagnosisView === true">
+  <div class="card-body">
+    <div class="row"  #detailHealthInfo title = "detailHealthInfo">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-lg-6 col-sm-6">
+            <strong>Temperature:</strong> {{appointment.appointmentHealthInfo.temperature}}
+          </div>
+          <div class="col-lg-6 col-sm-6">
+            <strong>Blood Type:</strong> {{appointment.appointmentHealthInfo.bloodType}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-sm-6">
+            <strong>Heart Rate:</strong> {{appointment.appointmentHealthInfo.hearthRate}}
+          </div>
+          <div class="col-lg-6 col-sm-6">
+            <strong>SYS(mmHg):</strong> {{appointment.appointmentHealthInfo.bloodPressureSYS}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-sm-6">
+            <strong>Blood Pressure:</strong> {{appointment.appointmentHealthInfo.bloodPressure}}
+          </div>
+          <div class="col-lg-6 col-sm-6">
+            <strong>DIAS(mmHg):</strong> {{appointment.appointmentHealthInfo.bloodPressureDIAS}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8"></div>
+      <div class="col-4">
+        <button type="submit" class="btn btn-default float-right ml-2" (click)="toggle()">Edit Health Info</button>
+        <button (click)="exportToPDF(detailHealthInfo, detailHealthInfo.title)" class="btn btn-default float-right">
+          Convert to PDF
+        </button>
+      </div>
+    </div>
   </div>
 </div>
