@@ -11,9 +11,6 @@
   },
   "private": true,
   "dependencies": {
-    "angular-bootstrap-datetimepicker": "^4.0.2",
-    "moment": "^2.24.0",
-    "open-iconic": "^1.1.1",
     "@angular/animations": "~9.0.5",
     "@angular/common": "~9.0.5",
     "@angular/compiler": "~9.0.5",
@@ -28,8 +25,13 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-brands-svg-icons": "^5.12.1",
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "angular-bootstrap-datetimepicker": "^4.0.2",
     "bootstrap": "^4.4.1",
+    "html2canvas": "^1.0.0-rc.5",
     "jquery": "^3.4.1",
+    "jspdf": "^1.5.3",
+    "moment": "^2.24.0",
+    "open-iconic": "^1.1.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

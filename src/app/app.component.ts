@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as moment from 'moment';
 
 import { EmployeeModel } from './models/employee.model';
@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { generateMessages, generatePastAppointments, generateUppcomingAppointments } from './data/appointment';
 import { MessageService } from './services/message.service';
 import { AppointmentService } from './services/appointment.service';
+
 
 moment.locale('sr');
 
