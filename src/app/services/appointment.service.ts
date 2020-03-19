@@ -16,6 +16,10 @@ export class AppointmentService {
     this.appointments.push(appointment);
   }
 
+  getAppointment(appointmentID: string) {
+    return this.appointments.find(appointment => appointment.guid === appointmentID);
+  }
+
   getAllUpcomingDoctorAppointments(doctorGUID: string) {
     return this.appointments.filter(appointment => appointment.provider.guid === doctorGUID && appointment.date >= this.now);
   }

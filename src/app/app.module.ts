@@ -52,6 +52,11 @@ import { AvatarUploadComponent } from './components/avatar-upload/avatar-upload.
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { PaginationPipe } from './pipes/pagination.pipe';
 import { DisplayMessageComponent } from './components/inbox/display-message/display-message.component';
+import { AppointmentDetailsComponent } from './pages/appointments/appointment-details/appointment-details.component';
+import { DiagnosisComponent } from './components/diagnosis/diagnosis.component';
+import { InvoiceInformationComponent } from './components/invoice-information/invoice-information.component';
+import { AppointmentDetailInfoComponent } from './components/appointment-detail-info/appointment-detail-info.component';
+import { AppointmentHealthInfoComponent } from './components/appointment-health-info/appointment-health-info.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 
@@ -102,6 +107,13 @@ import { RegisterComponent } from './pages/register/register.component';
     AvatarUploadComponent,
     PaginationComponent,
     PaginationPipe,
+    PaginationComponent,
+    DisplayMessageComponent,
+    AppointmentDetailsComponent,
+    DiagnosisComponent,
+    InvoiceInformationComponent,
+    AppointmentDetailInfoComponent,
+    AppointmentHealthInfoComponent,
     DisplayMessageComponent,
     LoginComponent,
     RegisterComponent

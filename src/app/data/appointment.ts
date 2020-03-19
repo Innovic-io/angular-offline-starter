@@ -30,7 +30,7 @@ export function generatePastAppointments(len) {
 export function generateUppcomingAppointments(len) {
   const generated = [];
 
-  for (let i = 0; i < len; i++) {
+  for (let i = 1; i < len; i++) {
     const appointment = new AppointmentModel();
     appointment.guid = uuidv4();
     appointment.firstName = 'User' + i;

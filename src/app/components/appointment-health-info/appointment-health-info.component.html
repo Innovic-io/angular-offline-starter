@@ -1,0 +1,58 @@
+<h2>Appointment Health Info:</h2>
+<div class="card">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit(myForm)"  #myForm="ngForm">
+      <div class="row">
+        <div class="col-lg-6 col-sm-6">
+          <input type="number" class="form-control" placeholder="Temperature:" autocomplete="off" minlength="2"
+                 [(ngModel)]="appointmentHealthInfo.temperature" name="temperature"
+                 required>
+        </div>
+        <div class="col-lg-6 col-sm-6">
+          <input type="text" class="form-control" placeholder="BloodType:" autocomplete="off" minlength="2"
+                 name="bloodType"
+                 #bloodType="ngModel"
+                 [ngClass]="{'is-valid': bloodType.valid && bloodType.touched, 'is-invalid': bloodType.invalid && bloodType.touched}"
+                 [(ngModel)]="appointmentHealthInfo.bloodType"
+                 required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-sm-6">
+          <input type="number" class="form-control" name="hearthRate" placeholder="Heart Rate:" autocomplete="off"
+                 minlength="2"
+                 [(ngModel)]="appointmentHealthInfo.hearthRate"
+                 required>
+        </div>
+        <div class="col-lg-6 col-sm-6">
+          <input type="number" class="form-control" placeholder="SYS(mmHg):" autocomplete="off" minlength="2"
+                 name="bloodPressureSYS"
+                 [(ngModel)]="appointmentHealthInfo.bloodPressureSYS"
+                 required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-sm-6">
+          <input type="text" class="form-control" placeholder="Blood Pressure:" autocomplete="off" minlength="5"
+                 name="bloodPressure"
+                 #bloodPressure="ngModel"
+                 [ngClass]="{'is-valid': bloodPressure.valid && bloodPressure.touched, 'is-invalid': bloodPressure.invalid && bloodPressure.touched}"
+                 [(ngModel)]="appointmentHealthInfo.bloodPressure"
+                 required>
+        </div>
+        <div class="col-lg-6 col-sm-6">
+          <input type="number" class="form-control" placeholder="DIAS(mmHg):" autocomplete="off" minlength="2"
+                 name="bloodPressureDIAS"
+                 [(ngModel)]="appointmentHealthInfo.bloodPressureDIAS"
+                 required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-10"></div>
+        <div class="col-2">
+          <button class="btn btn-default" [disabled]="!myForm.form.valid">Save Heath Info</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

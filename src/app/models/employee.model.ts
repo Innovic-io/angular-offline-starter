@@ -14,6 +14,7 @@ export class EmployeeModel {
   contact: ContactModel;
   emergencyPerson: EmergencyModel;
   healthInfo: HealthInfoModel;
+
   constructor() {
     this.contact = new ContactModel();
     this.emergencyPerson = new EmergencyModel();
@@ -37,7 +38,7 @@ export class HealthInfoModel {
   weight: number;
   bloodType: string;
   temperature: number;
-  heartRate: number;
+  hearthRate: number;
   bloodPressure: string;
   bloodPressureSYS: number;
   bloodPressureDIAS: number;

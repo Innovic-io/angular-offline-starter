@@ -21,7 +21,7 @@
     </div>
     </th>
     <td scope="col">{{appointment?.date | date:'medium': undefined: 'sr-RS' }}</td>
-    <td scope="col">{{appointment?.appType}}</td>
+    <td scope="col"  [routerLink]=[appointment.guid]>{{appointment?.appType}}</td>
     <td scope="col">{{appointment?.provider?.name}}</td>
     <td scope="col" *ngIf="appointment?.confirmed">
       <span class="badge badge-success">Confirmed</span>

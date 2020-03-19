@@ -11,6 +11,7 @@ import { MyProfileComponent } from './pages/my-profile/my-profile.component';
 import { RequestComponent } from './pages/my-profile/request/request.component';
 import { MyDocumentsComponent } from './pages/my-documents/my-documents.component';
 import { UploadPatientFormComponent } from './pages/my-documents/upload-patient-form/upload-patient-form.component';
+import { AppointmentDetailsComponent } from './pages/appointments/appointment-details/appointment-details.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'appointments/create',
     component: CreateComponent
+  },
+  {
+    path: 'appointments/:id',
+    component: AppointmentDetailsComponent,
   },
   {
     path: 'messages',
