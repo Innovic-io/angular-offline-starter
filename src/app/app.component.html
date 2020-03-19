@@ -1,11 +1,9 @@
-<app-header [user]="currentUser$ | async"></app-header>
-<main role="main" class="container" #myDiv>
-
+<app-header *ngIf="currentUser$ | async"  [user]="currentUser$ | async"></app-header>
+<main role="main" class="container">
   <ng-container *ngIf="systemMessage$ | async as message">
     <app-success [title]="message"></app-success>
   </ng-container>
   <router-outlet></router-outlet>
-<!--  <button type = "submit" (click)="exportAsPDF(myDiv)" class="btn btn-default">Convert to PDF</button>-->
 </main>
 
 

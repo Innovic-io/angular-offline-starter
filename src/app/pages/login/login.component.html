@@ -1,0 +1,40 @@
+<div class="container singInSpace">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-12">
+          <h1>Log in</h1>
+        </div>
+      </div>
+      <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+        <div class="row">
+          <div class="col-12">
+            <label>Email:</label>
+            <input type="text" name="email" class="form-control"
+                   autocomplete="off" minlength="2" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <label>Password:</label>
+            <input type="password" name="password" class="form-control"
+                   autocomplete="off" minlength="8" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <label><span>Remember me</span> 
+              <span><input name="remember-me" type="checkbox"></span>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary mt-2 float-left" [disabled]="!myForm.form.valid" routerLink="/dashboard">Sign in</button>
+            <button type="button" class="btn btn-default float-right mt-2 float-right" routerLink="/register">Register here</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

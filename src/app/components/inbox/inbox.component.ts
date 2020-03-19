@@ -4,12 +4,12 @@ import { MessageModel } from '../../models/message.model';
 @Component({
   selector: 'app-inbox',
   templateUrl: './inbox.component.html',
-  styleUrls: ['./inbox.component.css']
+  styleUrls: [ './inbox.component.css' ]
 })
 export class InboxComponent {
   @Input() messages: MessageModel[];
-   @Output() updateAchieveIC = new EventEmitter<string>();
-   @Output() deleteMessageIC = new EventEmitter<string>();
+  @Output() updateAchieveIC = new EventEmitter<string>();
+  @Output() deleteMessageIC = new EventEmitter<string>();
   @Output() textToSearch = new EventEmitter<string>();
   @Output() replyOnEmail = new EventEmitter<string>();
   @Input() searchText: string;
@@ -17,6 +17,7 @@ export class InboxComponent {
   deleteIC(event) {
     this.deleteMessageIC.emit(event);
   }
+
   updateIC(event) {
     this.updateAchieveIC.emit(event);
   }

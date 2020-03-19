@@ -6,6 +6,7 @@ export const doctor = new EmployeeModel();
 doctor.guid = uuidv4();
 doctor.name = 'Anya';
 doctor.lastName = 'Bush';
+doctor.password = 'password';
 doctor.middleName = 'Lola';
 doctor.contact.email = 'anyaa@gmail.com';
 doctor.age = 23;

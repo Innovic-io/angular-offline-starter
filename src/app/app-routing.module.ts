@@ -11,6 +11,8 @@ import { MyProfileComponent } from './pages/my-profile/my-profile.component';
 import { RequestComponent } from './pages/my-profile/request/request.component';
 import { MyDocumentsComponent } from './pages/my-documents/my-documents.component';
 import { UploadPatientFormComponent } from './pages/my-documents/upload-patient-form/upload-patient-form.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
   {
@@ -61,7 +63,15 @@ const routes: Routes = [
   {
     path: 'upload-patient-form',
     component: UploadPatientFormComponent
-  }
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
 ];
 
 @NgModule({
