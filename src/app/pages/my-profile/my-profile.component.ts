@@ -13,10 +13,6 @@ export class MyProfileComponent implements OnInit {
   currentUser$: Observable<EmployeeModel>;
 
   constructor(public employeeService: EmployeeService, public systemService: SystemService) { }
-  emitDivName(event) {
-    this.systemService.exportAsPDF(event, 'My profile');
-  }
-
   ngOnInit(): void {
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
   }

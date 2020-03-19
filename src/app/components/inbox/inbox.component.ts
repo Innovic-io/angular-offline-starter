@@ -12,6 +12,7 @@ export class InboxComponent {
   @Output() deleteMessageIC = new EventEmitter<string>();
   @Output() textToSearch = new EventEmitter<string>();
   @Output() replyOnEmail = new EventEmitter<string>();
+  @Output() convertToPDFIC = new EventEmitter<HTMLDivElement>();
   @Input() searchText: string;
 
   deleteIC(event) {
@@ -24,6 +25,10 @@ export class InboxComponent {
 
   onSearch(event) {
     this.searchText = event;
+  }
+  convertIC(event) {
+    this.convertToPDFIC.emit(event);
+    console.log(this.convertToPDFIC.emit(event));
   }
 
 }
