@@ -18,8 +18,7 @@ export class LoginComponent {
   constructor(private employeeService: EmployeeService,
               private route: Router,
               private systemService: SystemService,
-              private authService: AuthService,
-              private authGuard: AuthGuard) {
+              private authService: AuthService) {
   }
 
   onSubmit(form: NgForm, email, password) {
@@ -29,7 +28,6 @@ export class LoginComponent {
       if (isUserLoggedIn) {
         this.route.navigateByUrl('/dashboard');
         this.authService.isLoggedIn = true;
-        this.authGuard.checkLogin('/dashboard');
       } else {
         this.systemService.createDangerAlertMessage('Email or password is wrong!');
         form.reset();

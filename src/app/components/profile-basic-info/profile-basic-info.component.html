@@ -42,6 +42,12 @@
                 <option>male</option>
               </select>
             </div>
+            <div class="col-lg-5 col-sm-2">
+              <select class="form-control" name="gender" [(ngModel)]="user.role" #role="ngModel"
+                      [ngClass]="{'is-invalid': role.invalid}" required>
+                <option *ngFor="let role of roles" [value]="role.value">{{role.title}}</option>
+              </select>
+            </div>
           </div>
           <div class="row">
             <div class="col-lg-5 col-sm-5">Account Access</div>

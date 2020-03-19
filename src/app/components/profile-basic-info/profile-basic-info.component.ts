@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { NgForm } from '@angular/forms';
 import { EmployeeModel } from '../../models/employee.model';
+import { enumSelector, Roles } from '../../models/system.models';
 
 @Component({
   selector: 'app-profile-basic-info',
@@ -12,6 +13,7 @@ export class ProfileBasicInfoComponent {
   @Input() user: EmployeeModel;
   @Output() update = new EventEmitter<EmployeeModel>();
   @Output() updateAvatar = new EventEmitter<string>();
+  roles = enumSelector(Roles);
 
   onSubmit(form: NgForm) {
     if (form.valid) {
