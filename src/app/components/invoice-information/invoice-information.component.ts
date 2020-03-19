@@ -17,7 +17,7 @@ export class InvoiceInformationComponent implements OnInit {
   constructor(public systemService: SystemService) { }
 
   checkForInvoice() {
-    if (this.appointment.invoice.invoicePrice === undefined ) {
+    if (this.appointment.invoice === undefined ) {
       this.diagnosisView = false;
     } else {
       this.diagnosisView = true;

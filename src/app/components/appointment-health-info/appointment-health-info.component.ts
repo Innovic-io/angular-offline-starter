@@ -17,7 +17,7 @@ export class AppointmentHealthInfoComponent implements OnInit {
   constructor(public systemService: SystemService) { }
 
   checkForHealthInfo() {
-    if (this.appointment.appointmentHealthInfo.temperature === undefined ) {
+    if (this.appointment.appointmentHealthInfo === undefined ) {
     this.diagnosisView = false;
     } else {
       this.diagnosisView = true;

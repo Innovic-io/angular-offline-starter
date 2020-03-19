@@ -17,7 +17,7 @@ export class DiagnosisComponent implements OnInit {
   constructor(public systemService: SystemService) { }
 
   checkForDiagnosis() {
-    if (this.appointment.diagnosis.diagnosisText === undefined ) {
+    if (this.appointment.diagnosis === undefined ) {
       this.diagnosisView = false;
     } else {
       this.diagnosisView = true;
