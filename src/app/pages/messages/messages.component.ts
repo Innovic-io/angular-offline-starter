@@ -5,6 +5,7 @@ import { EmployeeModel } from '../../models/employee.model';
 import { MessageModel } from '../../models/message.model';
 import { MessageService } from '../../services/message.service';
 import { generateMessages } from '../../data/appointment';
+import { SystemService } from '../../services/system.service';
 
 @Component({
   selector: 'app-messages',
@@ -16,7 +17,7 @@ export class MessagesComponent implements OnInit {
   message = MessageModel;
   currentUser: EmployeeModel;
 
-  constructor(private employeeService: EmployeeService, public messageService: MessageService) {
+  constructor(private employeeService: EmployeeService, public messageService: MessageService, public systemService: SystemService) {
   }
 
   update($event) {
@@ -29,6 +30,11 @@ export class MessagesComponent implements OnInit {
     if ($event) {
       this.messageService.deleteMessage($event);
       this.messages = this.messageService.getAllDoctorEmails(this.currentUser.guid);
+    }
+  }
+  convert($event) {
+    if ($event) {
+      this.systemService.exportAsPDF($event, $event.title);
     }
   }
 

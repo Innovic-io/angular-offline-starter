@@ -24,10 +24,7 @@ export class DisplayMessageComponent {
   }
 
   exportToPDF(event) {
-    console.log(event);
     this.convertToPDF.emit(event);
-    console.log(this.convertToPDF.emit(event));
-
   }
 
 }

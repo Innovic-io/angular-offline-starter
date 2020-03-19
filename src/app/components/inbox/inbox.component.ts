@@ -28,7 +28,6 @@ export class InboxComponent {
   }
   convertIC(event) {
     this.convertToPDFIC.emit(event);
-    console.log(this.convertToPDFIC.emit(event));
   }
 
 }

@@ -1,7 +1,10 @@
 <div class="container space">
   <div class="row">
     <div class="col-12">
-      <app-inbox [messages]="messages" (updateAchieveIC)="update($event)" (deleteMessageIC)="delete($event)"
+      <app-inbox [messages]="messages"
+                 (updateAchieveIC)="update($event)"
+                 (deleteMessageIC)="delete($event)"
+                 (convertToPDFIC)="convert($event)"
       ></app-inbox>
     </div>
   </div>

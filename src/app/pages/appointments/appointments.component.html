@@ -16,23 +16,22 @@
           <div class="col-lg-12 col-sm-12">
             <div class="dropdown">
               <button class="btn btn-default float-right dropdown-toggle" type="button" id="dropdownMenuButton"
-                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                      [disabled]="markedAppointments.length === 0">
                 Action
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
-                <a class="dropdown-item btn btn-default" (click)="exportToPDFActiveApp(activeAppointments, activeAppointments.title)">Export upcoming to PDF</a>
-                <a class="dropdown-item btn btn-default"  (click)="exportToPDFPastApp(pastAppointments1, pastAppointments1.title)">Export past to PDF</a>
+                <a class="dropdown-item btn btn-default" (click)="deleteAppointments()">Delete</a>
               </div>
-
-              <!--              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
-              <!--                <a class="dropdown-item btn btn-default" (click)="deleteAppointments()">Delete</a>-->
-              <!--              </div>-->
             </div>
             <button class="btn btn-default float-right btnMargin" routerLink="/appointments/create">Make an app</button>
           </div>
         </div>
         <app-tab title="Upcoming Apps" [active]="true">
           <div class="row">
+            <div class="col-lg-12">
+            <button class="btn btn-default float-right" (click)="exportToPDFActiveApp(activeAppointments, activeAppointments.title)">Save as PDF</button>
+            </div>
             <div class="col-lg-12" #activeAppointments title = "activeAppointments ">
               <app-table [appointments]="upcomingAppointments"
                          (checked)="appointmentSelect($event)"
@@ -42,6 +41,9 @@
         </app-tab>
         <app-tab title="Past Apps" [active]="false">
           <div class="row">
+            <div class="col-lg-12">
+            <button class="btn btn-default float-right" (click)="exportToPDFPastApp(pastAppointments1, pastAppointments1.title)">Save as PDF</button>
+            </div>
             <div class="col-lg-12" #pastAppointments1 title = "pastAppointments">
               <app-table [appointments]="pastAppointments"
                          (checked)="appointmentSelect($event)"

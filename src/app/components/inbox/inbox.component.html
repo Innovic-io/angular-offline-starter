@@ -11,7 +11,7 @@
           Action
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item btn btn-default"  >Export to PDF</a>
+          <a class="dropdown-item btn btn-default">something</a>
         </div>
       </div>
       <button class="float-right btn btn-primary" routerLink="/messages/new">New Message</button>
@@ -46,14 +46,16 @@
                aria-labelledby="v-pills-home-tab" *ngFor="let message of messages  | search: searchText let i = index">
             <app-display-message [message]="message"
                                  (deleteMessage)="deleteIC($event)"
-                                 (updateAchieve)="updateIC($event)" (convertToPDF)="convertIC($event)">
+                                 (updateAchieve)="updateIC($event)"
+                                 (convertToPDF)="convertIC($event)">
             </app-display-message>
             <app-accordions>
               <app-accordion *ngFor="let message of message.conversation | search: searchText"
                              [title]="message?.subject" [style.display]="message.archive === false ? 'block' : 'none'">
                 <app-display-message [message]="message" [showButtons]="false"
                                      (deleteMessage)="deleteIC($event)"
-                                     (updateAchieve)="updateIC($event)">
+                                     (updateAchieve)="updateIC($event)"
+                                     (convertToPDF)="convertIC($event)">
                 </app-display-message>
               </app-accordion>
             </app-accordions>

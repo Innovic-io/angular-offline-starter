@@ -26,15 +26,24 @@
         <app-tab title="Medical" [active]="true">
           <div class="row">
             <div class="col-lg-12">
+              <button class="btn btn-default float-right" (click)="convertToPDF(medicalTable)">Save as PDF</button>
+            </div>
+            <div class="col-lg-12" #medicalTable title="medicalTable">
               <app-medical-table [appointments]="pastAppointments"
-                                 (checked)="appointmentSelect($event)" (checkedAll)="pastAppointmentSelectAll($event)"
+                                 (checked)="appointmentSelect($event)"
+                                 (checkedAll)="pastAppointmentSelectAll($event)"
                                  ></app-medical-table>
             </div>
           </div>
         </app-tab>
         <app-tab title="Legal" [active]="false">
-            <div class="row">
-              <div class="col-lg-6 col-sm-12">
+          <div class="row">
+          <div class="col-lg-12">
+            <button class="btn btn-default float-right" (click)="convertToPDF(forms)">Save as PDF</button>
+          </div>
+          </div>
+            <div class="row" #forms title="forms">
+              <div class="col-lg-6 col-sm-12" >
                 <app-forms></app-forms>
               </div>
               <div class="col-lg-6 col-sm-12">

@@ -27,6 +27,9 @@ export class MyDocumentsComponent implements OnInit {
     this.currentUser = this.employeeService.getLoggedEmployee();
     this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
   }
+  convertToPDF(event) {
+    this.systemService.exportAsPDF(event, event.title);
+  }
 
   appointmentSelect(event: { checked: boolean, guid: string }) {
     if (event.checked) {
