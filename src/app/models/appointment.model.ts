@@ -3,12 +3,20 @@ import { AppointmentType } from './system.models';
 import { uuidv4 } from '../helpers/uuid';
 
 export class DiagnosisModel {
-  diagnosis: string;
+  diagnosisText: string;
   diagnosisDate: Date;
+
+  constructor() {
+     this.diagnosisDate = new Date();
+  }
 }
 export class InvoiceModel {
   invoicePrice: number;
   invoiceDate: Date;
+
+  constructor() {
+    this.invoiceDate = new Date();
+  }
 }
 export class AppointmentModel {
   guid: string;
@@ -19,7 +27,7 @@ export class AppointmentModel {
   location: string;
   appType: AppointmentType;
   diagnosis: DiagnosisModel;
-  invoicePrice: InvoiceModel;
+  invoice: InvoiceModel;
   appointmentHealthInfo: HealthInfoModel;
   notes: string;
   phone: string;
@@ -28,5 +36,8 @@ export class AppointmentModel {
   constructor() {
     this.guid = uuidv4();
     this.confirmed = false;
+    this.diagnosis = new DiagnosisModel();
+    this.invoice = new InvoiceModel();
+    this.appointmentHealthInfo = new HealthInfoModel();
   }
 }

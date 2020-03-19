@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { AppointmentModel } from '../models/appointment.model';
+import { AppointmentModel, DiagnosisModel, InvoiceModel } from '../models/appointment.model';
+import { ContactModel, EmergencyModel, EmployeeModel, HealthInfoModel } from '../models/employee.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ import { AppointmentModel } from '../models/appointment.model';
 export class AppointmentService {
   private appointments: AppointmentModel[] = [];
   private now = new Date();
+  private appointment = new AppointmentModel();
 
   constructor() {
   }
@@ -16,7 +18,7 @@ export class AppointmentService {
     this.appointments.push(appointment);
   }
 
-  getAppointment(appointmentID: string) {
+  getAppointmentByID(appointmentID: string) {
     return this.appointments.find(appointment => appointment.guid === appointmentID);
   }
 
@@ -34,10 +36,27 @@ export class AppointmentService {
       this.appointments.splice(appointmentIndex, 1);
     }
   }
+  updateAppointment(appointment: AppointmentModel | HealthInfoModel | DiagnosisModel | InvoiceModel, type: string, guid) {
+    appointment = this.getAppointmentByID(guid);
+    switch (type) {
+      case 'healthInfo':
+        this.appointment.appointmentHealthInfo = {...this.appointment.appointmentHealthInfo, ...appointment};
+        break;
+      case 'diagnosis':
+        this.appointment = {...this.appointment, ...appointment};
+        break;
+      case 'invoice':
+        this.appointment.invoice = {...this.appointment.invoice, ...appointment};
+        break;
+    }
+    console.log(appointment);
+    return appointment;
+  }
 
   confirmAppointment(doctorGUID: string, appointmentGUID: string) {
     if (confirm('Are you sure you want to confirm?')) {
       this.appointments.find(appointment => appointment.guid === appointmentGUID).confirmed = true;
     }
   }
+
 }

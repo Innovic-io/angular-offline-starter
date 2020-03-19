@@ -1,13 +1,13 @@
 <h2>Appointment Health Info:</h2>
 <div class="card">
   <div class="card-body">
-    <form (ngSubmit)="onSubmit(myForm)"  #myForm="ngForm">
+    <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
       <div class="row">
         <div class="col-lg-6 col-sm-6">
           <input type="number" class="form-control" placeholder="Temperature:" autocomplete="off" minlength="2"
                  #temperature="ngModel"
                  [ngClass]="{'is-valid': temperature.valid && temperature.touched, 'is-invalid': temperature.invalid && temperature.touched}"
-                 [(ngModel)]="appointmentHealthInfo.temperature" name="temperature"
+                 [(ngModel)]="appointment.appointmentHealthInfo.temperature" name="temperature"
                  required>
         </div>
         <div class="col-lg-6 col-sm-6">
@@ -15,7 +15,7 @@
                  name="bloodType"
                  #bloodType="ngModel"
                  [ngClass]="{'is-valid': bloodType.valid && bloodType.touched, 'is-invalid': bloodType.invalid && bloodType.touched}"
-                 [(ngModel)]="appointmentHealthInfo.bloodType"
+                 [(ngModel)]="appointment.appointmentHealthInfo.bloodType" pattern="[a-zA-Z]*"
                  required>
         </div>
       </div>
@@ -25,7 +25,7 @@
                  minlength="2"
                  #hearthRate="ngModel"
                  [ngClass]="{'is-valid': hearthRate.valid && hearthRate.touched, 'is-invalid': hearthRate.invalid && hearthRate.touched}"
-                 [(ngModel)]="appointmentHealthInfo.hearthRate"
+                 [(ngModel)]="appointment.appointmentHealthInfo.hearthRate"
                  required>
         </div>
         <div class="col-lg-6 col-sm-6">
@@ -33,7 +33,7 @@
                  name="bloodPressureSYS"
                  #bloodPressureSYS="ngModel"
                  [ngClass]="{'is-valid': bloodPressureSYS.valid && bloodPressureSYS.touched, 'is-invalid': bloodPressureSYS.invalid && bloodPressureSYS.touched}"
-                 [(ngModel)]="appointmentHealthInfo.bloodPressureSYS"
+                 [(ngModel)]="appointment.appointmentHealthInfo.bloodPressureSYS"
                  required>
         </div>
       </div>
@@ -43,7 +43,7 @@
                  name="bloodPressure"
                  #bloodPressure="ngModel"
                  [ngClass]="{'is-valid': bloodPressure.valid && bloodPressure.touched, 'is-invalid': bloodPressure.invalid && bloodPressure.touched}"
-                 [(ngModel)]="appointmentHealthInfo.bloodPressure"
+                 [(ngModel)]="appointment.appointmentHealthInfo.bloodPressure"
                  required>
         </div>
         <div class="col-lg-6 col-sm-6">
@@ -51,14 +51,14 @@
                  name="bloodPressureDIAS"
                  #bloodPressureDIAS="ngModel"
                  [ngClass]="{'is-valid': bloodPressureDIAS.valid && bloodPressureDIAS.touched, 'is-invalid': bloodPressureDIAS.invalid && bloodPressureDIAS.touched}"
-                 [(ngModel)]="appointmentHealthInfo.bloodPressureDIAS"
+                 [(ngModel)]="appointment.appointmentHealthInfo.bloodPressureDIAS"
                  required>
         </div>
       </div>
       <div class="row">
         <div class="col-10"></div>
         <div class="col-2">
-          <button class="btn btn-default" [disabled]="!myForm.form.valid">Save Heath Info</button>
+          <button type="submit" class="btn btn-default" [disabled]="!myForm.form.valid">Save Heath Info</button>
         </div>
       </div>
     </form>
