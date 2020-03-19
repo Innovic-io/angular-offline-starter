@@ -5,7 +5,6 @@ export class EmployeeModel {
   name: string;
   lastName: string;
   password: string;
-  confirmPassword: string;
   middleName: string;
   dateOfBirth: Date;
   gender: string;
@@ -58,3 +57,4 @@ export class EmergencyModel {
   city: string;
   relationship: Relationship;
 }
+

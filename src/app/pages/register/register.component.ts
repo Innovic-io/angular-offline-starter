@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { EmployeeModel } from '../../models/employee.model';
 import { NgForm } from '@angular/forms';
 import { EmployeeService } from '../../services/employee.service';
 import { SystemService } from '../../services/system.service';
+import { RegisterModel } from '../../models/register.model';
 import { AppointmentModel } from '../../models/appointment.model';
+
 
 @Component({
   selector: 'app-register',
@@ -11,12 +12,13 @@ import { AppointmentModel } from '../../models/appointment.model';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  employee = new EmployeeModel();
+  registerEmployee = new RegisterModel();
 
   onSubmit(form: NgForm) {
     if (form.valid) {
-      this.employeeService.register(this.employee);
+      this.employeeService.register(this.registerEmployee);
       this.systemService.createAlertMessage('Registration was successful!');
+      form.reset();
     }
   }
 
