@@ -23,8 +23,8 @@ export class MyDocumentsComponent implements OnInit {
               public systemService: SystemService) { }
 
   ngOnInit(): void {
-    this.currentUser = this.employeeService.getLoggedEmployee();
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
+    this.currentUser = this.employeeService.getLoggedEmployee();
     this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
   }
 

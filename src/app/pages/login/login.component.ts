@@ -1,29 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { EmployeeModel } from '../../models/employee.model';
 import { RegisterModel } from '../../models/register.model';
 import { EmployeeService } from '../../services/employee.service';
+import { Router } from '@angular/router';
+import { SystemService } from '../../services/system.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: [ './login.component.css' ]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   registerEmployee = new RegisterModel();
-  path: string;
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor(private employeeService: EmployeeService,
+              private route: Router,
+              private systemService: SystemService) {
+  }
 
   onSubmit(form: NgForm, email, password) {
     if (form.valid) {
-      this.employeeService.signIn(email, password);
-      this.path = '/dashboard';
+      const isUserLoggedIn = this.employeeService.signIn(email, password);
+
+      if (isUserLoggedIn) {
+        this.route.navigateByUrl('/dashboard');
+      } else {
+        this.systemService.createAlertMessage('Email or password is wrong!');
+        form.reset();
+      }
     }
-  }
-
-  ngOnInit(): void {
-
   }
 
 }

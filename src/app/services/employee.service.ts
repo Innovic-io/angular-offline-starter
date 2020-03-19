@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { doctor } from '../data/dummy';
 import { ContactModel, EmergencyModel, EmployeeModel } from '../models/employee.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { RegisterModel } from '../models/register.model';
 
 
@@ -11,11 +11,11 @@ import { RegisterModel } from '../models/register.model';
 })
 export class EmployeeService {
   private employees: EmployeeModel[] = [];
-  private currentUser = {...doctor};
+  private currentUser: EmployeeModel;
   private readonly employee$: BehaviorSubject<EmployeeModel>;
 
   constructor() {
-    this.employee$ = new BehaviorSubject<EmployeeModel>(this.currentUser);
+    this.employee$ = new BehaviorSubject<EmployeeModel>(null);
   }
 
   getLoggedEmployee() {
@@ -23,24 +23,33 @@ export class EmployeeService {
   }
 
   getLoggedEmployee$() {
-      return this.employee$.asObservable();
+    return this.employee$.asObservable();
   }
 
-  signIn(email: string, password: string) {
-    if (this.employees.find(element => element.contact.email === email && element.password === password) !== undefined) {
-      return this.employees;
+  signIn(email: string, password: string): boolean {
+    const user = this.employees.find(element => element.contact.email === email && element.password === password);
+    if (user !== undefined) {
+      this.currentUser = user;
+      this.employee$.next(this.currentUser);
+      return true;
     } else {
-      console.log('no');
+      return false;
     }
   }
 
-  register(register: RegisterModel) {
+  register(register: RegisterModel): boolean {
     const employee = new EmployeeModel();
-    employee.password = register.password;
-    employee.name = register.name;
-    employee.lastName = register.lastName;
-    employee.contact.email = register.email;
-    this.employees.push(employee);
+    const user = this.employees.find(element => element.contact.email === register.email && element.password === register.password);
+    if (user === undefined) {
+      employee.password = register.password;
+      employee.name = register.name;
+      employee.lastName = register.lastName;
+      employee.contact.email = register.email;
+      this.employees.push(employee);
+      return true;
+    } else {
+      return false;
+    }
   }
 
   updateEmployee(employee: EmployeeModel | ContactModel | EmergencyModel, type: string) {

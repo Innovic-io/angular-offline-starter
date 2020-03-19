@@ -59,6 +59,7 @@ import { AppointmentDetailInfoComponent } from './components/appointment-detail-
 import { AppointmentHealthInfoComponent } from './components/appointment-health-info/appointment-health-info.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { DangerAlertComponent } from './components/danger-alert/danger-alert.component';
 
 @NgModule({
   declarations: [
@@ -116,7 +117,8 @@ import { RegisterComponent } from './pages/register/register.component';
     AppointmentHealthInfoComponent,
     DisplayMessageComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DangerAlertComponent
   ],
   imports: [
     BrowserModule,

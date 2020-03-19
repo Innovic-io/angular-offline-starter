@@ -14,9 +14,11 @@ export class MyHealthComponent implements OnInit {
   currentUser$: Observable<EmployeeModel>;
 
   constructor(public employeeService: EmployeeService, public systemService: SystemService) { }
+
   exportToPDF(event, name) {
     this.systemService.exportAsPDF(event, name);
   }
+
   ngOnInit(): void {
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
   }

@@ -13,6 +13,7 @@ export class MyProfileComponent implements OnInit {
   currentUser$: Observable<EmployeeModel>;
 
   constructor(public employeeService: EmployeeService, public systemService: SystemService) { }
+
   ngOnInit(): void {
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
   }

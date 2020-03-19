@@ -50,12 +50,17 @@
                    #password2="ngModel"
                    [ngClass]="{'is-valid': password2.valid && password2.touched, 'is-invalid': password2.invalid && password2.touched}"
                    autocomplete="off" minlength="8" required>
-            <div class="alert alert-danger" role="alert" [hidden]="registerEmployee.confirmPassword === registerEmployee.password">Passwords don't match!</div>
+            <div class="alert alert-danger" role="alert"
+                 [hidden]="registerEmployee.confirmPassword === registerEmployee.password">Passwords don't match!
+            </div>
           </div>
         </div>
         <div class="row">
           <div class="col-12">
-            <button type="submit" class="btn btn-primary mt-2 float-left" [disabled]="!myForm.form.valid || registerEmployee.confirmPassword !== registerEmployee.password"> Register</button>
+            <button type="submit" class="btn btn-primary mt-2 float-left"
+                    [disabled]="!myForm.form.valid || registerEmployee.confirmPassword !== registerEmployee.password">
+              Register
+            </button>
             <button type="button" class="btn btn-default mt-2 float-right" routerLink="/login">Sign in</button>
           </div>
         </div>

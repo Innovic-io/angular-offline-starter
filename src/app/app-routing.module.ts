@@ -14,6 +14,8 @@ import { UploadPatientFormComponent } from './pages/my-documents/upload-patient-
 import { AppointmentDetailsComponent } from './pages/appointments/appointment-details/appointment-details.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { AuthGuard } from './auth.guard';
+
 
 const routes: Routes = [
   {
@@ -23,55 +25,67 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'appointments',
     component: AppointmentsComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'appointments/create',
-    component: CreateComponent
+    component: CreateComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'appointments/:id',
     component: AppointmentDetailsComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'messages',
-    component: MessagesComponent
+    component: MessagesComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'messages/new',
-    component: NewMessageComponent
+    component: NewMessageComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'messages/new/:id',
-    component: NewMessageComponent
+    component: NewMessageComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'my-health',
-    component: MyHealthComponent
+    component: MyHealthComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'my-profile',
-    component: MyProfileComponent
+    component: MyProfileComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'my-profile/request',
-    component: RequestComponent
+    component: RequestComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'my-documents',
-    component: MyDocumentsComponent
+    component: MyDocumentsComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'upload-patient-form',
-    component: UploadPatientFormComponent
+    component: UploadPatientFormComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'register',

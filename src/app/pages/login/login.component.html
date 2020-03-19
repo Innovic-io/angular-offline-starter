@@ -18,7 +18,8 @@
         <div class="row">
           <div class="col-12">
             <label>Password:</label>
-            <input type="password" name="password" class="form-control" [(ngModel)]="registerEmployee.password" #password="ngModel"
+            <input type="password" name="password" class="form-control" [(ngModel)]="registerEmployee.password"
+                   #password="ngModel"
                    [ngClass]="{'is-valid': password.valid && password.touched, 'is-invalid': password.invalid && password.touched}"
                    autocomplete="off" minlength="8" required>
           </div>
@@ -32,7 +33,7 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <button type="submit" class="btn btn-primary mt-2 float-left" [disabled]="!myForm.valid" [routerLink]="path">Sign in</button>
+            <button type="submit" class="btn btn-primary mt-2 float-left" [disabled]="!myForm.valid">Sign in</button>
             <button type="button" class="btn btn-default float-right mt-2" routerLink="/register">Register here</button>
           </div>
         </div>
