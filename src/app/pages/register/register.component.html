@@ -55,7 +55,8 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <button type="submit" class="btn btn-primary mt-2" [disabled]="!myForm.form.valid || registerEmployee.confirmPassword !== registerEmployee.password"> Register</button>
+            <button type="submit" class="btn btn-primary mt-2 float-left" [disabled]="!myForm.form.valid || registerEmployee.confirmPassword !== registerEmployee.password"> Register</button>
+            <button type="button" class="btn btn-default mt-2 float-right" routerLink="/login">Sign in</button>
           </div>
         </div>
       </form>

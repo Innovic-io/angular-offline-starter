@@ -10,7 +10,7 @@ import { RegisterModel } from '../models/register.model';
   providedIn: 'root'
 })
 export class EmployeeService {
-  private employee = new  EmployeeModel();
+  private employees: EmployeeModel[] = [];
   private currentUser = {...doctor};
   private readonly employee$: BehaviorSubject<EmployeeModel>;
 
@@ -26,11 +26,21 @@ export class EmployeeService {
       return this.employee$.asObservable();
   }
 
+  signIn(email: string, password: string) {
+    if (this.employees.find(element => element.contact.email === email && element.password === password) !== undefined) {
+      return this.employees;
+    } else {
+      console.log('no');
+    }
+  }
+
   register(register: RegisterModel) {
-    this.employee.password = register.password;
-    this.employee.name = register.name;
-    this.employee.lastName = register.lastName;
-    this.employee.contact.email = register.email;
+    const employee = new EmployeeModel();
+    employee.password = register.password;
+    employee.name = register.name;
+    employee.lastName = register.lastName;
+    employee.contact.email = register.email;
+    this.employees.push(employee);
   }
 
   updateEmployee(employee: EmployeeModel | ContactModel | EmergencyModel, type: string) {

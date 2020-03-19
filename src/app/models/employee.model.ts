@@ -1,4 +1,5 @@
 import { Relationship, Roles } from './system.models';
+import { uuidv4 } from '../helpers/uuid';
 
 export class EmployeeModel {
   guid: string;
@@ -19,6 +20,7 @@ export class EmployeeModel {
     this.contact = new ContactModel();
     this.emergencyPerson = new EmergencyModel();
     this.healthInfo = new HealthInfoModel();
+    this.guid = uuidv4();
   }
 }
 
