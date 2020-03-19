@@ -38,18 +38,21 @@ export class EmployeeService {
   }
 
   register(register: RegisterModel): boolean {
-    const employee = new EmployeeModel();
-    const user = this.employees.find(element => element.contact.email === register.email && element.password === register.password);
+    const user = this.employees.find(element => element.contact.email === register.email || element.password === register.password);
+
     if (user === undefined) {
+      const employee = new EmployeeModel();
       employee.password = register.password;
       employee.name = register.name;
       employee.lastName = register.lastName;
       employee.contact.email = register.email;
+
       this.employees.push(employee);
+
       return true;
-    } else {
-      return false;
     }
+
+    return false;
   }
 
   getAllEmployees() {
@@ -68,6 +71,7 @@ export class EmployeeService {
         this.currentUser.emergencyPerson = {...this.currentUser.emergencyPerson, ...employee};
         break;
     }
+    // metodu da apdejtuje usera u ovom nizu
     this.employee$.next(this.currentUser);
   }
 
