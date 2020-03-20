@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-
 import { HealthInfoModel } from '../models/employee.model';
 import { DatabaseService } from './database.service';
 import {
@@ -31,6 +30,7 @@ export class AppointmentService {
   getAppointmentByID(appointmentID: string) {
     return this.appointments.find(appointment => appointment.guid === appointmentID);
   }
+
   getHistoryChangeByID(historyID: string) {
     return this.appointment.appointmentHistory.find(change => change.guid === historyID);
   }
@@ -50,6 +50,7 @@ export class AppointmentService {
       await this.databaseService.deleteAppointment('appointments', appointmentGUID);
     }
   }
+
   updateAppointment(appointment: AppointmentModel | HealthInfoModel | DiagnosisModel | InvoiceModel, type: string, guid) {
     appointment = this.getAppointmentByID(guid);
     const historyOfChanges = new HistoryChanges();
