@@ -20,7 +20,6 @@ export class AvatarUploadComponent {
   }
 
   onSelectFile(event) {
-    console.log('da');
     if (event.target.files && event.target.files[0]) {
 
       this.reader.readAsDataURL(event.target.files[0]);

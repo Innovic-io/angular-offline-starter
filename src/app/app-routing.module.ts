@@ -15,6 +15,7 @@ import { AppointmentDetailsComponent } from './pages/appointments/appointment-de
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { AuthGuard } from './auth.guard';
+import { LoggedGuard } from './logged.guard';
 
 
 const routes: Routes = [
@@ -83,13 +84,16 @@ const routes: Routes = [
     component: UploadPatientFormComponent,
     canActivate: [AuthGuard],
   },
+  // dodati na login i register can activate ali da radi obrnuto, tj ako je vec logovan da ga ne vraca na login
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [LoggedGuard],
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
+    canActivate: [LoggedGuard],
   },
   {
     path: '**',

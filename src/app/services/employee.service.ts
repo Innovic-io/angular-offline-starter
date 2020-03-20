@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { doctor } from '../data/dummy';
 import { ContactModel, EmergencyModel, EmployeeModel } from '../models/employee.model';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { RegisterModel } from '../models/register.model';
 
 
@@ -60,6 +59,7 @@ export class EmployeeService {
   }
 
   updateEmployee(employee: EmployeeModel | ContactModel | EmergencyModel, type: string) {
+    const index = this.employees.indexOf(this.currentUser);
     switch (type) {
       case 'basic':
         this.currentUser = {...this.currentUser, ...employee};
@@ -71,12 +71,14 @@ export class EmployeeService {
         this.currentUser.emergencyPerson = {...this.currentUser.emergencyPerson, ...employee};
         break;
     }
-    // metodu da apdejtuje usera u ovom nizu
+    this.employees.splice(index, 1, this.currentUser);
     this.employee$.next(this.currentUser);
   }
 
   updateEmployeeAvatar(avatarURL: string) {
+    const index = this.employees.indexOf(this.currentUser);
     this.currentUser = { ...this.currentUser, avatar: avatarURL};
+    this.employees.splice(index, 1, this.currentUser);
     this.employee$.next(this.currentUser);
   }
 }

@@ -9,18 +9,21 @@
         <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
           <div class="row">
             <div class="col-lg-5 col-sm-5">
+              <label>First name</label>
               <input type="text" class="form-control" name="firstName" [(ngModel)]="user.name"
                      #firstName="ngModel"
                      [ngClass]="{'is-invalid': firstName.invalid}"
                      autocomplete="off" minlength="2" required>
             </div>
             <div class="col-lg-2 col-sm-2">
+              <label>ML</label>
               <input type="text" class="form-control" name="middleName"
                      [(ngModel)]="user.middleName" #middleName="ngModel"
                      [ngClass]="{'is-invalid': middleName.invalid}"
                      autocomplete="off" minlength="2" required>
             </div>
             <div class="col-lg-5 col-sm-5">
+              <label>Last name</label>
               <input type="text" class="form-control" name="lastName"
                      [(ngModel)]="user.lastName"
                      #lastName="ngModel"
@@ -30,20 +33,23 @@
           </div>
           <div class="row">
             <div class="col-lg-5 col-sm-5">
+              <label>Date of birth</label>
               <input type="date" class="form-control" name="dateOfBirth"
                      [ngModel]="user.dateOfBirth | date:'yyyy-MM-dd'" (ngModelChange)="user.dateOfBirth=$event" #dateOfBirth="ngModel"
                      [ngClass]="{'is-invalid': dateOfBirth.invalid}"
                      required>
             </div>
             <div class="col-lg-2 col-sm-2">
+              <label>Gender</label>
               <select class="form-control" name="gender" [(ngModel)]="user.gender" #gender="ngModel"
                       [ngClass]="{'is-invalid': gender.invalid}" required>
                 <option>female</option>
                 <option>male</option>
               </select>
             </div>
-            <div class="col-lg-5 col-sm-2">
-              <select class="form-control" name="gender" [(ngModel)]="user.role" #role="ngModel"
+            <div class="col-lg-5 col-sm-5">
+              <label>Job</label>
+              <select class="form-control" name="job" [(ngModel)]="user.role" #role="ngModel"
                       [ngClass]="{'is-invalid': role.invalid}" required>
                 <option *ngFor="let role of roles" [value]="role.value">{{role.title}}</option>
               </select>
