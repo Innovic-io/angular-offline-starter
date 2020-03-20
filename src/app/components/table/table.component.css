@@ -5,3 +5,7 @@
 table {
   text-align: center;
 }
+
+a td {
+  text-decoration: none;
+}

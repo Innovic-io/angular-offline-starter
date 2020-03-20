@@ -45,7 +45,7 @@ export class SystemService {
 
     setTimeout(() => {
       this.messageDangerObserver.next(null);
-    }, 2000);
+    }, 1000);
   }
 
   getMessage() {

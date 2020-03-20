@@ -21,14 +21,13 @@ export class AppointmentDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const { id } = this.route.snapshot.params;
-    console.log(id);
     this.appointment = this.appointmentService.getAppointmentByID(id);
     console.log(this.appointment);
 
   }
 
   onUpdateAppointment(appointment: AppointmentModel | HealthInfoModel | DiagnosisModel | InvoiceModel, type: string, guid) {
-    this.appointmentService.updateAppointment(this.appointment, type, guid);
+    this.appointment = this.appointmentService.updateAppointment(this.appointment, type, guid);
     this.systemService.createAlertMessage('Appointment is updated!');
   }
 

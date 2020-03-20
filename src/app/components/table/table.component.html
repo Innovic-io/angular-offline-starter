@@ -14,21 +14,23 @@
   </tr>
   </thead>
   <tbody *ngFor="let appointment of appointments | pagination: pager; let i = index">
-    <th scope="row">
+  <tr>
+    <td scope="row">
       <div class="custom-control custom-checkbox">
       <input type="checkbox" #checkbox class="custom-control-input" id="defaultUnchecked{{i}}" (change)="checkBox(checkbox.checked, appointment.guid)" [checked]="checkboxAll.checked">
       <label class="custom-control-label" for="defaultUnchecked{{i}}"></label>
     </div>
-    </th>
-    <td scope="col">{{appointment?.date | date:'medium': undefined: 'sr-RS' }}</td>
-    <td scope="col"  [routerLink]=[appointment.guid]>{{appointment?.appType}}</td>
-    <td scope="col">{{appointment?.provider?.name}}</td>
-    <td scope="col" *ngIf="appointment?.confirmed">
+    </td>
+    <td scope="col" [routerLink]="[appointment.guid]">{{appointment?.date | date:'medium': undefined: 'sr-RS' }}</td>
+    <td scope="col" [routerLink]="[appointment.guid]">{{appointment?.appType}}</td>
+    <td scope="col" [routerLink]="[appointment.guid]">{{appointment?.provider?.name}}</td>
+    <td scope="col" *ngIf="appointment?.confirmed" [routerLink]="[appointment.guid]">
       <span class="badge badge-success">Confirmed</span>
     </td>
-    <td scope="col" *ngIf="!appointment?.confirmed">
+    <td scope="col" *ngIf="!appointment?.confirmed" [routerLink]="[appointment.guid]">
       <span class="badge badge-danger">Not confirmed</span>
     </td>
+  </tr>
   </tbody>
 </table>
 <app-pagination [total]="appointments.length" [perPage]="10" [currentPage]="pager?.currentPage" (page)="setPage($event);"></app-pagination>

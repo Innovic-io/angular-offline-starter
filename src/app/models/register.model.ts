@@ -4,11 +4,12 @@ export class RegisterModel {
   email: string;
   password: string;
   confirmPassword: string;
+
   constructor() {
-    this.name = 'Kristina';
-    this.lastName = 'Ilic';
+    this.name = 'Vladana';
+    this.lastName = 'Pandurevic';
     this.email = 'a@gmail.com';
-    this.password = 'kristinailic';
-    this.confirmPassword = 'kristinailic';
+    this.password = 'radijator';
+    this.confirmPassword = 'radijator';
   }
 }

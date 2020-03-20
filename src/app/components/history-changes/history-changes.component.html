@@ -1,0 +1,11 @@
+<h2>History Changes</h2>
+<div class="list-group">
+  <a class="list-group-item list-group-item-action flex-column align-items-start" [routerLink]="[appointmentHistory.guid]" *ngFor="let appointmentHistory of appointment.appointmentHistory ">
+    <div class="d-flex w-100 justify-content-between">
+      <h6 class="mb-1">{{appointmentHistory?.what}}</h6>
+      <small>{{appointmentHistory?.date | date:'medium'  | timeAgo}}</small>
+    </div>
+    <p class="mb-1">Actor: {{appointmentHistory?.actor?.role | role}} {{appointmentHistory?.actor.name}}</p>
+    <small>More...</small>
+  </a>
+</div>

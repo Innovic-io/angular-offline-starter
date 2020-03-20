@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
 
-import { AppointmentModel, DiagnosisModel, InvoiceModel } from '../models/appointment.model';
-import {  HealthInfoModel } from '../models/employee.model';
+import {
+  AppointmentModel,
+  DiagnosisModel,
+  HistoryChanges,
+  HistoryModel,
+  InvoiceModel
+} from '../models/appointment.model';
+import { HealthInfoModel } from '../models/employee.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +27,9 @@ export class AppointmentService {
   getAppointmentByID(appointmentID: string) {
     return this.appointments.find(appointment => appointment.guid === appointmentID);
   }
+  getHistoryChangeByID(historyID: string) {
+    return this.appointment.appointmentHistory.find(change => change.guid === historyID);
+  }
 
   getAllUpcomingDoctorAppointments(doctorGUID: string) {
     return this.appointments.filter(appointment => appointment.provider.guid === doctorGUID && appointment.date >= this.now);
@@ -38,15 +47,35 @@ export class AppointmentService {
   }
   updateAppointment(appointment: AppointmentModel | HealthInfoModel | DiagnosisModel | InvoiceModel, type: string, guid) {
     appointment = this.getAppointmentByID(guid);
+    const historyOfChanges = new HistoryChanges();
     switch (type) {
       case 'healthInfo':
+        historyOfChanges.previousState = this.appointment.appointmentHealthInfo;
         this.appointment.appointmentHealthInfo = {...this.appointment.appointmentHealthInfo, ...appointment};
+        historyOfChanges.newState = appointment.appointmentHealthInfo;
+        historyOfChanges.what = HistoryModel.healthInfo;
+        historyOfChanges.date = new Date();
+        historyOfChanges.actor = appointment.provider;
+        appointment.appointmentHistory.push(historyOfChanges);
+        console.log('Niz', appointment.appointmentHistory);
         break;
       case 'diagnosis':
+        historyOfChanges.previousState = this.appointment.diagnosis;
         this.appointment.diagnosis = {...this.appointment.diagnosis, ...appointment, diagnosisDate: new Date()};
+        historyOfChanges.newState = appointment.diagnosis;
+        historyOfChanges.what = HistoryModel.diagnosis;
+        historyOfChanges.date = new Date();
+        historyOfChanges.actor = appointment.provider;
+        appointment.appointmentHistory.push(historyOfChanges);
         break;
       case 'invoice':
+        historyOfChanges.previousState = this.appointment.invoice;
         this.appointment.invoice = {...this.appointment.invoice, ...appointment, invoiceDate: new Date()};
+        historyOfChanges.newState = appointment.invoice;
+        historyOfChanges.what = HistoryModel.invoice;
+        historyOfChanges.date = new Date();
+        historyOfChanges.actor = appointment.provider;
+        appointment.appointmentHistory.push(historyOfChanges);
         break;
     }
     console.log(appointment);

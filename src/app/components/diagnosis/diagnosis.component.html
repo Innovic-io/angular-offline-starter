@@ -1,40 +1,47 @@
 <h2>Diagnosis: </h2>
 <div *ngIf="diagnosisView === false" class="card">
   <div class="card-body">
-        <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
-          <div class="row">
-            <div class="col-12">
-             <textarea type="text" class="form-control" rows="4" placeholder="Write diagnosis" [(ngModel)]="appointment.diagnosis.diagnosisText"
+    <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
+      <div class="row">
+        <div class="col-12">
+             <textarea type="text" class="form-control" rows="4" placeholder="Write diagnosis"
+                       [(ngModel)]="appointment.diagnosis.diagnosisText"
                        name="diagnosisText" #diagnosisText="ngModel"
                        [ngClass]="{'is-valid': diagnosisText.valid && diagnosisText.touched, 'is-invalid': diagnosisText.invalid && diagnosisText.touched}"
                        autocomplete="off" minlength="2" required></textarea>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-8"></div>
-            <div class="col-4">
-              <button type="submit" class="btn btn-default float-right ml-2" [disabled]="!myForm.form.valid">Save Diagnosis</button>
-            </div>
-          </div>
-        </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8"></div>
+        <div class="col-4">
+          <button type="submit" class="btn btn-default float-right ml-2" [disabled]="!myForm.form.valid">Save
+            Diagnosis
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
 <div *ngIf="diagnosisView === true" class="card">
   <div class="card-body">
     <div class="row" #detailDiagnosisInfo title="detailDiagnosisInfo">
       <div class="col-12">
-      <div class="row" >
-        <div class="col-12">
-             {{appointment.diagnosis.diagnosisText}}
+        <div class="row">
+          <div class="col-12">
+            <strong>Diagnosis: </strong> {{appointment.diagnosis.diagnosisText}}
+          </div>
         </div>
       </div>
-    </div></div>
-      <div class="row">
-        <div class="col-8"></div>
-        <div class="col-4">
-          <button type="submit" class="btn btn-default float-right ml-2" (click)="toggle()">Edit diagnosis</button>
-          <button (click)="exportToPDF(detailDiagnosisInfo, detailDiagnosisInfo.title)" class="btn btn-default float-right">Convert to PDF</button>
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-sm-6"></div>
+      <div class="col-lg-6 col-sm-6">
+        <button type="submit" class="btn btn-default float-right ml-2" (click)="toggle()">Edit Diagnosis</button>
+        <button (click)="exportToPDF(detailDiagnosisInfo, detailDiagnosisInfo.title)"
+                class="btn btn-default float-right">
+          Convert to PDF
+        </button>
       </div>
+    </div>
   </div>
 </div>

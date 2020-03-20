@@ -1,6 +1,6 @@
 <div class="container space">
   <div class="row">
-    <div class="col-12">
+    <div class="col-9">
       <div class="row">
         <div class="col-12">
         <app-appointment-detail-info [appointment]="appointment"></app-appointment-detail-info>
@@ -19,6 +19,13 @@
       <div class="row">
         <div class="col-12">
           <app-invoice-information [appointment]="appointment" (update)="onUpdateAppointment($event, 'invoice', appointment.guid)"></app-invoice-information>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="row">
+        <div class="col-12">
+          <app-history-changes [appointment]="appointment"></app-history-changes>
         </div>
       </div>
     </div>

@@ -60,6 +60,8 @@ import { AppointmentHealthInfoComponent } from './components/appointment-health-
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { DangerAlertComponent } from './components/danger-alert/danger-alert.component';
+import { HistoryChangesComponent } from './components/history-changes/history-changes.component';
+import { HistoryChangeDetailComponent } from './pages/appointments/history-change-detail/history-change-detail.component';
 
 @NgModule({
   declarations: [
@@ -118,7 +120,9 @@ import { DangerAlertComponent } from './components/danger-alert/danger-alert.com
     DisplayMessageComponent,
     LoginComponent,
     RegisterComponent,
-    DangerAlertComponent
+    DangerAlertComponent,
+    HistoryChangesComponent,
+    HistoryChangeDetailComponent
   ],
   imports: [
     BrowserModule,

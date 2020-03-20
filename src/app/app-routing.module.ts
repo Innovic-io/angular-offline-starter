@@ -15,6 +15,7 @@ import { AppointmentDetailsComponent } from './pages/appointments/appointment-de
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { AuthGuard } from './auth.guard';
+import { HistoryChangeDetailComponent } from './pages/appointments/history-change-detail/history-change-detail.component';
 import { LoggedGuard } from './logged.guard';
 
 
@@ -42,6 +43,11 @@ const routes: Routes = [
   {
     path: 'appointments/:id',
     component: AppointmentDetailsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'appointments/:id/:id',
+    component: HistoryChangeDetailComponent,
     canActivate: [AuthGuard],
   },
   {
