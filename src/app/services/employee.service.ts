@@ -27,20 +27,23 @@ export class EmployeeService {
     return this.employee$.asObservable();
   }
 
-  signIn(email: string, password: string): boolean {
-    const user = this.employees.find(element => element.contact.email === email && element.password === password);
+  async signIn(email: string, password: string) {
+    const user = await this.databaseService.getUserByEmailAndPassword<EmployeeModel>('employees', email, password);
     if (user !== undefined) {
       this.currentUser = user;
-      this.employee$.next(this.currentUser);
+      console.log(this.currentUser);
+      this.employee$.next(this.currentUser); // change getUserByEmailAndPassword to return user not null
+      console.log('true');
       return true;
     } else {
+      console.log('false');
       return false;
     }
   }
 
  async register(register: RegisterModel) {
-    const e = await this.databaseService.getUserByEmailAndPassword<EmployeeModel>('employees', register.email, register.password);
-    const user = this.employees.find(element => element.contact.email === register.email || element.password === register.password);
+    const user = await this.databaseService.getUserByEmailAndPassword<EmployeeModel>('employees', register.email, register.password);
+    console.log(user);
     if (user === undefined) {
       const employee = new EmployeeModel();
       employee.password = register.password;
@@ -48,11 +51,10 @@ export class EmployeeService {
       employee.lastName = register.lastName;
       employee.contact.email = register.email;
 
-      this.employees.push(employee);
+      await this.databaseService.insert<EmployeeModel>('employees', employee);
 
       return true;
     }
-
     return false;
   }
 

@@ -6,10 +6,6 @@ export class RegisterModel {
   confirmPassword: string;
 
   constructor() {
-    this.name = 'Vladana';
-    this.lastName = 'Pandurevic';
-    this.email = 'a@gmail.com';
-    this.password = 'radijator';
-    this.confirmPassword = 'radijator';
+
   }
 }

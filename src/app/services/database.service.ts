@@ -15,22 +15,18 @@ export class DatabaseService {
     });
   }
 
-  async insertEmployeeInTable() {
+ async insertEmployeeInTable() {
     this.db.employees.put({
-      guid: '55018aa9-930d-4cf9-ac64-dcf290829029',
-      firstName: 'Kristina',
-      lastName: 'Ilic',
-      email: 'b@gmail.com',
-      password: 'kristinailic'
+      guid: '55018aa9-930d-4cf9-ac64-dcf290829029', firstName: 'Kristina', lastName: 'Ilic', email: 'b@gmail.com', password: 'kristinailic'
     })
       .then(() => {
         return this.db.employees.get('55018aa9-930d-4cf9-ac64-dcf290829029');
-      //
-      // }).then((employee) => {
-      // alert('employee name: ' + employee.firstName);
+
+      }).then((employee) => {
+   //   alert('employee name: ' + employee.firstName);
 
     }).catch((error) => {
-      alert('Ooops employee: ' + error);
+      alert('Ooops: ' + error);
     });
   }
 
@@ -39,10 +35,17 @@ export class DatabaseService {
   }
 
   async getSingle<T>(tableName: string, guid: string) {
-    return await this.db[tableName].get(guid);
+   return await this.db[tableName].get(guid);
   }
 
   async getUserByEmailAndPassword<T>(tableName: string, email: string, password: string) {
+    const emailEqual = await this.db[tableName].where('email').equals(email).first();
+    const passwordEqual = await this.db[tableName].where('password').equals(password).first();
+    if (emailEqual !== undefined || passwordEqual !== undefined) {
+      return null;
+    } else {
+      return undefined;
+    }
   }
 
   async deleteAppointment<T>(tableName: string, guid: string) {

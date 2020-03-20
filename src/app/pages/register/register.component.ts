@@ -14,9 +14,9 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
   registerEmployee = new RegisterModel();
 
-  onSubmit(form: NgForm) {
+  async onSubmit(form: NgForm) {
     if (form.valid) {
-      const isExistingUser = this.employeeService.register(this.registerEmployee);
+      const isExistingUser = await this.employeeService.register(this.registerEmployee);
       if (isExistingUser) {
         this.systemService.createAlertMessage('Registration was successful!');
         this.route.navigateByUrl('/login');
