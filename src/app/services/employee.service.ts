@@ -40,7 +40,7 @@ export class EmployeeService {
 
  async register(register: RegisterModel) {
     const e = await this.databaseService.getUserByEmailAndPassword<EmployeeModel>('employees', register.email, register.password);
-   const user = this.employees.find(element => element.contact.email === register.email || element.password === register.password);
+    const user = this.employees.find(element => element.contact.email === register.email || element.password === register.password);
     if (user === undefined) {
       const employee = new EmployeeModel();
       employee.password = register.password;

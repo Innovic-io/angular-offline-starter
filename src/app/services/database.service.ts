@@ -10,22 +10,27 @@ export class DatabaseService {
   constructor() {
     this.db = new Dexie('employee_database');
     this.db.version(1).stores({
-      employees: 'guid,firstName,lastName,email,password'
+      employees: 'guid,firstName,lastName,email,password',
+      appointments: 'guid,firstName,lastName,date,notes,phone,email'
     });
   }
 
- async insertEmployeeInTable() {
+  async insertEmployeeInTable() {
     this.db.employees.put({
-      guid: '55018aa9-930d-4cf9-ac64-dcf290829029', firstName: 'Kristina', lastName: 'Ilic', email: 'b@gmail.com', password: 'kristinailic'
+      guid: '55018aa9-930d-4cf9-ac64-dcf290829029',
+      firstName: 'Kristina',
+      lastName: 'Ilic',
+      email: 'b@gmail.com',
+      password: 'kristinailic'
     })
       .then(() => {
         return this.db.employees.get('55018aa9-930d-4cf9-ac64-dcf290829029');
-
-      }).then((employee) => {
-      alert('employee name: ' + employee.firstName);
+      //
+      // }).then((employee) => {
+      // alert('employee name: ' + employee.firstName);
 
     }).catch((error) => {
-      alert('Ooops: ' + error);
+      alert('Ooops employee: ' + error);
     });
   }
 
@@ -34,10 +39,22 @@ export class DatabaseService {
   }
 
   async getSingle<T>(tableName: string, guid: string) {
-   return await this.db[tableName].get(guid);
+    return await this.db[tableName].get(guid);
   }
 
   async getUserByEmailAndPassword<T>(tableName: string, email: string, password: string) {
+  }
+
+  async deleteAppointment<T>(tableName: string, guid: string) {
+    await this.db[tableName].delete(guid);
+  }
+
+  async updateEmployee<T>(tableName: string, guid: string, object: T) {
+    await this.db[tableName].update(guid, object);
+  }
+
+  async insertAppointment<T>(tableName: string, object: T) {
+    await this.db[tableName].put(object);
   }
 
 }

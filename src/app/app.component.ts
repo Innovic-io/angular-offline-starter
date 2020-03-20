@@ -33,17 +33,18 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.databaseService.insertEmployeeInTable();
+    this.databaseService.updateEmployee('employees', '55018aa9-930d-4cf9-ac64-dcf290829029', {lastName: 'Bijeljanin'});
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
     this.systemMessage$ = this.systemService.getMessage();
     this.systemMessageDanger$ = this.systemService.getDangerMessage();
     for (const message of generateMessages(14)) {
       this.messageService.createMessage(message);
     }
-    for (const app of generateUppcomingAppointments(25)) {
-      this.appointmentService.createAppointment(app);
-    }
-    for (const app of generatePastAppointments(20)) {
-      this.appointmentService.createAppointment(app);
-    }
+    // for (const app of generateUppcomingAppointments(25)) {
+    //   this.appointmentService.createAppointment(app);
+    // }
+    // for (const app of generatePastAppointments(20)) {
+    //   this.appointmentService.createAppointment(app);
+    // }
   }
 }

@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 
+
+import { HealthInfoModel } from '../models/employee.model';
+import { DatabaseService } from './database.service';
 import {
   AppointmentModel,
   DiagnosisModel,
@@ -7,7 +10,7 @@ import {
   HistoryModel,
   InvoiceModel
 } from '../models/appointment.model';
-import { HealthInfoModel } from '../models/employee.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +20,11 @@ export class AppointmentService {
   private now = new Date();
   private appointment = new AppointmentModel();
 
-  constructor() {
+  constructor(public databaseService: DatabaseService) {
   }
 
-  createAppointment(appointment: AppointmentModel) {
+   async createAppointment(appointment: AppointmentModel) {
+    await this.databaseService.insertAppointment<AppointmentModel>('appointments', appointment);
     this.appointments.push(appointment);
   }
 
@@ -39,10 +43,11 @@ export class AppointmentService {
     return this.appointments.filter(appointment => appointment.provider.guid === doctorGUID && appointment.date < this.now);
   }
 
-  deleteAppointments(appointmentGUID: string) {
+  async deleteAppointments(appointmentGUID: string) {
     const appointmentIndex = this.appointments.findIndex(appointment => appointment.guid === appointmentGUID);
     if (appointmentIndex >= 0) {
       this.appointments.splice(appointmentIndex, 1);
+      await this.databaseService.deleteAppointment('appointments', appointmentGUID);
     }
   }
   updateAppointment(appointment: AppointmentModel | HealthInfoModel | DiagnosisModel | InvoiceModel, type: string, guid) {

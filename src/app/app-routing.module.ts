@@ -90,7 +90,6 @@ const routes: Routes = [
     component: UploadPatientFormComponent,
     canActivate: [AuthGuard],
   },
-  // dodati na login i register can activate ali da radi obrnuto, tj ako je vec logovan da ga ne vraca na login
   {
     path: 'login',
     component: LoginComponent,
