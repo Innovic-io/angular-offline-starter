@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { doctor } from '../data/dummy';
 import { ContactModel, EmergencyModel, EmployeeModel } from '../models/employee.model';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { RegisterModel } from '../models/register.model';
 import { DatabaseService } from './database.service';
 
@@ -39,19 +39,21 @@ export class EmployeeService {
   }
 
  async register(register: RegisterModel) {
-    const employee = new EmployeeModel();
     const e = await this.databaseService.getUserByEmailAndPassword<EmployeeModel>('employees', register.email, register.password);
-    const user = this.employees.find(element => element.contact.email === register.email && element.password === register.password);
+   const user = this.employees.find(element => element.contact.email === register.email || element.password === register.password);
     if (user === undefined) {
+      const employee = new EmployeeModel();
       employee.password = register.password;
       employee.name = register.name;
       employee.lastName = register.lastName;
       employee.contact.email = register.email;
+
       this.employees.push(employee);
+
       return true;
-    } else {
-      return false;
     }
+
+    return false;
   }
 
   getAllEmployees() {
@@ -59,6 +61,7 @@ export class EmployeeService {
   }
 
   updateEmployee(employee: EmployeeModel | ContactModel | EmergencyModel, type: string) {
+    const index = this.employees.indexOf(this.currentUser);
     switch (type) {
       case 'basic':
         this.currentUser = {...this.currentUser, ...employee};
@@ -70,11 +73,14 @@ export class EmployeeService {
         this.currentUser.emergencyPerson = {...this.currentUser.emergencyPerson, ...employee};
         break;
     }
+    this.employees.splice(index, 1, this.currentUser);
     this.employee$.next(this.currentUser);
   }
 
   updateEmployeeAvatar(avatarURL: string) {
+    const index = this.employees.indexOf(this.currentUser);
     this.currentUser = { ...this.currentUser, avatar: avatarURL};
+    this.employees.splice(index, 1, this.currentUser);
     this.employee$.next(this.currentUser);
   }
 }

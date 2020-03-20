@@ -1,6 +1,3 @@
-import { uuidv4 } from '../helpers/uuid';
-import { ContactModel, EmergencyModel, HealthInfoModel } from './employee.model';
-
 export class RegisterModel {
   name: string;
   lastName: string;
@@ -15,4 +12,3 @@ export class RegisterModel {
     this.confirmPassword = 'kristinailic';
   }
 }
-

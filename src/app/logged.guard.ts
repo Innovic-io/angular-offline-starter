@@ -7,21 +7,19 @@ import {
 } from '@angular/router';
 import { EmployeeService } from './services/employee.service';
 
-
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class LoggedGuard implements CanActivate {
   constructor(private employeeService: EmployeeService, private router: Router) {
   }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
-    if (this.employeeService.getLoggedEmployee()) {
-      console.log('auth: ', 'logovan');
+    if (!this.employeeService.getLoggedEmployee()) {
       return true;
     } else {
-      this.router.navigateByUrl('/login');
+      console.log(this.router.navigateByUrl('/dashboard'));
       return false;
     }
   }
