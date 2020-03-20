@@ -32,18 +32,15 @@ export class EmployeeService {
     if (user !== undefined) {
       this.currentUser = user;
       console.log(this.currentUser);
-      this.employee$.next(this.currentUser); // change getUserByEmailAndPassword to return user not null
-      console.log('true');
+      this.employee$.next(this.currentUser);
       return true;
     } else {
-      console.log('false');
       return false;
     }
   }
 
  async register(register: RegisterModel) {
     const user = await this.databaseService.getUserByEmailAndPassword<EmployeeModel>('employees', register.email, register.password);
-    console.log(user);
     if (user === undefined) {
       const employee = new EmployeeModel();
       employee.password = register.password;

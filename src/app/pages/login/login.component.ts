@@ -18,9 +18,9 @@ export class LoginComponent {
               private systemService: SystemService) {
   }
 
-  onSubmit(form: NgForm, email, password) {
+ async onSubmit(form: NgForm, email, password) {
     if (form.valid) {
-      const isUserLoggedIn = this.employeeService.signIn(email, password);
+      const isUserLoggedIn = await this.employeeService.signIn(email, password);
 
       if (isUserLoggedIn) {
         this.route.navigateByUrl('/dashboard');

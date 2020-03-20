@@ -5,7 +5,4 @@ export class RegisterModel {
   password: string;
   confirmPassword: string;
 
-  constructor() {
-
-  }
 }
