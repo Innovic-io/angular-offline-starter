@@ -16,8 +16,8 @@ export class AppointmentDetailInfoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  exportToPDF(event, name) {
-    this.systemService.exportAsPDF(event, name);
+  async exportToPDF(event, name) {
+   await this.systemService.exportAsPDF(event, name);
   }
 
 }

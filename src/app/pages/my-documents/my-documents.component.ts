@@ -20,15 +20,17 @@ export class MyDocumentsComponent implements OnInit {
 
   constructor(public employeeService: EmployeeService,
               public appointmentService: AppointmentService,
-              public systemService: SystemService) { }
+              public systemService: SystemService) {
+  }
 
   ngOnInit(): void {
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
     this.currentUser = this.employeeService.getLoggedEmployee();
     this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
   }
-  convertToPDF(event) {
-    this.systemService.exportAsPDF(event, event.title);
+
+  async convertToPDF(event) {
+    await this.systemService.exportAsPDF(event, event.title);
   }
 
   appointmentSelect(event: { checked: boolean, guid: string }) {

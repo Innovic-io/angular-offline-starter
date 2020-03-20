@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { generateMessages, generatePastAppointments, generateUppcomingAppointments } from './data/appointment';
 import { MessageService } from './services/message.service';
 import { AppointmentService } from './services/appointment.service';
-
+import { DatabaseService } from './services/database.service';
 
 moment.locale('sr');
 
@@ -27,10 +27,12 @@ export class AppComponent implements OnInit {
               public employeeService: EmployeeService,
               public systemService: SystemService,
               public messageService: MessageService,
-              public appointmentService: AppointmentService) {
+              public appointmentService: AppointmentService,
+              public databaseService: DatabaseService) {
   }
 
   ngOnInit(): void {
+    this.databaseService.insertEmployeeInTable();
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
     this.systemMessage$ = this.systemService.getMessage();
     this.systemMessageDanger$ = this.systemService.getDangerMessage();
@@ -43,6 +45,5 @@ export class AppComponent implements OnInit {
     for (const app of generatePastAppointments(20)) {
       this.appointmentService.createAppointment(app);
     }
-
   }
 }

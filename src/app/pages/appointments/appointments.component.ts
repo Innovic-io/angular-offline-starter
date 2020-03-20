@@ -28,11 +28,13 @@ export class AppointmentsComponent implements OnInit {
     this.upcomingAppointments = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
     this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
   }
-  exportToPDFActiveApp(event, name) {
-    this.systemService.exportAsPDF(event, name);
+
+  async exportToPDFActiveApp(event, name) {
+    await this.systemService.exportAsPDF(event, name);
   }
-  exportToPDFPastApp(event, name) {
-    this.systemService.exportAsPDF(event, name);
+
+  async exportToPDFPastApp(event, name) {
+    await this.systemService.exportAsPDF(event, name);
   }
 
   appointmentSelect(event: { checked: boolean, guid: string }) {

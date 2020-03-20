@@ -21,33 +21,16 @@ export class SystemService {
     });
   }
 
-  exportAsPDF(data: HTMLDivElement, name: string) {
-    html2canvas(data).then(canvas => {
-      const contentDataURL = canvas.toDataURL('image/png');
-      const pdf = new jspdf({orientation: 'portrait'});
-      const imgProps = pdf.getImageProperties(contentDataURL);
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      pdf.addImage(contentDataURL, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save(name);
-    });
-  }
-/*
  async exportAsPDF(data: HTMLDivElement, name: string) {
-      try {
       const canvas = await html2canvas(data);
       const contentDataURL =  canvas.toDataURL('image/png');
-      const pdf =  new jspdf({orientation: 'landscape'});
+      const pdf =  new jspdf({orientation: 'portrait'});
       const imgProps = pdf.getImageProperties(contentDataURL);
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
       pdf.addImage(contentDataURL, 'PNG', 0, 0, pdfWidth, pdfHeight);
       pdf.save(name);
-      } catch (err) {
-        console.log('export failed', err);
-      }
-
-  }*/
+  }
 
   createAlertMessage(message: string) {
     this.messageObserver.next(message);

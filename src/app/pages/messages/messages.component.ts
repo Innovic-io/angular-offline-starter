@@ -32,9 +32,10 @@ export class MessagesComponent implements OnInit {
       this.messages = this.messageService.getAllDoctorEmails(this.currentUser.guid);
     }
   }
-  convert($event) {
+
+  async convert($event) {
     if ($event) {
-      this.systemService.exportAsPDF($event, $event.title);
+      await this.systemService.exportAsPDF($event, $event.title);
     }
   }
 

@@ -14,10 +14,11 @@ export class InvoiceInformationComponent implements OnInit {
   @Output() update = new EventEmitter<AppointmentModel>();
   public diagnosisView = false;
 
-  constructor(public systemService: SystemService) { }
+  constructor(public systemService: SystemService) {
+  }
 
   checkForInvoice() {
-    if (this.appointment.invoice === undefined ) {
+    if (this.appointment.invoice === undefined) {
       this.diagnosisView = false;
     } else {
       this.diagnosisView = true;
@@ -40,9 +41,8 @@ export class InvoiceInformationComponent implements OnInit {
     this.diagnosisView = !this.diagnosisView;
   }
 
-  exportToPDF(event, name) {
-    console.log(event, name);
-    this.systemService.exportAsPDF(event, name);
+  async exportToPDF(event, name) {
+    await this.systemService.exportAsPDF(event, name);
   }
 
 }

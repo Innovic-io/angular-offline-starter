@@ -4,6 +4,7 @@ import { doctor } from '../data/dummy';
 import { ContactModel, EmergencyModel, EmployeeModel } from '../models/employee.model';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { RegisterModel } from '../models/register.model';
+import { DatabaseService } from './database.service';
 
 
 @Injectable({
@@ -14,7 +15,7 @@ export class EmployeeService {
   private currentUser: EmployeeModel;
   private readonly employee$: BehaviorSubject<EmployeeModel>;
 
-  constructor() {
+  constructor(public databaseService: DatabaseService) {
     this.employee$ = new BehaviorSubject<EmployeeModel>(null);
   }
 
@@ -37,8 +38,9 @@ export class EmployeeService {
     }
   }
 
-  register(register: RegisterModel): boolean {
+ async register(register: RegisterModel) {
     const employee = new EmployeeModel();
+    const e = await this.databaseService.getUserByEmailAndPassword<EmployeeModel>('employees', register.email, register.password);
     const user = this.employees.find(element => element.contact.email === register.email && element.password === register.password);
     if (user === undefined) {
       employee.password = register.password;

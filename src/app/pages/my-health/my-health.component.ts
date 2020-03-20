@@ -13,10 +13,11 @@ import { SystemService } from '../../services/system.service';
 export class MyHealthComponent implements OnInit {
   currentUser$: Observable<EmployeeModel>;
 
-  constructor(public employeeService: EmployeeService, public systemService: SystemService) { }
+  constructor(public employeeService: EmployeeService, public systemService: SystemService) {
+  }
 
-  exportToPDF(event, name) {
-    this.systemService.exportAsPDF(event, name);
+  async exportToPDF(event, name) {
+    await this.systemService.exportAsPDF(event, name);
   }
 
   ngOnInit(): void {

@@ -14,10 +14,11 @@ export class DiagnosisComponent implements OnInit {
   @Output() update = new EventEmitter<AppointmentModel>();
   public diagnosisView = false;
 
-  constructor(public systemService: SystemService) { }
+  constructor(public systemService: SystemService) {
+  }
 
   checkForDiagnosis() {
-    if (this.appointment.diagnosis === undefined ) {
+    if (this.appointment.diagnosis === undefined) {
       this.diagnosisView = false;
     } else {
       this.diagnosisView = true;
@@ -40,7 +41,7 @@ export class DiagnosisComponent implements OnInit {
     this.diagnosisView = !this.diagnosisView;
   }
 
-  exportToPDF(event, name) {
-    this.systemService.exportAsPDF(event, name);
+  async exportToPDF(event, name) {
+    await this.systemService.exportAsPDF(event, name);
   }
 }
