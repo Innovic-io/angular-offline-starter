@@ -47,11 +47,12 @@ export class AppointmentService {
   }
 
   async deleteAppointments(appointmentGUID: string) {
-    const appointmentIndex = this.appointments.findIndex(appointment => appointment.guid === appointmentGUID);
-    if (appointmentIndex >= 0) {
-     // this.appointments.splice(appointmentIndex, 1);
-     await this.databaseService.delete('appointments', appointmentGUID);
-    }
+    // const appointmentIndex = this.appointments.findIndex(appointment => appointment.guid === appointmentGUID);
+    // if (appointmentIndex >= 0) {
+    //  // this.appointments.splice(appointmentIndex, 1);
+    //  await this.databaseService.delete('appointments', appointmentGUID);
+    // }
+    await this.databaseService.delete('appointments', appointmentGUID);
   }
 
   updateAppointment(appointment: AppointmentModel | HealthInfoModel | DiagnosisModel | InvoiceModel, type: string, guid) {
