@@ -23,7 +23,8 @@ export class MessagesComponent implements OnInit {
 
   async update($event) {
     if ($event) {
-      return await this.messageService.updateArchive($event);
+      await this.messageService.updateArchive($event);
+      this.messages = await this.messageService.getAllDoctorEmails(this.currentUser.guid);
     }
   }
 

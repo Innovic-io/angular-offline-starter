@@ -38,10 +38,10 @@ export class DatabaseService {
   async update<T>(tableName: string, guid: string, object: T) {
     await this.db[tableName].update(guid, object);
   }
-  async getAllDoctorEmails<T>(tableName: string, guid: string) {
+  async getAllDoctorEmails<T>(tableName: string, doctorGuid: string) {
    // console.log( this.db[tableName].where('doctorEmail.guid').equals(guid).toArray());
-    console.log(this.db[tableName].where({'doctorEmail.guid': guid}));
-    return  this.db[tableName].where({'doctorEmail.guid': guid});
+    console.log(this.db[tableName].where({'doctorEmail.guid': doctorGuid}));
+    return  this.db[tableName].where({'doctorEmail.guid': doctorGuid});
   }
   async getAll<T>(tableName: string) {
     return this.db[tableName].toArray();
