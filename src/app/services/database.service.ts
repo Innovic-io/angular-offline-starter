@@ -37,13 +37,13 @@ export class DatabaseService {
   async update<T>(tableName: string, guid: string, object: T) {
     await this.db[tableName].update(guid, object);
   }
-  async getAll<T>(tableName: string, guid: string) {
+  async getAllDoctorEmails<T>(tableName: string, guid: string) {
     console.log(await this.db[tableName].where('doctorEmail.guid').equals(guid).get());
     return this.db[tableName].where('doctorEmail.guid').equals(guid).toArray();
   }
- /* async getAll<T>(tableName: string) {
+  async getAll<T>(tableName: string) {
     return this.db[tableName].toArray();
-  }*/
+  }
 
   async getAllPastAppointments<T>(tableName: string, now: Date, providerGUID) {
     return this.db[tableName].where('date').below(now).toArray();

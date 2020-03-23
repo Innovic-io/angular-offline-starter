@@ -37,7 +37,7 @@ export class MessageService {
       }
     }
     return lastMessages;*/
-  return  await this.databaseService.getAll<MessageModel>('messages', doctorGUID);
+  return  await this.databaseService.getAllDoctorEmails<MessageModel>('messages', doctorGUID);
   }
 
   private replaceLastWithFirst(message: MessageModel) {
