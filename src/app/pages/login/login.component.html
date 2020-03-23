@@ -12,7 +12,7 @@
             <label>Email:</label>
             <input type="text" name="email" class="form-control" [(ngModel)]="registerEmployee.email" #email="ngModel"
                    [ngClass]="{'is-valid': email.valid && email.touched, 'is-invalid': email.invalid && email.touched}"
-                   autocomplete="off" minlength="2" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                    minlength="2" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
           </div>
         </div>
         <div class="row">
@@ -21,7 +21,7 @@
             <input type="password" name="password" class="form-control" [(ngModel)]="registerEmployee.password"
                    #password="ngModel"
                    [ngClass]="{'is-valid': password.valid && password.touched, 'is-invalid': password.invalid && password.touched}"
-                   autocomplete="off" minlength="8" required>
+                   minlength="8" required>
           </div>
         </div>
         <div class="row">

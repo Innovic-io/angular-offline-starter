@@ -25,10 +25,10 @@ export class DashboardComponent implements OnInit {
     this.appointmentService.confirmAppointment(doctor.guid, event);
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
     this.currentUser = this.employeeService.getLoggedEmployee();
-    this.appointments = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
+    this.appointments = await this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
   }
 
 }

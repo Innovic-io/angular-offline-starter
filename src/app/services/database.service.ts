@@ -11,7 +11,7 @@ export class DatabaseService {
     this.db = new Dexie('employee_database');
     this.db.version(1).stores({
       employees: 'guid,avatar,name,middleName,lastName,contact,password,gender,dateOfBirth,role',
-      appointments: 'guid,firstName,lastName,date,notes,phone,email',
+      appointments: 'guid,firstName,lastName,date,provider,notes,phone,email',
       messages: 'guid,date,doctorEmail,recipient,subject,doctorMessage,urgent,archive,replyTo,conversation'
 
     });
@@ -44,12 +44,17 @@ export class DatabaseService {
     return  this.db[tableName].where({'doctorEmail.guid': guid});
   }
   async getAll<T>(tableName: string) {
-    console.log(this.db[tableName].toArray());
     return this.db[tableName].toArray();
   }
 
-  async getAllPastAppointments<T>(tableName: string, now: Date, providerGUID) {
+  async getAllPast<T>(tableName: string, now: Date, providerGUID) {
     return this.db[tableName].where('date').below(now).toArray();
+    // return this.db[tableName].where('provider.guid').equals(providerGUID);
+  }
+
+  async getAllUpcoming<T>(tableName: string, now: Date, providerGUID) {
+    return this.db[tableName].where('date').above(now).toArray();
+    // return this.db[tableName].where('provider.guid').equals(providerGUID);
   }
 
 

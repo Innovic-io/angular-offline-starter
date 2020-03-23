@@ -23,10 +23,10 @@ export class MyDocumentsComponent implements OnInit {
               public systemService: SystemService) {
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
     this.currentUser = this.employeeService.getLoggedEmployee();
-    // this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
+    this.pastAppointments = await this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
   }
 
   async convertToPDF(event) {
