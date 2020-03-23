@@ -25,8 +25,9 @@ export class AppointmentsComponent implements OnInit {
   async ngOnInit() {
     this.currentUser = this.employeeService.getLoggedEmployee();
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
-    this.upcomingAppointments = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
+    this.upcomingAppointments = await this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
     this.pastAppointments = await this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
+    console.log(this.pastAppointments);
   }
 
   async exportToPDFActiveApp(event, name) {
@@ -67,7 +68,7 @@ export class AppointmentsComponent implements OnInit {
       this.markedAppointments.forEach(appointmentGUID => this.appointmentService.deleteAppointments(appointmentGUID));
     }
     this.systemService.createAlertMessage('Delete completed!');
-    this.upcomingAppointments = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
+    this.upcomingAppointments = await this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
     this.pastAppointments = await this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
   }
 }

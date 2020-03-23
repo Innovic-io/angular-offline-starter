@@ -11,7 +11,7 @@ export class DatabaseService {
     this.db = new Dexie('employee_database');
     this.db.version(1).stores({
       employees: 'guid,avatar,name,middleName,lastName,contact,password,gender,dateOfBirth,role',
-      appointments: 'guid,firstName,lastName,date,notes,phone,email',
+      appointments: 'guid,firstName,lastName,date,provider,notes,phone,email',
       messages: 'guid,date,doctorEmail,recipient,subject,doctorMessage,urgent,archive,replyTo,conversation'
 
     });
@@ -26,7 +26,7 @@ export class DatabaseService {
   }
 
   async getUserByEmailAndPassword<T>(tableName: string, email: string, password: string) {
-    console.log( await this.db[tableName].where({'contact.email': email, password}).first());
+    // console.log( await this.db[tableName].where({'contact.email': email, password}).first());
     return await this.db[tableName].where({'contact.email': email, password}).first();
   }
 
@@ -38,15 +38,21 @@ export class DatabaseService {
     await this.db[tableName].update(guid, object);
   }
   async getAllDoctorEmails<T>(tableName: string, guid: string) {
-    console.log(await this.db[tableName].where('doctorEmail.guid').equals(guid).get());
+    // console.log(await this.db[tableName].where('doctorEmail.guid').equals(guid).get());
     return this.db[tableName].where('doctorEmail.guid').equals(guid).toArray();
   }
   async getAll<T>(tableName: string) {
     return this.db[tableName].toArray();
   }
 
-  async getAllPastAppointments<T>(tableName: string, now: Date, providerGUID) {
+  async getAllPast<T>(tableName: string, now: Date, providerGUID) {
     return this.db[tableName].where('date').below(now).toArray();
+    // return this.db[tableName].where('provider.guid').equals(providerGUID);
+  }
+
+  async getAllUpcoming<T>(tableName: string, now: Date, providerGUID) {
+    return this.db[tableName].where('date').above(now).toArray();
+    // return this.db[tableName].where('provider.guid').equals(providerGUID);
   }
 
 
