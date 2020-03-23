@@ -4,7 +4,6 @@ import { EmployeeService } from '../../services/employee.service';
 import { EmployeeModel } from '../../models/employee.model';
 import { MessageModel } from '../../models/message.model';
 import { MessageService } from '../../services/message.service';
-import { generateMessages } from '../../data/appointment';
 import { SystemService } from '../../services/system.service';
 
 @Component({
@@ -17,19 +16,21 @@ export class MessagesComponent implements OnInit {
   message = MessageModel;
   currentUser: EmployeeModel;
 
-  constructor(private employeeService: EmployeeService, public messageService: MessageService, public systemService: SystemService) {
+  constructor(private employeeService: EmployeeService,
+              public messageService: MessageService,
+              public systemService: SystemService) {
   }
 
-  update($event) {
+  async update($event) {
     if ($event) {
-      return this.messageService.updateArchive($event);
+      return await this.messageService.updateArchive($event);
     }
   }
 
-   delete($event) {
+  async delete($event) {
     if ($event) {
-      this.messageService.deleteMessage($event);
-   //   this.messages = this.messageService.getAllDoctorEmails(this.currentUser.guid);
+      await this.messageService.deleteMessage($event);
+      this.messages = await this.messageService.getAllDoctorEmails(this.currentUser.guid);
     }
   }
 
@@ -39,9 +40,9 @@ export class MessagesComponent implements OnInit {
     }
   }
 
- async ngOnInit() {
+  async ngOnInit() {
     this.currentUser = this.employeeService.getLoggedEmployee();
-    await this.messageService.getAllDoctorEmails(this.currentUser.guid);
+    this.messages = await this.messageService.getAllDoctorEmails(this.currentUser.guid);
   }
 
 }

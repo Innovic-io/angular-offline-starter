@@ -28,7 +28,6 @@ export class NewMessageComponent implements OnInit {
     if (form.valid) {
       await this.messageService.createMessage(this.message);
       this.message = new MessageModel();
-      console.log(this.message);
 
       form.reset();
       form.controls.urgent.setValue(false);

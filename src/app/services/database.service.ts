@@ -26,22 +26,25 @@ export class DatabaseService {
   }
 
   async getUserByEmailAndPassword<T>(tableName: string, email: string, password: string) {
-    console.log( await this.db[tableName].where({'contact.email': email, password}).first());
     return await this.db[tableName].where({'contact.email': email, password}).first();
   }
 
   async delete<T>(tableName: string, guid: string) {
     await this.db[tableName].delete(guid);
   }
-
+  async updateArchive<T>(tableName: string, guid: string, archive: boolean) {
+    await this.db[tableName].update(guid, {archive});
+  }
   async update<T>(tableName: string, guid: string, object: T) {
     await this.db[tableName].update(guid, object);
   }
   async getAllDoctorEmails<T>(tableName: string, guid: string) {
-    console.log(await this.db[tableName].where('doctorEmail.guid').equals(guid).get());
-    return this.db[tableName].where('doctorEmail.guid').equals(guid).toArray();
+   // console.log( this.db[tableName].where('doctorEmail.guid').equals(guid).toArray());
+    console.log(this.db[tableName].where({'doctorEmail.guid': guid}));
+    return  this.db[tableName].where({'doctorEmail.guid': guid});
   }
   async getAll<T>(tableName: string) {
+    console.log(this.db[tableName].toArray());
     return this.db[tableName].toArray();
   }
 

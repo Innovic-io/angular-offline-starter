@@ -24,7 +24,8 @@
           <a class="nav-link" [ngClass]="{'active': i === 0}" id="v-pills-home-tab" data-toggle="pill"
              href="#v-pills-home{{i}}" role="tab"
              aria-controls="v-pills-home" aria-selected="true"
-             *ngFor="let message of messages  | search: searchText  let i = index">
+             *ngFor="let message of messages  | search: searchText  let i = index"
+             [style.display]="message.archive === false ? 'block' : 'none'">
             <div class="row">
               <div class="col-7 blackLabel">From: {{message.doctorEmail.name}}</div>
               <div class="col-5 blackLabel">{{message.date | date }}</div>
@@ -33,7 +34,7 @@
               <div class="col-12 grayLabel pb-0 pt-0">To: {{message.recipient}}</div>
             </div>
             <div class="row">
-              <div class="col-12 grayLabel pb-0 pt-0">Subject: {{message.subject}}</div>
+              <div class="col-12 grayLabel pb-0 pt-0">Subject: {{message.subject}} {{i}}</div>
             </div>
           </a>
         </div>
@@ -45,6 +46,7 @@
           <div class="tab-pane fade show" id="v-pills-home{{i}}" role="tabpanel" [ngClass]="{'active': i === 0}"
                aria-labelledby="v-pills-home-tab" *ngFor="let message of messages  | search: searchText let i = index">
             <app-display-message [message]="message"
+                                 [style.display]="message.archive === false ? 'block' : 'none'"
                                  (deleteMessage)="deleteIC($event)"
                                  (updateAchieve)="updateIC($event)"
                                  (convertToPDF)="convertIC($event)">
