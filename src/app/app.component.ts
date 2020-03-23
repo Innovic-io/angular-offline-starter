@@ -32,8 +32,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   // this.databaseService.insertEmployeeInTable();
-  //  this.databaseService.updateEmployee('employees', '55018aa9-930d-4cf9-ac64-dcf290829029', {lastName: 'Bijeljanin'});
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
     this.systemMessage$ = this.systemService.getMessage();
     this.systemMessageDanger$ = this.systemService.getDangerMessage();

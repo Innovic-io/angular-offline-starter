@@ -58,7 +58,7 @@ export class EmployeeService {
     return this.employees;
   }
 
-  updateEmployee(employee: EmployeeModel | ContactModel | EmergencyModel, type: string) {
+  async updateEmployee(employee: EmployeeModel | ContactModel | EmergencyModel, type: string) {
     const index = this.employees.indexOf(this.currentUser);
     switch (type) {
       case 'basic':
@@ -71,14 +71,16 @@ export class EmployeeService {
         this.currentUser.emergencyPerson = {...this.currentUser.emergencyPerson, ...employee};
         break;
     }
-    this.employees.splice(index, 1, this.currentUser);
+    await this.databaseService.update<EmployeeModel>('employees', this.currentUser.guid, this.currentUser);
+   // this.employees.splice(index, 1, this.currentUser);
     this.employee$.next(this.currentUser);
   }
 
-  updateEmployeeAvatar(avatarURL: string) {
+  async updateEmployeeAvatar(avatarURL: string) {
     const index = this.employees.indexOf(this.currentUser);
     this.currentUser = { ...this.currentUser, avatar: avatarURL};
-    this.employees.splice(index, 1, this.currentUser);
+    await this.databaseService.update<EmployeeModel>('employees', this.currentUser.guid, this.currentUser);
+    // this.employees.splice(index, 1, this.currentUser);
     this.employee$.next(this.currentUser);
   }
 }

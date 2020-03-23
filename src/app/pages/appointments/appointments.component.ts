@@ -26,7 +26,7 @@ export class AppointmentsComponent implements OnInit {
     this.currentUser = this.employeeService.getLoggedEmployee();
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
     this.upcomingAppointments = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
-    this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
+    // this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
   }
 
   async exportToPDFActiveApp(event, name) {
@@ -68,6 +68,6 @@ export class AppointmentsComponent implements OnInit {
     }
     this.systemService.createAlertMessage('Delete completed!');
     this.upcomingAppointments = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
-    this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
+    // this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
   }
 }

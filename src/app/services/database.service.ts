@@ -10,29 +10,10 @@ export class DatabaseService {
   constructor() {
     this.db = new Dexie('employee_database');
     this.db.version(1).stores({
-      employees: 'guid, name,lastName,contact,password',
+      employees: 'guid,avatar,name,middleName,lastName,contact,password,gender,dateOfBirth,role',
       appointments: 'guid,firstName,lastName,date,notes,phone,email'
     });
   }
-
-  /*  async insertEmployeeInTable() {
-      this.db.employees.put({
-        guid: '55018aa9-930d-4cf9-ac64-dcf290829029',
-        firstName: 'Kristina',
-        lastName: 'Ilic',
-        email: 'b@gmail.com',
-        password: 'kristinailic'
-      })
-        .then(() => {
-          return this.db.employees.get('55018aa9-930d-4cf9-ac64-dcf290829029');
-
-        }).then((employee) => {
-        //   alert('employee name: ' + employee.firstName);
-
-      }).catch((error) => {
-        alert('Ooops: ' + error);
-      });
-    }*/
 
   async insert<T>(tableName: string, object: T) {
     await this.db[tableName].put(object);
@@ -54,16 +35,16 @@ export class DatabaseService {
     }
   }
 
-  async deleteAppointment<T>(tableName: string, guid: string) {
+  async delete<T>(tableName: string, guid: string) {
     await this.db[tableName].delete(guid);
   }
 
-  async updateEmployee<T>(tableName: string, guid: string, object: T) {
+  async update<T>(tableName: string, guid: string, object: T) {
     await this.db[tableName].update(guid, object);
   }
 
-  async insertAppointment<T>(tableName: string, object: T) {
-    await this.db[tableName].put(object);
+  async getAllPastAppointments<T>(tableName: string, now: Date, providerGUID: string) {
+    return this.db[tableName].where('date').below(now);
   }
 
 }

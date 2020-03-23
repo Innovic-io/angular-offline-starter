@@ -26,7 +26,7 @@ export class MyDocumentsComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
     this.currentUser = this.employeeService.getLoggedEmployee();
-    this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
+    // this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
   }
 
   async convertToPDF(event) {
@@ -56,6 +56,6 @@ export class MyDocumentsComponent implements OnInit {
       this.markedAppointments.forEach(appointmentGUID => this.appointmentService.deleteAppointments(appointmentGUID));
     }
     this.systemService.createAlertMessage('Delete completed!');
-    this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
+   // this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
   }
 }

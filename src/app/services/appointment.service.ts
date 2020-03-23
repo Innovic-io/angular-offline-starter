@@ -9,6 +9,7 @@ import {
   HistoryModel,
   InvoiceModel
 } from '../models/appointment.model';
+import { filter } from 'rxjs/operators';
 
 
 @Injectable({
@@ -23,8 +24,8 @@ export class AppointmentService {
   }
 
    async createAppointment(appointment: AppointmentModel) {
-    await this.databaseService.insertAppointment<AppointmentModel>('appointments', appointment);
-    this.appointments.push(appointment);
+    await this.databaseService.insert<AppointmentModel>('appointments', appointment);
+   // this.appointments.push(appointment);
   }
 
   getAppointmentByID(appointmentID: string) {
@@ -39,15 +40,17 @@ export class AppointmentService {
     return this.appointments.filter(appointment => appointment.provider.guid === doctorGUID && appointment.date >= this.now);
   }
 
-  getAllPastDoctorAppointments(doctorGUID: string) {
-    return this.appointments.filter(appointment => appointment.provider.guid === doctorGUID && appointment.date < this.now);
+  async getAllPastDoctorAppointments(doctorGUID: string) {
+    await this.databaseService.getAllPastAppointments<AppointmentModel>('appointments', this.now, doctorGUID);
+
+    // return this.appointments.filter(appointment => appointment.provider.guid === doctorGUID && appointment.date < this.now);
   }
 
   async deleteAppointments(appointmentGUID: string) {
     const appointmentIndex = this.appointments.findIndex(appointment => appointment.guid === appointmentGUID);
     if (appointmentIndex >= 0) {
-      this.appointments.splice(appointmentIndex, 1);
-      await this.databaseService.deleteAppointment('appointments', appointmentGUID);
+     // this.appointments.splice(appointmentIndex, 1);
+      await this.databaseService.delete('appointments', appointmentGUID);
     }
   }
 
