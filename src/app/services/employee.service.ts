@@ -31,7 +31,6 @@ export class EmployeeService {
     const user = await this.databaseService.getUserByEmailAndPassword<EmployeeModel>('employees', email, password);
     if (user !== undefined) {
       this.currentUser = user;
-      console.log(this.currentUser);
       this.employee$.next(this.currentUser);
       return true;
     } else {

@@ -10,29 +10,29 @@ export class DatabaseService {
   constructor() {
     this.db = new Dexie('employee_database');
     this.db.version(1).stores({
-      employees: 'guid,firstName,lastName,email,password',
+      employees: 'guid, name,lastName,contact,password',
       appointments: 'guid,firstName,lastName,date,notes,phone,email'
     });
   }
 
-  async insertEmployeeInTable() {
-    this.db.employees.put({
-      guid: '55018aa9-930d-4cf9-ac64-dcf290829029',
-      firstName: 'Kristina',
-      lastName: 'Ilic',
-      email: 'b@gmail.com',
-      password: 'kristinailic'
-    })
-      .then(() => {
-        return this.db.employees.get('55018aa9-930d-4cf9-ac64-dcf290829029');
+  /*  async insertEmployeeInTable() {
+      this.db.employees.put({
+        guid: '55018aa9-930d-4cf9-ac64-dcf290829029',
+        firstName: 'Kristina',
+        lastName: 'Ilic',
+        email: 'b@gmail.com',
+        password: 'kristinailic'
+      })
+        .then(() => {
+          return this.db.employees.get('55018aa9-930d-4cf9-ac64-dcf290829029');
 
-      }).then((employee) => {
-      //   alert('employee name: ' + employee.firstName);
+        }).then((employee) => {
+        //   alert('employee name: ' + employee.firstName);
 
-    }).catch((error) => {
-      alert('Ooops: ' + error);
-    });
-  }
+      }).catch((error) => {
+        alert('Ooops: ' + error);
+      });
+    }*/
 
   async insert<T>(tableName: string, object: T) {
     await this.db[tableName].put(object);
@@ -43,10 +43,10 @@ export class DatabaseService {
   }
 
   async getUserByEmailAndPassword<T>(tableName: string, email: string, password: string) {
-    // const emailEqual = await this.db[tableName].where('email').equals(email).first();
-    // Employee model sadrzi contact: ContactModel gdje je email; praviti novu tabelu Contacts,
-    // gdje je contact strani kljuc u Employees tabeli?
+    // const emailEqual = await this.db[tableName].where('contact.email').equals(email).first();
+   //  console.log(emailEqual);
     const passwordEqual = await this.db[tableName].where('password').equals(password).first();
+  //  const valid = await this.db[tableName].where({'contact.email': email, 'password': password}).first();
     if (passwordEqual !== undefined) {
       return passwordEqual;
     } else {

@@ -27,6 +27,8 @@
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "angular-bootstrap-datetimepicker": "^4.0.2",
     "bootstrap": "^4.4.1",
+    "dexie": "^2.0.4",
+    "dexie-relationships": "^1.2.11",
     "html2canvas": "^1.0.0-rc.5",
     "jquery": "^3.4.1",
     "jspdf": "^1.5.3",
@@ -34,8 +36,7 @@
     "open-iconic": "^1.1.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
-    "zone.js": "~0.10.2",
-    "dexie": "^2.0.4"
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.5",
