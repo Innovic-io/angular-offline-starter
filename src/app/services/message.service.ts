@@ -1,18 +1,23 @@
 import { MessageModel } from '../models/message.model';
 import { Injectable } from '@angular/core';
+import { DatabaseService } from './database.service';
+import { AppointmentModel } from '../models/appointment.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
   private messages: MessageModel[] = [];
+  private message = new MessageModel();
 
-  createMessage(message: MessageModel) {
-    this.messages.push(message);
+  constructor(public databaseService: DatabaseService) {}
+
+  async createMessage(message: MessageModel) {
+   await this.databaseService.insert<MessageModel>('messages', message);
   }
 
-  getAllDoctorEmails(doctorGUID: string) {
-    const doctorMessages = this.messages.filter(message => message.doctorEmail.guid === doctorGUID);
+ async getAllDoctorEmails(doctorGUID: string) {
+/*    const doctorMessages = this.messages.filter(message => message.doctorEmail.guid === doctorGUID);
     const lastMessages = [];
 
     for (const message of this.messages) {
@@ -31,7 +36,8 @@ export class MessageService {
         lastMessages.push(this.replaceLastWithFirst(message));
       }
     }
-    return lastMessages;
+    return lastMessages;*/
+  return  await this.databaseService.getAll<MessageModel>('messages', doctorGUID);
   }
 
   private replaceLastWithFirst(message: MessageModel) {

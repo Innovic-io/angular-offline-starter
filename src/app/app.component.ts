@@ -24,20 +24,21 @@ export class AppComponent implements OnInit {
   title: string;
 
   constructor(
-              public employeeService: EmployeeService,
-              public systemService: SystemService,
-              public messageService: MessageService,
-              public appointmentService: AppointmentService,
-              public databaseService: DatabaseService) {
+    public employeeService: EmployeeService,
+    public systemService: SystemService,
+    public messageService: MessageService,
+    public appointmentService: AppointmentService,
+    public databaseService: DatabaseService) {
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    //  this.databaseService.updateEmployee('employees', '55018aa9-930d-4cf9-ac64-dcf290829029', {lastName: 'Bijeljanin'});
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
     this.systemMessage$ = this.systemService.getMessage();
     this.systemMessageDanger$ = this.systemService.getDangerMessage();
-    for (const message of generateMessages(14)) {
-      this.messageService.createMessage(message);
-    }
+    // for (const message of generateMessages(14)) {
+    //   await this.messageService.createMessage(message);
+    // }
     // for (const app of generateUppcomingAppointments(25)) {
     //   this.appointmentService.createAppointment(app);
     // }

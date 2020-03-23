@@ -24,9 +24,9 @@ export class NewMessageComponent implements OnInit {
     private route: ActivatedRoute) {
   }
 
-  onSubmit(form: NgForm) {
+ async onSubmit(form: NgForm) {
     if (form.valid) {
-      this.messageService.createMessage(this.message);
+      await this.messageService.createMessage(this.message);
       this.message = new MessageModel();
       console.log(this.message);
 

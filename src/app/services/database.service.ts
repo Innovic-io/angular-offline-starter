@@ -11,7 +11,9 @@ export class DatabaseService {
     this.db = new Dexie('employee_database');
     this.db.version(1).stores({
       employees: 'guid,avatar,name,middleName,lastName,contact,password,gender,dateOfBirth,role',
-      appointments: 'guid,firstName,lastName,date,notes,phone,email'
+      appointments: 'guid,firstName,lastName,date,notes,phone,email',
+      messages: 'guid,date,doctorEmail,recipient,subject,doctorMessage,urgent,archive,replyTo,conversation'
+
     });
   }
 
@@ -24,15 +26,8 @@ export class DatabaseService {
   }
 
   async getUserByEmailAndPassword<T>(tableName: string, email: string, password: string) {
-    // const emailEqual = await this.db[tableName].where('contact.email').equals(email).first();
-   //  console.log(emailEqual);
-    const passwordEqual = await this.db[tableName].where('password').equals(password).first();
-  //  const valid = await this.db[tableName].where({'contact.email': email, 'password': password}).first();
-    if (passwordEqual !== undefined) {
-      return passwordEqual;
-    } else {
-      return undefined;
-    }
+    console.log( await this.db[tableName].where({'contact.email': email, password}).first());
+    return await this.db[tableName].where({'contact.email': email, password}).first();
   }
 
   async delete<T>(tableName: string, guid: string) {
@@ -42,13 +37,17 @@ export class DatabaseService {
   async update<T>(tableName: string, guid: string, object: T) {
     await this.db[tableName].update(guid, object);
   }
-
-  async getAll<T>(tableName: string) {
-    return this.db[tableName].toArray();
+  async getAll<T>(tableName: string, guid: string) {
+    console.log(await this.db[tableName].where('doctorEmail.guid').equals(guid).get());
+    return this.db[tableName].where('doctorEmail.guid').equals(guid).toArray();
   }
+ /* async getAll<T>(tableName: string) {
+    return this.db[tableName].toArray();
+  }*/
 
   async getAllPastAppointments<T>(tableName: string, now: Date, providerGUID) {
     return this.db[tableName].where('date').below(now).toArray();
   }
+
 
 }

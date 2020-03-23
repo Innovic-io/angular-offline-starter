@@ -26,10 +26,10 @@ export class MessagesComponent implements OnInit {
     }
   }
 
-  delete($event) {
+   delete($event) {
     if ($event) {
       this.messageService.deleteMessage($event);
-      this.messages = this.messageService.getAllDoctorEmails(this.currentUser.guid);
+   //   this.messages = this.messageService.getAllDoctorEmails(this.currentUser.guid);
     }
   }
 
@@ -39,9 +39,9 @@ export class MessagesComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
+ async ngOnInit() {
     this.currentUser = this.employeeService.getLoggedEmployee();
-    this.messages = this.messageService.getAllDoctorEmails(this.currentUser.guid);
+    await this.messageService.getAllDoctorEmails(this.currentUser.guid);
   }
 
 }
