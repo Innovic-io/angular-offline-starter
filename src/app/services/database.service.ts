@@ -43,8 +43,12 @@ export class DatabaseService {
     await this.db[tableName].update(guid, object);
   }
 
-  async getAllPastAppointments<T>(tableName: string, now: Date, providerGUID: string) {
-    return this.db[tableName].where('date').below(now);
+  async getAll<T>(tableName: string) {
+    return this.db[tableName].toArray();
+  }
+
+  async getAllPastAppointments<T>(tableName: string, now: Date, providerGUID) {
+    return this.db[tableName].where('date').below(now).toArray();
   }
 
 }

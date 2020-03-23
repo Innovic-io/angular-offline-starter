@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { doctor } from '../data/dummy';
 import { ContactModel, EmergencyModel, EmployeeModel } from '../models/employee.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { RegisterModel } from '../models/register.model';
 import { DatabaseService } from './database.service';
 
@@ -14,6 +14,7 @@ export class EmployeeService {
   private employees: EmployeeModel[] = [];
   private currentUser: EmployeeModel;
   private readonly employee$: BehaviorSubject<EmployeeModel>;
+  private providers$: Observable<EmployeeModel[]>;
 
   constructor(public databaseService: DatabaseService) {
     this.employee$ = new BehaviorSubject<EmployeeModel>(null);
@@ -55,7 +56,7 @@ export class EmployeeService {
   }
 
   getAllEmployees() {
-    return this.employees;
+    return this.databaseService.getAll('employees');
   }
 
   async updateEmployee(employee: EmployeeModel | ContactModel | EmergencyModel, type: string) {

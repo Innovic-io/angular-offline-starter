@@ -41,7 +41,7 @@ export class AppointmentService {
   }
 
   async getAllPastDoctorAppointments(doctorGUID: string) {
-    await this.databaseService.getAllPastAppointments<AppointmentModel>('appointments', this.now, doctorGUID);
+    return await this.databaseService.getAllPastAppointments<AppointmentModel>('appointments', this.now, doctorGUID);
 
     // return this.appointments.filter(appointment => appointment.provider.guid === doctorGUID && appointment.date < this.now);
   }
@@ -50,7 +50,7 @@ export class AppointmentService {
     const appointmentIndex = this.appointments.findIndex(appointment => appointment.guid === appointmentGUID);
     if (appointmentIndex >= 0) {
      // this.appointments.splice(appointmentIndex, 1);
-      await this.databaseService.delete('appointments', appointmentGUID);
+     await this.databaseService.delete('appointments', appointmentGUID);
     }
   }
 

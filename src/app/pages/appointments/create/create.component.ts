@@ -10,6 +10,7 @@ import { SystemService } from '../../../services/system.service';
 import { EmployeeModel } from '../../../models/employee.model';
 import { EmployeeService } from '../../../services/employee.service';
 import { Observable } from 'rxjs';
+import { DatabaseService } from '../../../services/database.service';
 
 @Component({
   selector: 'app-create',
@@ -17,15 +18,16 @@ import { Observable } from 'rxjs';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  // providers = [doctor];
   providers: EmployeeModel[];
+  providers$: Observable<EmployeeModel[]>;
   appointment = new AppointmentModel();
   appTypes = enumSelector(AppointmentType);
   alert: boolean;
 
   constructor(private appointmentService: AppointmentService,
               public systemService: SystemService,
-              private employeeService: EmployeeService) {
+              private employeeService: EmployeeService,
+              private databaseService: DatabaseService) {
   }
 
   checkAvailableAppointment() {
@@ -52,7 +54,7 @@ export class CreateComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {
-    this.providers = this.employeeService.getAllEmployees();
+  async ngOnInit() {
+    this.providers = await this.employeeService.getAllEmployees();
   }
 }
