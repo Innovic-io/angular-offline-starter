@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { HealthInfoModel } from '../models/employee.model';
+import { EmployeeModel, HealthInfoModel } from '../models/employee.model';
 import { DatabaseService } from './database.service';
 import {
   AppointmentModel,
@@ -92,9 +92,10 @@ export class AppointmentService {
     return appointment;
   }
 
-  confirmAppointment(doctorGUID: string, appointmentGUID: string) {
+  async confirmAppointment(doctorGUID: string, appointmentGUID: string) {
     if (confirm('Are you sure you want to confirm?')) {
-      this.appointments.find(appointment => appointment.guid === appointmentGUID).confirmed = true;
+      await this.databaseService.updateConfirmed<AppointmentModel>('appointments', appointmentGUID, true);
+      // this.appointments.find(appointment => appointment.guid === appointmentGUID).confirmed = true;
     }
   }
 

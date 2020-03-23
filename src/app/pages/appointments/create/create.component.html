@@ -37,7 +37,7 @@
             <select class="form-control" [(ngModel)]="appointment.provider" name="provider" #provider="ngModel"
                     [ngClass]="{'is-valid': provider.valid && provider.touched, 'is-invalid': provider.invalid && provider.touched}"
                     required>
-              <option *ngFor="let provider of providers"
+              <option *ngFor="let provider of providers$"
                       [ngValue]="provider"> {{provider.role | role}} {{provider.name}}</option>
             </select>
           </div>

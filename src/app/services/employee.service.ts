@@ -14,7 +14,6 @@ export class EmployeeService {
   private employees: EmployeeModel[] = [];
   private currentUser: EmployeeModel;
   private readonly employee$: BehaviorSubject<EmployeeModel>;
-  private providers$: Observable<EmployeeModel[]>;
 
   constructor(public databaseService: DatabaseService) {
     this.employee$ = new BehaviorSubject<EmployeeModel>(null);

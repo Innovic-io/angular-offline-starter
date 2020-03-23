@@ -54,7 +54,8 @@ export class CreateComponent implements OnInit {
   }
 
 
-  async ngOnInit() {
-    this.providers = await this.employeeService.getAllEmployees();
+   async ngOnInit() {
+    // this.providers = await this.employeeService.getAllEmployees();
+    this.providers$ = await this.employeeService.getAllEmployees();
   }
 }
