@@ -5,7 +5,6 @@ import { BehaviorSubject } from 'rxjs';
 import { RegisterModel } from '../models/register.model';
 import { DatabaseService } from './database.service';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -18,6 +17,17 @@ export class EmployeeService {
   }
 
   getLoggedEmployee() {
+    return this.currentUser;
+  }
+
+  async isUserAlreadyLoggedIn() {
+    const loggedInUser = localStorage.getItem('user');
+
+    if (!this.currentUser && loggedInUser) {
+      const user = await this.databaseService.getSingle<EmployeeModel>('employees', loggedInUser);
+      await this.signIn(user.contact.email, user.password);
+    }
+
     return this.currentUser;
   }
 

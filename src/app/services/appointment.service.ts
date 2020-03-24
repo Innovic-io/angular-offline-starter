@@ -29,9 +29,7 @@ export class AppointmentService {
       this.systemService.createAlertMessage('Appointment is created!');
 
     } catch (e) {
-
       this.systemService.createDangerAlertMessage('Appointment is not created!');
-
     }
   }
 
@@ -43,12 +41,16 @@ export class AppointmentService {
     return this.appointment.appointmentHistory.find(change => change.guid === historyID);
   }
 
-  async getAllUpcomingDoctorAppointments(doctorGUID: string) {
+  getAllUpcomingDoctorAppointments(doctorGUID: string) {
     return this.databaseService.getAllUpcoming<AppointmentModel>('appointments', this.now, doctorGUID);
   }
 
-  async getAllPastDoctorAppointments(doctorGUID: string) {
-    return this.databaseService.getAllPast<AppointmentModel>('appointments', this.now, doctorGUID);
+  getAllPastDoctorAppointmentsCount(doctorGUID: string) {
+    return this.databaseService.getAllPastCount<AppointmentModel>('appointments', this.now, doctorGUID);
+  }
+
+  getAllPastDoctorAppointments(doctorGUID: string, start = 0, end = 10) {
+    return this.databaseService.getAllPast<AppointmentModel>('appointments', this.now, doctorGUID, start, end);
   }
 
   async deleteAppointments(appointmentGUID: string) {

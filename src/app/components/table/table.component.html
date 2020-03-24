@@ -33,4 +33,7 @@
   </tr>
   </tbody>
 </table>
-<app-pagination [total]="appointments?.length" [perPage]="10" [currentPage]="1" (page)="setPage($event);"></app-pagination>
+<pre>
+  {{ total | json }}
+</pre>
+<app-pagination [total]="total" [perPage]="10" [currentPage]="1" (page)="setPage($event);"></app-pagination>

@@ -50,6 +50,7 @@
             </div>
             <div class="col-lg-12" #pastAppointments1 title="pastAppointments">
               <app-table [appointments]="pastAppointments$ | async"
+                         [total]="pastAppointmentsCount$ | async"
                          (checked)="appointmentSelect($event)"
                          (checkedAll)="pastAppointmentSelectAll($event)"
                          (pager)="setPager($event)"></app-table>

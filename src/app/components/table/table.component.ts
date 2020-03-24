@@ -9,6 +9,7 @@ import { AppointmentModel } from '../../models/appointment.model';
 })
 export class TableComponent {
   @Input() appointments: AppointmentModel[];
+  @Input() total: number;
 
   @Output() checked = new EventEmitter<{ checked: boolean, guid: string }>();
   @Output() checkedAll = new EventEmitter<boolean>();

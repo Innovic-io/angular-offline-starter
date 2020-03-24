@@ -15,10 +15,8 @@ export class AuthGuard implements CanActivate {
   constructor(private employeeService: EmployeeService, private router: Router) {
   }
 
-  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-
-    if (this.employeeService.getLoggedEmployee()) {
-      // console.log(state.url);
+  async canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    if (await this.employeeService.isUserAlreadyLoggedIn()) {
       return true;
     } else {
       this.router.navigateByUrl('/login');
