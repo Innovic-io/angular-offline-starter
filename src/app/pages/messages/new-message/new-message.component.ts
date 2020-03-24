@@ -6,6 +6,7 @@ import { MessageService } from '../../../services/message.service';
 import { MessageModel } from '../../../models/message.model';
 import { EmployeeService } from '../../../services/employee.service';
 import { SystemService } from '../../../services/system.service';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-new-message',
@@ -43,18 +44,15 @@ export class NewMessageComponent implements OnInit {
     form.controls.doctorEmail.setValue(this.employee.getLoggedEmployee());
   }
 
-
-  ngOnInit(): void {
+  async ngOnInit() {
     const { replayTo } = this.route.snapshot.queryParams;
     this.message = new MessageModel();
     this.message.doctorEmail = this.employee.getLoggedEmployee();
-
     if (replayTo) {
-      const replayToMessage = this.messageService.getEmail(replayTo);
+      const replayToMessage: any = await this.messageService.getMessage(replayTo);
       this.message.subject = 'RE: ' + replayToMessage.subject;
       this.message.recipient = replayToMessage.recipient;
       this.message.replyTo = replayTo;
     }
-
   }
 }

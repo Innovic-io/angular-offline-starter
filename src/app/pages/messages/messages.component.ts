@@ -30,8 +30,8 @@ export class MessagesComponent implements OnInit {
 
   async delete($event) {
     if ($event) {
-      await this.messageService.deleteMessage($event);
-      this.messages = await this.messageService.getAllDoctorEmails(this.currentUser.guid);
+        await this.messageService.deleteMessage($event);
+        this.messages = await this.messageService.getAllDoctorEmails(this.currentUser.guid);
     }
   }
 

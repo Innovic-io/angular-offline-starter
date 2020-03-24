@@ -2,16 +2,14 @@ import { Injectable } from '@angular/core';
 
 import { MessageModel } from '../models/message.model';
 import { DatabaseService } from './database.service';
+import { SystemService } from './system.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
-  private messages: MessageModel[] = [];
-  private message = new MessageModel();
-
-  constructor(public databaseService: DatabaseService) {
-  }
+  constructor(public databaseService: DatabaseService,
+              public systemService: SystemService) {}
 
   async createMessage(message: MessageModel) {
     await this.databaseService.insert<MessageModel>('messages', message);
@@ -35,9 +33,9 @@ export class MessageService {
           }
         } while (replayed);
         lastMessages.push(this.replaceLastWithFirst(message));
+      //  console.log(message.conversation);
       }
     }
-
     return lastMessages;
   }
 
@@ -50,31 +48,42 @@ export class MessageService {
 
   async updateArchive(messageGUID: string) {
     if (confirm('Are you sure you want to confirm?')) {
-      // return this.messages.find(message => message.guid === messageGUID).archive = true;
+      this.systemService.createAlertMessage('Message is archived!');
       return await this.databaseService.updateArchive('messages', messageGUID, true);
     }
+    this.systemService.createDangerAlertMessage('Message is not archived!');
   }
 
   async deleteMessage(messageGUID: string) {
     if (confirm('Are you sure you want to confirm?')) {
-      // const messageIndex = this.messages.findIndex(message => message.guid === messageGUID);
-      // if (messageIndex === 0) {
-      //   this.messages.splice(messageIndex, 1);
-      //   this.messages[messageIndex].replyTo = null;
-      // }
-      // if (messageIndex > 0) {
-      //   this.messages.splice(messageIndex, 1);
-      //   if (this.messages[messageIndex]) {
-      //     this.messages[messageIndex].replyTo = this.messages[messageIndex - 1].guid;
-      //   }
-      // }
-      // return this.messages;
-      await this.databaseService.delete('messages', messageGUID);
+      const doctorMessages = await this.databaseService.getAll<MessageModel[]>('messages');
+      const messageIndex = doctorMessages.findIndex(message => message.guid === messageGUID);
+      console.log(doctorMessages.findIndex(message => message.guid === messageGUID));
+
+      for (const mes of doctorMessages) {
+        console.log(mes.conversation);
+    //   const mesIndexConversation = mes.conversation.findIndex(message => message.guid === messageGUID);
+      }
+      console.log(messageIndex);
+      if (messageIndex === 0) {
+        await this.databaseService.delete('messages', messageGUID);
+        doctorMessages[messageIndex].replyTo = null;
+      }
+      if (messageIndex > 0) {
+        await this.databaseService.delete('messages', messageGUID);
+        if (doctorMessages[messageIndex]) {
+          doctorMessages[messageIndex].replyTo = doctorMessages[messageIndex - 1].guid;
+        }
+      }
+      this.systemService.createAlertMessage('Message is deleted!');
+      return doctorMessages;
     }
+    this.systemService.createDangerAlertMessage('Message is not deleted!');
+
   }
 
-  getEmail(messageGUID: string) {
-    return this.messages.find(message => message.guid === messageGUID);
+  async getMessage(messageGUID: string) {
+    return await this.databaseService.getSingle('messages', messageGUID);
   }
 
 
