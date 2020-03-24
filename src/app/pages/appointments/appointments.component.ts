@@ -26,8 +26,8 @@ export class AppointmentsComponent implements OnInit {
     this.currentUser = this.employeeService.getLoggedEmployee();
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
     this.upcomingAppointments = await this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
+    console.log(this.upcomingAppointments);
     this.pastAppointments = await this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
-    console.log(this.pastAppointments);
   }
 
   async exportToPDFActiveApp(event, name) {

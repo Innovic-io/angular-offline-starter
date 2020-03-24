@@ -57,7 +57,7 @@ export class DatabaseService {
   }
 
   async getAllUpcoming<T>(tableName: string, now: Date, providerGUID) {
-    return this.db[tableName].where('date').above(now).toArray();
+    return this.db[tableName].where('date').above(now).and(() => 'provider.guid' === providerGUID).toArray();
     // return this.db[tableName].where('provider.guid').equals(providerGUID);
   }
 
