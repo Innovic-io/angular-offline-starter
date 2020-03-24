@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { EmployeeService } from '../../services/employee.service';
 import { SystemService } from '../../services/system.service';
 import { RegisterModel } from '../../models/register.model';
-import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-register',
@@ -14,10 +14,14 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
   registerEmployee = new RegisterModel();
 
+  constructor(private employeeService: EmployeeService, private systemService: SystemService, private route: Router) {
+  }
+
   async onSubmit(form: NgForm) {
     if (form.valid) {
-      const isExistingUser = await this.employeeService.register(this.registerEmployee);
-      if (isExistingUser) {
+      const isUserCreated = await this.employeeService.register(this.registerEmployee);
+
+      if (isUserCreated) {
         this.systemService.createAlertMessage('Registration was successful!');
         this.route.navigateByUrl('/login');
       } else {
@@ -25,9 +29,6 @@ export class RegisterComponent {
         form.reset();
       }
     }
-  }
-
-  constructor(private employeeService: EmployeeService, private systemService: SystemService, private route: Router) {
   }
 
 

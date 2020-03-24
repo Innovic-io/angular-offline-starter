@@ -4,12 +4,10 @@ import { NgForm } from '@angular/forms';
 import { AppointmentModel } from '../../../models/appointment.model';
 import { AppointmentService } from '../../../services/appointment.service';
 
-import { doctor } from '../../../data/dummy';
 import { AppointmentType, enumSelector } from '../../../models/system.models';
 import { SystemService } from '../../../services/system.service';
 import { EmployeeModel } from '../../../models/employee.model';
 import { EmployeeService } from '../../../services/employee.service';
-import { Observable } from 'rxjs';
 import { DatabaseService } from '../../../services/database.service';
 
 @Component({
@@ -18,8 +16,7 @@ import { DatabaseService } from '../../../services/database.service';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  providers: EmployeeModel[];
-  providers$: Observable<EmployeeModel[]>;
+  providers$: Promise<EmployeeModel[]>;
   appointment = new AppointmentModel();
   appTypes = enumSelector(AppointmentType);
   alert: boolean;
@@ -54,8 +51,7 @@ export class CreateComponent implements OnInit {
   }
 
 
-   async ngOnInit() {
-    // this.providers = await this.employeeService.getAllEmployees();
-    this.providers$ = await this.employeeService.getAllEmployees();
+  ngOnInit() {
+    this.providers$ = this.employeeService.getAllEmployees();
   }
 }

@@ -1,7 +1,7 @@
-import { MessageModel } from '../models/message.model';
 import { Injectable } from '@angular/core';
+
+import { MessageModel } from '../models/message.model';
 import { DatabaseService } from './database.service';
-import { AppointmentModel } from '../models/appointment.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,28 +17,28 @@ export class MessageService {
     await this.databaseService.insert<MessageModel>('messages', message);
   }
 
-  async getAllDoctorEmails(doctorGUID: string) {
-    /*    const doctorMessages = this.messages.filter(message => message.doctorEmail.guid === doctorGUID);
-        const lastMessages = [];
+  async getAllDoctorEmails(doctorGUID: string): Promise<MessageModel[]> {
+    const doctorMessages = await this.databaseService.getAll<MessageModel[]>('messages');
+    const lastMessages = [];
 
-        for (const message of this.messages) {
-          if (!message.replyTo) {
-            message.conversation = [];
-            message.conversation.push(message);
-            let guid = message.guid;
-            let replayed;
-            do {
-              replayed = doctorMessages.find(dm => dm.replyTo === guid);
-              if (replayed) {
-                message.conversation.push(replayed);
-                guid = replayed.guid;
-              }
-            } while (replayed);
-            lastMessages.push(this.replaceLastWithFirst(message));
+    for (const message of doctorMessages) {
+      if (!message.replyTo) {
+        message.conversation = [];
+        message.conversation.push(message);
+        let guid = message.guid;
+        let replayed;
+        do {
+          replayed = doctorMessages.find(dm => dm.replyTo === guid);
+          if (replayed) {
+            message.conversation.push(replayed);
+            guid = replayed.guid;
           }
-        }
-        return lastMessages;*/
-    return await this.databaseService.getAll<MessageModel>('messages');
+        } while (replayed);
+        lastMessages.push(this.replaceLastWithFirst(message));
+      }
+    }
+
+    return lastMessages;
   }
 
   private replaceLastWithFirst(message: MessageModel) {

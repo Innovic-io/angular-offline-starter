@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { SystemService } from '../../services/system.service';
 import { RegisterModel } from '../../models/register.model';
 import { EmployeeService } from '../../services/employee.service';
-import { Router } from '@angular/router';
-import { SystemService } from '../../services/system.service';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,7 @@ export class LoginComponent {
 
       if (isUserLoggedIn) {
         this.route.navigateByUrl('/dashboard');
+        localStorage.setItem('user', isUserLoggedIn.guid);
       } else {
         this.systemService.createDangerAlertMessage('Email or password is wrong!');
         form.reset();

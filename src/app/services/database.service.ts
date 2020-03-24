@@ -5,7 +5,7 @@ import Dexie from 'dexie';
   providedIn: 'root'
 })
 export class DatabaseService {
-  public db: any;
+  public db: Dexie;
 
   constructor() {
     this.db = new Dexie('employee_database');
@@ -13,29 +13,27 @@ export class DatabaseService {
       employees: 'guid,avatar,name,middleName,lastName,contact,password,gender,dateOfBirth,role',
       appointments: 'guid,firstName,lastName,date,provider,notes,phone,email,confirmed',
       messages: 'guid,date,doctorEmail,recipient,subject,doctorMessage,urgent,archive,replyTo,conversation'
-
     });
   }
 
   async insert<T>(tableName: string, object: T) {
-    await this.db[tableName].put(object);
+    return this.db[tableName].put(object);
   }
 
   async getSingle<T>(tableName: string, guid: string) {
-    return await this.db[tableName].get(guid);
+    return this.db[tableName].get(guid) as T;
   }
 
   async getMultiple<T>(tableName: string, start: number, end: number) {
-    console.log( await this.db[tableName].orderBy('date').reverse().offset(start).limit(end).toArray());
     return this.db[tableName].orderBy('date').reverse().offset(start).limit(end).toArray();
   }
 
   async getUserByEmailAndPassword<T>(tableName: string, email: string, password: string) {
-    return await this.db[tableName].where({'contact.email': email, password}).first();
+    return this.db[tableName].where({'contact.email': email, password}).first();
   }
 
   async delete<T>(tableName: string, guid: string) {
-    await this.db[tableName].delete(guid);
+    return this.db[tableName].delete(guid);
   }
 
   async updateArchive<T>(tableName: string, guid: string, archive: boolean) {
@@ -47,9 +45,7 @@ export class DatabaseService {
   }
 
   async getAllDoctorEmails<T>(tableName: string, doctorGuid: string) {
-    console.log( this.db[tableName].where('doctorEmail.guid').equals(doctorGuid).toArray());
-    console.log(this.db[tableName].where({'doctorEmail.guid': doctorGuid}));
-    return  this.db[tableName].where({'doctorEmail.guid': doctorGuid});
+    return this.db[tableName].where({'doctorEmail.guid': doctorGuid}).toArray();
   }
 
   async getAll<T>(tableName: string) {
@@ -69,6 +65,4 @@ export class DatabaseService {
   async updateConfirmed<T>(tableName: string, guid: string, confirmed: boolean) {
     await this.db[tableName].update(guid, {confirmed});
   }
-
-
 }

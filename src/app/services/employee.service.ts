@@ -29,17 +29,19 @@ export class EmployeeService {
 
   async signIn(email: string, password: string) {
     const user = await this.databaseService.getUserByEmailAndPassword<EmployeeModel>('employees', email, password);
+
     if (user !== undefined) {
       this.currentUser = user;
       this.employee$.next(this.currentUser);
-      return true;
+      return user;
     } else {
       return false;
     }
   }
 
- async register(register: RegisterModel) {
+  async register(register: RegisterModel): Promise<boolean> {
     const user = await this.databaseService.getUserByEmailAndPassword<EmployeeModel>('employees', register.email, register.password);
+
     if (user === undefined) {
       const employee = new EmployeeModel();
       employee.password = register.password;
@@ -51,6 +53,7 @@ export class EmployeeService {
 
       return true;
     }
+
     return false;
   }
 

@@ -13,7 +13,7 @@
     <th scope="col" width="20%">Status</th>
   </tr>
   </thead>
-  <tbody *ngFor="let appointment of appointments | pagination: pager; let i = index">
+  <tbody *ngFor="let appointment of appointments; let i = index">
   <tr>
     <td scope="row">
       <div class="custom-control custom-checkbox">

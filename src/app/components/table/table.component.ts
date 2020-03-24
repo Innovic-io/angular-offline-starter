@@ -9,6 +9,7 @@ import { AppointmentModel } from '../../models/appointment.model';
 })
 export class TableComponent {
   @Input() appointments: AppointmentModel[];
+
   @Output() checked = new EventEmitter<{ checked: boolean, guid: string }>();
   @Output() checkedAll = new EventEmitter<boolean>();
   @Output() pager = new EventEmitter();
@@ -18,10 +19,10 @@ export class TableComponent {
   }
 
   checkAll(event) {
-      this.checkedAll.emit(event);
+    this.checkedAll.emit(event);
   }
 
   setPage(currentPage) {
-    this.pager = currentPage;
+    this.pager.emit(currentPage);
   }
 }
