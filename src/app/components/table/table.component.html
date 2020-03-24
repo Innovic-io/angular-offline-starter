@@ -33,4 +33,5 @@
   </tr>
   </tbody>
 </table>
-<app-pagination [total]="appointments.length" [perPage]="10" [currentPage]="pager?.currentPage" (page)="setPage($event);"></app-pagination>
+<!--<app-pagination [total]="appointments.length" [perPage]="10" [currentPage]="pager?.currentPage" (page)="setPage($event);"></app-pagination>-->
+<app-pagination [total]="20" [perPage]="10" [currentPage]="1" (page)="setPage($event);"></app-pagination>

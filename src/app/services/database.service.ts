@@ -25,6 +25,11 @@ export class DatabaseService {
     return await this.db[tableName].get(guid);
   }
 
+  async getMultiple<T>(tableName: string, start: number, end: number) {
+    console.log( await this.db[tableName].orderBy('date').reverse().offset(start).limit(end).toArray());
+    return this.db[tableName].orderBy('date').reverse().offset(start).limit(end).toArray();
+  }
+
   async getUserByEmailAndPassword<T>(tableName: string, email: string, password: string) {
     return await this.db[tableName].where({'contact.email': email, password}).first();
   }

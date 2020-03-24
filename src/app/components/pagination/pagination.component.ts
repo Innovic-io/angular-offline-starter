@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { PaginationService } from '../../services/pagination.service';
+import { DatabaseService } from '../../services/database.service';
 
 
 @Component({
@@ -15,12 +16,12 @@ export class PaginationComponent implements OnInit {
   @Output() page = new EventEmitter<number>();
   pager: any = {};
 
-  constructor(public paginationService: PaginationService) { }
+  constructor(public paginationService: PaginationService, public databaseService: DatabaseService) { }
 
   ngOnInit(): void {
-    this.pager = this.paginationService.getPager(this.total, this.currentPage || 1, this.perPage);
+   this.pager = this.paginationService.getPager(this.total, this.currentPage || 1, this.perPage);
 
-    setTimeout(() => {
+   setTimeout(() => {
       this.page.emit(this.pager);
     }, 250);
   }

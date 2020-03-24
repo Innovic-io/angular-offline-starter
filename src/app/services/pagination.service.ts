@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
+import { DatabaseService } from './database.service';
+import { AppointmentModel } from '../models/appointment.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PaginationService {
+
+  constructor(public databaseService: DatabaseService) {}
 
   getPager(totalItems: number, currentPage: number, pageSize: number) {
     const totalPages = Math.ceil(totalItems / pageSize);
@@ -50,4 +54,5 @@ export class PaginationService {
       pages1
     };
   }
+
 }

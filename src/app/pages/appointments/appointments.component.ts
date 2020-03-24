@@ -6,6 +6,7 @@ import { AppointmentModel } from '../../models/appointment.model';
 import { AppointmentService } from '../../services/appointment.service';
 import { Observable } from 'rxjs';
 import { SystemService } from '../../services/system.service';
+import { DatabaseService } from '../../services/database.service';
 
 @Component({
   selector: 'app-appointments',
@@ -17,18 +18,32 @@ export class AppointmentsComponent implements OnInit {
   currentUser$: Observable<EmployeeModel>;
   upcomingAppointments: AppointmentModel[];
   pastAppointments: AppointmentModel[];
+  pastAppointments$: Observable<AppointmentModel[]>;
   markedAppointments: string[] = [];
-
-  constructor(public employeeService: EmployeeService, public appointmentService: AppointmentService, public systemService: SystemService) {
+  public pager;
+  constructor(
+    public employeeService: EmployeeService,
+    public appointmentService: AppointmentService,
+    public systemService: SystemService,
+    public databaseService: DatabaseService) {
   }
 
-  async ngOnInit() {
+  ngOnInit() {
+    this.currentUser = this.employeeService.getLoggedEmployee();
+    this.currentUser$ = this.employeeService.getLoggedEmployee$();
+    // this.upcomingAppointments = await this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
+    // this.pastAppointments = await this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
+    this.pager = this.databaseService.getMultiple('appointments', 0, 10);
+    this.pastAppointments$ = this.pager;
+  }
+
+ /* async ngOnInit() {
     this.currentUser = this.employeeService.getLoggedEmployee();
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
     this.upcomingAppointments = await this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
     console.log(this.upcomingAppointments);
     this.pastAppointments = await this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
-  }
+  } */
 
   async exportToPDFActiveApp(event, name) {
     await this.systemService.exportAsPDF(event, name);
@@ -70,5 +85,10 @@ export class AppointmentsComponent implements OnInit {
     this.systemService.createAlertMessage('Delete completed!');
     this.upcomingAppointments = await this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
     this.pastAppointments = await this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
+  }
+
+  setPager(event) {
+    this.pager = event;
+    this.pager = this.databaseService.getMultiple('appointments', 0, 10);
   }
 }
