@@ -36,16 +36,6 @@ export class AppointmentsComponent implements OnInit {
     this.pastAppointments$ = this.databaseService.getMultiple('appointments', 0, 10);
   }
 
-  /*
-  async ngOnInit() {
-    this.currentUser = this.employeeService.getLoggedEmployee();
-    this.currentUser$ = this.employeeService.getLoggedEmployee$();
-    this.upcomingAppointments = await this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
-    console.log(this.upcomingAppointments);
-    this.pastAppointments = await this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
-  }
-   */
-
   async exportToPDFActiveApp(event, name) {
     await this.systemService.exportAsPDF(event, name);
   }
@@ -89,7 +79,7 @@ export class AppointmentsComponent implements OnInit {
   }
 
   setPager(event) {
-
     this.pastAppointments$ = this.databaseService.getMultiple('appointments', event.currentPage - 1, event.pageSize);
+    console.log('Setovan:', this.pastAppointments$);
   }
 }
