@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { AppointmentModel } from '../../models/appointment.model';
 
@@ -7,16 +7,13 @@ import { AppointmentModel } from '../../models/appointment.model';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit {
+export class TableComponent {
   @Input() appointments: AppointmentModel[];
 
   @Output() checked = new EventEmitter<{ checked: boolean, guid: string }>();
   @Output() checkedAll = new EventEmitter<boolean>();
   @Output() pager = new EventEmitter();
 
-  ngOnInit() {
-    console.log(this.appointments);
-  }
   checkBox(event, appointmentGUID: string) {
     this.checked.emit({ checked: event, guid: appointmentGUID });
   }
