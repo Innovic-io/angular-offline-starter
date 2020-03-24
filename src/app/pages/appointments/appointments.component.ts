@@ -29,7 +29,7 @@ export class AppointmentsComponent implements OnInit {
     public databaseService: DatabaseService) {
   }
 
-  ngOnInit() {
+   ngOnInit() {
     this.currentUser = this.employeeService.getLoggedEmployee();
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
     this.upcomingAppointments$ = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);

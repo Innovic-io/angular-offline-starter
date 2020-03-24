@@ -3,7 +3,7 @@
   <div class="row" *ngFor="let appointment of appointments">
     <div class="col-5">
       <div class="col-12 blackLetters">{{appointment?.date | date:'medium': undefined: 'sr-RS' }}</div>
-      <div class="col-12 grayLetters">{{appointment?.date | date:'medium'  | timeAgo}}</div>
+      <div class="col-12 grayLetters">{{appointment?.dateWhenCreated | date:'medium'  | timeAgo}}</div>
     </div>
     <div class="col-5">
       <div class="col-12 blackLetters">{{appointmentTitle}}</div>
@@ -17,6 +17,6 @@
         <fa-icon class="text-success float-right h3 mt-1" [icon]="faChecked"></fa-icon>
       </div>
     </div>
-
   </div>
 </div>
+

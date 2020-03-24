@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { doctor } from '../data/dummy';
 import { ContactModel, EmergencyModel, EmployeeModel } from '../models/employee.model';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { RegisterModel } from '../models/register.model';
 import { DatabaseService } from './database.service';
 

@@ -42,6 +42,7 @@ export class AppointmentModel {
   guid: string;
   firstName: string;
   lastName: string;
+  dateWhenCreated: Date;
   date: Date;
   provider: EmployeeModel;
   location: string;
@@ -58,6 +59,7 @@ export class AppointmentModel {
   constructor() {
     this.guid = uuidv4();
     this.confirmed = false;
+    this.dateWhenCreated = new Date();
     this.diagnosis = new DiagnosisModel();
     this.invoice = new InvoiceModel();
     this.appointmentHistory = [];
