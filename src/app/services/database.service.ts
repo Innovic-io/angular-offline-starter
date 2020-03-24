@@ -37,11 +37,11 @@ export class DatabaseService {
   }
 
   async updateArchive<T>(tableName: string, guid: string, archive: boolean) {
-    await this.db[tableName].update(guid, {archive});
+    return this.db[tableName].update(guid, {archive});
   }
 
   async update<T>(tableName: string, guid: string, object: T) {
-    await this.db[tableName].update(guid, object);
+    return this.db[tableName].update(guid, object);
   }
 
   async getAllDoctorEmails<T>(tableName: string, doctorGuid: string) {
@@ -58,11 +58,11 @@ export class DatabaseService {
   }
 
   async getAllUpcoming<T>(tableName: string, now: Date, providerGUID) {
-    return this.db[tableName].where('date').above(now).and(() => 'provider.guid' === providerGUID).toArray();
+    return this.db[tableName].where('date').above(now).toArray();
     // return this.db[tableName].where('provider.guid').equals(providerGUID);
   }
 
   async updateConfirmed<T>(tableName: string, guid: string, confirmed: boolean) {
-    await this.db[tableName].update(guid, {confirmed});
+    return this.db[tableName].update(guid, {confirmed});
   }
 }

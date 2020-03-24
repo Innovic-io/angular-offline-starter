@@ -11,7 +11,6 @@ import { DatabaseService } from './database.service';
   providedIn: 'root'
 })
 export class EmployeeService {
-  private employees: EmployeeModel[] = [];
   private currentUser: EmployeeModel;
   private readonly employee$: BehaviorSubject<EmployeeModel>;
 
@@ -62,7 +61,6 @@ export class EmployeeService {
   }
 
   async updateEmployee(employee: EmployeeModel | ContactModel | EmergencyModel, type: string) {
-    const index = this.employees.indexOf(this.currentUser);
     switch (type) {
       case 'basic':
         this.currentUser = {...this.currentUser, ...employee};
@@ -75,15 +73,12 @@ export class EmployeeService {
         break;
     }
     await this.databaseService.update<EmployeeModel>('employees', this.currentUser.guid, this.currentUser);
-   // this.employees.splice(index, 1, this.currentUser);
     this.employee$.next(this.currentUser);
   }
 
   async updateEmployeeAvatar(avatarURL: string) {
-    const index = this.employees.indexOf(this.currentUser);
     this.currentUser = { ...this.currentUser, avatar: avatarURL};
     await this.databaseService.update<EmployeeModel>('employees', this.currentUser.guid, this.currentUser);
-    // this.employees.splice(index, 1, this.currentUser);
     this.employee$.next(this.currentUser);
   }
 }

@@ -35,7 +35,7 @@
               </button>
             </div>
             <div class="col-lg-12" #activeAppointments title="activeAppointments ">
-              <app-table [appointments]="upcomingAppointments"
+              <app-table [appointments]="upcomingAppointments$ | async"
                          (checked)="appointmentSelect($event)"
                          (checkedAll)="appointmentSelectAll($event)"></app-table>
             </div>

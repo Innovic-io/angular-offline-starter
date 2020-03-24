@@ -9,6 +9,7 @@ import { SystemService } from '../../../services/system.service';
 import { EmployeeModel } from '../../../models/employee.model';
 import { EmployeeService } from '../../../services/employee.service';
 import { DatabaseService } from '../../../services/database.service';
+import { valueReferenceToExpression } from '@angular/compiler-cli/src/ngtsc/annotations/src/util';
 
 @Component({
   selector: 'app-create',
@@ -27,21 +28,19 @@ export class CreateComponent implements OnInit {
               private databaseService: DatabaseService) {
   }
 
-  async checkAvailableAppointment() {
+  async checkAvailableAppointment(): Promise<boolean> {
     const arrayOfAppointments = await this.appointmentService.getAllUpcomingDoctorAppointments(this.appointment.provider.guid);
-
     return arrayOfAppointments.some(appointment => this.appointment.date.getTime() === appointment.date.getTime());
   }
 
-  onSubmit(form: NgForm) {
+  async onSubmit(form: NgForm) {
     if (form.valid) {
-      // this.alert = this.checkAvailableAppointment();
-      // if (this.alert) {
-      //   return;
-      // }
-      this.appointmentService.createAppointment(this.appointment);
+      this.alert = await this.checkAvailableAppointment();
+      if (this.alert) {
+        return;
+      }
+      await this.appointmentService.createAppointment(this.appointment);
       this.reset(form);
-      this.systemService.createAlertMessage('Appointment created!');
     }
   }
 

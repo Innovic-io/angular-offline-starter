@@ -16,19 +16,20 @@ import { Observable } from 'rxjs';
 export class DashboardComponent implements OnInit {
   currentUser$: Observable<EmployeeModel>;
   currentUser: EmployeeModel;
-  appointments: AppointmentModel[];
+  appointments$: Promise<AppointmentModel[]>;
   appointmentsTitle = 'New Patient Appointment';
 
   constructor(public employeeService: EmployeeService, private appointmentService: AppointmentService) {}
 
-  confirmedButton(event) {
-    this.appointmentService.confirmAppointment(doctor.guid, event);
+  async confirmedButton(event) {
+    await this.appointmentService.confirmAppointment(doctor.guid, event);
+    this.appointments$ = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
     this.currentUser = this.employeeService.getLoggedEmployee();
-    this.appointments = await this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
+    this.appointments$ = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
   }
 
 }

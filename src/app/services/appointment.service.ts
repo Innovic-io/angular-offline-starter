@@ -9,6 +9,7 @@ import {
   HistoryModel,
   InvoiceModel
 } from '../models/appointment.model';
+import { SystemService } from './system.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +19,20 @@ export class AppointmentService {
   private now = new Date();
   private appointment = new AppointmentModel();
 
-  constructor(public databaseService: DatabaseService) {
+  constructor(public databaseService: DatabaseService, public systemService: SystemService) {
   }
 
   async createAppointment(appointment: AppointmentModel) {
-    await this.databaseService.insert<AppointmentModel>('appointments', appointment);
+    try {
+
+      await this.databaseService.insert<AppointmentModel>('appointments', appointment);
+      this.systemService.createAlertMessage('Appointment is created!');
+
+    } catch (e) {
+
+      this.systemService.createDangerAlertMessage('Appointment is not created!');
+
+    }
   }
 
   getAppointmentByID(appointmentID: string) {
@@ -34,26 +44,22 @@ export class AppointmentService {
   }
 
   async getAllUpcomingDoctorAppointments(doctorGUID: string) {
-    return await this.databaseService.getAllUpcoming<AppointmentModel>('appointments', this.now, doctorGUID);
-    // return this.appointments.filter(appointment => appointment.provider.guid === doctorGUID && appointment.date >= this.now);
+    return this.databaseService.getAllUpcoming<AppointmentModel>('appointments', this.now, doctorGUID);
   }
 
   async getAllPastDoctorAppointments(doctorGUID: string) {
-    return await this.databaseService.getAllPast<AppointmentModel>('appointments', this.now, doctorGUID);
-    // return this.appointments.filter(appointment => appointment.provider.guid === doctorGUID && appointment.date < this.now);
+    return this.databaseService.getAllPast<AppointmentModel>('appointments', this.now, doctorGUID);
   }
 
   async deleteAppointments(appointmentGUID: string) {
-    // const appointmentIndex = this.appointments.findIndex(appointment => appointment.guid === appointmentGUID);
-    // if (appointmentIndex >= 0) {
-    //  // this.appointments.splice(appointmentIndex, 1);
-    //  await this.databaseService.delete('appointments', appointmentGUID);
-    // }
     try {
 
       await this.databaseService.delete('appointments', appointmentGUID);
+      this.systemService.createAlertMessage('Delete is completed!');
 
     } catch (e) {
+
+      this.systemService.createDangerAlertMessage('Delete is not completed!');
 
     }
   }
@@ -97,8 +103,7 @@ export class AppointmentService {
 
   async confirmAppointment(doctorGUID: string, appointmentGUID: string) {
     if (confirm('Are you sure you want to confirm?')) {
-      await this.databaseService.updateConfirmed<AppointmentModel>('appointments', appointmentGUID, true);
-      // this.appointments.find(appointment => appointment.guid === appointmentGUID).confirmed = true;
+      return this.databaseService.updateConfirmed<AppointmentModel>('appointments', appointmentGUID, true);
     }
   }
 

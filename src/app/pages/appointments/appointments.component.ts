@@ -16,10 +16,11 @@ import { DatabaseService } from '../../services/database.service';
 export class AppointmentsComponent implements OnInit {
   currentUser: EmployeeModel;
   currentUser$: Observable<EmployeeModel>;
-  upcomingAppointments: AppointmentModel[];
-  pastAppointments: AppointmentModel[];
+  upcomingAppointments$: Promise<AppointmentModel[]>;
   pastAppointments$: Promise<AppointmentModel[]>;
   markedAppointments: string[] = [];
+  upcomingAppointments: AppointmentModel[];
+  pastAppointments: AppointmentModel[];
 
   constructor(
     public employeeService: EmployeeService,
@@ -31,9 +32,9 @@ export class AppointmentsComponent implements OnInit {
   ngOnInit() {
     this.currentUser = this.employeeService.getLoggedEmployee();
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
-    // this.upcomingAppointments = await this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
-    // this.pastAppointments = await this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
-    this.pastAppointments$ = this.databaseService.getMultiple('appointments', 0, 10);
+    this.upcomingAppointments$ = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
+    this.pastAppointments$ = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
+    // this.pastAppointments$ = this.databaseService.getMultiple('appointments', 0, 10);
   }
 
   async exportToPDFActiveApp(event, name) {
@@ -53,7 +54,8 @@ export class AppointmentsComponent implements OnInit {
     }
   }
 
-  appointmentSelectAll(event) {
+  async appointmentSelectAll(event) {
+    this.upcomingAppointments = await this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
     if (event) {
       this.markedAppointments = this.upcomingAppointments.map(appointment => appointment.guid);
     } else {
@@ -61,7 +63,8 @@ export class AppointmentsComponent implements OnInit {
     }
   }
 
-  pastAppointmentSelectAll(event) {
+  async pastAppointmentSelectAll(event) {
+    this.pastAppointments = await this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
     if (event) {
       this.markedAppointments = this.pastAppointments.map(appointment => appointment.guid);
     } else {
@@ -73,13 +76,12 @@ export class AppointmentsComponent implements OnInit {
     if (confirm('Are you sure you want to delete this appointment?')) {
       this.markedAppointments.forEach(appointmentGUID => this.appointmentService.deleteAppointments(appointmentGUID));
     }
-    this.systemService.createAlertMessage('Delete completed!');
-    this.upcomingAppointments = await this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
-    this.pastAppointments = await this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
+
+    this.upcomingAppointments$ =  this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
+    this.pastAppointments$ =  this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
   }
 
   setPager(event) {
-    this.pastAppointments$ = this.databaseService.getMultiple('appointments', event.currentPage - 1, event.pageSize);
-    console.log('Setovan:', this.pastAppointments$);
+    // this.pastAppointments$ = this.databaseService.getMultiple('appointments', event.currentPage - 1, event.pageSize);
   }
 }

@@ -27,6 +27,7 @@ export class LoggedGuard implements CanActivate {
         const isLoggedIn = await this.employeeService.signIn(user.contact.email, user.password);
 
         if (isLoggedIn) {
+          // console.log(state.url);
           this.router.navigateByUrl('/dashboard');
         }
       }
