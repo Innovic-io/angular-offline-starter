@@ -11,13 +11,14 @@ import { AppointmentType, enumSelector } from '../../models/system.models';
 })
 export class MedicalTableComponent {
   @Input() appointments: AppointmentModel[];
+  @Input() total: number;
   @Input() selectedType: string;
   @Output() checkedAll = new EventEmitter<boolean>();
   @Output() checked = new EventEmitter<{ checked: boolean, guid: string }>();
+  @Output() pager = new EventEmitter();
 
   public appTypes = enumSelector(AppointmentType);
   public faFileAlt = faFileAlt;
-  public pager;
 
   checkAll(event) {
     this.checkedAll.emit(event);
@@ -33,6 +34,6 @@ export class MedicalTableComponent {
   }
 
   setPage(currentPage) {
-    this.pager = currentPage;
+    this.pager.emit(currentPage);
   }
 }

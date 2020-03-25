@@ -8,8 +8,6 @@ import { Observable } from 'rxjs';
 import { generateMessages, generatePastAppointments, generateUppcomingAppointments } from './data/appointment';
 import { MessageService } from './services/message.service';
 import { AppointmentService } from './services/appointment.service';
-import { DatabaseService } from './services/database.service';
-import { Router } from '@angular/router';
 
 moment.locale('sr');
 

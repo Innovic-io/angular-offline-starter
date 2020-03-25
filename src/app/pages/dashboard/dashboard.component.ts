@@ -17,19 +17,23 @@ export class DashboardComponent implements OnInit {
   currentUser$: Observable<EmployeeModel>;
   currentUser: EmployeeModel;
   appointments$: Promise<AppointmentModel[]>;
+  appointmentsCount: number;
   appointmentsTitle = 'New Patient Appointment';
 
   constructor(public employeeService: EmployeeService, private appointmentService: AppointmentService) {}
 
   async confirmedButton(event) {
     await this.appointmentService.confirmAppointment(doctor.guid, event);
-    this.appointments$ = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
+    this.appointments$ = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid, 0, this.appointmentsCount);
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
     this.currentUser = this.employeeService.getLoggedEmployee();
-    this.appointments$ = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
+    this.appointmentsCount = await this.appointmentService.getAllUpcomingDoctorAppointmentsCount(this.currentUser.guid);
+    console.log(this.appointmentsCount);
+    this.appointments$ = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid, 0, this.appointmentsCount);
+    console.log(this.appointments$);
   }
 
 }

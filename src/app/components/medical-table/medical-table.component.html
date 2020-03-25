@@ -23,7 +23,7 @@
     <th scope="col" width="20%">View PDF</th>
   </tr>
   </thead>
-  <tbody *ngFor="let appointment of appointments | pagination: pager | filterByType: selectedType let i = index">
+  <tbody *ngFor="let appointment of appointments | filterByType: selectedType let i = index">
   <th scope="row">
     <div class="custom-control custom-checkbox">
       <input type="checkbox" #checkbox class="custom-control-input" id="defaultUnchecked{{i}}"
@@ -38,6 +38,6 @@
   </td>
   </tbody>
 </table>
-<app-pagination [total]="appointments.length" [perPage]="10" [currentPage]="pager?.currentPage" (page)="setPage($event);"></app-pagination>
+<app-pagination [total]="total" [perPage]="10" [currentPage]="1" (page)="setPage($event);"></app-pagination>
 
 

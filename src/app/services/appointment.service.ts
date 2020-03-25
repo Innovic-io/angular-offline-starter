@@ -41,16 +41,20 @@ export class AppointmentService {
     return this.appointment.appointmentHistory.find(change => change.guid === historyID);
   }
 
-  getAllUpcomingDoctorAppointments(doctorGUID: string) {
-    return this.databaseService.getAllUpcoming<AppointmentModel>('appointments', this.now, doctorGUID);
+  getAllUpcomingDoctorAppointments(doctorGUID: string, start= 0, end = 0) {
+    return this.databaseService.getAllUpcoming<AppointmentModel>('appointments', this.now, doctorGUID, start, end);
+  }
+
+  getAllUpcomingDoctorAppointmentsCount(doctorGUID: string) {
+    return this.databaseService.getAllUpcomingCount<AppointmentModel>('appointments', this.now, doctorGUID);
+  }
+
+  getAllPastDoctorAppointments(doctorGUID: string, start = 0, end = 0) {
+    return this.databaseService.getAllPast<AppointmentModel>('appointments', this.now, doctorGUID, start, end);
   }
 
   getAllPastDoctorAppointmentsCount(doctorGUID: string) {
     return this.databaseService.getAllPastCount<AppointmentModel>('appointments', this.now, doctorGUID);
-  }
-
-  getAllPastDoctorAppointments(doctorGUID: string, start = 0, end = 10) {
-    return this.databaseService.getAllPast<AppointmentModel>('appointments', this.now, doctorGUID, start, end);
   }
 
   async deleteAppointments(appointmentGUID: string) {

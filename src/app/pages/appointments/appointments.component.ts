@@ -16,11 +16,12 @@ export class AppointmentsComponent implements OnInit {
   currentUser: EmployeeModel;
   currentUser$: Observable<EmployeeModel>;
   upcomingAppointments$: Promise<AppointmentModel[]>;
+  upcomingAppointmentsCount$: Promise<number>;
+  upcomingAppointments: AppointmentModel[];
+  pastAppointments: AppointmentModel[];
   pastAppointments$: Promise<AppointmentModel[]>;
   pastAppointmentsCount$: Promise<number>;
   markedAppointments: string[] = [];
-  upcomingAppointments: AppointmentModel[];
-  pastAppointments: AppointmentModel[];
 
   constructor(
     public employeeService: EmployeeService,
@@ -31,8 +32,7 @@ export class AppointmentsComponent implements OnInit {
   ngOnInit() {
     this.currentUser = this.employeeService.getLoggedEmployee();
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
-    this.upcomingAppointments$ = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
-
+    this.upcomingAppointmentsCount$ = this.appointmentService.getAllUpcomingDoctorAppointmentsCount(this.currentUser.guid);
     this.pastAppointmentsCount$ = this.appointmentService.getAllPastDoctorAppointmentsCount(this.currentUser.guid);
   }
 
@@ -83,5 +83,7 @@ export class AppointmentsComponent implements OnInit {
   setPager(event) {
     // tslint:disable-next-line:max-line-length
     this.pastAppointments$ = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid, event.currentPage - 1, event.pageSize);
+    // tslint:disable-next-line:max-line-length
+    this.upcomingAppointments$ = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid, event.currentPage - 1, event.pageSize);
   }
 }

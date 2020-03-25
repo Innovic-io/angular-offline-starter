@@ -16,6 +16,8 @@ export class MyDocumentsComponent implements OnInit {
   currentUser: EmployeeModel;
   currentUser$: Observable<EmployeeModel>;
   pastAppointments: AppointmentModel[];
+  pastAppointments$: Promise<AppointmentModel[]>;
+  pastAppointmentsCount$: Promise<number>;
   markedAppointments: string[] = [];
 
   constructor(public employeeService: EmployeeService,
@@ -23,10 +25,10 @@ export class MyDocumentsComponent implements OnInit {
               public systemService: SystemService) {
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
     this.currentUser = this.employeeService.getLoggedEmployee();
-    this.pastAppointments = await this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
+    this.pastAppointmentsCount$ = this.appointmentService.getAllPastDoctorAppointmentsCount(this.currentUser.guid);
   }
 
   async convertToPDF(event) {
@@ -42,7 +44,8 @@ export class MyDocumentsComponent implements OnInit {
     }
   }
 
-  pastAppointmentSelectAll(event) {
+  async pastAppointmentSelectAll(event) {
+    this.pastAppointments = await this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
     if (event) {
       this.markedAppointments = this.pastAppointments.map(appointment => appointment.guid);
       console.log(this.markedAppointments);
@@ -55,7 +58,11 @@ export class MyDocumentsComponent implements OnInit {
     if (confirm('Are you sure you want to delete this appointment?')) {
       this.markedAppointments.forEach(appointmentGUID => this.appointmentService.deleteAppointments(appointmentGUID));
     }
-    this.systemService.createAlertMessage('Delete completed!');
-   // this.pastAppointments = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
+    this.pastAppointments$ = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
+  }
+
+  setPager(event) {
+    // tslint:disable-next-line:max-line-length
+    this.pastAppointments$ = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid, event.currentPage - 1, event.pageSize);
   }
 }

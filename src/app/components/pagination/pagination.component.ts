@@ -1,8 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { PaginationService } from '../../services/pagination.service';
-import { DatabaseService } from '../../services/database.service';
-
 
 @Component({
   selector: 'app-pagination',

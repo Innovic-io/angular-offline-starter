@@ -52,8 +52,8 @@ export class DatabaseService {
     return this.db[tableName].toArray();
   }
 
-  async getAllPast<T>(tableName: string, now: Date, providerGUID: string, start: number, end: number) {
-    return this.db[tableName].where('date').below(now).offset(start).limit(end).toArray();
+  async getAllPast<T>(tableName: string, now: Date, providerGUID: string, start = 0, end= 10) {
+    return this.db[tableName].where('date').below(now).reverse().offset(start * end).limit(end).toArray();
     // return this.db[tableName].where('provider.guid').equals(providerGUID);
   }
 
@@ -63,7 +63,12 @@ export class DatabaseService {
   }
 
   async getAllUpcoming<T>(tableName: string, now: Date, providerGUID: string, start = 0, end = 10) {
-    return this.db[tableName].where('date').above(now).offset(start).limit(end).toArray();
+    return this.db[tableName].where('date').above(now).offset(start * end).limit(end).toArray();
+    // return this.db[tableName].where('provider.guid').equals(providerGUID);
+  }
+
+  async getAllUpcomingCount<T>(tableName: string, now: Date, providerGUID: string) {
+    return this.db[tableName].where('date').above(now).count();
     // return this.db[tableName].where('provider.guid').equals(providerGUID);
   }
 
