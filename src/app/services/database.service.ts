@@ -10,12 +10,37 @@ export class DatabaseService {
   constructor() {
     this.db = new Dexie('employee_database');
     this.db.version(1).stores({
-      employees: 'guid,avatar,name,middleName,lastName,contact.email,password,gender,dateOfBirth,role',
-      // tslint:disable-next-line:max-line-length
-      appointments: 'guid,firstName,lastName,date,provider.guid,notes,phone,email,confirmed,dateWhenCreated,appType,appointmentHealthInfo,appointmentHistory,diagnosis,invoice',
-      messages: 'guid,date,doctorEmail.guid,recipient,subject,doctorMessage,urgent,archive,replyTo,conversation'
+      employees: 'guid,avatar,name,middleName,lastName,contact,password,gender,dateOfBirth,role',
+      appointments: 'guid,firstName,lastName,date,provider,notes,phone,email,confirmed',
+      messages: 'guid,date,doctorEmail,recipient,subject,doctorMessage,urgent,archive,replyTo,conversation',
+      files: '[parentDir+name],parentDir'
     });
   }
+
+  async createDir(tableName: string, parentDir: string, name: string) {
+    return this.db[tableName].add({parentDir, name, type: 'dir'});
+  }
+  createFile(tableName: string, parentDir, filename, blob) {
+    return this.db.transaction('rw', this.db[tableName], async () => {
+      const dir = await this.db[tableName].get({
+        parentDir
+      });
+      if (!dir) { throw new Error('Parent dir not found'); }
+      if (dir.type !== 'dir') { throw new Error('Parent is not a dir'); }
+      await this.db[tableName].add({
+        type: 'file',
+        name: filename,
+        parentDir,
+        blob
+      });
+    });
+  }
+  listDirectory(tableName: string, dirPath) {
+    return this.db[tableName]
+      .where({parentDir: dirPath})
+      .toArray();
+  }
+
 
   async insert<T>(tableName: string, object: T) {
     return this.db[tableName].put(object);
