@@ -17,7 +17,7 @@ export function generatePastAppointments(len) {
     appointment.date = date;
     appointment.email = 'example@gmail.com';
     appointment.appType = AppointmentType.consultation;
-    appointment.provider = doctor;
+    appointment.provider.guid = '6c657957-5f02-40ed-8920-d6dd820075f7';
     appointment.notes = 'Notes';
     appointment.phone = '232432432432432432';
 
