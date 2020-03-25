@@ -28,9 +28,7 @@ export class AppComponent implements OnInit {
     public employeeService: EmployeeService,
     public systemService: SystemService,
     public messageService: MessageService,
-    public appointmentService: AppointmentService,
-    public databaseService: DatabaseService,
-    private router: Router) {
+    public appointmentService: AppointmentService) {
   }
 
   async ngOnInit() {
