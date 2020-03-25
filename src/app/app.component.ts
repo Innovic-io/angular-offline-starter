@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { generateMessages, generatePastAppointments, generateUppcomingAppointments } from './data/appointment';
 import { MessageService } from './services/message.service';
 import { AppointmentService } from './services/appointment.service';
+import { Router } from '@angular/router';
 
 moment.locale('sr');
 
@@ -26,7 +27,8 @@ export class AppComponent implements OnInit {
     public employeeService: EmployeeService,
     public systemService: SystemService,
     public messageService: MessageService,
-    public appointmentService: AppointmentService) {
+    public appointmentService: AppointmentService,
+    public router: Router) {
   }
 
   async ngOnInit() {
@@ -46,7 +48,8 @@ export class AppComponent implements OnInit {
 
   logOut() {
     this.employeeService.logOut();
-    window.location.reload();
+    // window.location.reload();
+    this.router.navigateByUrl('/login');
   }
 
 }
