@@ -9,6 +9,7 @@ import { generateMessages, generatePastAppointments, generateUppcomingAppointmen
 import { MessageService } from './services/message.service';
 import { AppointmentService } from './services/appointment.service';
 import { DatabaseService } from './services/database.service';
+import { Router } from '@angular/router';
 
 moment.locale('sr');
 
@@ -28,7 +29,8 @@ export class AppComponent implements OnInit {
     public systemService: SystemService,
     public messageService: MessageService,
     public appointmentService: AppointmentService,
-    public databaseService: DatabaseService) {
+    public databaseService: DatabaseService,
+    private router: Router) {
   }
 
   async ngOnInit() {
@@ -41,8 +43,14 @@ export class AppComponent implements OnInit {
     // for (const app of generateUppcomingAppointments(20)) {
     //   this.appointmentService.createAppointment(app);
     // }
-    // for (const app of generatePastAppointments(70)) {
+    // for (const app of generatePastAppointments(1)) {
     //   this.appointmentService.createAppointment(app);
     // }
   }
+
+  logOut() {
+    this.employeeService.logOut();
+    window.location.reload();
+  }
+
 }

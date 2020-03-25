@@ -47,8 +47,7 @@
           <p>My documents</p>
         </a>
       </li>
-      <li class="nav-item ml-auto align-self-center">
-        <a class="nav-link d-flex flex-row align-items-center">
+      <li class="nav-item ml-auto align-self-center d-flex flex-row align-items-center">
           <p class="mr-1">{{user?.name}}</p>
           <div *ngIf="user?.avatar; else elseAvatar">
             <img src="{{user?.avatar}}" class="d-inline-block userAvatar rounded-circle">
@@ -56,8 +55,16 @@
           <ng-template #elseAvatar>
             <img src="../assets/doctors/user.png" class="d-inline-block userAvatar rounded-circle">
           </ng-template>
-        </a>
-      </li>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item btn btn-default" routerLink="/login" [routerLinkActiveOptions]="{ exact: true }"
+                 routerLinkActive="active" (click)="logOut($event)">Log out</a>
+            </div>
+          </div>
+        </li>
     </ul>
   </div>
 </nav>

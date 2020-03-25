@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { faHospitalSymbol, faFile, faUser, faCalendarAlt, faComments, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { EmployeeModel } from '../../models/employee.model';
 
@@ -14,7 +14,12 @@ export class HeaderComponent {
   public faCalendarAlt = faCalendarAlt;
   public faComments = faComments;
   public faHeart = faHeart;
+  @Output() logOutEvent = new EventEmitter();
 
   @Input() user: EmployeeModel;
+
+  logOut(event) {
+      this.logOutEvent.emit(event);
+  }
 
 }

@@ -28,7 +28,7 @@ body {
 
 .btn.btn-default {
   border-color: #41B6A6;
-  color: #41B6A6;
+  color: #41B6A6!important;
   font-family: 'Andada', serif;
   font-variant: small-caps;
   letter-spacing: 1px;
@@ -45,3 +45,6 @@ body {
   cursor: pointer;
 }
 
+.open > .dropdown-toggle.btn-primary {
+  background-image: none;
+}

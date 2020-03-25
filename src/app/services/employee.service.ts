@@ -35,6 +35,10 @@ export class EmployeeService {
     return this.employee$.asObservable();
   }
 
+  logOut() {
+    localStorage.removeItem('user');
+  }
+
   async signIn(email: string, password: string) {
     const user = await this.databaseService.getUserByEmailAndPassword<EmployeeModel>('employees', email, password);
 
