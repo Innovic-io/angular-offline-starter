@@ -10,10 +10,10 @@ export class DatabaseService {
   constructor() {
     this.db = new Dexie('employee_database');
     this.db.version(1).stores({
-      employees: 'guid,avatar,name,middleName,lastName,contact,password,gender,dateOfBirth,role',
+      employees: 'guid,avatar,name,middleName,lastName,contact.email,password,gender,dateOfBirth,role',
       // tslint:disable-next-line:max-line-length
-      appointments: 'guid,firstName,lastName,date,provider,notes,phone,email,confirmed,dateWhenCreated,appType,appointmentHealthInfo,appointmentHistory,diagnosis,invoice',
-      messages: 'guid,date,doctorEmail,recipient,subject,doctorMessage,urgent,archive,replyTo,conversation'
+      appointments: 'guid,firstName,lastName,date,provider.guid,notes,phone,email,confirmed,dateWhenCreated,appType,appointmentHealthInfo,appointmentHistory,diagnosis,invoice',
+      messages: 'guid,date,doctorEmail.guid,recipient,subject,doctorMessage,urgent,archive,replyTo,conversation'
     });
   }
 
@@ -24,16 +24,17 @@ export class DatabaseService {
   async getSingle<T>(tableName: string, guid: string) {
     return this.db[tableName].get(guid) as T;
   }
+
   async getSingleByReplyTo<T>(tableName: string, replyTo: string) {
-    return  this.db[tableName].where({replyTo}).first();
+    return this.db[tableName].where({ replyTo }).first();
   }
 
-  async updateReplyTo<T>(tableName: string,  guid: string, replyTo: string) {
-    return this.db[tableName].update(guid, {replyTo});
+  async updateReplyTo<T>(tableName: string, guid: string, replyTo: string) {
+    return this.db[tableName].update(guid, { replyTo });
   }
 
   async getUserByEmailAndPassword<T>(tableName: string, email: string, password: string) {
-    return this.db[tableName].where({'contact.email': email, password}).first();
+    return this.db[tableName].where({ 'contact.email': email, password }).first();
   }
 
   async delete<T>(tableName: string, guid: string) {
@@ -41,7 +42,7 @@ export class DatabaseService {
   }
 
   async updateArchive<T>(tableName: string, guid: string, archive: boolean) {
-    return this.db[tableName].update(guid, {archive});
+    return this.db[tableName].update(guid, { archive });
   }
 
   async update<T>(tableName: string, guid: string, object: T) {
@@ -49,34 +50,34 @@ export class DatabaseService {
   }
 
   async getAllDoctorEmails<T>(tableName: string, doctorGuid: string) {
-    return this.db[tableName].where({'doctorEmail.guid': doctorGuid}).toArray();
+    return this.db[tableName].where({ 'doctorEmail.guid': doctorGuid }).toArray();
   }
 
   async getAll<T>(tableName: string) {
     return this.db[tableName].toArray();
   }
 
-  async getAllPast<T>(tableName: string, now: Date, providerGUID: string, start = 0, end= 10) {
-    return this.db[tableName].where('date').below(now).reverse().offset(start * end).limit(end).toArray();
-    // return this.db[tableName].where('provider.guid').equals(providerGUID);
+  async getAllPast<T>(tableName: string, now: Date, providerGUID: string, start = 0, end = 10) {
+    return this.db[tableName].where('date').below(now).filter(appointment =>
+      appointment.provider.guid === providerGUID).offset(start * end).limit(end).toArray();
   }
 
   async getAllPastCount<T>(tableName: string, now: Date, providerGUID: string) {
-    return this.db[tableName].where('date').below(now).count();
-    // return this.db[tableName].where('provider.guid').equals(providerGUID);
+    return this.db[tableName].where('date').below(now).filter(appointment =>
+      appointment.provider.guid === providerGUID).count();
   }
 
   async getAllUpcoming<T>(tableName: string, now: Date, providerGUID: string, start = 0, end = 10) {
-    return this.db[tableName].where('date').above(now).offset(start * end).limit(end).toArray();
-    // return this.db[tableName].where('provider.guid').equals(providerGUID);
+    return this.db[tableName].where('date').above(now).filter(appointment =>
+      appointment.provider.guid === providerGUID).offset(start * end).limit(end).toArray();
   }
 
   async getAllUpcomingCount<T>(tableName: string, now: Date, providerGUID: string) {
-    return this.db[tableName].where('date').above(now).count();
-    // return this.db[tableName].where('provider.guid').equals(providerGUID);
+    return this.db[tableName].where('date').above(now).filter(appointment =>
+      appointment.provider.guid === providerGUID).count();
   }
 
   async updateConfirmed<T>(tableName: string, guid: string, confirmed: boolean) {
-    return this.db[tableName].update(guid, {confirmed});
+    return this.db[tableName].update(guid, { confirmed });
   }
 }

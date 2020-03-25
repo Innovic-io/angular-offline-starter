@@ -63,5 +63,6 @@ export class AppointmentModel {
     this.invoice = new InvoiceModel();
     this.appointmentHistory = [];
     this.appointmentHealthInfo = new HealthInfoModel();
+    this.provider = new EmployeeModel();
   }
 }

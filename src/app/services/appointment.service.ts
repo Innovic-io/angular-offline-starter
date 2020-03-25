@@ -102,7 +102,7 @@ export class AppointmentService {
         appointment.appointmentHistory.push(historyOfChanges);
         break;
     }
-    await this.databaseService.update<AppointmentModel>('appointments', this.appointment.guid, appointment);
+    await this.databaseService.update<AppointmentModel>('appointments', this.appointment?.guid, appointment);
     return appointment;
   }
 

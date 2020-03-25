@@ -16,6 +16,7 @@ export class MessageModel {
 
   constructor() {
     this.guid = uuidv4();
+    this.doctorEmail = new EmployeeModel();
     this.urgent = false;
     this.archive = false;
   }

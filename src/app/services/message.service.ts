@@ -17,7 +17,8 @@ export class MessageService {
   }
 
   async getAllDoctorEmails(doctorGUID: string): Promise<MessageModel[]> {
-    const doctorMessages = await this.databaseService.getAll<MessageModel[]>('messages');
+    // const doctorMessages = await this.databaseService.getAll<MessageModel[]>('messages');
+    const doctorMessages = await this.databaseService.getAllDoctorEmails<MessageModel[]>('messages', doctorGUID);
     const lastMessages = [];
 
     for (const message of doctorMessages) {
