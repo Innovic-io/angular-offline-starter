@@ -31,9 +31,7 @@ export class DashboardComponent implements OnInit {
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
     this.currentUser = this.employeeService.getLoggedEmployee();
     this.appointmentsCount = await this.appointmentService.getAllUpcomingDoctorAppointmentsCount(this.currentUser.guid);
-    console.log(this.appointmentsCount);
     this.appointments$ = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid, 0, this.appointmentsCount);
-    console.log(this.appointments$);
   }
 
 }

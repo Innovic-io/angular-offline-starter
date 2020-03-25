@@ -11,7 +11,8 @@ export class DatabaseService {
     this.db = new Dexie('employee_database');
     this.db.version(1).stores({
       employees: 'guid,avatar,name,middleName,lastName,contact,password,gender,dateOfBirth,role',
-      appointments: 'guid,firstName,lastName,date,provider,notes,phone,email,confirmed',
+      // tslint:disable-next-line:max-line-length
+      appointments: 'guid,firstName,lastName,date,provider,notes,phone,email,confirmed,dateWhenCreated,appType,appointmentHealthInfo,appointmentHistory,diagnosis,invoice',
       messages: 'guid,date,doctorEmail,recipient,subject,doctorMessage,urgent,archive,replyTo,conversation'
     });
   }
@@ -29,10 +30,6 @@ export class DatabaseService {
 
   async updateReplyTo<T>(tableName: string,  guid: string, replyTo: string) {
     return this.db[tableName].update(guid, {replyTo});
-  }
-
-  async getMultiple<T>(tableName: string, start: number, end: number) {
-    return this.db[tableName].orderBy('date').reverse().offset(start).limit(end).toArray();
   }
 
   async getUserByEmailAndPassword<T>(tableName: string, email: string, password: string) {

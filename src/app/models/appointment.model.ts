@@ -45,7 +45,6 @@ export class AppointmentModel {
   dateWhenCreated: Date;
   date: Date;
   provider: EmployeeModel;
-  location: string;
   appType: AppointmentType;
   diagnosis: DiagnosisModel;
   invoice: InvoiceModel;

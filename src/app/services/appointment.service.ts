@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { HealthInfoModel } from '../models/employee.model';
+import { EmployeeModel, HealthInfoModel } from '../models/employee.model';
 import { DatabaseService } from './database.service';
 import {
   AppointmentModel,
@@ -15,7 +15,6 @@ import { SystemService } from './system.service';
   providedIn: 'root'
 })
 export class AppointmentService {
-  private appointments: AppointmentModel[] = [];
   private now = new Date();
   private appointment = new AppointmentModel();
 
@@ -34,7 +33,7 @@ export class AppointmentService {
   }
 
   getAppointmentByID(appointmentID: string) {
-    return this.appointments.find(appointment => appointment.guid === appointmentID);
+    return this.databaseService.getSingle<AppointmentModel>('appointments', appointmentID);
   }
 
   getHistoryChangeByID(historyID: string) {
@@ -70,8 +69,8 @@ export class AppointmentService {
     }
   }
 
-  updateAppointment(appointment: AppointmentModel | HealthInfoModel | DiagnosisModel | InvoiceModel, type: string, guid) {
-    appointment = this.getAppointmentByID(guid);
+  async updateAppointment(appointment: AppointmentModel | HealthInfoModel | DiagnosisModel | InvoiceModel, type: string, guid) {
+    appointment = await this.getAppointmentByID(guid);
     const historyOfChanges = new HistoryChanges();
     switch (type) {
       case 'healthInfo':
@@ -103,7 +102,7 @@ export class AppointmentService {
         appointment.appointmentHistory.push(historyOfChanges);
         break;
     }
-    console.log(appointment);
+    await this.databaseService.update<AppointmentModel>('appointments', this.appointment.guid, appointment);
     return appointment;
   }
 

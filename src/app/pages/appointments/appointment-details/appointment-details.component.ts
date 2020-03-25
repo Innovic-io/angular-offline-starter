@@ -12,23 +12,23 @@ import { SystemService } from '../../../services/system.service';
   styleUrls: ['./appointment-details.component.css']
 })
 export class AppointmentDetailsComponent implements OnInit {
-  appointment: AppointmentModel;
+   public appointment = new AppointmentModel();
 
   constructor(
               public route: ActivatedRoute,
               public appointmentService: AppointmentService,
               public systemService: SystemService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     const { id } = this.route.snapshot.params;
-    this.appointment = this.appointmentService.getAppointmentByID(id);
-    console.log(this.appointment);
+    this.appointment = await this.appointmentService.getAppointmentByID(id);
 
   }
 
   onUpdateAppointment(appointment: AppointmentModel | HealthInfoModel | DiagnosisModel | InvoiceModel, type: string, guid) {
-    this.appointment = this.appointmentService.updateAppointment(this.appointment, type, guid);
+    this.appointmentService.updateAppointment(appointment, type, guid);
     this.systemService.createAlertMessage('Appointment is updated!');
+    console.log(this.appointment);
   }
 
 }
