@@ -54,7 +54,7 @@ export class AppointmentsComponent implements OnInit {
   }
 
   async appointmentSelectAll(event) {
-    this.upcomingAppointments = await this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
+    this.upcomingAppointments = await this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid, 0, 10);
     if (event) {
       this.markedAppointments = this.upcomingAppointments.map(appointment => appointment.guid);
     } else {
@@ -63,7 +63,7 @@ export class AppointmentsComponent implements OnInit {
   }
 
   async pastAppointmentSelectAll(event) {
-    this.pastAppointments = await this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
+    this.pastAppointments = await this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid, 0, 10);
     if (event) {
       this.markedAppointments = this.pastAppointments.map(appointment => appointment.guid);
     } else {
@@ -76,8 +76,8 @@ export class AppointmentsComponent implements OnInit {
       this.markedAppointments.forEach(appointmentGUID => this.appointmentService.deleteAppointments(appointmentGUID));
     }
 
-    this.upcomingAppointments$ = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
-    this.pastAppointments$ = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
+    this.upcomingAppointments$ = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid, 0, 10);
+    this.pastAppointments$ = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid, 0, 10);
   }
 
   setPager(event) {
