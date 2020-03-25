@@ -49,7 +49,7 @@ export class NewMessageComponent implements OnInit {
     this.message = new MessageModel();
     this.message.doctorEmail = this.employee.getLoggedEmployee();
     if (replayTo) {
-      const replayToMessage: any = await this.messageService.getMessage(replayTo);
+      const replayToMessage: MessageModel = await this.messageService.getMessage(replayTo);
       this.message.subject = 'RE: ' + replayToMessage.subject;
       this.message.recipient = replayToMessage.recipient;
       this.message.replyTo = replayTo;

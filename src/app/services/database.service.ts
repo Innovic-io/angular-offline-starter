@@ -23,6 +23,13 @@ export class DatabaseService {
   async getSingle<T>(tableName: string, guid: string) {
     return this.db[tableName].get(guid) as T;
   }
+  async getSingleByReplyTo<T>(tableName: string, replyTo: string) {
+    return  this.db[tableName].where({replyTo}).first();
+  }
+
+  async updateReplyTo<T>(tableName: string,  guid: string, replyTo: string) {
+    return this.db[tableName].update(guid, {replyTo});
+  }
 
   async getMultiple<T>(tableName: string, start: number, end: number) {
     return this.db[tableName].orderBy('date').reverse().offset(start).limit(end).toArray();

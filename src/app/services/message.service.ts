@@ -9,7 +9,8 @@ import { SystemService } from './system.service';
 })
 export class MessageService {
   constructor(public databaseService: DatabaseService,
-              public systemService: SystemService) {}
+              public systemService: SystemService) {
+  }
 
   async createMessage(message: MessageModel) {
     await this.databaseService.insert<MessageModel>('messages', message);
@@ -33,7 +34,6 @@ export class MessageService {
           }
         } while (replayed);
         lastMessages.push(this.replaceLastWithFirst(message));
-      //  console.log(message.conversation);
       }
     }
     return lastMessages;
@@ -57,34 +57,22 @@ export class MessageService {
   async deleteMessage(messageGUID: string) {
     if (confirm('Are you sure you want to confirm?')) {
       const doctorMessages = await this.databaseService.getAll<MessageModel[]>('messages');
-      const messageIndex = doctorMessages.findIndex(message => message.guid === messageGUID);
-      console.log(doctorMessages.findIndex(message => message.guid === messageGUID));
+      const message: MessageModel = await this.getMessage(messageGUID);
+      const replyToOfDeletedMessage = message.replyTo;
+      const messageAfterDeletedMessage  = await this.databaseService.getSingleByReplyTo('messages', messageGUID);
 
-      for (const mes of doctorMessages) {
-        console.log(mes.conversation);
-    //   const mesIndexConversation = mes.conversation.findIndex(message => message.guid === messageGUID);
-      }
-      console.log(messageIndex);
-      if (messageIndex === 0) {
+      if (messageAfterDeletedMessage) {
         await this.databaseService.delete('messages', messageGUID);
-        doctorMessages[messageIndex].replyTo = null;
+        await this.databaseService.updateReplyTo('messages', messageAfterDeletedMessage.guid, replyToOfDeletedMessage);
       }
-      if (messageIndex > 0) {
-        await this.databaseService.delete('messages', messageGUID);
-        if (doctorMessages[messageIndex]) {
-          doctorMessages[messageIndex].replyTo = doctorMessages[messageIndex - 1].guid;
-        }
-      }
+      await this.databaseService.delete('messages', messageGUID);
       this.systemService.createAlertMessage('Message is deleted!');
       return doctorMessages;
     }
     this.systemService.createDangerAlertMessage('Message is not deleted!');
-
   }
 
-  async getMessage(messageGUID: string) {
+  async getMessage(messageGUID: string): Promise<MessageModel> {
     return await this.databaseService.getSingle('messages', messageGUID);
   }
-
-
 }
