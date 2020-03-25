@@ -10,9 +10,10 @@ export class DatabaseService {
   constructor() {
     this.db = new Dexie('employee_database');
     this.db.version(1).stores({
-      employees: 'guid,avatar,name,middleName,lastName,contact,password,gender,dateOfBirth,role',
-      appointments: 'guid,firstName,lastName,date,provider,notes,phone,email,confirmed',
-      messages: 'guid,date,doctorEmail,recipient,subject,doctorMessage,urgent,archive,replyTo,conversation',
+      employees: 'guid,avatar,name,middleName,lastName,contact.email,password,gender,dateOfBirth,role',
+      // tslint:disable-next-line:max-line-length
+      appointments: 'guid,firstName,lastName,date,provider.guid,notes,phone,email,confirmed,dateWhenCreated,appType,appointmentHealthInfo,appointmentHistory,diagnosis,invoice',
+      messages: 'guid,date,doctorEmail.guid,recipient,subject,doctorMessage,urgent,archive,replyTo,conversation',
       files: '[parentDir+name],parentDir'
     });
   }
