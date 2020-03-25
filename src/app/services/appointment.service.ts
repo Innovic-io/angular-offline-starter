@@ -36,10 +36,12 @@ export class AppointmentService {
     return this.databaseService.getSingle<AppointmentModel>('appointments', appointmentID);
   }
 
-  /*getHistoryChangeByID(historyID: string) {
-    console.log(this.appointment.appointmentHistory.find(change => change.guid === historyID));
+  getHistoryChangeByID(guid: string, historyID: string) {
+    // get signgle appointment
+
+
     return this.appointment.appointmentHistory.find(change => change.guid === historyID);
-  }*/
+  }
 
   getAllUpcomingDoctorAppointments(doctorGUID: string, start= 0, end = 0) {
     return this.databaseService.getAllUpcoming<AppointmentModel>('appointments', this.now, doctorGUID, start, end);

@@ -23,6 +23,8 @@ export class AppointmentsComponent implements OnInit {
   pastAppointmentsCount$: Promise<number>;
   markedAppointments: string[] = [];
 
+  pager;
+
   constructor(
     public employeeService: EmployeeService,
     public appointmentService: AppointmentService,
@@ -76,14 +78,18 @@ export class AppointmentsComponent implements OnInit {
       this.markedAppointments.forEach(appointmentGUID => this.appointmentService.deleteAppointments(appointmentGUID));
     }
 
-    this.upcomingAppointments$ = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid, 0, 10);
-    this.pastAppointments$ = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid, 0, 10);
+    this.populateData();
   }
 
   setPager(event) {
+    this.pager = event;
+    this.populateData();
+  }
+
+  populateData() {
     // tslint:disable-next-line:max-line-length
-    this.pastAppointments$ = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid, event.currentPage - 1, event.pageSize);
+    this.pastAppointments$ = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid, this.pager.currentPage - 1, this.pager.pageSize);
     // tslint:disable-next-line:max-line-length
-    this.upcomingAppointments$ = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid, event.currentPage - 1, event.pageSize);
+    this.upcomingAppointments$ = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid, this.pager.currentPage - 1, this.pager.pageSize);
   }
 }

@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
     // for (const app of generateUppcomingAppointments(20)) {
     //   this.appointmentService.createAppointment(app);
     // }
-    // for (const app of generatePastAppointments(20)) {
+    // for (const app of generatePastAppointments(23)) {
     //   this.appointmentService.createAppointment(app);
     // }
   }

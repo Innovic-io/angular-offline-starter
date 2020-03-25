@@ -46,7 +46,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'appointments/:id/:id',
+    path: 'appointments/:id/:historyId',
     component: HistoryChangeDetailComponent,
     canActivate: [AuthGuard],
   },
