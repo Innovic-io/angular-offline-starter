@@ -25,10 +25,9 @@ export class AppointmentDetailsComponent implements OnInit {
 
   }
 
-  onUpdateAppointment(appointment: AppointmentModel | HealthInfoModel | DiagnosisModel | InvoiceModel, type: string, guid) {
-    this.appointmentService.updateAppointment(appointment, type, guid);
+  async onUpdateAppointment(appointment: AppointmentModel | HealthInfoModel | DiagnosisModel | InvoiceModel, type: string, guid) {
+    this.appointment = await this.appointmentService.updateAppointment(appointment, type, guid);
     this.systemService.createAlertMessage('Appointment is updated!');
-    console.log(this.appointment);
   }
 
 }

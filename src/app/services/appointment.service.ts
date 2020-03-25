@@ -36,9 +36,10 @@ export class AppointmentService {
     return this.databaseService.getSingle<AppointmentModel>('appointments', appointmentID);
   }
 
-  getHistoryChangeByID(historyID: string) {
+  /*getHistoryChangeByID(historyID: string) {
+    console.log(this.appointment.appointmentHistory.find(change => change.guid === historyID));
     return this.appointment.appointmentHistory.find(change => change.guid === historyID);
-  }
+  }*/
 
   getAllUpcomingDoctorAppointments(doctorGUID: string, start= 0, end = 0) {
     return this.databaseService.getAllUpcoming<AppointmentModel>('appointments', this.now, doctorGUID, start, end);
@@ -70,40 +71,40 @@ export class AppointmentService {
   }
 
   async updateAppointment(appointment: AppointmentModel | HealthInfoModel | DiagnosisModel | InvoiceModel, type: string, guid) {
-    appointment = await this.getAppointmentByID(guid);
+    this.appointment = await this.getAppointmentByID(guid);
     const historyOfChanges = new HistoryChanges();
     switch (type) {
       case 'healthInfo':
         historyOfChanges.previousState = this.appointment.appointmentHealthInfo;
         this.appointment.appointmentHealthInfo = {...this.appointment.appointmentHealthInfo, ...appointment};
-        historyOfChanges.newState = appointment.appointmentHealthInfo;
+        historyOfChanges.newState = this.appointment.appointmentHealthInfo;
         historyOfChanges.what = HistoryModel.healthInfo;
         historyOfChanges.date = new Date();
-        historyOfChanges.actor = appointment.provider;
-        appointment.appointmentHistory.push(historyOfChanges);
-        console.log('Niz', appointment.appointmentHistory);
+        historyOfChanges.actor = this.appointment.provider;
+        this.appointment.appointmentHistory.push(historyOfChanges);
+        console.log('Niz', this.appointment.appointmentHistory);
         break;
       case 'diagnosis':
         historyOfChanges.previousState = this.appointment.diagnosis;
         this.appointment.diagnosis = {...this.appointment.diagnosis, ...appointment, diagnosisDate: new Date()};
-        historyOfChanges.newState = appointment.diagnosis;
+        historyOfChanges.newState = this.appointment.diagnosis;
         historyOfChanges.what = HistoryModel.diagnosis;
         historyOfChanges.date = new Date();
-        historyOfChanges.actor = appointment.provider;
-        appointment.appointmentHistory.push(historyOfChanges);
+        historyOfChanges.actor = this.appointment.provider;
+        this.appointment.appointmentHistory.push(historyOfChanges);
         break;
       case 'invoice':
         historyOfChanges.previousState = this.appointment.invoice;
         this.appointment.invoice = {...this.appointment.invoice, ...appointment, invoiceDate: new Date()};
-        historyOfChanges.newState = appointment.invoice;
+        historyOfChanges.newState = this.appointment.invoice;
         historyOfChanges.what = HistoryModel.invoice;
         historyOfChanges.date = new Date();
-        historyOfChanges.actor = appointment.provider;
-        appointment.appointmentHistory.push(historyOfChanges);
+        historyOfChanges.actor = this.appointment.provider;
+        this.appointment.appointmentHistory.push(historyOfChanges);
         break;
     }
-    await this.databaseService.update<AppointmentModel>('appointments', this.appointment?.guid, appointment);
-    return appointment;
+    await this.databaseService.update<AppointmentModel>('appointments', this.appointment.guid, this.appointment);
+    return this.appointment;
   }
 
   async confirmAppointment(doctorGUID: string, appointmentGUID: string) {

@@ -18,7 +18,7 @@ export class HistoryChangeDetailComponent implements OnInit {
   ngOnInit(): void {
     const { id } = this.route.snapshot.params;
     console.log(id);
-    this.appointmentHistory = this.appointmentService.getHistoryChangeByID(id);
+    // this.appointmentHistory = this.appointmentService.getHistoryChangeByID(id);
   }
 
   onBack() {

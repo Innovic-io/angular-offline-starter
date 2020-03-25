@@ -76,7 +76,7 @@ export class AppointmentsComponent implements OnInit {
       this.markedAppointments.forEach(appointmentGUID => this.appointmentService.deleteAppointments(appointmentGUID));
     }
 
-    this.upcomingAppointments$ = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid);
+    this.upcomingAppointments$ = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid, 1);
     this.pastAppointments$ = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid);
   }
 
