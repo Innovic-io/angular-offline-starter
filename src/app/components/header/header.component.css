@@ -10,6 +10,7 @@
 
 .nav-item {
   text-align: center;
+  width: 150px;
 }
 
 .nav-item a {
@@ -36,7 +37,7 @@
 }
 
 .userAvatar {
-  width: 60px;
+  width:60px;
   height: 60px;
 }
 
