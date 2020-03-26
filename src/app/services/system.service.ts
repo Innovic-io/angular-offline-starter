@@ -22,15 +22,16 @@ export class SystemService {
   }
 
  async exportAsPDF(data: HTMLDivElement, name: string) {
-      const canvas = await html2canvas(data);
-      const contentDataURL =  canvas.toDataURL('image/png');
-      const pdf =  new jspdf({orientation: 'portrait'});
-      const imgProps = pdf.getImageProperties(contentDataURL);
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      pdf.addImage(contentDataURL, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save(name);
+    const canvas = await html2canvas(data);
+    const contentDataURL =  canvas.toDataURL('image/png');
+    const pdf =  new jspdf({orientation: 'portrait'});
+    const imgProps = pdf.getImageProperties(contentDataURL);
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+    pdf.addImage(contentDataURL, 'PNG', 0, 0, pdfWidth, pdfHeight);
+    pdf.save(name);
   }
+
 
   createAlertMessage(message: string) {
     this.messageObserver.next(message);

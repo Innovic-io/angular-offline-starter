@@ -1,4 +1,5 @@
 <div #email [title] = message.subject >
+  <div id="print-section">
   <div class="cl-12">
 <div class="row pl-4 pr-4">
   <div class="col-9 pb-0">From: {{message.doctorEmail.name}}</div>
@@ -17,12 +18,14 @@
 </div>
   </div>
 </div>
+</div>
 <hr class="mb-0">
 <div class="row pl-2 pr-2" >
   <div class="col-8">
     <button class=" btn btn-default" (click)="updateClick(message.guid)">Archive</button>
     <button class=" btn btn-default ml-2" (click)="deleteClick(message.guid)">Delete</button>
     <button (click)="exportToPDF(email)" class="btn btn-default  ml-2">Save as PDF</button>
+    <button (click)="print()">print</button>
   </div>
   <div class="col-4">
     <div *ngIf="showButtons">
@@ -33,4 +36,5 @@
     </div>
   </div>
 </div>
+
 
