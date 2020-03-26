@@ -6,27 +6,59 @@
         <div class="card-body">
           <div class="row">
             <div class="col-12">
-              Changed: HealthInfo
-<!--             {{appointmentHistory.what}}-->
+              Changed: {{appointmentHistory.what}}
             </div>
           </div>
           <div class="row">
             <div class="col-6">
-              Actor: Name name
+              Actor: {{appointmentHistory.actor.role}} {{appointmentHistory.actor.name}} {{appointmentHistory.actor.lastName}}
             </div>
             <div class="col-6">
-              Date: date
+              Date: {{appointmentHistory.date | date:'medium': undefined: 'sr-RS'}}
             </div>
           </div>
           <div class="row">
             <div class="col-12">
-              Change data..
+              <!--Diagnosis: {{appointmentHistory.newState.diagnosisText}}-->
+              {{appointmentHistory.newState}}
             </div>
           </div>
-          <div class="row">
+          <!--<div class="row" *ngIf="appointmentHistory.what === healthInfo">
             <div class="col-12">
-              <button type="submit" class="btn btn-default" (click)="onBack()">Back</button>
+              <div class="row">
+                <div class="col-6">
+                  Temperature: {{appointmentHistory.newState.temperature}}
+                </div>
+                <div class="col-6">
+                  BloodType: {{appointmentHistory.newState.bloodType}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  Heart Rate: {{appointmentHistory.newState.hearthRate}}
+                </div>
+                <div class="col-6">
+                  Blood Pressure: {{appointmentHistory.newState.bloodPressure}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  SYS(mmHg): {{appointmentHistory.newState.bloodPressureSYS}}
+                </div>
+                <div class="col-6">
+                  DIAS(mmHg): {{appointmentHistory.newState.bloodPressureDIAS}}
+                </div>
+              </div>
             </div>
+          </div>
+          <div class="row" *ngIf="appointmentHistory.what === invoice">
+          <div class="col-12">
+            Diagnosis: {{appointmentHistory.newState.invoicePrice}}
+          </div>
+        </div>-->
+        <div class="row">
+          <div class="col-12">
+            <button type="submit" class="btn btn-default" (click)="onBack()">Back</button>
           </div>
         </div>
       </div>

@@ -36,10 +36,8 @@ export class AppointmentService {
     return this.databaseService.getSingle<AppointmentModel>('appointments', appointmentID);
   }
 
-  getHistoryChangeByID(guid: string, historyID: string) {
-    // get signgle appointment
-
-
+  async getHistoryChangeByID(guid, historyID: string) {
+    this.appointment = await this.databaseService.getSingle<AppointmentModel>('appointments', guid);
     return this.appointment.appointmentHistory.find(change => change.guid === historyID);
   }
 

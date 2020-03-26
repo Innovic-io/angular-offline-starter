@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { HistoryChanges } from '../../../models/appointment.model';
+import { AppointmentModel, HistoryChanges, HistoryModel } from '../../../models/appointment.model';
 import { AppointmentService } from '../../../services/appointment.service';
 
 @Component({
@@ -12,14 +12,16 @@ import { AppointmentService } from '../../../services/appointment.service';
 })
 export class HistoryChangeDetailComponent implements OnInit {
   appointmentHistory: HistoryChanges;
+  healthInfo = HistoryModel.healthInfo;
+  diagnosis = HistoryModel.diagnosis;
+  invoice = HistoryModel.invoice;
+  appointment: AppointmentModel;
 
   constructor(public location: Location, public route: ActivatedRoute, public appointmentService: AppointmentService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     const { id, historyId } = this.route.snapshot.params;
-    console.log(id, historyId);
-
-    // this.appointmentHistory = this.appointmentService.getHistoryChangeByID(id);
+    this.appointmentHistory = await this.appointmentService.getHistoryChangeByID(id, historyId);
   }
 
   onBack() {
