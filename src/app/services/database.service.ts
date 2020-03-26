@@ -12,7 +12,7 @@ export class DatabaseService {
     this.db.version(1).stores({
       employees: 'guid,avatar,name,middleName,lastName,contact.email,password,gender,dateOfBirth,role',
       // tslint:disable-next-line:max-line-length
-      appointments: 'guid,firstName,lastName,date,provider.guid,notes,phone,email,confirmed,dateWhenCreated,appType,appointmentHealthInfo,appointmentHistory,diagnosis,invoice',
+      appointments: 'guid,firstName,lastName,date,provider.guid,notes,phone,email,confirmed,appointmentHealthInfo,appointmentHistory,diagnosis,invoice',
       messages: 'guid,date,doctorEmail.guid,recipient,subject,doctorMessage,urgent,archive,replyTo,conversation',
       files: '[parentDir+name],parentDir'
     });
