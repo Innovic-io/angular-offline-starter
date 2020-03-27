@@ -26,18 +26,17 @@ export class DisplayMessageComponent {
   exportToPDF(event) {
     this.convertToPDF.emit(event);
   }
-  print(): void { // lijpo napisati, i prebaciti u service, al radi
+  print(data: HTMLDivElement): void { // lijpo napisati, i prebaciti u service, al radi
     let printContents, popupWin;
-    printContents = document.getElementById('print-section').innerHTML;
+    printContents = document.getElementById(data.id).innerHTML;
+    console.log(data);
+    console.log(printContents);
     popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
     popupWin.document.open();
     popupWin.document.write(`
       <html>
         <head>
           <title>Print tab</title>
-          <style>
-          //........Customized style.......
-          </style>
         </head>
     <body onload="window.print();window.close()">${printContents}</body>
       </html>`

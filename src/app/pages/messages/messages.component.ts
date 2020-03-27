@@ -37,7 +37,7 @@ export class MessagesComponent implements OnInit {
 
   async convert($event) {
     if ($event) {
-      await this.systemService.exportAsPDF($event, $event.title);
+      await this.systemService.printToPDF($event); // , $event.title
     }
   }
 

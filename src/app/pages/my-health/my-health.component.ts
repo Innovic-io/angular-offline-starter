@@ -16,8 +16,8 @@ export class MyHealthComponent implements OnInit {
   constructor(public employeeService: EmployeeService, public systemService: SystemService) {
   }
 
-  async exportToPDF(event, name) {
-    await this.systemService.exportAsPDF(event, name);
+  async exportToPDF(event) {
+    await this.systemService.printToPDF(event);
   }
 
   ngOnInit(): void {

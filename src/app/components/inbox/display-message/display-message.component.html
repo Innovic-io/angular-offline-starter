@@ -1,4 +1,4 @@
-<div #email [title] = message.subject >
+<div #email [title] = message.subject [id] = "message.guid">
   <div id="print-section">
   <div class="cl-12">
 <div class="row pl-4 pr-4">
@@ -25,8 +25,7 @@
     <button class=" btn btn-default" (click)="updateClick(message.guid)">Archive</button>
     <button class=" btn btn-default ml-2" (click)="deleteClick(message.guid)">Delete</button>
     <button (click)="exportToPDF(email)" class="btn btn-default  ml-2">Save as PDF</button>
-    <button (click)="print()">print</button>
-  </div>
+</div>
   <div class="col-4">
     <div *ngIf="showButtons">
     <button class="float-right btn btn-default ml-2">Forward</button>

@@ -38,8 +38,8 @@ export class AppointmentsComponent implements OnInit {
     this.pastAppointmentsCount$ = this.appointmentService.getAllPastDoctorAppointmentsCount(this.currentUser.guid);
   }
 
-  async exportToPDFActiveApp(event, name) {
-    await this.systemService.exportAsPDF(event, name);
+  async exportToPDFActiveApp(event) {
+    await this.systemService.printToPDF(event);
   }
 
   async exportToPDFPastApp(event, name) {

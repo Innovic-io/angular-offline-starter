@@ -1,7 +1,7 @@
 <h2>Appointment Details: {{appointment?.firstName}} {{appointment?.lastName}}</h2>
 <div class="card">
   <div class="card-body">
-    <div class="row" #detailInfo title="detailInfo">
+    <div class="row" #detailInfo title="detailInfo" [id] = "appointment?.guid">
       <div class="col-12">
         <div class="row">
           <div class="col-lg-6 col-sm-6">
@@ -25,7 +25,7 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <button (click)="exportToPDF(detailInfo, detailInfo.title)" class="btn btn-default  float-right">Convert to
+        <button (click)="exportToPDF(detailInfo)" class="btn btn-default  float-right">Convert to
           PDF
         </button>
       </div>

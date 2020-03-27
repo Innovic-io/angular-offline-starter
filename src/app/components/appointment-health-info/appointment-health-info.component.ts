@@ -40,8 +40,8 @@ export class AppointmentHealthInfoComponent implements OnInit {
     this.diagnosisView = !this.diagnosisView;
   }
 
-  async exportToPDF(event, name) {
-   await this.systemService.exportAsPDF(event, name);
+  async exportToPDF(event) {
+   await this.systemService.printToPDF(event);
   }
 
 

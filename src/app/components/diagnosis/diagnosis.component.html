@@ -24,7 +24,7 @@
 </div>
 <div *ngIf="diagnosisView === true" class="card">
   <div class="card-body">
-    <div class="row" #detailDiagnosisInfo title="detailDiagnosisInfo">
+    <div class="row" #detailDiagnosisInfo title="detailDiagnosisInfo" [id] = "appointment.diagnosis.diagnosisDate">
       <div class="col-12">
         <div class="row">
           <div class="col-12">
@@ -37,7 +37,7 @@
       <div class="col-lg-6 col-sm-6"></div>
       <div class="col-lg-6 col-sm-6">
         <button type="submit" class="btn btn-default float-right ml-2" (click)="toggle()">Edit Diagnosis</button>
-        <button (click)="exportToPDF(detailDiagnosisInfo, detailDiagnosisInfo.title)"
+        <button (click)="exportToPDF(detailDiagnosisInfo)"
                 class="btn btn-default float-right">
           Convert to PDF
         </button>
