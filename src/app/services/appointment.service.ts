@@ -17,8 +17,6 @@ import { SystemService } from './system.service';
 export class AppointmentService {
   private now = new Date();
 
-  // private appointment = new AppointmentModel();
-
   constructor(public databaseService: DatabaseService, public systemService: SystemService) {
   }
 
