@@ -38,7 +38,7 @@
                     [ngClass]="{'is-valid': provider.valid && provider.touched && provider.dirty, 'is-invalid': provider.invalid && provider.touched && provider.dirty}"
                     required>
               <option *ngFor="let provider of providers$ | async"
-                      [value]="provider.name"> {{provider.role | role}} {{provider.name}}</option>
+                      [ngValue]="provider"> {{provider.role | role}} {{provider.name}}</option>
             </select>
           </div>
         </div>
