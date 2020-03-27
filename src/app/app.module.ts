@@ -64,6 +64,7 @@ import { HistoryChangesComponent } from './components/history-changes/history-ch
 import { HistoryChangeDetailComponent } from './pages/appointments/history-change-detail/history-change-detail.component';
 import { ReverseArrayOfAppointmentHistoryChangesPipe } from './pipes/reverse-array-of-appointment-history-changes.pipe';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -137,4 +138,5 @@ import { ReverseArrayOfAppointmentHistoryChangesPipe } from './pipes/reverse-arr
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

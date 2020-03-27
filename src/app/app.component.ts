@@ -39,8 +39,8 @@ export class AppComponent implements OnInit {
 
   logOut() {
     this.employeeService.logOut();
-    // window.location.reload();
-    this.router.navigateByUrl('/login');
+    window.location.reload();
+    // this.router.navigateByUrl('/login');
   }
 
 }
