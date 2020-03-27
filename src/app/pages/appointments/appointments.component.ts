@@ -30,13 +30,6 @@ export class AppointmentsComponent implements OnInit {
     public systemService: SystemService) {
   }
 
-  ngOnInit() {
-    this.currentUser = this.employeeService.getLoggedEmployee();
-    this.currentUser$ = this.employeeService.getLoggedEmployee$();
-    this.upcomingAppointmentsCount$ = this.appointmentService.getAllUpcomingDoctorAppointmentsCount(this.currentUser.guid);
-    this.pastAppointmentsCount$ = this.appointmentService.getAllPastDoctorAppointmentsCount(this.currentUser.guid);
-  }
-
   async exportToPDFActiveApp(event) {
     await this.systemService.printToPDF(event);
   }
@@ -90,5 +83,12 @@ export class AppointmentsComponent implements OnInit {
     this.pastAppointments$ = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid, this.pager.currentPage - 1, this.pager.pageSize);
     // tslint:disable-next-line:max-line-length
     this.upcomingAppointments$ = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid, this.pager.currentPage - 1, this.pager.pageSize);
+  }
+
+  ngOnInit() {
+    this.currentUser = this.employeeService.getLoggedEmployee();
+    this.currentUser$ = this.employeeService.getLoggedEmployee$();
+    this.upcomingAppointmentsCount$ = this.appointmentService.getAllUpcomingDoctorAppointmentsCount(this.currentUser.guid);
+    this.pastAppointmentsCount$ = this.appointmentService.getAllPastDoctorAppointmentsCount(this.currentUser.guid);
   }
 }

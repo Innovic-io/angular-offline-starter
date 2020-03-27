@@ -38,7 +38,7 @@
                       name="patientMessage"
                       #doctorMessage="ngModel"
                       [ngClass]="{'is-valid': doctorMessage.valid && doctorMessage.touched, 'is-invalid': doctorMessage.invalid && doctorMessage.touched}"
-                      [minlength]= minLengthTextArea required autocomplete="off">
+                      [minlength]=minLengthTextArea required autocomplete="off">
             </textarea>
             <label class="badge" [ngClass]="{'badge-danger': message.doctorMessage?.length< minLengthTextArea,
             'badge-success': message.doctorMessage?.length >= minLengthTextArea}">

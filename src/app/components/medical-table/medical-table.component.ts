@@ -7,18 +7,17 @@ import { AppointmentType, enumSelector } from '../../models/system.models';
 @Component({
   selector: 'app-medical-table',
   templateUrl: './medical-table.component.html',
-  styleUrls: ['./medical-table.component.css']
+  styleUrls: [ './medical-table.component.css' ]
 })
 export class MedicalTableComponent {
+  public appTypes = enumSelector(AppointmentType);
+  public faFileAlt = faFileAlt;
   @Input() appointments: AppointmentModel[];
   @Input() total: number;
   @Input() selectedType: string;
   @Output() checkedAll = new EventEmitter<boolean>();
   @Output() checked = new EventEmitter<{ checked: boolean, guid: string }>();
   @Output() pager = new EventEmitter();
-
-  public appTypes = enumSelector(AppointmentType);
-  public faFileAlt = faFileAlt;
 
   checkAll(event) {
     this.checkedAll.emit(event);
@@ -29,7 +28,6 @@ export class MedicalTableComponent {
   }
 
   onClickFilterByType(event) {
-    console.log(event);
     this.selectedType = event;
   }
 

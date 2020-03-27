@@ -1,37 +1,37 @@
-<div #email [title] = message.subject>
+<div #email [title]=message.subject>
   <div id="print-section">
-  <div class="cl-12">
-<div class="row pl-4 pr-4">
-  <div class="col-9 pb-0">From: {{message.doctorEmail.name}}</div>
-  <div class="col-3 pb-0 text-right">{{message.date | date }}
+    <div class="cl-12">
+      <div class="row pl-4 pr-4">
+        <div class="col-9 pb-0">From: {{message.doctorEmail.name}}</div>
+        <div class="col-3 pb-0 text-right">{{message.date | date }}
+        </div>
+      </div>
+      <div class="row pl-4 pr-4 ">
+        <div class="col-12 pb-0 pt-0 text-secondary">To: {{message.recipient}}</div>
+      </div>
+      <div class="row pl-4 pr-4">
+        <div class="col-12 pb-0 pt-0 text-secondary ">Subject: {{message.subject}}</div>
+      </div>
+      <hr>
+      <div class="row pl-4 pr-4 ">
+        <div class="col-12 grayLabel pb-5 pt-0 preWrap">{{message.doctorMessage}}</div>
+      </div>
+    </div>
   </div>
-</div>
-<div class="row pl-4 pr-4 ">
-  <div class="col-12 pb-0 pt-0 text-secondary">To: {{message.recipient}}</div>
-</div>
-<div class="row pl-4 pr-4">
-  <div class="col-12 pb-0 pt-0 text-secondary ">Subject: {{message.subject}}</div>
-</div>
-<hr>
-<div class="row pl-4 pr-4 ">
-  <div class="col-12 grayLabel pb-5 pt-0 preWrap" >{{message.doctorMessage}}</div>
-</div>
-  </div>
-</div>
 </div>
 <hr class="mb-0">
-<div class="row pl-2 pr-2" >
+<div class="row pl-2 pr-2">
   <div class="col-8">
     <button class=" btn btn-default" (click)="updateClick(message.guid)">Archive</button>
     <button class=" btn btn-default ml-2" (click)="deleteClick(message.guid)">Delete</button>
     <button (click)="exportToPDF(email)" class="btn btn-default  ml-2">Save as PDF</button>
-</div>
+  </div>
   <div class="col-4">
     <div *ngIf="showButtons">
-    <button class="float-right btn btn-default ml-2">Forward</button>
-    <a [routerLink]="['./new']" [queryParams]="{replayTo: message.guid}">
-      <button class="float-right btn btn-primary">Reply</button>
-    </a>
+      <button class="float-right btn btn-default ml-2">Forward</button>
+      <a [routerLink]="['./new']" [queryParams]="{replayTo: message.guid}">
+        <button class="float-right btn btn-primary">Reply</button>
+      </a>
     </div>
   </div>
 </div>

@@ -7,12 +7,12 @@ import { SystemService } from '../../services/system.service';
 @Component({
   selector: 'app-diagnosis',
   templateUrl: './diagnosis.component.html',
-  styleUrls: ['./diagnosis.component.css']
+  styleUrls: [ './diagnosis.component.css' ]
 })
 export class DiagnosisComponent implements OnInit {
+  public diagnosisView = false;
   @Input() appointment: AppointmentModel;
   @Output() update = new EventEmitter<AppointmentModel>();
-  public diagnosisView = false;
 
   constructor(public systemService: SystemService) {
   }
@@ -23,11 +23,8 @@ export class DiagnosisComponent implements OnInit {
     } else {
       this.diagnosisView = true;
     }
-    return this.diagnosisView;
-  }
 
-  ngOnInit(): void {
-    this.checkForDiagnosis();
+    return this.diagnosisView;
   }
 
   onSubmit(form: NgForm) {
@@ -43,5 +40,9 @@ export class DiagnosisComponent implements OnInit {
 
   async exportToPDF(event) {
     await this.systemService.printToPDF(event);
+  }
+
+  ngOnInit(): void {
+    this.checkForDiagnosis();
   }
 }

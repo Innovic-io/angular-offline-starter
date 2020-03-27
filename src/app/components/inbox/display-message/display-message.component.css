@@ -1,3 +1,5 @@
 @media print {
-  pre, blockquote {page-break-inside: avoid;}
+  pre, blockquote {
+    page-break-inside: avoid;
+  }
 }

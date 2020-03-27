@@ -13,7 +13,7 @@ h1 {
   max-width: 600px;
 }
 
-.row>[class^=col-] {
+.row > [class^=col-] {
   padding-top: .75rem;
   padding-bottom: .75rem;
 }

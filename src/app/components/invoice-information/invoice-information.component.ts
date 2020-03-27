@@ -7,7 +7,7 @@ import { SystemService } from '../../services/system.service';
 @Component({
   selector: 'app-invoice-information',
   templateUrl: './invoice-information.component.html',
-  styleUrls: ['./invoice-information.component.css']
+  styleUrls: [ './invoice-information.component.css' ]
 })
 export class InvoiceInformationComponent implements OnInit {
   @Input() appointment: AppointmentModel;
@@ -23,11 +23,8 @@ export class InvoiceInformationComponent implements OnInit {
     } else {
       this.diagnosisView = true;
     }
-    return this.diagnosisView;
-  }
 
-  ngOnInit(): void {
-    this.checkForInvoice();
+    return this.diagnosisView;
   }
 
   onSubmit(form: NgForm) {
@@ -43,6 +40,10 @@ export class InvoiceInformationComponent implements OnInit {
 
   async exportToPDF(event) {
     await this.systemService.printToPDF(event);
+  }
+
+  ngOnInit(): void {
+    this.checkForInvoice();
   }
 
 }

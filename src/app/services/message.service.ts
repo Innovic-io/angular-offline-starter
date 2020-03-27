@@ -36,6 +36,7 @@ export class MessageService {
         lastMessages.push(this.replaceLastWithFirst(message));
       }
     }
+
     return lastMessages;
   }
 
@@ -59,7 +60,7 @@ export class MessageService {
       const doctorMessages = await this.databaseService.getAll<MessageModel[]>('messages');
       const message: MessageModel = await this.getMessage(messageGUID);
       const replyToOfDeletedMessage = message.replyTo;
-      const messageAfterDeletedMessage  = await this.databaseService.getSingleByReplyTo('messages', messageGUID);
+      const messageAfterDeletedMessage = await this.databaseService.getSingleByReplyTo('messages', messageGUID);
 
       if (messageAfterDeletedMessage) {
         await this.databaseService.delete('messages', messageGUID);
