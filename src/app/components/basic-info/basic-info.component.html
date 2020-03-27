@@ -3,7 +3,7 @@
   <div class="card-body">
     <div class="row">
       <div class="col-lg-12 col-sm-12" *ngIf="user?.avatar; else elseAvatar">
-        <img src="{{user?.avatar}}" class="card-img-top img-fluid">
+        <img src="{{user?.avatar}}" class="card-img-top img-fluid w-5 h-5">
       </div>
       <ng-template #elseAvatar>
         <img src="../assets/doctors/user.png" class="card-img-top img-fluid">
