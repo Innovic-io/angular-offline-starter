@@ -41,5 +41,11 @@
   height: 60px;
 }
 
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #2E877B !important;
+  border-color: #2E877B !important;
+}
+
 
 

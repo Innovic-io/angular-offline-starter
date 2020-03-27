@@ -80,7 +80,8 @@
         <div class="row">
           <div class="col-lg-3 col-sm-12"></div>
           <div class="col-lg-9 col-sm-12">
-            <button class="btn btn-primary float-right ml-2" type="submit" [disabled]="!myForm.valid || !provider.dirty || date.value === undefined"> Submit
+            <button class="btn btn-primary float-right ml-2" type="submit"
+                    [disabled]="!myForm.valid || !provider.dirty || date.value === undefined"> Submit
             </button>
             <button class="btn btn-default float-right" type="button" (click)="reset(myForm);">Reset</button>
           </div>
