@@ -37,6 +37,8 @@ export class EmployeeService {
 
   logOut() {
     localStorage.removeItem('user');
+    this.employee$.next(null);
+    this.currentUser = null;
   }
 
   async signIn(email: string, password: string) {
