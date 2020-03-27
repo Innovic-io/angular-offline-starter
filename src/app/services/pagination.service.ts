@@ -1,13 +1,9 @@
 import { Injectable } from '@angular/core';
-import { DatabaseService } from './database.service';
-import { AppointmentModel } from '../models/appointment.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PaginationService {
-
-  constructor(public databaseService: DatabaseService) {}
 
   getPager(totalItems: number, currentPage: number, pageSize: number) {
     const totalPages = Math.ceil(totalItems / pageSize);
@@ -38,10 +34,8 @@ export class PaginationService {
       }
     }
 
-    // create an array of pages to ng-repeat in the pager control
     const pages1 = Array.from(Array((endPage + 1) - startPage).keys()).map(i => startPage + i);
 
-    // return object with all pager properties required by the view
     return {
       totalItems,
       currentPage,
@@ -54,5 +48,4 @@ export class PaginationService {
       pages1
     };
   }
-
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { EmployeeService } from '../../services/employee.service';
 import { EmployeeModel } from '../../models/employee.model';
-import { Observable } from 'rxjs';
 import { SystemService } from '../../services/system.service';
 
 @Component({
@@ -23,5 +23,4 @@ export class MyHealthComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
   }
-
 }

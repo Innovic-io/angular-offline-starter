@@ -33,25 +33,25 @@
                                  [total]="pastAppointmentsCount$ | async"
                                  (checked)="appointmentSelect($event)"
                                  (checkedAll)="pastAppointmentSelectAll($event)"
-                                 (pager) = "setPager($event)"
-                                 ></app-medical-table>
+                                 (pager)="setPager($event)"
+              ></app-medical-table>
             </div>
           </div>
         </app-tab>
         <app-tab title="Legal" [active]="false">
           <div class="row">
-          <div class="col-lg-12">
-            <button class="btn btn-default float-right" (click)="convertToPDF(forms)">Save as PDF</button>
-          </div>
-          </div>
-            <div class="row" #forms title="forms">
-              <div class="col-lg-6 col-sm-12" >
-                <app-forms></app-forms>
-              </div>
-              <div class="col-lg-6 col-sm-12">
-                <app-notices></app-notices>
-              </div>
+            <div class="col-lg-12">
+              <button class="btn btn-default float-right" (click)="convertToPDF(forms)">Save as PDF</button>
             </div>
+          </div>
+          <div class="row" #forms title="forms">
+            <div class="col-lg-6 col-sm-12">
+              <app-forms></app-forms>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+              <app-notices></app-notices>
+            </div>
+          </div>
         </app-tab>
       </app-tabs>
     </div>

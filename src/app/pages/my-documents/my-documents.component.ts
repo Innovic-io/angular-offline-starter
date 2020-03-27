@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { EmployeeModel } from '../../models/employee.model';
 import { EmployeeService } from '../../services/employee.service';
 import { AppointmentModel } from '../../models/appointment.model';
 import { AppointmentService } from '../../services/appointment.service';
 import { SystemService } from '../../services/system.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-my-documents',
@@ -23,12 +23,6 @@ export class MyDocumentsComponent implements OnInit {
   constructor(public employeeService: EmployeeService,
               public appointmentService: AppointmentService,
               public systemService: SystemService) {
-  }
-
-  ngOnInit() {
-    this.currentUser$ = this.employeeService.getLoggedEmployee$();
-    this.currentUser = this.employeeService.getLoggedEmployee();
-    this.pastAppointmentsCount$ = this.appointmentService.getAllPastDoctorAppointmentsCount(this.currentUser.guid);
   }
 
   async convertToPDF(event) {
@@ -64,5 +58,11 @@ export class MyDocumentsComponent implements OnInit {
   setPager(event) {
     // tslint:disable-next-line:max-line-length
     this.pastAppointments$ = this.appointmentService.getAllPastDoctorAppointments(this.currentUser.guid, event.currentPage - 1, event.pageSize);
+  }
+
+  ngOnInit() {
+    this.currentUser$ = this.employeeService.getLoggedEmployee$();
+    this.currentUser = this.employeeService.getLoggedEmployee();
+    this.pastAppointmentsCount$ = this.appointmentService.getAllPastDoctorAppointmentsCount(this.currentUser.guid);
   }
 }

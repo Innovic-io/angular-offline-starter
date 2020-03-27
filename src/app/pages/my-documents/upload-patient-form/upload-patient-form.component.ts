@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
 import { DatabaseService } from '../../../services/database.service';
 
 @Component({
@@ -8,10 +9,10 @@ import { DatabaseService } from '../../../services/database.service';
 })
 export class UploadPatientFormComponent {
 
-  constructor(private databaseService: DatabaseService) {}
+  constructor(private databaseService: DatabaseService) {
+  }
+
   createDirectory() {
     return this.databaseService.createDir('files', 'Documents', 'Doc3.txt');
   }
-
-
 }
