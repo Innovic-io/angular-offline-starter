@@ -17,6 +17,7 @@ import { SystemService } from './system.service';
 export class AppointmentService {
   private now = new Date();
   private appointment = new AppointmentModel();
+  private appointmentHistory: HistoryChanges;
 
   constructor(public databaseService: DatabaseService, public systemService: SystemService) {
   }
@@ -82,7 +83,6 @@ export class AppointmentService {
         historyOfChanges.date = new Date();
         historyOfChanges.actor = this.appointment.provider;
         this.appointment.appointmentHistory.push(historyOfChanges);
-        console.log('Niz', this.appointment.appointmentHistory);
         break;
       case 'diagnosis':
         historyOfChanges.previousState = this.appointment.diagnosis;
