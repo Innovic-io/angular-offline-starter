@@ -33,5 +33,4 @@ export class DashboardComponent implements OnInit {
     this.appointmentsCount = await this.appointmentService.getAllUpcomingDoctorAppointmentsCount(this.currentUser.guid);
     this.appointments$ = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid, 0, this.appointmentsCount);
   }
-
 }

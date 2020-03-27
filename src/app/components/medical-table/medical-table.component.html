@@ -33,9 +33,7 @@
   </th>
   <td scope="col">{{appointment?.date | date:'medium': undefined: 'sr-RS' }}</td>
   <td scope="col">{{appointment?.appType}}</td>
-  <td scope="col">
-    <fa-icon [icon]="faFileAlt" class="mr-2"></fa-icon>
-  </td>
+  <td scope="col"><fa-icon [icon]="faFileAlt" class="mr-2"></fa-icon></td>
   </tbody>
 </table>
 <app-pagination [total]="total" [perPage]="10" [currentPage]="1" (page)="setPage($event);"></app-pagination>
