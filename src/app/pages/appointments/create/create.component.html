@@ -30,15 +30,15 @@
               minView="minute"
               minuteStep="15"
               [ngModelOptions]="{standalone: true}"
-              [(ngModel)]="appointment.date" required>
+              [(ngModel)]="appointment.date" required #date>
             </dl-date-time-picker>
           </div>
           <div class="col-lg-6 col-sm-12">
             <select class="form-control" [(ngModel)]="appointment.provider" name="provider" #provider="ngModel"
-                    [ngClass]="{'is-valid': provider.valid && provider.touched, 'is-invalid': provider.invalid && provider.touched}"
+                    [ngClass]="{'is-valid': provider.valid && provider.touched && provider.dirty, 'is-invalid': provider.invalid && provider.touched && provider.dirty}"
                     required>
               <option *ngFor="let provider of providers$ | async"
-                      [ngValue]="provider"> {{provider.role | role}} {{provider.name}}</option>
+                      [value]="provider.name"> {{provider.role | role}} {{provider.name}}</option>
             </select>
           </div>
         </div>
@@ -80,7 +80,7 @@
         <div class="row">
           <div class="col-lg-3 col-sm-12"></div>
           <div class="col-lg-9 col-sm-12">
-            <button class="btn btn-primary float-right ml-2" type="submit" [disabled]="!myForm.form.valid"> Submit
+            <button class="btn btn-primary float-right ml-2" type="submit" [disabled]="!myForm.valid || !provider.dirty || date.value === undefined"> Submit
             </button>
             <button class="btn btn-default float-right" type="button" (click)="reset(myForm);">Reset</button>
           </div>

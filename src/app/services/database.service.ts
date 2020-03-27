@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import Dexie from 'dexie';
+import { Roles } from '../models/system.models';
 
 @Injectable({
   providedIn: 'root'
@@ -81,6 +82,10 @@ export class DatabaseService {
 
   async getAll<T>(tableName: string) {
     return this.db[tableName].toArray();
+  }
+
+  async getAllDoctors<T>(tableName: string) {
+    return this.db[tableName].where('role').equals('Doctor').toArray();
   }
 
   async getAllPast<T>(tableName: string, now: Date, providerGUID: string, start = 0, end = 10) {

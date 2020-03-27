@@ -24,8 +24,8 @@ export class AppointmentService {
   async createAppointment(appointment: AppointmentModel) {
     try {
 
-      await this.databaseService.insert<AppointmentModel>('appointments', appointment);
-      this.systemService.createAlertMessage('Appointment is created!');
+        await this.databaseService.insert<AppointmentModel>('appointments', appointment);
+        this.systemService.createAlertMessage('Appointment is created!');
 
     } catch (e) {
       this.systemService.createDangerAlertMessage('Appointment is not created!');

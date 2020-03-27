@@ -69,8 +69,8 @@ export class EmployeeService {
     return false;
   }
 
-  getAllEmployees() {
-    return this.databaseService.getAll('employees');
+  getAllDoctors() {
+    return this.databaseService.getAllDoctors('employees');
   }
 
   async updateEmployee(employee: EmployeeModel | ContactModel | EmergencyModel, type: string) {

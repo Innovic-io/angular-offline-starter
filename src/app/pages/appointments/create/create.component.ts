@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import { AppointmentModel } from '../../../models/appointment.model';
 import { AppointmentService } from '../../../services/appointment.service';
 
-import { AppointmentType, enumSelector } from '../../../models/system.models';
+import { AppointmentType, enumSelector, Roles } from '../../../models/system.models';
 import { SystemService } from '../../../services/system.service';
 import { EmployeeModel } from '../../../models/employee.model';
 import { EmployeeService } from '../../../services/employee.service';
@@ -21,6 +21,8 @@ export class CreateComponent implements OnInit {
   appointment = new AppointmentModel();
   appTypes = enumSelector(AppointmentType);
   alert: boolean;
+  providers: EmployeeModel[];
+  doctorProviders: EmployeeModel[];
 
   constructor(private appointmentService: AppointmentService,
               public systemService: SystemService,
@@ -49,8 +51,7 @@ export class CreateComponent implements OnInit {
     form.reset();
   }
 
-
   ngOnInit() {
-    this.providers$ = this.employeeService.getAllEmployees();
+    this.providers$ = this.employeeService.getAllDoctors();
   }
 }
