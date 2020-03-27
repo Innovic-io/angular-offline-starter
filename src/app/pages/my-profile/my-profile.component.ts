@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
 import { ContactModel, EmergencyModel, EmployeeModel } from '../../models/employee.model';
 import { EmployeeService } from '../../services/employee.service';
 import { SystemService } from '../../services/system.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-my-profile',
@@ -12,10 +13,7 @@ import { Observable } from 'rxjs';
 export class MyProfileComponent implements OnInit {
   currentUser$: Observable<EmployeeModel>;
 
-  constructor(public employeeService: EmployeeService, public systemService: SystemService) { }
-
-  ngOnInit(): void {
-    this.currentUser$ = this.employeeService.getLoggedEmployee$();
+  constructor(public employeeService: EmployeeService, public systemService: SystemService) {
   }
 
   onUpdateEmployee(employee: EmployeeModel | ContactModel | EmergencyModel, type: string) {
@@ -28,5 +26,7 @@ export class MyProfileComponent implements OnInit {
     this.systemService.createAlertMessage('Avatar is updated!');
   }
 
-
+  ngOnInit(): void {
+    this.currentUser$ = this.employeeService.getLoggedEmployee$();
+  }
 }

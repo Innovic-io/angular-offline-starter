@@ -1,20 +1,13 @@
-.quickList {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #FFFFFF;
-  border: 1px solid #E0E0E0;
-  box-sizing: border-box;
-  border-radius: 3px;
-}
 ul {
   margin-left: 10px;
 }
+
 li a {
   text-decoration: none;
   color: #4e555b;
 }
+
 li {
-   list-style-type: "\203A";
+  list-style-type: "\203A";
 }
 

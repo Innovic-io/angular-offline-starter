@@ -10,10 +10,10 @@ import { enumSelector, Roles } from '../../models/system.models';
   styleUrls: ['./profile-basic-info.component.css']
 })
 export class ProfileBasicInfoComponent {
+  roles = enumSelector(Roles);
   @Input() user: EmployeeModel;
   @Output() update = new EventEmitter<EmployeeModel>();
   @Output() updateAvatar = new EventEmitter<string>();
-  roles = enumSelector(Roles);
 
   onSubmit(form: NgForm) {
     if (form.valid) {

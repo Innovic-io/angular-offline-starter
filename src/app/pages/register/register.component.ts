@@ -9,7 +9,7 @@ import { RegisterModel } from '../../models/register.model';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: [ './register.component.css' ]
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
   registerEmployee = new RegisterModel();
@@ -30,6 +30,4 @@ export class RegisterComponent {
       }
     }
   }
-
-
 }

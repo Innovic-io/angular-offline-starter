@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import Dexie from 'dexie';
-import { Roles } from '../models/system.models';
 
 @Injectable({
   providedIn: 'root'
@@ -22,27 +21,6 @@ export class DatabaseService {
   async createDir(tableName: string, parentDir: string, name: string) {
     return this.db[tableName].add({parentDir, name, type: 'dir'});
   }
-  createFile(tableName: string, parentDir, filename, blob) {
-    return this.db.transaction('rw', this.db[tableName], async () => {
-      const dir = await this.db[tableName].get({
-        parentDir
-      });
-      if (!dir) { throw new Error('Parent dir not found'); }
-      if (dir.type !== 'dir') { throw new Error('Parent is not a dir'); }
-      await this.db[tableName].add({
-        type: 'file',
-        name: filename,
-        parentDir,
-        blob
-      });
-    });
-  }
-  listDirectory(tableName: string, dirPath) {
-    return this.db[tableName]
-      .where({parentDir: dirPath})
-      .toArray();
-  }
-
 
   async insert<T>(tableName: string, object: T) {
     return this.db[tableName].put(object);
@@ -53,15 +31,15 @@ export class DatabaseService {
   }
 
   async getSingleByReplyTo<T>(tableName: string, replyTo: string) {
-    return this.db[tableName].where({ replyTo }).first();
+    return this.db[tableName].where({replyTo}).first();
   }
 
   async updateReplyTo<T>(tableName: string, guid: string, replyTo: string) {
-    return this.db[tableName].update(guid, { replyTo });
+    return this.db[tableName].update(guid, {replyTo});
   }
 
   async getUserByEmailAndPassword<T>(tableName: string, email: string, password: string) {
-    return this.db[tableName].where({ 'contact.email': email, password }).first();
+    return this.db[tableName].where({'contact.email': email, password}).first();
   }
 
   async delete<T>(tableName: string, guid: string) {
@@ -69,7 +47,7 @@ export class DatabaseService {
   }
 
   async updateArchive<T>(tableName: string, guid: string, archive: boolean) {
-    return this.db[tableName].update(guid, { archive });
+    return this.db[tableName].update(guid, {archive});
   }
 
   async update<T>(tableName: string, guid: string, object: T) {
@@ -77,7 +55,7 @@ export class DatabaseService {
   }
 
   async getAllDoctorEmails<T>(tableName: string, doctorGuid: string) {
-    return this.db[tableName].where({ 'doctorEmail.guid': doctorGuid }).toArray();
+    return this.db[tableName].where({'doctorEmail.guid': doctorGuid}).toArray();
   }
 
   async getAll<T>(tableName: string) {
@@ -109,6 +87,6 @@ export class DatabaseService {
   }
 
   async updateConfirmed<T>(tableName: string, guid: string, confirmed: boolean) {
-    return this.db[tableName].update(guid, { confirmed });
+    return this.db[tableName].update(guid, {confirmed});
   }
 }

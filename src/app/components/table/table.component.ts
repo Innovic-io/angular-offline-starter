@@ -10,13 +10,12 @@ import { AppointmentModel } from '../../models/appointment.model';
 export class TableComponent {
   @Input() appointments: AppointmentModel[];
   @Input() total: number;
-
   @Output() checked = new EventEmitter<{ checked: boolean, guid: string }>();
   @Output() checkedAll = new EventEmitter<boolean>();
   @Output() pager = new EventEmitter();
 
   checkBox(event, appointmentGUID: string) {
-    this.checked.emit({ checked: event, guid: appointmentGUID });
+    this.checked.emit({checked: event, guid: appointmentGUID});
   }
 
   checkAll(event) {

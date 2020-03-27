@@ -10,12 +10,12 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./upcoming-appointments.component.css']
 })
 export class UpcomingAppointmentsComponent {
+  public faChecked = faCheck;
   @Input() appointmentTitle: string;
-  @Output() confirmedButton = new EventEmitter<string>();
   @Input() appointments: AppointmentModel[];
   @Input() appointment: AppointmentModel;
   @Input() currentUser: EmployeeModel;
-  public  faChecked = faCheck;
+  @Output() confirmedButton = new EventEmitter<string>();
 
   onClickedConfirmed(guid) {
     this.confirmedButton.emit(guid);

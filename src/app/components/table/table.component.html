@@ -3,7 +3,8 @@
   <tr class="tableColor" scope="row">
     <th scope="col" width="5%">
       <div class="custom-control custom-checkbox">
-        <input type="checkbox" #checkboxAll class="custom-control-input" id="defaultUnchecked" (change)="checkAll(checkboxAll.checked)">
+        <input type="checkbox" #checkboxAll class="custom-control-input" id="defaultUnchecked"
+               (change)="checkAll(checkboxAll.checked)">
         <label class="custom-control-label" for="defaultUnchecked"></label>
       </div>
     </th>
@@ -17,9 +18,10 @@
   <tr>
     <td scope="row">
       <div class="custom-control custom-checkbox">
-      <input type="checkbox" #checkbox class="custom-control-input" id="defaultUnchecked{{i}}" (change)="checkBox(checkbox.checked, appointment.guid)" [checked]="checkboxAll.checked">
-      <label class="custom-control-label" for="defaultUnchecked{{i}}"></label>
-    </div>
+        <input type="checkbox" #checkbox class="custom-control-input" id="defaultUnchecked{{i}}"
+               (change)="checkBox(checkbox.checked, appointment.guid)" [checked]="checkboxAll.checked">
+        <label class="custom-control-label" for="defaultUnchecked{{i}}"></label>
+      </div>
     </td>
     <td scope="col" [routerLink]="[appointment.guid]">{{appointment?.date | date:'medium': undefined: 'sr-RS' }}</td>
     <td scope="col" [routerLink]="[appointment.guid]">{{appointment?.appType}}</td>

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Roles } from '../../models/system.models';
+
 import { EmployeeModel } from '../../models/employee.model';
 
 @Component({

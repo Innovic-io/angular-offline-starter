@@ -1,4 +1,5 @@
-import { Component, ContentChildren, Input, QueryList } from '@angular/core';
+import { Component, ContentChildren, QueryList } from '@angular/core';
+
 import { TabComponent } from './tab/tab.component';
 
 @Component({
@@ -13,8 +14,8 @@ export class TabsComponent {
     this.contentChildren.forEach(item => {
       item.active = false;
     });
+
     const element = this.contentChildren.toArray()[index];
     element.active = true;
   }
-
 }
