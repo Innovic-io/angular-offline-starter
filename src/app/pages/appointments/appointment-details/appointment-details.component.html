@@ -3,22 +3,25 @@
     <div class="col-lg-9 col-sm-9">
       <div class="row">
         <div class="col-12">
-        <app-appointment-detail-info [appointment]="appointment"></app-appointment-detail-info>
+          <app-appointment-detail-info [appointment]="appointment"></app-appointment-detail-info>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <app-appointment-health-info [appointment]="appointment" (update)="onUpdateAppointment($event, 'healthInfo', appointment.guid)"></app-appointment-health-info>
+          <app-appointment-health-info [appointment]="appointment"
+                                       (update)="onUpdateAppointment($event, 'healthInfo', appointment.guid)"></app-appointment-health-info>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <app-diagnosis [appointment]="appointment" (update)="onUpdateAppointment($event, 'diagnosis', appointment.guid)"></app-diagnosis>
+          <app-diagnosis [appointment]="appointment"
+                         (update)="onUpdateAppointment($event, 'diagnosis', appointment.guid)"></app-diagnosis>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <app-invoice-information [appointment]="appointment" (update)="onUpdateAppointment($event, 'invoice', appointment.guid)"></app-invoice-information>
+          <app-invoice-information [appointment]="appointment"
+                                   (update)="onUpdateAppointment($event, 'invoice', appointment.guid)"></app-invoice-information>
         </div>
       </div>
     </div>

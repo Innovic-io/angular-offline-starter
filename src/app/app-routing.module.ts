@@ -1,11 +1,11 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
-import {DashboardComponent} from './pages/dashboard/dashboard.component';
-import {AppointmentsComponent} from './pages/appointments/appointments.component';
-import {CreateComponent} from './pages/appointments/create/create.component';
-import {NewMessageComponent} from './pages/messages/new-message/new-message.component';
-import {MessagesComponent} from './pages/messages/messages.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AppointmentsComponent } from './pages/appointments/appointments.component';
+import { CreateComponent } from './pages/appointments/create/create.component';
+import { NewMessageComponent } from './pages/messages/new-message/new-message.component';
+import { MessagesComponent } from './pages/messages/messages.component';
 import { MyHealthComponent } from './pages/my-health/my-health.component';
 import { MyProfileComponent } from './pages/my-profile/my-profile.component';
 import { RequestComponent } from './pages/my-profile/request/request.component';
@@ -28,77 +28,77 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard],
+    canActivate: [ AuthGuard ],
   },
   {
     path: 'appointments',
     component: AppointmentsComponent,
-    canActivate: [AuthGuard],
+    canActivate: [ AuthGuard ],
   },
   {
     path: 'appointments/create',
     component: CreateComponent,
-    canActivate: [AuthGuard],
+    canActivate: [ AuthGuard ],
   },
   {
     path: 'appointments/:id',
     component: AppointmentDetailsComponent,
-    canActivate: [AuthGuard],
+    canActivate: [ AuthGuard ],
   },
   {
     path: 'appointments/:id/:historyId',
     component: HistoryChangeDetailComponent,
-    canActivate: [AuthGuard],
+    canActivate: [ AuthGuard ],
   },
   {
     path: 'messages',
     component: MessagesComponent,
-    canActivate: [AuthGuard],
+    canActivate: [ AuthGuard ],
   },
   {
     path: 'messages/new',
     component: NewMessageComponent,
-    canActivate: [AuthGuard],
+    canActivate: [ AuthGuard ],
   },
   {
     path: 'messages/new/:id',
     component: NewMessageComponent,
-    canActivate: [AuthGuard],
+    canActivate: [ AuthGuard ],
   },
   {
     path: 'my-health',
     component: MyHealthComponent,
-    canActivate: [AuthGuard],
+    canActivate: [ AuthGuard ],
   },
   {
     path: 'my-profile',
     component: MyProfileComponent,
-    canActivate: [AuthGuard],
+    canActivate: [ AuthGuard ],
   },
   {
     path: 'my-profile/request',
     component: RequestComponent,
-    canActivate: [AuthGuard],
+    canActivate: [ AuthGuard ],
   },
   {
     path: 'my-documents',
     component: MyDocumentsComponent,
-    canActivate: [AuthGuard],
+    canActivate: [ AuthGuard ],
   },
   {
     path: 'upload-patient-form',
     component: UploadPatientFormComponent,
-    canActivate: [AuthGuard],
+    canActivate: [ AuthGuard ],
   },
   {
     path: 'login',
     component: LoginComponent,
-    canActivate: [LoggedGuard],
+    canActivate: [ LoggedGuard ],
   },
   {
     path: 'register',
     component: RegisterComponent,
-    canActivate: [LoggedGuard],
+    canActivate: [ LoggedGuard ],
   },
   {
     path: '**',
@@ -107,8 +107,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ]
 })
 export class AppRoutingModule {
 }

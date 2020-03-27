@@ -21,14 +21,14 @@ body {
   letter-spacing: 1px;
 }
 
-.space .row>[class^=col-] {
+.space .row > [class^=col-] {
   padding-top: .75rem;
   padding-bottom: .75rem;
 }
 
 .btn.btn-default {
   border-color: #41B6A6;
-  color: #41B6A6!important;
+  color: #41B6A6 !important;
   font-family: 'Andada', serif;
   font-variant: small-caps;
   letter-spacing: 1px;

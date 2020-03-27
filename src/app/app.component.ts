@@ -5,9 +5,6 @@ import { EmployeeModel } from './models/employee.model';
 import { EmployeeService } from './services/employee.service';
 import { SystemService } from './services/system.service';
 import { Observable } from 'rxjs';
-import { generateMessages, generatePastAppointments, generateUppcomingAppointments } from './data/appointment';
-import { MessageService } from './services/message.service';
-import { AppointmentService } from './services/appointment.service';
 import { Router } from '@angular/router';
 
 moment.locale('sr');
@@ -15,7 +12,7 @@ moment.locale('sr');
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: [ './app.component.css' ]
 })
 export class AppComponent implements OnInit {
   systemMessage$: Observable<string>;
@@ -26,12 +23,10 @@ export class AppComponent implements OnInit {
   constructor(
     public employeeService: EmployeeService,
     public systemService: SystemService,
-    public messageService: MessageService,
-    public appointmentService: AppointmentService,
     public router: Router) {
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
     this.systemMessage$ = this.systemService.getMessage();
     this.systemMessageDanger$ = this.systemService.getDangerMessage();
@@ -39,8 +34,7 @@ export class AppComponent implements OnInit {
 
   logOut() {
     this.employeeService.logOut();
-    window.location.reload();
-    // this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/login');
   }
 
 }

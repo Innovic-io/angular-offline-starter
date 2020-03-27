@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { EmployeeModel } from '../../models/employee.model';
 import { AppointmentModel } from '../../models/appointment.model';
-
 import { EmployeeService } from '../../services/employee.service';
 import { AppointmentService } from '../../services/appointment.service';
-import { doctor } from '../../data/dummy';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -23,7 +21,7 @@ export class DashboardComponent implements OnInit {
   constructor(public employeeService: EmployeeService, private appointmentService: AppointmentService) {}
 
   async confirmedButton(event) {
-    await this.appointmentService.confirmAppointment(doctor.guid, event);
+    await this.appointmentService.confirmAppointment(this.currentUser.guid,  event);
     this.appointments$ = this.appointmentService.getAllUpcomingDoctorAppointments(this.currentUser.guid, 0, this.appointmentsCount);
   }
 

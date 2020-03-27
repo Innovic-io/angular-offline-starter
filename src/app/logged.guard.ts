@@ -17,7 +17,6 @@ export class LoggedGuard implements CanActivate {
   }
 
   async canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-
     if (!await this.employeeService.isUserAlreadyLoggedIn()) {
       return true;
     } else {

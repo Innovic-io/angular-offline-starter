@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { EmployeeModel, HealthInfoModel } from '../models/employee.model';
+import { HealthInfoModel } from '../models/employee.model';
 import { DatabaseService } from './database.service';
 import {
   AppointmentModel,
@@ -17,7 +17,6 @@ import { SystemService } from './system.service';
 export class AppointmentService {
   private now = new Date();
   private appointment = new AppointmentModel();
-  private appointmentHistory: HistoryChanges;
 
   constructor(public databaseService: DatabaseService, public systemService: SystemService) {
   }
@@ -25,8 +24,8 @@ export class AppointmentService {
   async createAppointment(appointment: AppointmentModel) {
     try {
 
-        await this.databaseService.insert<AppointmentModel>('appointments', appointment);
-        this.systemService.createAlertMessage('Appointment is created!');
+      await this.databaseService.insert<AppointmentModel>('appointments', appointment);
+      this.systemService.createAlertMessage('Appointment is created!');
 
     } catch (e) {
       this.systemService.createDangerAlertMessage('Appointment is not created!');
@@ -42,7 +41,7 @@ export class AppointmentService {
     return this.appointment.appointmentHistory.find(change => change.guid === historyID);
   }
 
-  getAllUpcomingDoctorAppointments(doctorGUID: string, start= 0, end = 0) {
+  getAllUpcomingDoctorAppointments(doctorGUID: string, start = 0, end = 0) {
     return this.databaseService.getAllUpcoming<AppointmentModel>('appointments', this.now, doctorGUID, start, end);
   }
 
@@ -77,7 +76,7 @@ export class AppointmentService {
     switch (type) {
       case 'healthInfo':
         historyOfChanges.previousState = this.appointment.appointmentHealthInfo;
-        this.appointment.appointmentHealthInfo = {...this.appointment.appointmentHealthInfo, ...appointment};
+        this.appointment.appointmentHealthInfo = { ...this.appointment.appointmentHealthInfo, ...appointment };
         historyOfChanges.newState = this.appointment.appointmentHealthInfo;
         historyOfChanges.what = HistoryModel.healthInfo;
         historyOfChanges.date = new Date();
@@ -86,7 +85,7 @@ export class AppointmentService {
         break;
       case 'diagnosis':
         historyOfChanges.previousState = this.appointment.diagnosis;
-        this.appointment.diagnosis = {...this.appointment.diagnosis, ...appointment, diagnosisDate: new Date()};
+        this.appointment.diagnosis = { ...this.appointment.diagnosis, ...appointment, diagnosisDate: new Date() };
         historyOfChanges.newState = this.appointment.diagnosis;
         historyOfChanges.what = HistoryModel.diagnosis;
         historyOfChanges.date = new Date();
@@ -95,7 +94,7 @@ export class AppointmentService {
         break;
       case 'invoice':
         historyOfChanges.previousState = this.appointment.invoice;
-        this.appointment.invoice = {...this.appointment.invoice, ...appointment, invoiceDate: new Date()};
+        this.appointment.invoice = { ...this.appointment.invoice, ...appointment, invoiceDate: new Date() };
         historyOfChanges.newState = this.appointment.invoice;
         historyOfChanges.what = HistoryModel.invoice;
         historyOfChanges.date = new Date();
@@ -104,6 +103,7 @@ export class AppointmentService {
         break;
     }
     await this.databaseService.update<AppointmentModel>('appointments', this.appointment.guid, this.appointment);
+
     return this.appointment;
   }
 

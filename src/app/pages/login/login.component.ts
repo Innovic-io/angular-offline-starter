@@ -19,7 +19,7 @@ export class LoginComponent {
               private systemService: SystemService) {
   }
 
- async onSubmit(form: NgForm, email, password) {
+  async onSubmit(form: NgForm, email, password) {
     if (form.valid) {
       const isUserLoggedIn = await this.employeeService.signIn(email, password);
 
@@ -32,5 +32,4 @@ export class LoginComponent {
       }
     }
   }
-
 }

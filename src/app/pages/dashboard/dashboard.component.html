@@ -7,16 +7,11 @@
   </div>
   <div class="row">
     <div class="col-lg-9 col-sm-12">
-      <app-upcoming-appointments [appointments]="appointments$ | async" [appointmentTitle]="appointmentsTitle" (confirmedButton)="confirmedButton($event)"></app-upcoming-appointments>
+      <app-upcoming-appointments [appointments]="appointments$ | async" [appointmentTitle]="appointmentsTitle"
+                                 (confirmedButton)="confirmedButton($event)"></app-upcoming-appointments>
     </div>
     <div class="col-lg-3 col-sm-12">
       <app-quick-links></app-quick-links>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-9">
-      Vladana će staviti latest notifications componentu
-    </div>
-    <div class="col-3"></div>
   </div>
 </div>

@@ -9,7 +9,7 @@ import { SystemService } from '../../services/system.service';
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
-  styleUrls: ['./messages.component.css']
+  styleUrls: [ './messages.component.css' ]
 })
 export class MessagesComponent implements OnInit {
   messages: MessageModel[];
@@ -30,14 +30,14 @@ export class MessagesComponent implements OnInit {
 
   async delete($event) {
     if ($event) {
-        await this.messageService.deleteMessage($event);
-        this.messages = await this.messageService.getAllDoctorEmails(this.currentUser.guid);
+      await this.messageService.deleteMessage($event);
+      this.messages = await this.messageService.getAllDoctorEmails(this.currentUser.guid);
     }
   }
 
   async convert($event) {
     if ($event) {
-      await this.systemService.printToPDF($event); // , $event.title
+      await this.systemService.printToPDF($event);
     }
   }
 
@@ -45,6 +45,5 @@ export class MessagesComponent implements OnInit {
     this.currentUser = this.employeeService.getLoggedEmployee();
     this.messages = await this.messageService.getAllDoctorEmails(this.currentUser.guid);
   }
-
 }
 

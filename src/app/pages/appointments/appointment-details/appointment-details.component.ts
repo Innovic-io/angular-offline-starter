@@ -9,20 +9,15 @@ import { SystemService } from '../../../services/system.service';
 @Component({
   selector: 'app-appointment-details',
   templateUrl: './appointment-details.component.html',
-  styleUrls: ['./appointment-details.component.css']
+  styleUrls: [ './appointment-details.component.css' ]
 })
 export class AppointmentDetailsComponent implements OnInit {
-   public appointment = new AppointmentModel();
+  public appointment = new AppointmentModel();
 
   constructor(
-              public route: ActivatedRoute,
-              public appointmentService: AppointmentService,
-              public systemService: SystemService) { }
-
-  async ngOnInit() {
-    const { id } = this.route.snapshot.params;
-    this.appointment = await this.appointmentService.getAppointmentByID(id);
-
+    public route: ActivatedRoute,
+    public appointmentService: AppointmentService,
+    public systemService: SystemService) {
   }
 
   async onUpdateAppointment(appointment: AppointmentModel | HealthInfoModel | DiagnosisModel | InvoiceModel, type: string, guid) {
@@ -30,4 +25,8 @@ export class AppointmentDetailsComponent implements OnInit {
     this.systemService.createAlertMessage('Appointment is updated!');
   }
 
+  async ngOnInit() {
+    const { id } = this.route.snapshot.params;
+    this.appointment = await this.appointmentService.getAppointmentByID(id);
+  }
 }

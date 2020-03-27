@@ -19,13 +19,14 @@ export class HistoryChangeDetailComponent implements OnInit {
 
   constructor(public location: Location, public route: ActivatedRoute, public appointmentService: AppointmentService) { }
 
+  onBack() {
+    this.location.back();
+  }
+
   async ngOnInit() {
     const { id, historyId } = this.route.snapshot.params;
     this.appointmentHistoryChange = await this.appointmentService.getHistoryChangeByID(id, historyId);
   }
 
-  onBack() {
-    this.location.back();
-  }
 
 }
