@@ -9,6 +9,7 @@ export class PaginationPipe implements PipeTransform {
     if (!value || !pager) {
       return [];
     }
+
     return value.slice(pager.startIndex, pager.endIndex + 1);
   }
 }

@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+
 import { AppointmentModel } from '../models/appointment.model';
 
 @Pipe({
@@ -10,6 +11,7 @@ export class FilterByTypePipe implements PipeTransform {
     if (!appointments || !selectedType) {
       return appointments;
     }
+
     return appointments.filter(item => {
       return item.appType === selectedType;
     });

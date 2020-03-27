@@ -20,7 +20,7 @@
         </div>
       </div>
     </th>
-    <th scope="col" width="20%">View PDF</th>
+    <th scope="col" width="5%">View PDF</th>
   </tr>
   </thead>
   <tbody *ngFor="let appointment of appointments | filterByType: selectedType let i = index">
@@ -34,7 +34,7 @@
   <td scope="col">{{appointment?.date | date:'medium': undefined: 'sr-RS' }}</td>
   <td scope="col">{{appointment?.appType}}</td>
   <td scope="col">
-  <fa-icon [icon]="faFileAlt" class="mr-2"></fa-icon>
+    <fa-icon [icon]="faFileAlt" class="mr-2"></fa-icon>
   </td>
   </tbody>
 </table>

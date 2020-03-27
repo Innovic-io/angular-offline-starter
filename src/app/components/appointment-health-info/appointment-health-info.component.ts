@@ -22,11 +22,8 @@ export class AppointmentHealthInfoComponent implements OnInit {
     } else {
       this.diagnosisView = true;
     }
-    return this.diagnosisView;
-  }
 
-  ngOnInit(): void {
-    this.checkForHealthInfo();
+    return this.diagnosisView;
   }
 
   onSubmit(form: NgForm) {
@@ -44,5 +41,7 @@ export class AppointmentHealthInfoComponent implements OnInit {
    await this.systemService.printToPDF(event);
   }
 
-
+  ngOnInit(): void {
+    this.checkForHealthInfo();
+  }
 }

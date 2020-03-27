@@ -1,6 +1,5 @@
-import {uuidv4} from '../helpers/uuid';
+import { uuidv4 } from '../helpers/uuid';
 import { EmployeeModel } from './employee.model';
-
 
 export class MessageModel {
   guid: string;

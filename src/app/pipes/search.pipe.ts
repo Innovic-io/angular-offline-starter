@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+
 import { MessageModel } from '../models/message.model';
 
 @Pipe({
@@ -10,6 +11,7 @@ export class SearchPipe implements PipeTransform {
     if (!items || !searchText) {
       return items;
     }
+
     return items.filter(item => {
       const subject = item.subject.toLowerCase().includes(searchText.toLowerCase());
       const doctorName = item.doctorEmail.name.toLowerCase().includes(searchText.toLowerCase());
@@ -17,6 +19,7 @@ export class SearchPipe implements PipeTransform {
       const message = item.doctorMessage.toLowerCase().includes(searchText.toLowerCase());
       const dateString = item.date.toString();
       const date = dateString.toLowerCase().includes(searchText.toLowerCase());
+
       if (subject) {
         return subject;
       }
@@ -24,7 +27,7 @@ export class SearchPipe implements PipeTransform {
         return doctorName;
       }
       if (recipient) {
-        return  recipient;
+        return recipient;
       }
       if (message) {
         return message;

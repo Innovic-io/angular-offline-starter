@@ -1,4 +1,4 @@
-<app-header *ngIf="currentUser$ | async"  [user]="currentUser$ | async" (logOutEvent)="logOut()">
+<app-header *ngIf="currentUser$ | async" [user]="currentUser$ | async" (logOutEvent)="logOut()">
 </app-header>
 <main role="main" class="container">
   <ng-container *ngIf="systemMessage$ | async as message">

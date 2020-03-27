@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { EmployeeModel } from './models/employee.model';
 import { EmployeeService } from './services/employee.service';
 import { SystemService } from './services/system.service';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
 
 moment.locale('sr');
 
@@ -36,5 +36,4 @@ export class AppComponent implements OnInit {
     this.employeeService.logOut();
     this.router.navigateByUrl('/login');
   }
-
 }

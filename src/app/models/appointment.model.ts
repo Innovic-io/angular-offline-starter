@@ -7,9 +7,10 @@ export class DiagnosisModel {
   diagnosisDate: Date;
 
   constructor() {
-     this.diagnosisDate = new Date();
+    this.diagnosisDate = new Date();
   }
 }
+
 export class InvoiceModel {
   invoicePrice: number;
   invoiceDate: Date;
@@ -38,6 +39,7 @@ export class HistoryChanges {
     this.guid = uuidv4();
   }
 }
+
 export class AppointmentModel {
   guid: string;
   firstName: string;

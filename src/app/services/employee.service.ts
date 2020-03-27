@@ -92,7 +92,7 @@ export class EmployeeService {
   }
 
   async updateEmployeeAvatar(avatarURL: string) {
-    this.currentUser = { ...this.currentUser, avatar: avatarURL};
+    this.currentUser = {...this.currentUser, avatar: avatarURL};
     await this.databaseService.update<EmployeeModel>('employees', this.currentUser.guid, this.currentUser);
     this.employee$.next(this.currentUser);
   }

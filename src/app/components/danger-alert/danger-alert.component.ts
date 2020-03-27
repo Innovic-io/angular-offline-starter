@@ -7,5 +7,4 @@ import { Component, Input } from '@angular/core';
 })
 export class DangerAlertComponent {
   @Input() title: string;
-
 }

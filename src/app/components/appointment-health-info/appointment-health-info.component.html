@@ -68,7 +68,7 @@
 </div>
 <div class="card" *ngIf="diagnosisView === true">
   <div class="card-body">
-    <div class="row"  #detailHealthInfo title = "detailHealthInfo" [id] = "appointment.appointmentHealthInfo">
+    <div class="row" #detailHealthInfo title="detailHealthInfo" [id]="appointment.appointmentHealthInfo">
       <div class="col-12">
         <div class="row">
           <div class="col-lg-6 col-sm-6">
@@ -103,6 +103,6 @@
         <button (click)="exportToPDF(detailHealthInfo)" class="btn btn-default float-right">
           Convert to PDF
         </button>
+      </div>
     </div>
   </div>
-</div>

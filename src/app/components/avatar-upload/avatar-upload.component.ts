@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { EmployeeModel } from '../../models/employee.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
+
+import { EmployeeModel } from '../../models/employee.model';
+
 
 @Component({
   selector: 'app-avatar-upload',
@@ -10,10 +12,10 @@ import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 })
 
 export class AvatarUploadComponent {
-  @Input() user: EmployeeModel;
   private reader = new FileReader();
   public faArrowUp = faArrowUp;
   public url;
+  @Input() user: EmployeeModel;
   @Output() imageURL = new EventEmitter<string>();
 
   constructor(private sanitizer: DomSanitizer) {
@@ -21,7 +23,6 @@ export class AvatarUploadComponent {
 
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
-
       this.reader.readAsDataURL(event.target.files[0]);
 
       this.reader.onload = (eventURL) => {
@@ -30,5 +31,4 @@ export class AvatarUploadComponent {
       };
     }
   }
-
 }
