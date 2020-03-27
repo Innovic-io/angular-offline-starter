@@ -3,62 +3,131 @@
     <div class="col-12">
       <h2> History Changes Details </h2>
       <div class="card">
-        <div class="card-body">
+        <div class="card-body" *ngIf="appointmentHistoryChange">
           <div class="row">
             <div class="col-12">
-              Changed: {{appointmentHistory.what}}
+              <strong>Changed:</strong> {{appointmentHistoryChange?.what}}
             </div>
           </div>
           <div class="row">
             <div class="col-6">
-              Actor: {{appointmentHistory.actor.role}} {{appointmentHistory.actor.name}} {{appointmentHistory.actor.lastName}}
+              <strong>
+                Actor: </strong> {{appointmentHistoryChange?.actor?.role}} {{appointmentHistoryChange?.actor?.name}} {{appointmentHistoryChange?.actor?.lastName}}
             </div>
             <div class="col-6">
-              Date: {{appointmentHistory.date | date:'medium': undefined: 'sr-RS'}}
+              <strong> Date Of Change: </strong>  {{appointmentHistoryChange?.date | date:'medium': undefined: 'sr-RS'}}
+            </div>
+          </div>
+          <div class="row" *ngIf="appointmentHistoryChange?.what === diagnosis">
+            <div class="col-12">
+              <h5><strong>Previous state:</strong></h5>
+              <div class="card border-grey">
+                <div class="card-body">
+                  <strong> Diagnosis: </strong> {{appointmentHistoryChange?.previousState?.diagnosisText}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="appointmentHistoryChange?.what === diagnosis">
+            <div class="col-12">
+              <h5><strong>New state:</strong></h5>
+              <div class="card border-grey">
+                <div class="card-body">
+                  <strong> Diagnosis: </strong> {{appointmentHistoryChange?.newState?.diagnosisText}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="appointmentHistoryChange?.what === healthInfo">
+            <div class="col-12">
+              <h5><strong>Previous state:</strong></h5>
+              <div class="card border-grey">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+                      <strong> Temperature: </strong> {{appointmentHistoryChange?.previousState?.temperature}}
+                    </div>
+                    <div class="col-6">
+                      <strong> BloodType: </strong> {{appointmentHistoryChange?.previousState?.bloodType}}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <strong> Heart Rate: </strong> {{appointmentHistoryChange?.previousState?.hearthRate}}
+                    </div>
+                    <div class="col-6">
+                      <strong> Blood Pressure: </strong>{{appointmentHistoryChange?.previousState?.bloodPressure}}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <strong> SYS(mmHg): </strong> {{appointmentHistoryChange?.previousState?.bloodPressureSYS}}
+                    </div>
+                    <div class="col-6">
+                      <strong> DIAS(mmHg): </strong> {{appointmentHistoryChange?.previousState?.bloodPressureDIAS}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="appointmentHistoryChange?.what === healthInfo">
+            <div class="col-12">
+              <h5><strong>New state:</strong></h5>
+              <div class="card border-grey">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+                      <strong> Temperature: </strong> {{appointmentHistoryChange?.newState?.temperature}}
+                    </div>
+                    <div class="col-6">
+                      <strong> BloodType: </strong> {{appointmentHistoryChange?.newState?.bloodType}}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <strong> Heart Rate: </strong> {{appointmentHistoryChange?.newState?.hearthRate}}
+                    </div>
+                    <div class="col-6">
+                      <strong> Blood Pressure: </strong>{{appointmentHistoryChange?.newState?.bloodPressure}}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <strong> SYS(mmHg): </strong> {{appointmentHistoryChange?.newState?.bloodPressureSYS}}
+                    </div>
+                    <div class="col-6">
+                      <strong> DIAS(mmHg): </strong> {{appointmentHistoryChange?.newState?.bloodPressureDIAS}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="appointmentHistoryChange?.what === invoice">
+            <div class="col-12">
+              <h5><strong>Previous state:</strong></h5>
+              <div class="card border-grey">
+                <div class="card-body">
+                  <strong> Invoice Price: </strong> {{appointmentHistoryChange?.previousState?.invoicePrice}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="appointmentHistoryChange?.what === invoice">
+            <div class="col-12">
+              <h5><strong>New state:</strong></h5>
+              <div class="card border-grey">
+                <div class="card-body">
+                  <strong> Invoice Price: </strong> {{appointmentHistoryChange?.newState?.invoicePrice}}
+                </div>
+              </div>
             </div>
           </div>
           <div class="row">
             <div class="col-12">
-              <!--Diagnosis: {{appointmentHistory.newState.diagnosisText}}-->
-              {{appointmentHistory.newState}}
+              <button type="submit" class="btn btn-default" (click)="onBack()">Back</button>
             </div>
-          </div>
-          <!--<div class="row" *ngIf="appointmentHistory.what === healthInfo">
-            <div class="col-12">
-              <div class="row">
-                <div class="col-6">
-                  Temperature: {{appointmentHistory.newState.temperature}}
-                </div>
-                <div class="col-6">
-                  BloodType: {{appointmentHistory.newState.bloodType}}
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-6">
-                  Heart Rate: {{appointmentHistory.newState.hearthRate}}
-                </div>
-                <div class="col-6">
-                  Blood Pressure: {{appointmentHistory.newState.bloodPressure}}
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-6">
-                  SYS(mmHg): {{appointmentHistory.newState.bloodPressureSYS}}
-                </div>
-                <div class="col-6">
-                  DIAS(mmHg): {{appointmentHistory.newState.bloodPressureDIAS}}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row" *ngIf="appointmentHistory.what === invoice">
-          <div class="col-12">
-            Diagnosis: {{appointmentHistory.newState.invoicePrice}}
-          </div>
-        </div>-->
-        <div class="row">
-          <div class="col-12">
-            <button type="submit" class="btn btn-default" (click)="onBack()">Back</button>
           </div>
         </div>
       </div>

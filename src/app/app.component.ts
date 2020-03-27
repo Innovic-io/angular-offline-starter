@@ -35,15 +35,6 @@ export class AppComponent implements OnInit {
     this.currentUser$ = this.employeeService.getLoggedEmployee$();
     this.systemMessage$ = this.systemService.getMessage();
     this.systemMessageDanger$ = this.systemService.getDangerMessage();
-    // for (const message of generateMessages(14)) {
-    //   this.messageService.createMessage(message);
-    // }
-    // for (const app of generateUppcomingAppointments(20)) {
-    //   this.appointmentService.createAppointment(app);
-    // }
-    // for (const app of generatePastAppointments(25)) {
-    //   this.appointmentService.createAppointment(app);
-    // }
   }
 
   logOut() {

@@ -62,6 +62,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { DangerAlertComponent } from './components/danger-alert/danger-alert.component';
 import { HistoryChangesComponent } from './components/history-changes/history-changes.component';
 import { HistoryChangeDetailComponent } from './pages/appointments/history-change-detail/history-change-detail.component';
+import { ReverseArrayOfAppointmentHistoryChangesPipe } from './pipes/reverse-array-of-appointment-history-changes.pipe';
 
 @NgModule({
   declarations: [
@@ -122,7 +123,8 @@ import { HistoryChangeDetailComponent } from './pages/appointments/history-chang
     RegisterComponent,
     DangerAlertComponent,
     HistoryChangesComponent,
-    HistoryChangeDetailComponent
+    HistoryChangeDetailComponent,
+    ReverseArrayOfAppointmentHistoryChangesPipe
   ],
   imports: [
     BrowserModule,

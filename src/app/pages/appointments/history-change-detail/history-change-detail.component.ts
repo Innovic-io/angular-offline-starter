@@ -11,20 +11,21 @@ import { AppointmentService } from '../../../services/appointment.service';
   styleUrls: ['./history-change-detail.component.css']
 })
 export class HistoryChangeDetailComponent implements OnInit {
-  appointmentHistory: HistoryChanges;
   healthInfo = HistoryModel.healthInfo;
   diagnosis = HistoryModel.diagnosis;
   invoice = HistoryModel.invoice;
   appointment: AppointmentModel;
+  appointmentHistoryChange: HistoryChanges;
 
   constructor(public location: Location, public route: ActivatedRoute, public appointmentService: AppointmentService) { }
 
   async ngOnInit() {
     const { id, historyId } = this.route.snapshot.params;
-    this.appointmentHistory = await this.appointmentService.getHistoryChangeByID(id, historyId);
+    this.appointmentHistoryChange = await this.appointmentService.getHistoryChangeByID(id, historyId);
   }
 
   onBack() {
     this.location.back();
   }
+
 }

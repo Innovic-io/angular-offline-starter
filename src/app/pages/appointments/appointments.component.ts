@@ -22,8 +22,7 @@ export class AppointmentsComponent implements OnInit {
   pastAppointments$: Promise<AppointmentModel[]>;
   pastAppointmentsCount$: Promise<number>;
   markedAppointments: string[] = [];
-
-  pager;
+  pager: any;
 
   constructor(
     public employeeService: EmployeeService,

@@ -2,22 +2,22 @@
 <div class="list-group">
   <a class="list-group-item list-group-item-action flex-column align-items-start"
      [routerLink]="[appointmentHistory.guid]"
-     *ngFor="let appointmentHistory of appointment.appointmentHistory ">
+     *ngFor="let appointmentHistory of appointment.appointmentHistory | reverseArrayOfAppointmentHistoryChanges">
     <div class="w-100 justify-content-between">
       <div class="row">
         <div class="col-lg-12 col-sm-12">
-          <span class="mb-1 mr-4">{{appointmentHistory?.what}}</span>
+          <span class="mb-1 mr-4"><strong>{{appointmentHistory?.what}}</strong></span>
           <small>{{appointmentHistory?.date | date:'medium'  | timeAgo}}</small>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-12 col-sm-12">
-          <p class="mb-1">Actor: {{appointmentHistory?.actor?.role | role}} {{appointmentHistory?.actor.name}}</p>
+          <p class="mb-1"><strong> Actor: {{appointmentHistory?.actor?.role | role}} {{appointmentHistory?.actor.name}}</strong></p>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-12 col-sm-12">
-          <small>More...</small>
+        <small> <strong>More...</strong></small>
         </div>
       </div>
     </div>
