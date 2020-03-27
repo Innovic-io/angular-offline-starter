@@ -32,7 +32,7 @@ export class MyDocumentsComponent implements OnInit {
   }
 
   async convertToPDF(event) {
-    await this.systemService.exportAsPDF(event, event.title);
+    await this.systemService.printToPDF(event);
   }
 
   appointmentSelect(event: { checked: boolean, guid: string }) {

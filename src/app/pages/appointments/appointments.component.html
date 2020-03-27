@@ -34,7 +34,7 @@
                       (click)="exportToPDFActiveApp(activeAppointments)">Save as PDF
               </button>
             </div>
-            <div class="col-lg-12" #activeAppointments title="activeAppointments" [id] ="upcomingAppointments$">
+            <div class="col-lg-12" #activeAppointments title="activeAppointments">
               <app-table [appointments]="upcomingAppointments$ | async"
                          [total] = "upcomingAppointmentsCount$ | async"
                          (checked)="appointmentSelect($event)"
@@ -47,7 +47,7 @@
           <div class="row">
             <div class="col-lg-12">
               <button class="btn btn-default float-right"
-                      (click)="exportToPDFPastApp(pastAppointments1, pastAppointments1.title)">Save as PDF
+                      (click)="exportToPDFPastApp(pastAppointments1)">Save as PDF
               </button>
             </div>
             <div class="col-lg-12" #pastAppointments1 title="pastAppointments">

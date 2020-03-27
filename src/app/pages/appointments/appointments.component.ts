@@ -42,8 +42,8 @@ export class AppointmentsComponent implements OnInit {
     await this.systemService.printToPDF(event);
   }
 
-  async exportToPDFPastApp(event, name) {
-    await this.systemService.exportAsPDF(event, name);
+  async exportToPDFPastApp(event) {
+    await this.systemService.printToPDF(event);
   }
 
   appointmentSelect(event: { checked: boolean, guid: string }) {
