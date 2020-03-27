@@ -16,7 +16,8 @@ import { SystemService } from './system.service';
 })
 export class AppointmentService {
   private now = new Date();
-  private appointment = new AppointmentModel();
+
+  // private appointment = new AppointmentModel();
 
   constructor(public databaseService: DatabaseService, public systemService: SystemService) {
   }
@@ -37,8 +38,8 @@ export class AppointmentService {
   }
 
   async getHistoryChangeByID(guid, historyID: string) {
-    this.appointment = await this.databaseService.getSingle<AppointmentModel>('appointments', guid);
-    return this.appointment.appointmentHistory.find(change => change.guid === historyID);
+    const appointment = await this.databaseService.getSingle<AppointmentModel>('appointments', guid);
+    return appointment.appointmentHistory.find(change => change.guid === historyID);
   }
 
   getAllUpcomingDoctorAppointments(doctorGUID: string, start = 0, end = 0) {
@@ -71,40 +72,40 @@ export class AppointmentService {
   }
 
   async updateAppointment(appointment: AppointmentModel | HealthInfoModel | DiagnosisModel | InvoiceModel, type: string, guid) {
-    this.appointment = await this.getAppointmentByID(guid);
+    const newAppointment = await this.getAppointmentByID(guid);
     const historyOfChanges = new HistoryChanges();
     switch (type) {
       case 'healthInfo':
-        historyOfChanges.previousState = this.appointment.appointmentHealthInfo;
-        this.appointment.appointmentHealthInfo = { ...this.appointment.appointmentHealthInfo, ...appointment };
-        historyOfChanges.newState = this.appointment.appointmentHealthInfo;
+        historyOfChanges.previousState = newAppointment.appointmentHealthInfo;
+        newAppointment.appointmentHealthInfo = { ...newAppointment.appointmentHealthInfo, ...appointment };
+        historyOfChanges.newState = newAppointment.appointmentHealthInfo;
         historyOfChanges.what = HistoryModel.healthInfo;
         historyOfChanges.date = new Date();
-        historyOfChanges.actor = this.appointment.provider;
-        this.appointment.appointmentHistory.push(historyOfChanges);
+        historyOfChanges.actor = newAppointment.provider;
+        newAppointment.appointmentHistory.push(historyOfChanges);
         break;
       case 'diagnosis':
-        historyOfChanges.previousState = this.appointment.diagnosis;
-        this.appointment.diagnosis = { ...this.appointment.diagnosis, ...appointment, diagnosisDate: new Date() };
-        historyOfChanges.newState = this.appointment.diagnosis;
+        historyOfChanges.previousState = newAppointment.diagnosis;
+        newAppointment.diagnosis = { ...newAppointment.diagnosis, ...appointment, diagnosisDate: new Date() };
+        historyOfChanges.newState = newAppointment.diagnosis;
         historyOfChanges.what = HistoryModel.diagnosis;
         historyOfChanges.date = new Date();
-        historyOfChanges.actor = this.appointment.provider;
-        this.appointment.appointmentHistory.push(historyOfChanges);
+        historyOfChanges.actor = newAppointment.provider;
+        newAppointment.appointmentHistory.push(historyOfChanges);
         break;
       case 'invoice':
-        historyOfChanges.previousState = this.appointment.invoice;
-        this.appointment.invoice = { ...this.appointment.invoice, ...appointment, invoiceDate: new Date() };
-        historyOfChanges.newState = this.appointment.invoice;
+        historyOfChanges.previousState = newAppointment.invoice;
+        newAppointment.invoice = { ...newAppointment.invoice, ...appointment, invoiceDate: new Date() };
+        historyOfChanges.newState = newAppointment.invoice;
         historyOfChanges.what = HistoryModel.invoice;
         historyOfChanges.date = new Date();
-        historyOfChanges.actor = this.appointment.provider;
-        this.appointment.appointmentHistory.push(historyOfChanges);
+        historyOfChanges.actor = newAppointment.provider;
+        newAppointment.appointmentHistory.push(historyOfChanges);
         break;
     }
-    await this.databaseService.update<AppointmentModel>('appointments', this.appointment.guid, this.appointment);
+    await this.databaseService.update<AppointmentModel>('appointments', newAppointment.guid, newAppointment);
 
-    return this.appointment;
+    return newAppointment;
   }
 
   async confirmAppointment(doctorGUID: string, appointmentGUID: string) {
