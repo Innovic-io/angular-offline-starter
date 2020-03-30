@@ -111,5 +111,4 @@ export class AppointmentService {
       return this.databaseService.updateConfirmed<AppointmentModel>('appointments', appointmentGUID, true);
     }
   }
-
 }

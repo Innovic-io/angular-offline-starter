@@ -24,7 +24,7 @@ npm start
 
 ### Project structure
 ```bash
-venue-registration/                        compiled version
+venue-registration/          compiled version
 e2e/                         end-to-end tests
 src/                         project source code
 |- app/                      app components
@@ -51,7 +51,6 @@ src/                         project source code
 +- test.ts                   unit tests entry point
 proxy.conf.js                backend proxy configuration
 ```
-
 ### What's in the box
 
 - Bootstrap 4.0
