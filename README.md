@@ -2,8 +2,8 @@
 Web project starter kit including modern tools and workflow based on angular-cli,
 best practices from the community, a scalable base template and a good learning base.
 This small AngularJS application contains some simple examples explaining the components of angular.
-It is intended for doctors to register, create and update appointments, their profile
-or their messages by using template driven forms.
+It is intended for doctors to register, create messages and update profile by using template
+driven forms or perform CRUD operations on appointments.
 
 
 ![Screen](http://i.imgur.com/hQ2R58i.png)
