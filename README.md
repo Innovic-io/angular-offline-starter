@@ -2,8 +2,8 @@
 Web project starter kit including modern tools and workflow based on angular-cli,
 best practices from the community, a scalable base template and a good learning base.
 This small AngularJS application contains some simple examples explaining the components of angular.
-It is intended for doctors to register, create and update appointments, their profile
-or their messages by using template driven forms.
+It is intended for doctors to register, create messages and update profile by using template
+driven forms or perform CRUD operations on appointments.
 
 
 ![Screen](http://i.imgur.com/hQ2R58i.png)
@@ -45,8 +45,8 @@ src/                         project source code
 |  |- app.component.*        app root component (shell)
 |  |- app.module.ts          app root module definition
 |  |- app-routing.module.ts  app routes
-|  |- auth.guard.ts          app routes
-|  |- logged.guard.ts        app routes
+|  |- auth.guard.ts          route guards
+|  |- logged.guard.ts        route guards
 |  +- ...                    additional modules and components
 |- assets/                   app assets (images, css)
 |- environments/             values for various build environments
@@ -55,7 +55,7 @@ src/                         project source code
 |- polyfills.ts              polyfills needed by Angular
 |- styles.css                global style entry point
 +- test.ts                   unit tests entry point
-proxy.conf.js                backend proxy configuration
+karma.conf.js                configuration file
 ```
 ### What's in the box
 
