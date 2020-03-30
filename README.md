@@ -1,10 +1,14 @@
 # Angular 9 starter with Dexie.js for offline use
 Web project starter kit including modern tools and workflow based on angular-cli,
 best practices from the community, a scalable base template and a good learning base.
-This small AngularJS application contains some simple examples explaining the components of angular.
+
+This small Angular application contains examples explaining how components ( smart - dumb ) are used in angular.
 It is intended for doctors to register, create messages and update profile by using template
 driven forms or perform CRUD operations on appointments.
 
+Application works in offline mode with Dexie.js ( IndexDB ) library.
+
+## Screenshots
 
 ![Screen](http://i.imgur.com/hQ2R58i.png)
 ![Screen](http://i.imgur.com/9Eu3YWy.png)
@@ -34,12 +38,10 @@ venue-registration/          compiled version
 e2e/                         end-to-end tests
 src/                         project source code
 |- app/                      app components
-|  |- @core/                 core module (singleton services and single-use components)
-|  |- @shared/               shared module  (common components, directives and pipes)
 |  |- components/            dumb components
 |  |- helpers/               generate unique guid
 |  |- models/                models
-|  |- pages/                 smart components
+|  |- pages/                 smart / routing components
 |  |- pipes/                 pipes
 |  |- services/              services
 |  |- app.component.*        app root component (shell)
@@ -57,6 +59,7 @@ src/                         project source code
 +- test.ts                   unit tests entry point
 karma.conf.js                configuration file
 ```
+
 ### What's in the box
 
 - Bootstrap 4.0
