@@ -1,6 +1,9 @@
 # Angular 9 starter with Dexie.js for offline use
 - missing text -
 
+[Screen](http://i.imgur.com/ultZQCS.png)
+
+
 ## Getting started
 
 Go to project folder and install dependencies:
