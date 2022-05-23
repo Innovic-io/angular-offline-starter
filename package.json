@@ -27,7 +27,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "angular-bootstrap-datetimepicker": "^4.0.2",
     "bootstrap": "^4.4.1",
-    "dexie": "^2.0.4",
+    "dexie": "^3.2.2",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
     "open-iconic": "^1.1.1",
